@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+	<meta content="telephone=no" name="format-detection" />
+    <title>ThirdPart Support | Harlan</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/harlan_eye_app.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <script src="js/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>	
+	<div class="entire" id="lava">
+		<div class="third_sub">
+          <div class="hide"></div>
+			<div class="lct">
+				检验咨询表 Inspection inquiry form
+			</div>
+		    <form method="post" id="imgform">
+			<div class="check_block">
+				<div class="check_a">
+					<div class="check_til"><hr />客户信息<span class="til_sub">CLEINT INFORMATION</span></div>
+					<div class="check_mesg">
+						<div class="dptx">
+							<div class="dptx_a">公司名称<span>*</span></div>
+							<input type="text" name="thirdCheckCorp"  v-model="order.company_name_zh"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">Company Name</div>
+							<input type="text" name="thirdCheckCorpEn"  v-model="order.company_name_en"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">报验公司地址<span>*</span></div>
+							<input type="text" name="thirdCheckAddr"  v-model="order.company_addr_zh"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">Company Address</div>
+							<input type="text" name="thirdCheckAddrEn"  v-model="order.company_addr_en"/>
+						</div>
+						<div class="fpxz_fkf">
+							<div class="dptx_a_fkf">付款方 payer's Info</div>
+							<div class="fpxz_a"><input type="radio" name="input_radio1" id="input_rd1" value="1"  v-model="order.payerinfo_company" /><label for="input_rd1">同报验公司  Same compony</label></div>
+							<div class="fpxz_a" style="width: 26%;"><input type="radio" name="input_radio2" id="input_rd2" value="1"  v-model="order.payerinfo_other"/><label for="input_rd2">其他 Others</label></div>
+							<input class="other_in" type="text" />
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">联系人 Contact Person<span>*</span></div>
+							<input type="text" name="thirdCheckContact"  v-model="order.contact_person"/>							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">电话 Tel.<span>*</span></div>
+							<input type="text" name="thirdCheckContactTel" v-model="order.contact_telephone" />							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">电子邮箱 E-mail Address<span>*</span></div>
+							<input type="text" name="thirdCheckEmail"  v-model="order.contact_email"/>							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">传真 Fax<span>*</span></div>
+							<input type="text" name="thirdCheckFax"  v-model="order.contact_fax"/>						
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">货品名称 Commority<span>*</span></div>
+							<input type="text" v-model="order.commodity" />							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">数量 Quantity<span>*</span></div>
+							<input type="text"  v-model="order.quantity"/>					
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">船名 Vessel<span>*</span></div>
+							<input type="text"  v-model="order.vessel"/>							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">包装 Packing<span>*</span></div>
+							<input type="text"  v-model="order.packing"/>					
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">粒度 Size<span>*</span></div>
+							<input type="text" v-model="order.size" />							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">装运港 Load Port<span>*</span></div>
+							<input type="text"  v-model="order.load_port"/>					
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">目的港 Destination<span>*</span></div>
+							<input type="text" v-model="order.destination" />							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a" style="width: 64%;">要求检验地点 Inspection Location<span>*</span></div>
+							<input type="text"  v-model="order.inspection_location" style="width: 36%;"/>				
+						</div>
+						<div class="dptx">
+							<div class="dptx_a" style="width: 64%;">预计检验时间 Required Inspection Date<span>*</span></div>
+							<input type="text"  v-model="order.required_inspection_date" style="width: 36%;"/>
+						</div>
+						<div class="fpxz_zsxx">
+							<div class="dptx_a_zsxx">
+								证书上是否需要显示L/C信息？(若是，请传真信用证相关内容) 
+								<br />
+								If L/C No.needed to be mentioned in SGS certificate?
+							</div>
+							<div class="fpxz_a"><input type="radio" name="input_radio2" id="input_rd3" value="1"  v-model="order.is_lc"/><label for="input_rd3">是 Yes</label></div>
+							<div class="fpxz_a"><input type="radio" name="input_radio2" id="input_rd4" value="0"  v-model="order.is_lc"/><label for="input_rd4">否 No</label></div>
+						</div>
+					</div>
+				</div>
+				<div class="check_d">
+					<div class="check_til"><hr />检测内容<span class="til_sub">SERVICES REQUIRED</span></div>
+					<div class="check_con_h">
+						1.取样 Sampling at:
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c">1)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox1" id="input_cb1" value="1"  v-model="order.sampling_at_warehouse"/><label for="input_cb1">在仓库  Warehouse</label></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox1" id="input_cb2" value="1"  v-model="order.sampling_at_plant"/><label for="input_cb2">在厂家 Plant</label></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox1" id="input_cb3" value="1"  v-model="order.sampling_at_quayside"/><label for="input_cb3">在码头 Quayside</label></div>
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c">2)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox2" id="input_cb4" value="1"  v-model="order.sampling_at_100"/><label for="input_cb4">100%取样  100% Sampling</label></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox2" id="input_cb5" value="1"  v-model="order.sampling_at_random"/><label for="input_cb5">随机取样 Random Sampling</label></div>
+					</div>
+					<div class="check_con_h">
+						2.重量检验 Weighing at:
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c">1)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox3" id="input_cb6" value="1"  v-model="order.weighing_at_warehouse"/><label for="input_cb6">在仓库  Warehouse</label></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox3" id="input_cb7" value="1"  v-model="order.weighing_at_plant"/><label for="input_cb7">在厂家 Plant</label></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox3" id="input_cb8" value="1"  v-model="order.weighing_at_quayside"/><label for="input_cb8">在码头 Quayside</label></div>
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c" style="width: 255px;">2) 重量检测 Weighing scale：</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox4" id="input_cb9" value="1"  v-model="order.weighing_at_100"/><label for="input_cb9">100%称重  100% weighing</label></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox4" id="input_cb10" value="1"  v-model="order.weighing_at_random"/><label for="input_cb10">随机抽样称重 Random weighing</label></div>
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c" style="width: 255px;"></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox4" id="input_cb11" value="1"  v-model="order.weighing_at_supervision"/><label for="input_cb11">磅房监中 Weigh-bridge supervision</label></div>
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c" style="width: 255px;">3) 水尺监重 Draft survey:</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox5" id="input_cb12" value="1"  v-model="order.weighing_at_initial"/><label for="input_cb12">初，末水尺  Initial & final</label></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox5" id="input_cb13" value="1"  v-model="order.weighing_at_intermidiate"/><label for="input_cb13">中间水尺 Intermadiate</label></div>
+					</div>
+					<div class="check_con_h">
+						3.货物状况检验 Cargo condition check at:
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c">1)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox6" id="input_cb14" value="1"  v-model="order.cargo_at_warehouse"/><label for="input_cb14">在仓库  Warehouse</label></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox6" id="input_cb15" value="1"  v-model="order.cargo_at_plant"/><label for="input_cb15">在厂家 Plant</label></div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox6" id="input_cb16" value="1"  v-model="order.cargo_at_quayside"/><label for="input_cb16">在码头 Quayside</label></div>
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c">2)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox7" id="input_cb17" value="1"  v-model="order.cargo_at_visual"/><label for="input_cb17">货物外观目测  Vessle loading supervision</label></div>
+						<div class="fpxz_c">3)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox8" id="input_cb18" value="1"  v-model="order.cargo_at_packing"/><label for="input_cb18">包装情况 Packing condition</label></div>
+						<div class="fpxz_c">4)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox9" id="input_cb19" value="1"  v-model="order.cargo_at_check"/><label for="input_cb19">核验标识 Check marking</label></div>
+					</div>
+					<div class="check_con_h">
+						4.港口作业 Port Handling:
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c">1)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox10" id="input_cb20" value="1"  v-model="order.porthanding_loading"/><label for="input_cb20">监督货物装船  Vessel loading supervision</label></div>
+						<div class="fpxz_c">2)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox11" id="input_cb21" value="1"  v-model="order.porthanding_discharging"/><label for="input_cb21">监督货物卸船 Vessel discharging supervision</label></div>
+						<div class="fpxz_c">3)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox12" id="input_cb22" value="1"  v-model="order.porthanding_hold"/><label for="input_cb22">货舱检验 Cargo hold inspection</label></div>
+					</div>
+					<div class="check_con_h">
+						5.集装箱 Containe:
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c">1)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox13" id="input_cb23" value="1" v-model="order.containe_stuffing" /><label for="input_cb23">集装箱监装  Stuffing supervision</label></div>
+						<div class="fpxz_c">2)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox14" id="input_cb24" value="1"  v-model="order.containe_seal"/><label for="input_cb24">集装箱加封 Seal stuffed container(s)</label></div>
+						<div class="fpxz_c">3)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox15" id="input_cb25" value="1"  v-model="order.containe_unloading"/><label for="input_cb25">集装箱监卸 Unloading supervision</label></div>
+					</div>
+					<div class="check_con_h">
+						6.点数 Tally at:
+					</div>
+					<div class="check_con">
+						<div class="fpxz_c">1)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox16" id="input_cb26" value="1"  v-model="order.tally_at_container"/><label for="input_cb26">集装箱点数  Container</label></div>
+						<div class="fpxz_c">2)</div>
+						<div class="fpxz_b"><input type="checkbox" name="input_checkbox17" id="input_cb27" value="1"  v-model="order.tally_at_loading"/><label for="input_cb27">装船点数 Vessle loading</label></div>
+					</div>
+					<div class="dptx" style="background-color: #f2f2f2;">
+						<div class="dptx_a">7.其他要求 Other Requirements:</div>
+						<input type="text"  v-model="order.other_requirements"/>
+					</div>
+					<div class="check_con_h">
+						8.样品分析 Sample Analysis:
+					</div>
+					<div class="dptx" style="border-top: .03rem solid #e4e4e4;">
+						<div class="dptx_a">1) 化学项目 Chemical items:</div>
+						<input type="text" v-model="order.analysis_chemical" />
+					</div>
+					<div class="dptx">
+						<div class="dptx_a">2) 物理项目 Physical items:</div>
+						<input type="text"  v-model="order.analysis_physical"/>
+					</div>
+					<div class="dptx" style="height: 3rem;">
+						<div class="dptx_a" style="width: 100%; height: 2rem; line-height: 1rem;">3) 产品规格|分析标准|其他分析要求 Specification/Analysis standards/Other analysis requirements:</div>
+						<input type="text" style="height: .8rem; width: 90%; margin-left: 5%; border-bottom: .03rem solid #e4e4e4;" v-model="order.analysis_other"/>
+					</div>
+				</div>
+				
+				
+				
+				<div class="check_b">
+					<div class="check_til"><hr />发票和报告要求<span class="til_sub">INVOICE AND REPORT REQUIREMENT</span></div>
+					<div class="fpxz">
+						<div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex1" value="1"  v-model="order.invoice_type"/><label for="sex1">专票 Speciai VAT</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex2" value="2"  v-model="order.invoice_type"/><label for="sex2">普票 Non Speciai VAT</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex3" value="3"  v-model="order.invoice_type" /><label for="sex3">电子发票  Electronic invoice</label></div>
+					</div>
+					<div class="fptt">
+						<div class="fptt_a">发票抬头 Invoice title:<span>*</span></div>
+						<input type="text" name="thirdCheckInvoiceDes"  v-model="order.invoice_title"/>
+					</div>
+					<div class="fpxz">
+						<div class="fpxz_b" style="line-height: 1.5rem;"><input type="checkbox" name="reportType" id="sexs1" value="1"   v-model="order.invoice_chinese"/><label for="sexs1">中文报告  Chinese</label></div>
+						<div class="fpxz_b" style="margin-top: -.1rem; line-height: normal;"><input type="checkbox" name="reportType" id="sexs2" value="1"  v-model="order.invoice_english"/><label for="sexs2">英文报告 English<br />（英文报告需加收￥200元/English report charged RMB 200）</label></div>
+					</div>
+				</div>
+				<div class="check_c">
+					<div class="check_til"><hr />发送方式<span class="til_sub">Dispatch via</span></div>
+					<div class="fpxz">
+						<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd1" value="1"  v-model="order.dispatch_via"/><label for="sexd1">快递  Via Express</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd2" value="2"  v-model="order.dispatch_via"/><label for="sexd2">自取  Self Pick Up</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd3" value="3"  v-model="order.dispatch_via"/><label for="sexd3">邮件  Via Email</label></div>
+					</div>
+					<div class="yjdz">
+						<div class="yjdz_a">邮寄地址  delivery address</div>
+						<input type="text" name="thirdCheckMailaddr"  v-model="order.delivery_addr"/>
+					</div>
+					<div class="jcrq">
+
+					</div>
+					<div class="bjsm">
+						<p>Remark:</p>
+						1) 请将此表填好后传回我公司，以作为报价的依据。<br />
+						upon filling in the form, please fax it back to our office, base of which our quotation will be made.<br />
+						2） 如有问询，请于以下人员联系 for any queeies, please contact following persons with fax.tel.no.Given below:<br />
+						Name: Jessica Jin Tel: 022-6528 8149 Fax: 022-2529 3819/Minerals TianJin SGS-CSTS Ltd.
+					</div>
+					<div class="dptx" style="height: 3rem; line-height: 1rem;">
+						<div class="dptx_a" style="width: 100%; height: 2rem; border: none;">申请方代表人签字/盖章 Signed by for and be half of application party/stamp:</div>
+						<input type="text" style="height: .8rem; width: 90%; margin-left: 5%; border-bottom: .03rem solid #e4e4e4;" />
+					</div>
+					<div class="dptx">
+						<div class="dptx_a">申请时间 Application Time:</div>
+						<input type="text" />
+					</div>
+				</div>
+				<div class="check_a">
+					<div class="check_til" style="background-color: #ffbb33;"><hr />价格信息<span class="til_sub">PRICE INFORMATION</span></div>
+					<div class="check_mesg">
+						<div class="dptx">
+							<div class="dptx_a">检验服务Service of Inspection</div>
+							<input type="text" name="thirdCheckContact"  v-model="order.inspection_fee"/>							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">分析服务Service of Analysis</div>
+							<input type="text" name="thirdCheckContactTel"  v-model="order.analysis_fee"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">纸质报费Paper-certificate fee</div>
+							<input type="text" name="thirdCheckEmail"  v-model="order.paper_fee"/>							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">增值税Added-value tax</div>
+							<input type="text" name="thirdCheckFax"  v-model="order.added_fee"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">其他收费Others</div>
+							<input type="text"  v-model="order.others_fee"/>							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">差旅费Travelling Fee</div>
+							<input type="text"  v-model="order.travelling_fee"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a" style="color: red;">费用总计 Total Amount</div>
+							<input type="text" style="color: red;" v-model="order.totle_fee" />
+						</div>
+					</div>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</body>
+	<script src="plugins/jquery.pagination.js"></script>
+	<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/goods_employed_third.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/top_bottom.js"></script>
+	<script src="plugins/vue/vue.min.js"></script>
+	<script src="lib/common.js"></script>
+	<script type="text/javascript">
+		var orderType=2;
+		$(document).ready(function(){
+			$('#imgform input').attr("readonly", "readonly");
+      		$('#imgform textarea').attr("readonly", "readonly");
+     		//$(".fpxz input").attr("disabled","disabled");			
+		})
+	</script>
+	<script src="lib/goods_employed_third.js"></script>
+</html>

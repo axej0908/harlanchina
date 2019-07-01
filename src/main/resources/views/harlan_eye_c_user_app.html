@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+	<meta content="telephone=no" name="format-detection" />
+    <title>ThirdPart Support | Harlan</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/harlan_eye_app.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <script src="js/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="entire" id="lava">
+		<div class="third_sub">
+          	<div class="hide"></div>
+			<div class="lct">
+				Inspection inquiry form 检验咨询表
+			</div>
+		    <form method="post" id="imgform">
+			<div class="check_block">
+				<div class="check_a">
+					<div class="check_til"><hr />客户信息<span class="til_sub">CLEINT INFORMATION</span></div>
+					<div class="check_mesg">
+						<div class="dptx">
+							<div class="dptx_a">公司名称 Company Name</div>
+							<input type="text" name="thirdCheckCorp" v-model="order.company_name"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">公司地址 Company Address</div>
+							<input type="text" name="thirdCheckAddr" v-model="order.company_addr"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">联系人 Contact Person</div>
+							<input type="text" name="thirdCheckContact" v-model="order.contact_person"/>							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">职位 Position</div>
+							<input type="text" name="thirdCheckContactTel" v-model="order.position"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">电子邮箱 E-mail Address</div>
+							<input type="text" name="thirdCheckEmail" v-model="order.email"/>							
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">传真 Fax</div>
+							<input type="text" name="thirdCheckFax" v-model="order.fax"/>
+						</div>
+					</div>
+				</div>
+				<div class="check_b">
+					<div class="check_til"><hr />发票和报告要求<span class="til_sub">INVOICE AND REPORT REQUIREMENT</span></div>
+					<div class="fpxz">
+						<div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex1" value="1" v-model="order.invoice_report"/><label for="sex1">专票 Speciai VAT</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex2" value="2" v-model="order.invoice_report"/><label for="sex2">普票 Non Speciai VAT</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex3" value="3" v-model="order.invoice_report" /><label for="sex3">电子发票  Electronic invoice</label></div>
+					</div>
+					<div class="fptt">
+						<div class="fptt_a">发票抬头 Invoice title:<span>*</span></div>
+						<input type="text" name="thirdCheckInvoiceDes" v-model="order.invoice_title"/>
+					</div>
+					<div class="fpxz">
+						<div class="fpxz_b" style="line-height: 1.5rem;"><input type="checkbox" name="reportType" id="sexs1" value="1" v-model="order.invoice_chinese" /><label for="sexs1">中文报告  Chinese</label></div>
+						<div class="fpxz_b" style="margin-top: -.1rem; line-height: normal;"><input type="checkbox" name="reportType" id="sexs2" value="1" v-model="order.invoice_english"/><label for="sexs2">英文报告 English<br />（英文报告需加收￥200元/English report charged RMB 200）</label></div>
+					</div>
+				</div>
+				<div class="check_c">
+					<div class="check_til"><hr />发送方式<span class="til_sub">Dispatch via</span></div>
+					<div class="fpxz">
+						<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd1" value="1" v-model="order.dispatch_via"/><label for="sexd1">快递  Via Express</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd2" value="2" v-model="order.dispatch_via"/><label for="sexd2">自取  Self Pick Up</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd3" value="3" v-model="order.dispatch_via" /><label for="sexd3">邮件  Via Email</label></div>
+					</div>
+					<div class="yjdz">
+						<div class="yjdz_a">邮寄地址  delivery address</div>
+						<input type="text" name="thirdCheckMailaddr" v-model="order.delivery_addr"/>
+					</div>
+				</div>
+				<div class="check_a">
+					<div class="check_til" style="background-color: #ffbb33;"><hr />价格信息<span class="til_sub">PRICE INFORMATION</span></div>
+					<div class="check_mesg">
+						<div class="dptx">
+							<div class="dptx_a" style="width: 62%;">项目管理费用 Project Management Fee</div>
+							<input type="text" v-model="order.promanagement_fee" style="width: 38%;"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a" style="width: 62%;">供应商核查费用Supplier verification Fee</div>
+							<input type="text" v-model="order.supplier_fee" style="width: 38%;"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">其他收费Others</div>
+							<input type="text" v-model="order.others_fee"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">差旅费 Travelling Fee</div>
+							<input type="text" value="按产生的实际费用核算，需在下载前支付方可下载报告和发票。"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">费用总计 Total Amount</div>
+							<input type="text" v-model="order.totle_fee"/>
+						</div>
+					</div>	
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</body>
+	<script src="plugins/jquery.pagination.js"></script>
+	<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/goods_employed_third.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/top_bottom.js"></script>
+	<script src="plugins/vue/vue.min.js"></script>
+	<script src="lib/common.js"></script>
+	<script type="text/javascript">
+		var orderType=3;
+		$(document).ready(function(){
+			$('#imgform input').attr("readonly", "readonly");
+      		$('#imgform textarea').attr("readonly", "readonly");
+     		//$(".fpxz input").attr("disabled","disabled");			
+		})
+	</script>
+	<script src="lib/goods_employed_third.js"></script>
+</html>

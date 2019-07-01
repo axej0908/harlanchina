@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.order.dao.OrderSuperDao">
+
+    <insert id="save" parameterType="com.axej.harlan.order.bean.OrderSuperBean">
+        <selectKey keyProperty="super_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into order_super (
+        super_url,
+        super_text,
+        super_time,
+        order_id
+        )
+        values
+        (
+        #{super_url},
+        #{super_text},
+        #{super_time},
+        #{order_id}
+        )
+    </insert>
+    
+    <delete id="delete">
+        delete from order_super where super_id = #{super_id}
+    </delete>
+    
+    <select id="listOrderSuper" parameterType="string" resultType="com.axej.harlan.order.bean.OrderSuperBean">
+        select * from order_super where order_id = #{order_id}
+    </select>
+    
+    <select id="listOrderSuperTotal" parameterType="string" resultType="int">
+        select count(1) from order_super where order_id = #{order_super}
+    </select>
+
+</mapper>

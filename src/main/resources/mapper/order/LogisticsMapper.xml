@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.order.dao.LogisticsDao">
+
+    <insert id="save" parameterType="com.axej.harlan.order.bean.LogisticsBean">
+        <selectKey keyProperty="os_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into serv_logistics (
+        os_time,
+        os_content,
+        os_files,
+        supv_id
+        )
+        values
+        (
+        #{os_time},
+        #{os_content},
+        #{os_files},
+        #{supv_id}
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.axej.harlan.order.bean.LogisticsBean">
+        delete from serv_logistics
+        <where>
+            <if test="os_id!=null">os_id = #{os_id}</if>
+        </where>
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.order.bean.LogisticsBean">
+        update serv_logistics
+        <set>
+            <if test="os_time!=null and os_time.trim()!=''">os_time = #{os_time},</if>
+            <if test="os_content!=null and os_content.trim()!=''">os_content = #{os_content},</if>
+            <if test="os_files!=null and os_files.trim()!=''">os_files = #{os_files}</if>
+        </set>
+        where os_id = #{os_id}
+    </update>
+
+    <select id="queryObject" parameterType="com.axej.harlan.order.bean.LogisticsBean"
+            resultType="com.axej.harlan.order.bean.LogisticsBean">
+        select * from serv_logistics
+        <where>
+            <if test="os_id!=null">
+                os_id = #{os_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.order.bean.LogisticsBean">
+        select * from serv_logistics
+        <where>
+            <if test="supv_id!=null">
+                supv_id = #{supv_id}
+            </if>
+        </where>
+        order by os_time desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from serv_logistics
+        <where>
+            <if test="supv_id!=null">
+                supv_id = #{supv_id}
+            </if>
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/pe_data_b.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<div class="entire" id="rrapp">
+    <!--顶部区域开始-->
+		<div class="header">
+			<div class="header_sub">
+				<ul class="header_fl">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="new_explain16_c.html">合作与服务</a></li>
+					<li><a href="shop_cart_en.html">我的购物车 </a></li>
+				</ul>
+				<ul class="header_fr">
+					<li><a href="login_zh.html">退出</a></li>
+					<li><a href="pe_index_zh.html">我的化浪</a></li>
+					<li><a href="new_explain17_d.html">帮助中心</a></li>
+					
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+    <!------------------顶部区域结束-------------->
+    <div class="first">
+        <div class="first_sub">
+            <a href="index.html"><div class="logo"></div></a>
+            <ul class="mn_list">
+                <li><a href="pe_index_zh.html">首页</a></li>
+                <li class="mn_active"><a href="pe_data_a_zh.html">我的资料</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="second">
+        <div class="second_sub">
+            <div class="second_mn">
+                <ul class="second_mn_list">
+                    <li><a href="pe_data_a_zh.html">基本信息</a></li>
+                    <li class="current_bg"><a href="pe_data_b_zh.html">实名认证</a></li>
+                    <li><a href="pe_data_c_zh.html">账户安全</a></li>
+                    <li><a href="pe_data_d_zh.html">地址管理</a></li>
+                </ul>
+                <div class="mn_bg"></div>
+            </div>
+            <div class="second_two">
+                <div class="smrz">
+                    <p class="attention">注：此资料为判断账号归属的重要凭证，一经设置无法修改，请填写真实信息</p>
+                    <div class="item_a">
+                        <div class="input_label">真是姓名：</div>
+                        <div class="input_box">
+                            <input type="text" v-model="auth.real_name"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="item_a">
+                        <div class="input_label">身份证号：</div>
+                        <div class="input_box">
+                            <input type="text" v-model.lazy="auth.id_card"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="item_a">
+                        <div class="input_label">确认身份证号：</div>
+                        <div class="input_box">
+                            <input type="text" v-model.lazy="confirmIdCard"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="item_a" v-if="auth.id_card!=confirmIdCard">
+                        <span>两次输入的身份证号码不一致</span>
+                    </div>
+                    <div class="item_b">
+                        <div class="input_label">身份正面照片：</div>
+                        <div class="sfz_pic_area" id="oppositeBack">
+                            <div class="sc_pic_btn">
+                                <input type="file" name="file" accept="image/*" id="opposite" onchange="upload(this)"/>
+                                <span>选择文件</span>
+                            </div>
+
+                            <p class="pic_tip">上传身份证照必须与上面填写身份证信息一致，否则申请不能通过</p>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="pic_agin">
+                            <p>注意</p>
+                            <p>1.上传身份证照片必须小于2MB </p>
+                            <p>2.您提供的信息化浪官方将予以保护，不会另做他用</p>
+                        </div>
+
+
+                    </div>
+                    <div class="item_b">
+                        <div class="input_label">身份反面照片：</div>
+                        <div class="sfz_pic_area" id="negativeBack">
+                            <div class="sc_pic_btn">
+                                <input type="file" name="file" accept="image/*" id="negative" onchange="upload(this)"/>
+                                <span>选择文件</span>
+                            </div>
+
+                            <p class="pic_tip">上传身份证照必须与上面填写身份证信息一致，否则申请不能通过</p>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="pic_agin">
+                            <p>注意</p>
+                            <p>1.上传身份证照片必须小于2MB </p>
+                            <p>2.您提供的信息化浪官方将予以保护，不会另做他用</p>
+                        </div>
+
+                    </div>
+                    <div class="save_btn" @click="saveOrUpdate">确认</div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+    	<div class="foot_bottom">
+	    <div class="foot_sub">
+	        <div class="download">
+	            <div class="load_txt">下载 :</div>
+	            <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+	            <div class="load_pic_b"><a href="hualang.apk"></a></div>
+	        </div>
+	        <div class="a_txt">
+	            <a href="new_explain14_c.html">联系我们</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain15_c.html">联系客服</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain16_c.html">合作招商</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain17_d.html">商家帮助</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain18_c.html">手机化浪</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="search.html">产品库</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain20_c.html">友情链接</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain21_c.html">隐私政策</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain22_c.html">法律声明</a>
+	        </div>
+	        <div class="foot_line"></div>
+	        <div class="a_txt_b">
+	            按字母顺序浏览 ：
+	            <a href="new_explain17_c.html">Onetouch</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain17_c.html">陈列室 </a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain17_c.html">国家搜索 </a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="master.html">供应商</a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="master.html">批发商 </a>
+	            <span>&nbsp;|&nbsp;</span>
+	            <a href="new_explain16_c.html">加盟 产品列表政策 - 知识产权保护</a>
+	        </div>
+	        <div class="a_txt_b">
+	            产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+	        </div>
+	        <div class="a_txt_b">
+	            copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+	        </div>
+	    </div>
+	</div>
+</div>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/pe_data_b.js" type="text/javascript" charset="utf-8"></script>
+<script src="j" type="text/javascript" charset="utf-8"></script>
+<script src="../plugins/ajaxfileupload.js"></script>
+<script src="../plugins/vue/vue.min.js"></script>
+<script src="../lib/pe_data_b.js"></script>
+<script src="js/top_bottom.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

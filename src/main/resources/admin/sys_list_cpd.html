@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>化合物管理-化合物列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css">
+    <style type="text/css">
+        .layui-form-label {
+            padding: 9px 3px;
+            min-width: 56px;
+        }
+
+        .layui-table-cell {
+            height: inherit;
+        }
+
+        .txt_div {
+            width: 100%;
+            height: 81px;
+            white-space: normal;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .img_area {
+            width: 60px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div class="layui-tab layui-tab-brief layui-form" lay-filter="docDemoTabBrief">
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <table class="layui-table" lay-filter="test" id="test"></table>
+        </div>
+    </div>
+</div>
+<!--商品名称模板-->
+<script type="text/html" id="goodimg">
+    <div class="img_area" style="background-image:url(/{{d.cpd_picture}})"></div>
+</script>
+<!--表格工具条模板一-->
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-mini" lay-event="alter">编辑</a>
+    <a class="layui-btn layui-btn-mini" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="syntheticRoute">
+    <a class="layui-btn layui-btn-mini" lay-event="addSyntheticRoute">添加</a>
+    <a class="layui-btn layui-btn-mini" lay-event="lookSyntheticRoute">查看</a>
+</script>
+
+<script type="text/html" id="upDownStream">
+    <a class="layui-btn layui-btn-mini" lay-event="addUpDownStream">添加</a>
+</script>
+<script src="./plugins/layui/layui.js"></script>
+<script src="plugins/jquery/jQueryURL.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', "element", "table", "laytpl"], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            layedit = layui.layedit,
+            laydate = layui.laydate;
+        $ = layui.$;
+        var table = layui.table;
+        var element = layui.element;
+
+        var goods_id = getQueryString("goods_id");
+
+        $(function () {
+            initTable()
+        });
+
+
+
+        /**
+         * 1.render table
+         */
+        function initTable(criteria) {
+            tableIns = table.render({
+               /* width:5000,*/
+                /*width:3000,*/
+                elem: '#test',
+                url: '/compound/list',
+                height: 'full-160',
+                where: criteria,
+                cols: [[
+                    //{type:'checkbox'}
+                    {type: 'numbers', title: '序号'},
+                    {field: 'cpd_time', title: '时间', width: "180"},
+                    {field: 'cpd_picture', title: '产品图', width: "180", templet: '#goodimg'},
+                    {field: 'one_type', title: '一级分类', width: "200"},
+                    {field: 'two_type', title: '二级分类', width: "200"},
+                    {field: 'cpd_name_zh', title: '中文名称', width: "180"},
+                    {field: 'cpd_alias_zh', title: '中文别称', width: "180"},
+                    {field: 'cpd_name_en', title: '英文名称', width: "180"},
+                    {field: 'cpd_alias_en', title: '英文别称', width: "180"},
+                    {field: 'cas', title: 'CAS', width: "180"},
+                    {field: 'operator', title: '操作员', width: "180"},
+                    /*{field: 'precise_quality', title: '精确质量'},
+                    {field: 'molecular_formula', title: '分子式'},
+                    {field: 'logp', title: 'logP'},
+                    {field: 'molecular_weight', title: '分子量'},
+                    {field: 'psa', title: 'PSA'},
+                    {field: 'reference_price', title: '价格'},*/
+                    /*{field: 'cpd_intro', title: '化合物简介'},
+                    {field: 'basic_data', title: '基本信息'},
+                    {field: 'safety_data', title: '安全信息'},
+                    {field: 'produce_use', title: '生产方法及用途'},
+                    {field: 'msds', title: 'MSDS'},
+                    {field: 'sds_en', title: 'SDS英文'},
+                    {field: 'sds_zh', title: 'SDS中文'},
+                    {field: 'custom_data', title: '海关数据'},
+                    {field: 'atlas', title: '图谱'},
+                    {field: 'toxicity', title: '毒性'},*/
+                    {field: 'optate', title: '合成路线', width: "250", toolbar: '#syntheticRoute'},
+                    {field: 'optate', title: '上下游', width: "250", toolbar: '#upDownStream'},
+                    {field: 'optate', title: '操作', width: "250", toolbar: '#barDemo'}
+                ]],
+                page: true, limit: 10
+            });
+        }
+
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            //获得当前行 tr 的DOM对象
+            var tr = obj.tr;
+
+            //添加合成路线
+            if(layEvent === 'addSyntheticRoute'){
+                //向服务端发送编辑指令
+                window.open("sys_add_route.html?cpd_id="+data.cpd_id , "_self");
+            }
+
+            //查看合成路线详情
+            if(layEvent === 'lookSyntheticRoute'){
+                //向服务端发送编辑指令
+                window.open("sys_synthetic_route.html?cpd_id="+data.cpd_id , "_self");
+            }
+
+
+            //添加上下游
+            if(layEvent === 'addUpDownStream'){
+                //向服务端发送编辑指令
+                window.open("sys_updown_stream.html?cpd_id="+data.cpd_id , "_self");
+            }
+
+            //修改
+            if(layEvent === 'alter'){
+                //向服务端发送编辑指令
+                window.open("sys_alter_cpd.html?cpd_id="+data.cpd_id , "_self");
+            }
+
+            //删除
+            if(layEvent === 'del'){
+                //向服务端发送编辑指令
+                layer.confirm('确认删除', function (index) {
+                    layer.close(index);
+                    $.ajax({
+                        url:'/compound/del',
+                        type:"post",
+                        data:{
+                            cpd_id:data.cpd_id
+                        },
+                        dataType:"json",
+                        success : function (r) {
+                            if(r.code == 0){
+                                layer.open({
+                                    content: '删除成功!'
+                                });
+                                window.open("sys_list_cpd.html" , "_self");
+                            }else {
+                                layer.open({
+                                    content: '删除失败!'
+                                });
+                            }
+                        }
+                    })
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

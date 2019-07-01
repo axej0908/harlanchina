@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pe_common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pe_index_vip.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<div class="entire" id="rrapp">
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="new_explain16_c.html">合作与服务</a></li>
+                <li><a href="goods_employed_self.html">自营商城</a></li>
+                <li><a href="goods_employed_third.html">第三方商城</a></li>
+				<li style="color:#ff792d;"><a href="find_goods_list.html">系统询盘 </a></li>
+            </ul>
+            <ul class="header_fr">
+                <!--登录之后显示-->
+                <li v-if="user!=null" class="out_area"><a href="pbm_order_seller1.html">我的化浪</a> <a @click="logout">退出</a></li>
+                <!--登录之前显示-->
+                <li v-if="user==null" class="no_land" style="display:inline-block;"><a href="login_en.html">登录</a> | <a href="register_en.html">注册</a></li>
+                <li><a href="new_explain17_c.html">帮助中心</a></li>
+                <!--<li class="lang_li">
+                    <span>Language</span>
+                    <div class="span_sj"></div>
+                    <div class="lang_mn" style="display: none;">
+                        <div class="lang_item">English</div>
+                        <div class="lang_item">Español</div>
+                        <div class="lang_item">한국어 </div>
+                        <div class="lang_item">日本語</div>
+                        <div class="lang_item">中文</div>
+                    </div>
+                </li>-->
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!------------------顶部区域结束-------------->
+    <div class="pe_one_top">
+        <div class="first_sub">
+            <div class="logo_zh">
+            	<a href="index.html"></a>
+            </div>
+            <ul class="mn_list">
+                <li class="mn_active"><a href="pbm_order_seller1.html">首页</a><span class="line_slide"></span></li>
+                <!--我的信息区分是个人供货商还是公司供货商-->
+                <li><a href="sale_firm_info1.html">我的信息</a><span class="line_slide"></span></li>
+                <li style="display: none;"><a href="sale_person_info1.html">我的信息</a><span class="line_slide"></span>
+                </li>
+            </ul>
+            <div class="pe_top_btn">
+                <!--<a href="f_free_find.html" class="inquire_btn">免费找货</a>-->
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="pe_con">
+        <div class="pe_con_sub">
+            <div class="pe_con_mn">
+                <ul class="pe_con_mn_list">
+                    <li><a href="pbm_order_seller1.html">我的订单</a></li>
+                    <li><a href="pe_index_f_zh.html">我的商品</a></li>
+                    <li class="current_bg"><a href="pe_index_vip.html">我的会员</a></li>
+                    <!--<li><a href="pe_index_supply_zh.html?type=01">申请国际市场开拓</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=02">申请知识产权分析</a></li>-->
+                    <li><a href="pe_index_supply_zh.html">申请供应链金融</a></li>
+                    <!--<li><a href="pe_index_supply_zh.html?type=04">申请交易补贴</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=05">申请报关商检</a></li>-->
+                    <li><a href="pe_data_query_zh.html?type=data">采购数据查询</a></li>
+                    <!--<li><a href="worldwide_inquiries_zh.html?type=inquiry">全球海量询盘查询</a></li>-->
+                    <li><a href="pe_data_query_zh.html?type=credit">采购商征信查询</a></li>
+                    <!--<li><a href="my_free_search_zh.html">系统询盘</a></li>
+                    <li><a href="pe_index_inquiry_zh.html">待处理询盘</a></li>-->
+                    <!--<li><a href="pe_index_inquiry2_zh.html">已处理询盘</a></li>-->
+                </ul>
+                <div class="mn_bg"></div>
+            </div>
+            <div class="pe_con_right">
+                <div class="my_hy">
+                    <h6>开 通 会 员</h6>
+                    <p>
+                        我的会员：若您是采购商，化浪平台尚未开通采购商会员制度。
+                        若您是供应商，请仔细阅读以下内容。
+                        免费会员：供应商可向化浪平台提出会员申请，完善账号信息即可成为免费会员，可免费查看限定数量的国家采购商信息数据。但免费会员若申请产品检测服务，需向化浪平台按次付费。
+                        付费会员： 供应商可向化浪平台提出会员申请，选进行充值，即可成为付费会员。享受付费可享受以下福利：1.可查看国家全部采购商信息数据。2、可查看采购商的邮箱地址、联系方式，使用邮件群发等工具。3、后台通过精准分析，时时为您推送精准信息。4、化浪专业外贸团队为您助力。5、可查看知识产权数据库。6、享受免费产品检测服务。</p>
+                    <div class="second_two_title">\ \ \ <span>填写会员资料</span> \ \ \</div>
+                    <!--2019 1 15 日注-->
+                    <!--<div class="second_two_cont">
+                        <div class="content_item">
+                            <span v-if="user.user_type=='supplierZh'">￥<em>6666</em></span>
+                            <span v-if="user.user_type=='supplierZhs'">￥<em>8888</em></span>
+                            <p v-if="user.user_type=='supplierZh'">个 人 缴 费</p>
+                            <p v-if="user.user_type=='supplierZhs'">企 业 缴 费</p>
+                            <div class="btn"><a :href="'zf.html?user_id='+user.user_id">前去支付</a></div>
+                            <div class="bq">HARLAN 会员专享</div>
+                        </div>
+                    </div>
+                    <div class="second_two_cont">
+                        <div class="content_item">
+                            <span v-if="user.user_type=='supplierZh'">￥<em>6666</em></span>
+                            <span v-if="user.user_type=='supplierZhs'">￥<em>8888</em></span>
+                            <p v-if="user.user_type=='supplierZh'">个 人 缴 费</p>
+                            <p v-if="user.user_type=='supplierZhs'">企 业 缴 费</p>
+                            <div class="btn"><a :href="'zf.html?user_id='+user.user_id">前去支付</a></div>
+                            <div class="bq">HARLAN 会员专享</div>
+                        </div>
+                    </div>-->
+                </div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">下载 :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain14_c.html">联系我们</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain15_c.html">联系客服</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain16_c.html">合作招商</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain17_c.html">商家帮助</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain18_c.html">手机化浪</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain19_c.html">产品库</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain20_c.html">友情链接</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain21_c.html">隐私政策</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain22_c.html">法律声明</a>
+            </div>
+            <div class="foot_line"></div>
+            <div class="a_txt_b">
+                按字母顺序浏览 ：
+                <a href="new_explain23_c.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain24_c.html">陈列室 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain25_c.html">国家搜索 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain26_c.html">供应商</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain27_c.html">批发商 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain28_c.html">加盟 产品列表政策 - 知识产权保护</a>
+            </div>
+            <div class="a_txt_b">
+                产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+            </div>
+            <div class="a_txt_b">
+                @2017-2018 化浪（浙江）科技有限公司.版权所有.
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/top_bottom.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/pe_index_vip.js"></script>
+</body>
+</html>

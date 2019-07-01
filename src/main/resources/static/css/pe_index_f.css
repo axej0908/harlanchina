@@ -1,0 +1,618 @@
+﻿html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #f2f3f7;
+
+}
+
+.entire {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.check_box {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e4e4e4;
+    border-top: none;
+    padding: 10px 0 30px 20px;
+}
+
+.wddd {
+    width: 100%;
+    padding: 20px 18px;
+}
+
+.tab_div {
+    width: 100%;
+    height: 46px;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+.tab_div li {
+    min-width: 70px;
+    height: 100%;
+    font-size: 20px;
+    color: #333;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+}
+
+.tab_div li:not(:first-child) {
+    margin-left: 38px;
+}
+
+.span_txt {
+    display: block;
+    line-height: 42px;
+    text-align: center;
+}
+
+.span_line {
+    height: 3px;
+    width: 70px;
+    background-color: #317ee7;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: none;
+}
+
+.tab_div .tab_li_current {
+    color: #317ee7;
+}
+
+.tab_div .tab_li_current .span_line {
+    display: block;
+}
+
+.con_list {
+    width: 100%;
+    background-color: #fff;
+}
+
+.con {
+    width: 100%;
+}
+
+.head_top {
+    width: 100%;
+    height: 32px;
+    background-color: #f2f3f7;
+    margin-top: 20px;
+}
+
+.head_top > div {
+    text-align: center;
+    font-size: 12px;
+    color: #333333;
+    line-height: 32px;
+    padding-left: 12px;
+    font-weight: bold;
+}
+
+.td_a, .td_b, .td_c, .td_d, .td_e {
+    float: left;
+    height: 100%;
+}
+
+.td_a {
+    width: 19.8%;
+    font-size: 12px;
+    color: #666666;
+    line-height: 30px;
+}
+
+.td_b {
+    width: 36%;
+    cursor: pointer;
+}
+
+.td_c {
+    width: 25%;
+}
+
+.td_d {
+    width: 19.2%;
+}
+
+.list_area {
+    width: 100%;
+}
+
+.order_item {
+    width: 100%;
+}
+
+.od_item_gd {
+    width: 100%;
+    height: 76px;
+    border-bottom: 1px solid #E6E6E6;
+    border-right: 1px solid #DBDBDB;
+}
+
+.od_item_gd .td_a, .od_item_gd .td_b, .od_item_gd .td_c, .od_item_gd .td_d, .od_item_gd .td_e {
+    border-left: 1px solid #DBDBDB;
+}
+
+.od_item_gd .td_a {
+    padding-top: 10px;
+    padding-left: 12px;
+}
+
+.od_pic {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #E6E6E6;
+    float: left;
+    background: no-repeat center;
+    background-size: 100% 100%;
+}
+
+.od_item_gd .td_b {
+    padding: 10px;
+    font-size: 12px;
+    color: #333;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.td_b span {
+    margin-left: 10px;
+    line-height: 30px;
+}
+
+.od_item_gd .td_c {
+    padding: 10px;
+    font-size: 12px;
+    color: #333333;
+    text-align: center;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.td_c span {
+    line-height: 30px;
+}
+
+.od_item_gd .td_d {
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.state {
+    height: 22px;
+    line-height: 22px;
+    font-weight: bold;
+    color: #ff7519;
+    cursor: pointer;
+}
+
+.down {
+    margin-top: 10px;
+}
+
+.check_block {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.check_a, .check_b, .check_c, .check_d, .check_e {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.check_til {
+    width: 800px;
+    height: 50px;
+    padding-left: 15px;
+    line-height: 50px;
+    background-color: #FFFFFF;
+    font-size: 18px;
+    color: #333333;
+    line-height: 50px;
+    border: 1px solid #e4e4e4;
+    font-family: '微软雅黑 Regular';
+}
+
+.check_item_a {
+    width: 718px;
+    height: 32px;
+    margin-top: 10px;
+    margin-right: 50px;
+    float: left;
+}
+
+.check_item {
+    width: 334px;
+    height: 32px;
+    margin-top: 10px;
+    margin-right: 50px;
+    float: left;
+}
+
+.input_lal {
+    display: inline-block;
+    height: 100%;
+    line-height: 32px;
+    font-size: 12px;
+    color: #808080;
+    text-align: right;
+    float: left;
+}
+
+.input_div {
+    display: inline-block;
+    height: 100%;
+    border: 1px solid #E4E4E4;
+    float: right;
+}
+
+.input_div input, .input_div_a input, .input_div_b input, .input_div_c input, .input_div_d input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+    color: #808080;
+    background: transparent;
+}
+
+.input_div select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 14px;
+    color: #808080;
+    background: transparent;
+}
+
+.dw_sel {
+    width: 50px;
+    height: 32px;
+    font-size: 14px;
+    color: #585858;
+    border: 1px solid #e6e6e6;
+    outline: none;
+    padding-left: 10px;
+    float: left;
+    line-height: 32px;
+}
+
+.dw {
+    width: 40px;
+    height: 100%;
+    font-size: 12px;
+    color: #585858;
+    border: 1px solid #e6e6e6;
+    outline: none;
+    float: right;
+    line-height: 32px;
+    text-align: center;
+}
+
+.a_panel_one {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+
+.a_one_label {
+    height: 100%;
+    line-height: 32px;
+    text-align: right;
+    float: left;
+    font-size: 12px;
+    color: #585858;
+}
+
+.b_one_input {
+    float: left;
+    margin-left: 20px;
+}
+
+.b_one_input li {
+    list-style: none;
+    float: left;
+}
+
+.b_one_input input {
+    list-style: none;
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    border: 1px solid #E4E4E4;
+    text-align: center;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+
+}
+
+.add {
+    float: left;
+    margin-left: 10px;
+    width: 60px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    border: 1px solid #E4E4E4;
+    text-align: center;
+    cursor: pointer;
+}
+
+/*上传图片*/
+.a_panel_four {
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
+
+.a_two_label {
+    height: 100%;
+    line-height: 36px;
+    text-align: right;
+    float: left;
+    font-size: 12px;
+    color: #585858;
+}
+
+.b_two_input input[type="file"] {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+.b_cs_two {
+    width: 100%;
+    height: 80px;
+    margin-top: 20px;
+}
+
+.b_two_input {
+    width: 80px;
+    height: 80px;
+    line-height: 120px;
+    text-align: center;
+    font-size: 14px;
+    color: #585858;
+    position: relative;
+    float: left;
+    margin-left: 10px;
+    background: no-repeat;
+    background-image: url(../imgs/wz_upload.png);
+    background-size: 80px 80px;
+    border: 1px solid #e4e4e4;
+
+}
+
+/*End 上传图片*/
+
+.btn {
+    width: 340px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #317EE7;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    color: #FFFFFF;
+    margin: 64px auto;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/*自己定义的样式*/
+.a_one {
+    width: 610px;
+}
+
+.a_two {
+    width: 250px;
+    margin-right: 50px;
+}
+
+.a_three {
+    width: 250px;
+    margin-right: 20px;
+}
+
+.wz_one {
+    width: 268px;
+}
+
+.wz_two {
+    width: 272px;
+}
+
+.wz_three {
+    width: 222px;
+}
+
+.wz_four {
+    width: 286px;
+}
+
+.wz_five {
+    width: 200px;
+}
+
+.wz_six {
+    width: 270px;
+}
+
+/*End 自己定义的样式*/
+
+.d_one {
+    width: 250px;
+}
+
+.d_two {
+    width: 236px;
+}
+
+.d_three {
+    width: 225px;
+}
+
+.d_four {
+    width: 270px;
+}
+
+.d_five {
+    width: 226px;
+}
+
+.d_six {
+    width: 282px;
+}
+
+.d_seven {
+    width: 252px;
+}
+
+.d_eight {
+    width: 224px;
+}
+
+.d_nine {
+    width: 244px;
+}
+
+.e_one {
+    width: 250px;
+}
+
+.e_two {
+    width: 266px;
+}
+
+.e_three {
+    width: 270px;
+}
+
+.e_four {
+    width: 280px;
+}
+
+.e_five {
+    width: 240px;
+}
+
+.e_six {
+    width: 240px;
+}
+
+.e_seven {
+    width: 258px;
+}
+
+.e_eight {
+    width: 256px;
+}
+
+.e_nine {
+    width: 244px;
+}
+
+.e_ten {
+    width: 248px;
+}
+
+/*单选框*/
+.check_item_b {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+}
+
+.input_lal {
+    display: inline-block;
+    height: 100%;
+    line-height: 32px;
+    font-size: 13px;
+    color: #808080;
+    text-align: right;
+    float: left;
+}
+
+.check_type {
+    float: left;
+}
+
+.type_li {
+    float: left;
+    margin-left: 20px;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #808080;
+}
+
+.type_li span {
+    margin-right: 10px;
+}
+
+/*改变单选框按钮的样式*/
+.type_li label {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+}
+
+.type_li label input[type="radio"], .type_li label span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.type_li label input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    z-index: 1;
+    background: transparent;
+    opacity: 0;
+}
+
+.type_li label input[type="radio"] + span {
+    display: inline-block;
+    background: url(../imgs/radio_sel_no.png) no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.type_li label input[type="radio"]:checked + span {
+    background-position: center;
+    background: url(../imgs/radio_sel_yes.png) no-repeat;
+    background-size: 13px 13px;
+}
+
+/*End 单选框*/

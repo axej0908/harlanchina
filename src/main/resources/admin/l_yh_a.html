@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>以货易货管理-待处理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+<body>
+	 <table class="layui-table"  lay-filter="test" id="test">
+    </table>
+	<!--表格工具条模板-->
+	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-warm layui-btn-mini" lay-event="permit_y">通过</a>
+	  <a class="layui-btn layui-btn-mini" lay-event="permit_n">不通过</a>
+	  <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="see_detail">查看详情</a>
+	  <!-- 这里同样支持 laytpl 语法，如： -->
+	  <!--{{#  if(d.auth > 2){ }}
+	    <a class="layui-btn layui-btn-mini" lay-event="check">审核</a>
+	  {{#  } }}-->
+	</script>
+	 <!---->
+    <script src="./plugins/layui/layui.js"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+    <script>
+        layui.use(['form', 'layedit', 'laydate',"table"], function() {
+            var form = layui.form,
+                layer = layui.layer,
+                layedit = layui.layedit,
+                laydate = layui.laydate;
+        	var table = layui.table;
+			  //日期范围
+			  laydate.render({
+			    elem: '#dt_a'
+			    ,range: true
+			  });
+            //表格数据
+			table.render({
+			    elem: '#test'
+			    ,url:'datas/table.json'
+			    ,height: 'full-30'
+			    ,cols: [[
+//			      {type:'checkbox'}//是否开启复选框
+			      {field:'id',  title: '编号', sort: true}
+			      ,{field:'username',  title: '易货编号'}
+			      ,{field:'role',  title: '发布者名称'}
+			      ,{field:'head_bg',  title: '出售物名称'}
+			      ,{field:'head_bg',  title: '提交时间'}
+			      ,{field:'optate', title: '操作',width:"350",toolbar: '#barDemo'}
+			    ]]
+			    ,page: true
+			  });
+       
+			//表格监听工具条
+			table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+			  var data = obj.data; //获得当前行数据
+			  var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+			  var tr = obj.tr; //获得当前行 tr 的DOM对象
+			 
+			 if(layEvent === 'see_detail'){ //开始找货
+			    layer.confirm('查看详情', function(index){
+			      layer.close(index);
+			      //向服务端发送删除指令
+			    });
+			  } else if(layEvent === 'permit_y'){ //查看详情
+			    layer.confirm('通过', function(index){
+			      layer.close(index);
+			      //向服务端发送删除指令
+			    });
+			  } else if(layEvent === 'permit_n'){ //查看详情
+			    layer.confirm('不通过', function(index){
+			      layer.close(index);
+			      //向服务端发送删除指令
+			    });
+			  }
+			});
+        });
+    </script>
+
+</body>
+
+</html>

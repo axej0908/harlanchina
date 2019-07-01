@@ -1,0 +1,356 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	background: #FFFFFF;
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+.third_sub{
+	width: 100%;
+	margin: 0 auto;
+  	position: relative;
+}
+.hide{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+  	left: 0;
+  	top: 0;
+	background-color: rgba(255,255,255,0);
+	z-index: 100;
+}
+.lct{
+	width: 100%;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	color: #333333;
+	font-size: .55rem;
+	text-align: center;
+}
+.check_block{
+	width: 92%;
+	margin: 0 auto 1rem;
+}
+.check_a,.check_b,.check_c,.check_d{
+	width: 100%;
+	overflow: hidden;
+}
+.check_til{
+	width: 100%;
+	height: 1.25rem;
+	line-height: 1.25rem;
+	background: #02abf9;
+	font-size: .6rem;
+	color: #FFFFFF;
+	padding-left: .5rem;
+}
+.check_til hr{
+	width: .1rem;
+	height: .8rem;
+	background: #FFFFFF;
+	float: left;
+	margin-top: .3rem;
+	margin-right: .2rem;
+  	border: none;
+}
+.til_sub{
+	margin-left: .25rem;
+}
+.check_mesg{
+	width: 100%;
+	overflow: hidden;
+	font-size: .55rem;
+	color: #333333;
+}
+.dptx{
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	border: .03rem solid #e4e4e4;
+	border-top: none;
+	font-size: .55rem;
+	color: #333333;
+}
+.dptx_a{
+	width: 50%;
+	height: 100%;
+	float: left;
+	padding-left: .2rem;
+	border-right: .03rem solid #e4e4e4;
+}
+.dptx_a span{
+	color: #ff0101;
+    margin-left: .1rem;
+    font-size: .6rem;
+}
+.fptt_a span{
+	color: #ff0101;
+    margin-left: .1rem;
+    font-size: .6rem;
+}
+.dptx input{
+	width: 50%;
+	height: 100%;
+	float: left;
+	border: none;
+	outline: none;
+	padding-left: .2rem;
+}
+.fpxz{
+	width: 100%;
+	height: 3rem;
+	border: .03rem solid #e4e4e4;
+	border-top: none;
+	font-size: .55rem;
+	color: #333333;
+}
+.fpxz_a{
+	width: 50%;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	float: left;
+  	position: relative;
+}
+.fpxz_a label{
+	padding-left: .2rem;
+}
+.fpxz_a label::before{
+	content: "\a0";  /*不换行空格*/
+    display: inline-block;
+    width: .7rem;
+    height: .7rem;
+    border-radius: .7rem;
+    border: .03rem solid #5c5c5c;
+    float: left;
+    margin-left: .2rem;
+    margin-top: .4rem;
+}
+.fpxz_a input:checked + label::before{
+	background:url(../imgs/xz.png) no-repeat;
+	background-size: .4rem .4rem;
+	background-position: center center;
+	border: .03rem solid #2e85e7;
+}
+.fpxz_a input{
+	position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+.fptt{
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	border: .03rem solid #e4e4e4;
+	border-top: none;
+	font-size: .55rem;
+	color: #333333;
+}
+.fptt_a{
+	width: 36%;
+	height: 100%;
+	float: left;
+	padding-left: .2rem;
+}
+.fptt input{
+	width: 64%;
+	height: .8rem;
+	border: none;
+	outline: none;
+	margin-top: .2rem;
+	border-bottom: .03rem solid #e4e4e4;
+	float: left;
+	padding-left: .2rem;
+}
+.fpxz_b{
+	width: 100%;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	float: left;
+  	position: relative;
+}
+.fpxz_c{
+	height: 100%;
+	float: left;
+	margin-left: .2rem;
+}
+.fpxz_b label{
+	padding-left: .2rem;
+}
+.fpxz_b label::before{
+	content: "\a0";  /*不换行空格*/
+    display: inline-block;
+    width: .7rem;
+    height: .7rem;
+    border: .03rem solid #5c5c5c;
+    float: left;
+    margin-left: .2rem;
+    margin-top: .4rem;
+}
+.fpxz_b input:checked + label::before{
+	background:url(../imgs/xz1.png) no-repeat;
+	background-size: .4rem .4rem;
+	background-position: center center;
+	border: .03rem solid #2e85e7;
+}
+.fpxz_b input{
+	position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+.yjdz{
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	border: .03rem solid #e4e4e4;
+	border-top: none;
+	font-size: .55rem;
+	color: #333333;
+}
+.yjdz_a{
+	width: 45%;
+	height: 100%;
+	float: left;
+	padding-left: .2rem;
+}
+.yjdz input{
+	width: 55%;
+	height: .8rem;
+	border: none;
+	outline: none;
+	margin-top: .2rem;
+	border-bottom: .03rem solid #e4e4e4;
+	float: left;
+	padding-left: .2rem;
+}
+.yjdz span,.ypsj span{
+	color: #ff0101;
+	margin-left: .1rem;
+    font-size: .6rem;
+}
+.ypsj{
+	width: 100%;
+	overflow: hidden;
+	font-size: .55rem;
+    color: #333333;
+}
+.ypsj li{
+	width: 100%;
+	float: left;
+	border: .03rem solid #e4e4e4;
+	border-top: none;
+}
+.ypsj_top{
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	float: left;
+	border-bottom: .03rem solid #e4e4e4;
+	text-align: center;
+}
+.ypsj_bottom{
+	width: 100%;
+	height: 6rem;
+	border: none;
+	outline: none;
+	text-indent: 1.1rem;
+	padding: .2rem .2rem 0;
+}
+.jcrq{
+	width: 100%;
+    height: 2.4rem;
+    border: .03rem solid #e4e4e4;
+    border-top: none;
+    font-size: .55rem;
+    color: #333333;
+    padding-left: .2rem;
+    line-height: 1.2rem;
+}
+.jcrq input{
+	width: 2rem;
+	border: none;
+	outline: none;
+	border-bottom: .03rem solid #333333;
+  	padding-left: .2rem;
+}
+.bjsm{
+	width: 100%;
+    border: .03rem solid #e4e4e4;
+    border-top: none;
+    font-size: .55rem;
+    color: #333333;
+    line-height: .9rem;
+    padding-top: .2rem;
+    padding-left: .2rem;
+}
+.dptx select{
+	width: 30%;
+	height: 100%;
+}
+.btn{
+    width: 80%;
+    height: 2rem;
+    background-color: #ffb522;
+    font-size: 1rem;
+    color: #fff;
+    line-height: 2rem;
+    text-align: center;
+    margin: 1rem auto;
+    border-radius: .8rem;
+    cursor: pointer;		
+}
+.fpxz_fkf{
+	width: 100%;
+	height: 2.7rem;
+	border: .03rem solid #e4e4e4;
+	border-top: none;
+	font-size: .55rem;
+	color: #333333;
+}
+.dptx_a_fkf{
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	padding-left: .2rem;
+}
+.fpxz_zsxx{
+	width: 100%;
+	height: 3.6rem;
+	border: .03rem solid #e4e4e4;
+	border-top: none;
+	font-size: .55rem;
+	color: #333333;
+}
+.dptx_a_zsxx{
+	width: 100%;
+	height: 2.1rem;
+	line-height: 1.05rem;
+	padding-left: .2rem;
+}
+.check_con_h{
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	font-size: .55rem;
+	color: #333333;
+	padding-left: .2rem;
+}
+.check_con{
+	width: 100%;
+	padding-left: .8rem;
+	overflow: hidden;
+}
+.check_d{
+	font-size: .55rem;
+	color: #333333;
+}
+.other_in{
+	width: 24%;
+	height: 1.2rem;
+	border: none;
+	outline: none;
+	border-bottom: .03rem solid #e4e4e4;
+}

@@ -1,0 +1,158 @@
+html, body {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+
+}
+
+.entire {
+    width: 100%;
+    height: 100%;
+
+    /*overflow-y: auto;*/
+}
+
+/*-------------------顶部搜索样式结束--------------------------*/
+/*-------------------------------------second------------------------------------------*/
+
+/*-------------------菜单导航样式开始--------------------------*/
+.second {
+    width: 100%;
+    height: 42px;
+    border-bottom: 3px solid #808080;
+}
+
+.second_mn {
+    width: 848px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.second_mn li {
+    width: 106px;
+    height: 100%;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+
+}
+
+.second_mn li a {
+    font-size: 14px;
+    color: #333333;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.second_mn .li_active {
+    background-color: #317ee7;
+}
+
+.second_mn .li_active a {
+    color: #fff;
+}
+
+/*-------------------菜单导航样式结束--------------------------*/
+.crumb {
+    width: 1200px;
+    height: 24px;
+    line-height: 24px;
+    margin: 23px auto 0 auto;
+    font-size: 16px;
+    color: #999;
+}
+
+/*-----------------------third-----------------------*/
+.third {
+    width: 1200px;
+    margin: 46px auto 36px auto;
+}
+
+.third_left {
+    width: 781px;
+    float: left;
+
+}
+
+
+/*----------third_right-----------*/
+.third_right {
+    width: 351px;
+    float: right;
+}
+
+.opacity {
+    width: 351px;
+    height: 648px;
+    background-color: #FFFFFF;
+    z-index: 3;
+
+}
+
+.opacity_title {
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    font-family: "microsoft yahei";
+    background-color: #5e99f3;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.opacity_cont {
+    margin: 0 auto;
+    width: 442px;
+    padding-left: 20px;
+}
+
+.opacity_cont li {
+    margin-top: 16px;
+
+    font-family: "microsoft yahei";
+}
+
+.opacity_cont input {
+    width: 310px;
+    height: 40px;
+    border: 1px solid #e6e6e6;
+}
+
+.opacity_cont textarea {
+    width: 310px;
+    height: 84px;
+    border: 1px solid #e6e6e6;
+}
+
+.opacity_cont p {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.Code div {
+    width: 120px;
+    float: left;
+    margin-bottom: 10px;
+
+}
+
+.d1 {
+    margin-right: 60px;
+}
+
+.Code input {
+    width: 120px;
+}
+
+.opacity a {
+    display: inline-block;
+    width: 351px;
+    height: 50px;
+    background-color: #ff9b01;
+    line-height: 50px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 18px;
+    margin-top: 22px;
+}

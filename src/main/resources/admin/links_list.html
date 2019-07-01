@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>商品管理-第三方商品</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css">
+    <style type="text/css">
+        .layui-form-label {
+            padding: 9px 3px;
+            min-width: 56px;
+        }
+
+        .layui-table-cell {
+            height: inherit;
+        }
+
+        .txt_div {
+            width: 100%;
+            height: 81px;
+            white-space: normal;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .img_area {
+            width: 60px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div class="layui-tab layui-tab-brief layui-form" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">引导页</li>
+        <li>首页</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <!--筛选条件开始-->
+            <!--<div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">商品编号：</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="goods_id" lay-verify="goods_id" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">商品名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="goods_name" lay-verify="goods_name" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <button class="layui-btn" lay-submit lay-filter="search">搜索</button>
+            </div>-->
+            <!--筛选条件结束-->
+            <table class="layui-table" lay-filter="test" id="test"></table>
+        </div>
+    </div>
+</div>
+<!--表格工具条模板一-->
+<script type="text/html" id="barDemo">
+    <!--<a class="layui-btn layui-btn-mini" lay-event="detail">查看详情</a>-->
+    <a class="layui-btn layui-btn-normal" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+</script>
+<script src="./plugins/layui/layui.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', "element", "table", "laytpl"], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            layedit = layui.layedit,
+            laydate = layui.laydate;
+        $ = layui.$;
+        var table = layui.table;
+        var element = layui.element;
+
+        var links_type = 'lead';
+        var currUser = null;
+        $(function () {
+            var localStorage = window.localStorage;
+            currUser = JSON.parse(localStorage.getItem("userInfo"));
+            var criteria = {links_type: links_type};
+            initTable(criteria)
+        });
+
+
+        /**
+         * 列表
+         */
+        function initTable(criteria) {
+            tableIns = table.render({
+                elem: '#test',
+                url: '/cmsLinks/pager',
+                height: 'full-160',
+                where: criteria,
+                cols: [[
+                    //{type:'checkbox'}
+                    {type: 'numbers', title: '序号'},
+                    {field: 'links_name', title: '链接名称'},
+                    {field: 'links_site', title: '链接地址'},
+                    {field: 'create_time', title: '发布时间'},
+                    {field: 'optate', title: '操作', toolbar: '#barDemo'}
+                ]],
+                page: true, limit: 10
+            });
+        }
+
+        /**
+         * 2.tab switch
+         */
+        element.on('tab(docDemoTabBrief)', function (data) {
+            console.log(this); //当前Tab标题所在的原始DOM元素
+            console.log(data.index); //得到当前Tab的所在下标
+            console.log(data.elem); //得到当前的Tab大容器
+            if (data.index == 0) {
+                //render table query lead
+                links_type = 'lead';
+                var criteria = {links_type: links_type};
+                initTable(criteria);
+            } else if (data.index == 1) {
+                //render table query home
+                links_type = "home";
+                var criteria = {links_type: links_type};
+                initTable(criteria);
+            }
+        });
+
+        /**
+         * 3.watch tool bar
+         */
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            //获得当前行 tr 的DOM对象
+            var tr = obj.tr;
+
+            //删除
+            if (layEvent === 'del') {
+                layer.confirm('确认删除', function (index) {
+                    layer.close(index);
+                    delLinks(data.links_id);
+                });
+            }else if(layEvent === 'edit'){
+                /*layer.confirm('此功能暂未开放', function (index) {
+                    layer.close(index);
+                });*/
+                window.open("links_edit.html?links_id="+data.links_id, "_self");
+            }
+
+        });
+
+        /**
+         * 删除
+         */
+        function delLinks(links_id) {
+            $.ajax({
+                url: '/cmsLinks/del',
+                data: {
+                    "links_id": links_id
+                },
+                type: "post",
+                dataType: "json",
+                success : function (r) {
+                    if(r.code == 0){
+                        layer.open({
+                            content: '删除成功!'
+                        });
+                        tableIns.reload({
+                            where: {links_type: links_type},
+                            page: {
+                                curr: 1
+                            }
+                        });
+                    }else {
+                        layer.open({
+                            content: '删除失败!'
+                        });
+                    }
+                }
+            })
+        }
+
+    });
+</script>
+
+</body>
+
+</html>

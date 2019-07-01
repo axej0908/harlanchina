@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/top.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/goods_edit.css"/>
+    <script src="../js/zepto.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/top.js" type="text/javascript" charset="utf-8"></script>
+    <title>新建产品</title>
+</head>
+<body>
+<div class="entire" id="rrapp">
+    <!--			头部-->
+    <div class="head">
+        新建产品
+        <div class="head_del"></div>
+        <div class="head_search">发布</div>
+    </div>
+    <!--			头部结束-->
+    <!--			主体-->
+    <div class="main">
+        <div class="main_one">
+            <div class="one_tit">产品缩略图</div>
+            <div class="one_ment">
+                <input type="file" id="upimg1" value="" accept="image/*" onchange="upLoad1()" />
+                <label for="upimg1"><img id="img1" src="../imgs/cs_img/add_photo.png"/></label>
+            </div>
+        </div>
+        <div class="main_two">
+            <div class="one_tit">产品轮播图</div>
+            <div class="two_ment">
+                <input type="file" id="upimg2" value="" accept="image/*" onchange="upLoad2()" />
+                <label for="upimg2"><img id="img2" src="../imgs/cs_img/add_photo.png"/></label>
+                <input type="file" id="upimg3" value="" accept="image/*" onchange="upLoad3()" />
+                <label for="upimg3"><img id="img3" src="../imgs/cs_img/add_photo.png"/></label>
+                <input type="file" id="upimg4" value="" accept="image/*" onchange="upLoad4()" />
+                <label for="upimg4"><img id="img4" src="../imgs/cs_img/add_photo.png"/></label>
+            </div>
+        </div>
+        <div class="main_three">
+            <div class="one_tit">
+                产品现价
+                <input type="text"  value="" placeholder="请输入单价（元）" />元
+            </div>
+            <div class="one_tit">
+                产品原价
+                <input type="text"  value="" placeholder="请输入单价（元）" />元
+            </div>
+            <div class="one_tit">
+                是否可使用优惠券
+                <input id="item1" type="checkbox" name="item" value="">
+                <label for="item1" style="margin: 0 0.8rem 0 0.5rem;"></label>
+                <select name="" class="hide_select" style="display: none;">
+                    <option value="" disabled="">请选择优惠券类型</option>
+                    <option value="">满减券</option>
+                    <option value="">现金券</option>
+                </select>
+            </div>
+        </div>
+        <div class="main_four">
+            <div class="one_tit">
+                产品名称
+            </div>
+            <div class="four_input">
+                <input type="text" value="" placeholder="请输入产品名称..." />
+            </div>
+            <div class="one_tit">
+                产品详情
+            </div>
+            <div class="four_text">
+						<textarea name="" class="ms_t" placeholder="请输入产品详情..."
+                                  v-model="HelpGroup.remark"></textarea>
+
+                <div class="layui-upload">
+                    <div class="layui-btn">
+                        <input type="file" id="file" name="file" multiple=""
+                               @change="uploadImg($event)" />
+                    </div>
+                    <ul id="img_li">
+                        <!-- <li class="layui-upload-list"><img src="/upload/image/20190515/20190515104538_319.gif" alt="" /></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--			主体结束-->
+</div>
+</body>
+<script type="text/javascript">
+    function upLoad1(){
+        var fileInput = document.getElementById("upimg1");
+        var file = fileInput.files[0];
+        //创建读取文件的对象
+        var reader = new FileReader();
+        //创建文件读取相关的变量
+        var imgFile;
+        //为文件读取成功设置事件
+        reader.onload=function(e) {
+            // alert('文件读取完成');
+            imgFile = e.target.result;
+            console.log(imgFile);
+            $("#img1").attr('src',imgFile);
+        };
+
+        //正式读取文件
+        reader.readAsDataURL(file);
+    }
+    function upLoad2(){
+        var fileInput = document.getElementById("upimg2");
+        var file = fileInput.files[0];
+        //创建读取文件的对象
+        var reader = new FileReader();
+        //创建文件读取相关的变量
+        var imgFile;
+        //为文件读取成功设置事件
+        reader.onload=function(e) {
+            // alert('文件读取完成');
+            imgFile = e.target.result;
+            console.log(imgFile);
+            $("#img2").attr('src',imgFile);
+        };
+
+        //正式读取文件
+        reader.readAsDataURL(file);
+    }
+    function upLoad3(){
+        var fileInput = document.getElementById("upimg3");
+        var file = fileInput.files[0];
+        //创建读取文件的对象
+        var reader = new FileReader();
+        //创建文件读取相关的变量
+        var imgFile;
+        //为文件读取成功设置事件
+        reader.onload=function(e) {
+            // alert('文件读取完成');
+            imgFile = e.target.result;
+            console.log(imgFile);
+            $("#img3").attr('src',imgFile);
+        };
+
+        //正式读取文件
+        reader.readAsDataURL(file);
+    }
+    function upLoad4(){
+        var fileInput = document.getElementById("upimg4");
+        var file = fileInput.files[0];
+        //创建读取文件的对象
+        var reader = new FileReader();
+        //创建文件读取相关的变量
+        var imgFile;
+        //为文件读取成功设置事件
+        reader.onload=function(e) {
+            // alert('文件读取完成');
+            imgFile = e.target.result;
+            console.log(imgFile);
+            $("#img4").attr('src',imgFile);
+        };
+
+        //正式读取文件
+        reader.readAsDataURL(file);
+    }
+
+
+
+</script>
+<script src="../js/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var vm = new Vue(
+        {
+            el : "#rrapp",
+            data : {
+                HelpGroup : {},
+                message : '',
+                img : "",
+            },
+            mounted : function() {
+                this.$nextTick(function() {//首次执行
+                    //vm.getMenuDtl();
+                })
+            },
+            filters : {
+                serialSel : function(val) {
+                    return val + "" + new Date().getTime();
+                }
+            },
+            computed : {},
+            methods : {
+                /**
+                 * 上传图片
+                 * @param event
+                 */
+                uploadImg : function(event) {
+                    console.log(event)
+                    var obj = event.target;
+                    var $file = $(obj);
+                    var fileObj = $file[0];
+                    var windowURL = window.URL || window.webkitURL;
+                    var dataURL;
+                    var $img = $(obj).parent();
+                    if (fileObj && fileObj.files && fileObj.files[0]) {
+                        dataURL = windowURL
+                            .createObjectURL(fileObj.files[0]);
+
+                        $('#img_li')
+                            .append(
+                                '<li class="layui-upload-list" ><div class="shanchu"></div><img src='+ dataURL +' alt="" /></li>');
+                        // $img.css('background-image', "url(" + dataURL + ")");
+                    }
+                    /* if (!obj.files[0].size > 0) {
+                       alert("请选择文件！");
+                       return;
+                   } else { */
+                    $.ajaxFileUpload({
+                        url : '../../HelpGroup_fileUpload', // 需要链接到服务器地址
+                        secureuri : false,
+                        fileElementId : "file", // 文件选择框的id属性
+                        dataType : 'text', // 服务器返回的格式，可以是json
+                        success : function(rs) // 相当于java中try语句块的用法
+                        {
+                            console.log(rs)
+                            var url = rs
+                                .replace(
+                                    '<pre style="word-wrap: break-word; white-space: pre-wrap;">',
+                                    "");
+                            url = url.replace("</pre>", "")
+                            var urlImg = JSON.parse(url);
+                            if (vm.img == "") {
+                                vm.img = urlImg.data;
+                            } else {
+                                vm.img += "," + urlImg.data;
+                            }
+                        },
+                        error : function(data, status, e) // 相当于java中catch语句块的用法
+                        {
+                            alert('失败');
+
+                        }
+                    })
+                    //}
+
+                },
+                getMenuDtl : function() {
+                    $.post("/HelpGroup/saveHelpGroup", {
+                        user_name : vm.HelpGroup.user_name,
+                        address : vm.HelpGroup.address,
+                        mobile : vm.HelpGroup.mobile,
+                        remark : vm.HelpGroup.remark,
+                        imgs : vm.img,
+                    }, function(res) {
+                        console.log(res)
+                        vm.message = res.data.menu_details;
+                    })
+                }
+            }
+
+        })
+    // 点击删除
+    $(document).on('click', '.shanchu', function() {
+        $(this).parents('.layui-upload-list').remove();
+    })
+
+    $("#item1").click(function(){
+
+        if (this.checked == true) {
+            $(".hide_select").show();
+        } else{
+            $(".hide_select").hide();
+        }
+    })
+</script>
+</html>

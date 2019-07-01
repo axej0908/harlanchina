@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.axej.harlan.goods.dao.FiveServDao">
+
+    <insert id="save" parameterType="com.axej.harlan.goods.bean.FiveServBean">
+        <selectKey keyProperty="five_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into serv_five(
+        user_id,
+        five_type,
+        border_type,
+        com_name,
+        com_addr,
+        contact,
+        contact_phone,
+        mailbox,
+        create_time,
+        appl_status,
+        postscript
+        )values (
+        #{user_id},
+        #{five_type},
+        #{border_type},
+        #{com_name},
+        #{com_addr},
+        #{contact},
+        #{contact_phone},
+        #{mailbox},
+        #{create_time},
+        #{appl_status},
+        #{postscript}
+        )
+    </insert>
+
+    <delete id="delete">
+        delete from serv_five where five_id = #{five_id}
+    </delete>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.goods.bean.FiveServBean">
+        select * from serv_five
+        <where>
+            <if test="user_id!=0 and user_id!=null">
+                user_id = #{user_id}
+            </if>
+            <if test="five_type!=null and five_type!=''">
+                and five_type like CONCAT(CONCAT('%',#{five_type}),'%')
+            </if>
+            <if test="border_type != null">
+                and border_type = #{border_type}
+            </if>
+            <if test="appl_status!=null and appl_status.trim()!=''">
+                and appl_status = #{appl_status}
+            </if>
+        </where>
+        <if test="limit!=null and offset!=null">
+            limit #{offset},#{limit}
+        </if>
+    </select>
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(*) from serv_five
+        <where>
+            <if test="user_id!=0 and user_id!=null">
+                user_id = #{user_id}
+            </if>
+            <if test="five_type!=null and five_type!=''">
+                and five_type like CONCAT(CONCAT('%',#{five_type}),'%')
+            </if>
+            <if test="border_type != null">
+                and border_type = #{border_type}
+            </if>
+            <if test="appl_status!=null and appl_status.trim()!=''">
+                and appl_status = #{appl_status}
+            </if>
+        </where>
+    </select>
+
+    <update id="update" parameterType="com.axej.harlan.goods.bean.FiveServBean">
+        update serv_five
+        <set>
+            <if test="five_type!=null and five_type.trim()!=''">five_type=#{five_type},</if>
+            <if test="com_name!=null and com_name.trim()!=''">com_name=#{com_name},</if>
+            <if test="com_addr!=null and com_addr.trim()!=''">com_addr=#{com_addr},</if>
+            <if test="contact!=null and contact.trim()!=''">contact=#{contact},</if>
+            <if test="contact_phone!=null and contact_phone.trim()!=''">contact_phone=#{contact_phone},</if>
+            <if test="mailbox!=null and mailbox.trim()!=''">mailbox=#{mailbox},</if>
+            <if test="create_time!=null and create_time.trim()!=''">create_time=#{create_time},</if>
+            <if test="appl_status!=null and appl_status.trim()!=''">appl_status=#{appl_status},</if>
+            <if test="postscript!=null and postscript.trim()!=''">postscript=#{postscript},</if>
+            <if test="harlan_file!=null and harlan_file.trim()!=''">harlan_file=#{harlan_file},</if>
+            <if test="supply_file!=null and supply_file.trim()!=''">supply_file=#{supply_file}</if>
+        </set>
+        where five_id = #{five_id}
+    </update>
+
+    <!--个人中心harlan eye 服务-->
+    <select id="per_queryList" parameterType="map" resultType="com.axej.harlan.goods.bean.FiveServBean">
+    select * from serv_five
+    <where>
+        <if test="user_id!=0 and user_id!=null">
+            user_id = #{user_id}
+        </if>
+        <if test="five_type!=null and five_type!=''">
+            and five_type LIKE CONCAT('%',#{five_type},'%')
+        </if>
+        <if test="border_type != null">
+            and border_type = #{border_type}
+        </if>
+        <if test="appl_status!=null and appl_status.trim()!=''">
+            and appl_status = #{appl_status}
+        </if>
+    </where>
+    <if test="limit!=null and offset!=null">
+        limit #{offset},#{limit}
+    </if>
+    </select>
+    <select id="per_queryTotal" parameterType="map" resultType="int">
+        select count(*) from serv_five
+        <where>
+            <if test="user_id!=0 and user_id!=null">
+                user_id = #{user_id}
+            </if>
+            <if test="five_type!=null and five_type!=''">
+                and five_type LIKE CONCAT('%',#{five_type},'%')
+            </if>
+            <if test="border_type != null">
+                and border_type = #{border_type}
+            </if>
+            <if test="appl_status!=null and appl_status.trim()!=''">
+                and appl_status = #{appl_status}
+            </if>
+        </where>
+    </select>
+</mapper>

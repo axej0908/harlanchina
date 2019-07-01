@@ -1,0 +1,62 @@
+server:
+  tomcat:
+    uri-encoding: utf-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 80
+#    context-path: /harlan
+
+spring:
+
+    profiles:
+      active: dev
+
+    datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+
+    jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss
+
+    resources:
+      static-locations: classpath:/static/,classpath:/views/,classpath:/admin/,classpath:/app/
+
+#    hot deploy
+    devtools:
+      restart:
+        enabled: true
+
+    thymeleaf:
+        cache: false
+        prefix: classpath:/views/
+        suffix: .html
+        encoding: UTF-8
+        content-type: text/html
+        mode: HTML5
+
+    http:
+      multipart:
+        max-file-size: 200MB
+        max-request-size: 200Mb
+
+# favicon change
+#    mvc:
+#      favicon:
+#        enabled: false
+
+
+#    thymeleaf:
+#      prefix: classpath:/templates/
+#      suffix: .html
+
+
+mybatis:
+    mapperLocations: classpath:mapper/**/*.xml
+    configLocation: classpath:mybatis.xml
+
+
+cjw.filePath: file:/E:/upload/
+
+
+

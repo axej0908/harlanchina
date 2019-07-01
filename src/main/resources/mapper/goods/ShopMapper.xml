@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.axej.harlan.goods.dao.ShopDao">
+
+    <resultMap id="MyCartsMap" type="com.axej.harlan.goods.bean.ShopBean">
+        <id column="shop_id" property="shop_id"></id>
+        <result column="shop_name" property="shop_name"></result>
+
+        <collection property="orderBeans" ofType="com.axej.harlan.order.bean.OrderBean">
+            <id property="order_id" column="order_id"></id>
+            <id column="mall_colorPower" property="mall_colorPower"></id>
+            <id column="mall_colorLight" property="mall_colorLight"></id>
+            <id column="mall_detailAddr" property="mall_detailAddr"></id>
+            <id column="order_num" property="order_num"></id>
+            <id column="total_price" property="total_price"></id>
+            <id column="unitPrice" property="unitPrice"></id>
+            <id column="product_picture" property="product_picture"></id>
+            <id column="trade_name" property="trade_name"></id>
+        </collection>
+    </resultMap>
+
+    <resultMap id="HotSuppliersMap" type="com.axej.harlan.goods.bean.ShopBean">
+        <id property="shop_id" column="shop_id"></id>
+        <result property="shop_name" column="shop_name"></result>
+        <result property="com_logo" column="com_logo"></result>
+        <result property="user_id" column="user_id"></result>
+        <result property="rank" column="rank"></result>
+        <result property="total_volumes" column="total_volumes"></result>
+        <collection property="merchandiseBeans" ofType="com.axej.harlan.goods.bean.GoodsMallBean">
+            <id property="goods_id" column="goods_id"></id>
+            <id property="product_picture" column="product_picture"></id>
+        </collection>
+    </resultMap>
+
+
+    <select id="queryHotSuppliers" parameterType="map" resultMap="HotSuppliersMap">
+        select * from view_shop_goods sg
+        <where>
+            sg.domestic = 'yes'
+        </where>
+        ORDER BY sg.sales_volume DESC
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="listHotSuppliers" resultMap="HotSuppliersMap">
+        select * from view_shop_goods sg where sg.domestic = 'yes' ORDER BY sg.sales_volume DESC
+    </select>
+
+    <insert id="save" parameterType="com.axej.harlan.goods.bean.ShopBean">
+        <selectKey keyProperty="shop_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_shop(
+        user_id,
+        shop_name,
+        com_name,
+        com_addr,
+        contact_name,
+        contact_mobile,
+        com_logo,
+        com_license,
+        per_card,
+        per_addr,
+        domestic,
+        create_time,
+        shop_state,
+        rank,
+        total_volumes
+        )values (
+        #{user_id},
+        #{shop_name},
+        #{com_name},
+        #{com_addr},
+        #{contact_name},
+        #{contact_mobile},
+        #{com_logo},
+        #{com_license},
+        #{per_card},
+        #{per_addr},
+        #{domestic},
+        #{create_time},
+        #{shop_state},
+        #{rank},
+        #{total_volumes}
+        )
+    </insert>
+
+    <delete id="delete">
+        delete from sys_shop where shop_id = #{shop_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.goods.bean.ShopBean">
+        update sys_shop
+        <set>
+            <if test="user_id!=null and user_id!=''">user_id=#{user_id},</if>
+            <if test="shop_name!=null and shop_name!=''">shop_name=#{shop_name},</if>
+            <if test="com_name!=null and com_name!=''">com_name=#{com_name},</if>
+            <if test="com_addr!=null and com_addr!=''">com_addr=#{com_addr},</if>
+            <if test="contact_name!=null and contact_name!=''">contact_name=#{contact_name},</if>
+            <if test="contact_mobile!=null and contact_mobile!=''">contact_mobile=#{contact_mobile},</if>
+            <if test="com_logo!=null and com_logo!=''">com_logo=#{com_logo},</if>
+            <if test="per_card!=null and per_card!=''">per_card=#{per_card},</if>
+            <if test="per_addr!=null and per_addr!=''">per_addr=#{per_addr},</if>
+            <if test="domestic!=null and domestic!=''">domestic=#{domestic},</if>
+            <if test="com_license!=null and com_license!=''">com_license=#{com_license},</if>
+            <if test="shop_state!=null and shop_state!=''">shop_state=#{shop_state}</if>
+        </set>
+        where shop_id = #{shop_id}
+    </update>
+
+    <update id="updateStatusById">
+        update sys_shop
+        <set>
+            <if test="shop_state!=null and shop_state!=''">shop_state=#{shop_state},</if>
+            <if test="domestic!=null and domestic!=''">domestic=#{domestic}</if>
+        </set>
+        where shop_id = #{shop_id}
+    </update>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.goods.bean.ShopBean">
+        select * from sys_shop
+        <where>
+            <if test="domestic!=null and domestic.trim()!=''">
+                domestic =#{domestic}
+            </if>
+            <if test="shop_state!=null and shop_state.trim()!=''">
+                and shop_state =#{shop_state}
+            </if>
+            <if test="com_name!=null and com_name.trim()!=''">
+                and com_name like concat(concat('%',#{com_name}),'%')
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from sys_shop
+        <where>
+            <if test="domestic!=null and domestic.trim()!=''">
+                domestic =#{domestic}
+            </if>
+            <if test="shop_state!=null and shop_state.trim()!=''">
+                and shop_state =#{shop_state}
+            </if>
+            <if test="shop_name!=null and shop_name.trim()!=''">
+                and shop_name like concat(concat('%',#{shop_name}),'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="queryObject" parameterType="int"
+            resultType="com.axej.harlan.goods.bean.ShopBean">
+        select * from sys_shop where user_id = #{user_id}
+    </select>
+
+    <select id="queryMyCartsList" parameterType="map" resultMap="MyCartsMap">
+        SELECT
+        ss.shop_id,ss.shop_name,
+        io.order_id,mi.product_picture,io.trade_name,io.mall_colorPower,io.mall_colorLight,io.mall_detailAddr,
+        mi.current_price unitPrice,io.order_num,io.total_price
+        FROM
+        sys_shop ss
+        LEFT JOIN mer_info mi ON ss.user_id = mi.user_id
+        LEFT JOIN imp_order io ON io.source_id = mi.goods_id
+        where io.buyer_id = #{buyer_id}
+        ORDER by order_time DESC
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryMyCartsTotal" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM
+        sys_shop ss
+        LEFT JOIN mer_info mi ON ss.user_id = mi.user_id
+        LEFT JOIN imp_order io ON io.source_id = mi.goods_id
+        where io.buyer_id = #{buyer_id}
+    </select>
+
+    <select id="queryListByName" resultType="com.axej.harlan.goods.bean.ShopBean">
+        select * from sys_shop where shop_name like concat(concat("%",#{searchParam}),"%")
+    </select>
+
+    <select id="selGoodsByShopId" resultType="com.axej.harlan.goods.bean.GoodsMallBean">
+        SELECT
+	        vsg.product_picture,
+	        vsg.goods_name,
+	        vsg.current_price,
+	        vsg.goods_unit,
+	        vsg.goods_id
+        FROM view_shop_goods vsg
+      WHERE vsg.shop_id = #{shop_id} limit 2
+    </select>
+
+    <select id="queryTotalVolumes" parameterType="map" resultType="int">
+        select sum(ig.sales_volume) from info_goods ig where ig.user_id = #{user_id}
+    </select>
+
+    <update id="updateTotalVolumes" parameterType="com.axej.harlan.goods.bean.ShopBean">
+      update sys_shop ss set ss.total_volumes = #{total_volumes} where ss.user_id = #{user_id}
+    </update>
+
+    <update id="alter" parameterType="com.axej.harlan.goods.bean.ShopBean">
+        update sys_shop
+        <set>
+            <if test="user_id!=null and user_id!=''">user_id=#{user_id},</if>
+            <if test="shop_name!=null and shop_name!=''">shop_name=#{shop_name},</if>
+            <if test="com_name!=null and com_name!=''">com_name=#{com_name},</if>
+            <if test="com_addr!=null and com_addr!=''">com_addr=#{com_addr},</if>
+            <if test="contact_name!=null and contact_name!=''">contact_name=#{contact_name},</if>
+            <if test="contact_mobile!=null and contact_mobile!=''">contact_mobile=#{contact_mobile},</if>
+            <if test="com_logo!=null and com_logo!=''">com_logo=#{com_logo},</if>
+            <if test="com_license!=null">com_license=#{com_license},</if>
+            <if test="per_card!=null">per_card=#{per_card},</if>
+            <if test="per_addr!=null">per_addr=#{per_addr},</if>
+            <if test="per_card!=null and per_card!=''">per_card=#{per_card},</if>
+            <if test="per_addr!=null and per_addr!=''">per_addr=#{per_addr},</if>
+            <if test="com_license!=null and com_license!=''">com_license=#{com_license},</if>
+            <if test="domestic!=null">domestic=#{domestic},</if>
+            <if test="shop_state!=null">shop_state=#{shop_state}</if>
+        </set>
+        where shop_id = #{shop_id}
+    </update>
+
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.order.dao.OrderChainDao">
+
+    <insert id="save">
+        <selectKey keyProperty="chain_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into order_chain(
+            user_id,
+            create_time,
+            contacts_name,
+            contacts_phone,
+            id_number,
+            household_register,
+            current_residence,
+            company_name,
+            company_site,
+            company_phone,
+            audit_reports,
+            financial_statement,
+            apply_amount,
+            choose,
+            upload,
+            order_id
+        )
+        values (
+            #{user_id},
+            #{create_time},
+            #{contacts_name},
+            #{contacts_phone},
+            #{id_number},
+            #{household_register},
+            #{current_residence},
+            #{company_name},
+            #{company_site},
+            #{company_phone},
+            #{audit_reports},
+            #{financial_statement},
+            #{apply_amount},
+            #{choose},
+            #{upload},
+            #{order_id}
+        )
+    </insert>
+
+    <update id="update">
+        update order_chain
+        <set>
+            <if test="contacts_name!=null and contacts_name.trim!=''">contacts_name=#{contacts_name},</if>
+            <if test="contacts_phone!=null and contacts_phone.trim!=''">contacts_phone=#{contacts_phone},</if>
+            <if test="id_number!=null and id_number.trim!=''">id_number=#{id_number},</if>
+            <if test="household_register!=null and household_register.trim!=''">household_register=#{household_register},</if>
+            <if test="current_residence!=null and current_residence.trim!=''">current_residence=#{current_residence},</if>
+            <if test="company_name!=null and company_name.trim!=''">company_name=#{company_name},</if>
+            <if test="company_site!=null and company_site.trim!=''">company_site=#{company_site},</if>
+            <if test="company_phone!=null and company_phone.trim!=''">company_phone=#{company_phone},</if>
+            <if test="audit_reports!=null and audit_reports.trim!=''">audit_reports=#{audit_reports},</if>
+            <if test="financial_statement!=null and financial_statement.trim!=''">financial_statement=#{financial_statement},</if>
+            <if test="apply_amount!=null and apply_amount.trim!=''">apply_amount=#{apply_amount},</if>
+            <if test="choose!=null and choose.trim!=''">choose=#{choose},</if>
+            <if test="upload!=null and upload.trim!=''">upload=#{upload}</if>
+        </set>
+        where chain_id = #{chain_id}
+    </update>
+    
+    <select id="queryObject" resultType="com.axej.harlan.order.bean.OrderChainBean">
+        select * from order_chain
+        <where>
+            <if test="chain_id!=null and chain_id!=0">
+                chain_id = #{chain_id}
+            </if>
+            <if test="order_id!=null and order_id.trim()!=''">
+                and order_id = #{order_id}
+            </if>
+        </where>
+    </select>
+
+</mapper>

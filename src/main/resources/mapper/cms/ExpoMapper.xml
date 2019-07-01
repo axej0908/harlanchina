@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.ExpoDao">
+
+    <sql id="criteria">
+        <where>
+            <if test="expo_pos!=null and expo_pos!=''">
+                expo_pos = #{expo_pos}
+            </if>
+            <if test="display!=null and display.trim()!=''">
+                and display = #{display}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="save" parameterType="com.axej.harlan.cms.bean.ExpoBean" useGeneratedKeys="true">
+        insert into info_expo (
+        title,
+        content,
+        display,
+        expo_pos,
+        create_time
+        )
+        values
+        (
+        #{title},
+        #{content},
+        #{display},
+        #{expo_pos},
+        #{create_time}
+        )
+    </insert>
+
+    <delete id="delete">
+        delete from info_expo where expo_id = #{expo_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.cms.bean.ExpoBean">
+        update info_expo
+        <trim prefix="set" suffixOverrides=",">
+            <if test="title!=null and title.trim()!=''">title=#{title},</if>
+            <if test="content!=null and content.trim()!=''">content=#{content},</if>
+            <if test="display!=null and display.trim()!=''">display=#{display},</if>
+            <if test="expo_pos!=null and expo_pos.trim()!=''">expo_pos=#{expo_pos}</if>
+        </trim>
+        where expo_id = #{expo_id}
+    </update>
+
+    <select id="queryObject" parameterType="com.axej.harlan.cms.bean.ExpoBean" resultType="com.axej.harlan.cms.bean.ExpoBean">
+        select * from info_expo
+        <where>
+            <if test="expo_id!=null and expo_id!=0">
+                expo_id = #{expo_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.cms.bean.ExpoBean">
+        select * from info_expo
+        <include refid="criteria"></include>
+        order by expo_pos asc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from info_expo
+        <include refid="criteria"></include>
+    </select>
+
+</mapper>

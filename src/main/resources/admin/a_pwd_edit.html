@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="edge" />
+		<meta name="renderer" content="webkit">
+		<title>添加管理员</title>
+		<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all" />
+		<link rel="stylesheet" href="src/css/a_admin_manage.css" media="all" />
+		<style type="text/css">
+			.crum_prt{
+				padding-top: 10px;
+				padding-left: 5px;
+			}
+			.layui-form {
+				padding-top: 10px;
+			}
+			
+			.layui-text {
+				line-height: 40px;
+			}
+			.layui-txt-area{
+				width: 500px;
+				resize: none;
+			}
+			.layui-textarea {
+			    resize: none;
+			}
+		</style>
+	    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+	<body>
+	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+		<legend>修改密码</legend>
+	</fieldset>
+		<form class="layui-form" action="">
+
+				<!--<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">角色</label>
+					<div class="layui-input-inline layui-form" lay-filter="selFilter">
+						<select id="role_name" name="role_id" lay-verify="required">
+							&lt;!&ndash;<option value=""></option>
+							<option value="0">写作</option>
+							<option value="1" selected="">阅读</option>
+							<option value="2">游戏</option>
+							<option value="3">音乐</option>
+							<option value="4">旅行</option>&ndash;&gt;
+						</select>
+					</div>
+				</div>-->
+				<div class="layui-form-item layui-form-text">
+				    <label class="layui-form-label">管理员名称：</label>
+				    <div class="layui-input-inline">
+				        <input type="text" class="layui-input" name="principal" id="principal" disabled="disabled">
+				    </div>
+				 </div>
+				 <div class="layui-form-item layui-form-text">
+				    <label class="layui-form-label">密码：</label>
+				    <div class="layui-input-inline">
+				        <input type="password" class="layui-input" name="credentials" id="credentials">
+				    </div>
+				 </div>
+				 <!--<div class="layui-form-item layui-form-text">
+				    <label class="layui-form-label">备注：</label>
+				    <div class="layui-input-block layui-txt-area">
+				        <textarea placeholder="请输入内容" class="layui-textarea" name="remark"></textarea>
+				    </div>
+			  	</div>-->
+				<!--<div class="layui-form-item" pane="">
+				    <label class="layui-form-label">权限管理：</label>
+				    <div class="layui-input-block">
+					     <input type="checkbox" name="like1[write]" lay-skin="primary" title="修改密码" checked="" >
+					    <input type="checkbox" name="like1[read]" lay-skin="primary" title="会员管理" >
+					    <input type="checkbox" name="like1[game]" lay-skin="primary" title="预约管理"  >
+					    <input type="checkbox" name="like1[write]" lay-skin="primary" title="评价管理" >
+					    <input type="checkbox" name="like1[read]" lay-skin="primary" title="系统管理" >
+					    <input type="checkbox" name="like1[game]" lay-skin="primary" title="职能设置"  >
+					    <input type="checkbox" name="like1[write]" lay-skin="primary" title="处室名称1"  >
+					    <input type="checkbox" name="like1[read]" lay-skin="primary" title="处室名称2" >
+				    </div>
+				  </div>
+			</div>-->
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit="" lay-filter="demo1">确认</button>
+				</div>
+			</div>
+		</form>
+		<script src="./plugins/layui/layui.js"></script>
+		<script type="text/javascript">
+			layui.use(['form', 'jquery' , 'element'], function() {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+				var form = layui.form;
+                	$ = layui.jquery;
+
+                /*$.ajax({
+                    url:'/cmsRole/list',
+                    type:"post",
+                    data:{},
+                    dataType:"json",
+                    success : function (r) {
+                        if(r.data.length > 0){
+                            for(var i = 0; i < r.data.length; i++){
+								$("#role_name").append("<option value="+r.data[i].role_id+">"+r.data[i].role_name+"</option>").append("<input>");
+							}
+                            form.render('select','selFilter');
+                        }
+                    }
+                })*/
+
+                var user_id = null;
+
+                currentUser();
+
+                form.on('submit(demo1)', function (data) {
+                    data.field.user_id = user_id;
+                    $.ajax({
+                        url:'/cmsUser/edit',
+                        type:"post",
+                        data:data.field,
+                        dataType:"json",
+                        success : function (r) {
+                            if(r.code == 0){
+                                alert("修改成功,请重新登录!");
+                                logout();
+                            }else {
+                                alert("修改失败!");
+                            }
+                        }
+                    });
+                    return false;
+                });
+                
+                function currentUser() {
+					$.ajax({
+						url: '/cmsUser/currentUser',
+						data: {},
+						type: "post",
+						dataType: "json",
+						success : function (r) {
+							if(r.code == 0){
+								$("#principal").val(r.data.principal);
+								$("#credentials").val(r.data.credentials);
+
+								user_id = r.data.user_id;
+							}
+                        }
+					})
+                };
+
+                function logout() {
+                    $.ajax({
+                        url: '/cmsUser/logout',
+                        data: {},
+                        type: "post",
+                        dataType: "json",
+                        success : function (r) {
+                            if(r.code == 0){
+                                window.open("backLogin.html", "_self");
+                            }
+                        }
+                    })
+                }
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>审核供应链金融</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+
+</head>
+
+<body>
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>审核</legend>
+</fieldset>
+
+<form class="layui-form" action="" style="width: 800px; margin-left: 50px; margin-top: 20px;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">联系人：</label>
+        <div class="layui-input-block">
+            <input type="text" name="contacts_name" lay-verify="title" autocomplete="off" class="layui-input" disabled="disabled" id="contacts_name">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">联系人手机：</label>
+        <div class="layui-input-block">
+            <input type="text" name="contacts_phone" lay-verify="title" autocomplete="off" class="layui-input" disabled="disabled" id="contacts_phone">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">身份证号：</label>
+        <div class="layui-input-block">
+            <input type="text" name="id_number" lay-verify="title" autocomplete="off" class="layui-input" disabled="disabled" id="id_number">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">户籍：</label>
+        <div class="layui-input-block">
+            <input type="text" name="household_register" lay-verify="title" autocomplete="off" class="layui-input" disabled="disabled" id="household_register">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">现住地：</label>
+        <div class="layui-input-block">
+            <input type="text" name="current_residence" lay-verify="title" autocomplete="off" class="layui-input" disabled="disabled" id="current_residence">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司名称：</label>
+        <div class="layui-input-block">
+            <input type="text" name="company_name" lay-verify="title" autocomplete="off" class="layui-input" disabled="disabled" id="company_name">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司地址：</label>
+        <div class="layui-input-block">
+            <input type="text" name="company_site" lay-verify="title" autocomplete="off" class="layui-input" disabled="disabled" id="company_site">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司座机号：</label>
+        <div class="layui-input-block">
+            <input type="text" name="company_phone" lay-verify="title" autocomplete="off" class="layui-input" disabled="disabled" id="company_phone">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">审计报告：</label>
+        <div class="layui-input-block">
+            <a class="layui-btn layui-btn-normal" download="video" id="audit_reports">下载</a>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">财务报表：</label>
+        <div class="layui-input-block">
+            <a class="layui-btn layui-btn-normal" download="video" id="financial_statement">下载</a>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">申请额度：</label>
+        <div class="layui-input-block">
+            <input type="text" name="apply_amount" lay-verify="title" autocomplete="off" class="layui-input" disabled="disabled" id="apply_amount">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">融资形式</label>
+        <div class="layui-input-block">
+            <input type="radio" name="choose" value="the chain of trade" title="贸易链管理" checked="">
+            <input type="radio" name="choose" value="export rebates" title="出口退税">
+        </div>
+    </div>
+
+    <input type="text" name="chain_id" lay-verify="title" autocomplete="off" class="layui-input" style="display: none" id="chain_id">
+    <input type="text" name="order_id" lay-verify="title" autocomplete="off" class="layui-input" style="display: none" id="order_id">
+
+    <!--<div class="layui-inline">
+        <label class="layui-form-label">所属类别：</label>
+        <div class="layui-input-inline">
+            <select name="one_type" lay-filter="one_type"></select>
+        </div>
+        <div class="layui-input-inline">
+            <select name="two_type" lay-filter="two_type"></select>
+        </div>
+    </div>-->
+    <div class="layui-form-item" style="margin-top: 20px;">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">通过</button>
+            <button class="layui-btn" lay-submit="" lay-filter="demo2">驳回</button>
+        </div>
+    </div>
+</form>
+
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="plugins/jquery/jQueryURL.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form', 'jquery' , 'layedit', 'laydate'], function () {
+        var form = layui.form,
+            layer = layui.layer;
+        $ = layui.jquery;
+
+        $(function () {
+            var order_id = getQueryString("order_id");
+            orderChainLoad(order_id);
+        });
+
+        function orderChainLoad(order_id) {
+            $.ajax({
+                url: '/orderChain/detail',
+                type: "post",
+                data: {
+                    "order_id": order_id
+                },
+                dataType: 'json',
+                success: function (r) {
+                    if(r.code == 0){
+                        var data = r.data;
+                        $("#chain_id").val(data.chain_id);
+                        $("#contacts_name").val(data.contacts_name);
+                        $("#contacts_phone").val(data.contacts_phone);
+                        $("#id_number").val(data.id_number);
+                        $("#household_register").val(data.household_register);
+                        $("#current_residence").val(data.current_residence);
+                        $("#company_name").val(data.company_name);
+                        $("#company_site").val(data.company_site);
+                        $("#company_phone").val(data.company_phone);
+                        $('#audit_reports').attr('href',data.audit_reports);
+                        $('#financial_statement').attr('href',data.financial_statement);
+                        $("#apply_amount").val(data.apply_amount);
+                        $("input[name='choose'][value='"+data.choose+"']").attr("checked",true);
+                        form.render();
+                        $("#order_id").val(data.order_id);
+                    }
+                }
+            })
+        }
+
+        //通过
+        form.on('submit(demo1)', function (data) {
+            /*layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })*/
+            $.ajax({
+                url: '/order/edit',
+                data: {
+                    "order_id": data.field.order_id,
+                    "chain_state": "1"
+                },
+                type: "post",
+                traditional: true,
+                dataType: "json",
+                success : function (r) {
+                    if(r.code == 0){
+                        layer.confirm('审核成功!', function (index) {
+                            layer.close(index);
+                            window.open("third_party.html", "_self");
+                        });
+                    }else {
+                        layer.confirm('审核失败!', function (index) {
+                            layer.close(index);
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+
+        //驳回
+        form.on('submit(demo2)', function (data) {
+            /*layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })*/
+            $.ajax({
+                url: '/order/edit',
+                data: {
+                    "order_id": data.field.order_id,
+                    "chain_state": "-1"
+                },
+                type: "post",
+                traditional: true,
+                dataType: "json",
+                success : function (r) {
+                    if(r.code == 0){
+                        layer.confirm('审核成功!', function (index) {
+                            layer.close(index);
+                            window.open("third_party.html", "_self");
+                        });
+                    }else {
+                        layer.confirm('审核失败!', function (index) {
+                            layer.close(index);
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>商品管理-自营商品</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css">
+    <style type="text/css">
+        .layui-table-cell {
+            height: inherit;
+        }
+
+        .txt_div {
+            width: 100%;
+            height: 81px;
+            white-space: normal;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .layui-form-label {
+            padding: 9px 3px;
+            min-width: 56px;
+        }
+        .img_area {
+            width: 60px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            border: 1px solid red;
+            margin: 0 auto;
+    </style>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<!--<div class="layui-tab layui-tab-brief layui-form" lay-filter="docDemoTabBrief">
+    <div class="layui-tab-content" style="">
+        <div class="layui-tab-item layui-show">
+            <form class="layui-form" id="sear">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">监理：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="super_text" lay-verify="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <label class="layui-form-label">监理图片：</label>
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn layui-btn-normal" id="uploadC4">选择文件</button>
+                        &lt;!&ndash;hidden form &ndash;&gt;
+                        <input id="detect_report" name="detect_report" style="display: none;">
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>-->
+<table class="layui-table" lay-filter="test" id="demo"></table>
+<script type="text/html" id="img">
+    <div class="img_area" style="background-image:url(/{{d.super_url}})"></div>
+</script>
+<script type="text/html" id="barDemo">
+    <!--<a class="layui-btn layui-btn-mini" lay-event="del">删除</a>-->
+    <div class="layui-btn layui-btn-mini"><a href="{{d.super_url}}" download="video">download</a></div>
+</script>
+<script src="./plugins/layui/layui.js"></script>
+<script src="plugins/jquery/jQueryURL.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    var form, $;
+    layui.use(['form', "jquery", "layer" , 'element' , 'table'], function () {
+        form = layui.form;
+        $ = layui.jquery;
+        var layer = parent.layer === undefined ? layui.layer : parent.layer;
+        var layer = layui.layer,
+            laydate = layui.laydate,
+            table = layui.table,
+            element = layui.element,
+            upload = layui.upload;
+        var table = layui.table;
+
+        var order_id = getQueryString("order_id");
+
+        /*//10.4 检测报告 文件上传
+        upload.render({
+            elem: '#uploadC4',
+            url: '/file/upload',
+            async: false,
+            bindAction: '#uploadC4',
+            done: function (r) {
+                if (r.code == 0) {
+                    $("#detect_report").val(r.data);
+                }
+            }
+        });*/
+
+        /*form.on('submit(demo1)', function (data) {
+            var super_url = $("#detect_report").val();
+            $.ajax({
+                url: '/orderSuper/save',
+                type: 'post',
+                data: {
+                    super_url:super_url,
+                    super_text:data.field.super_text,
+                    order_id:order_id
+                },
+                dataType: 'json',
+                success: function (r) {
+                    if (r.code == 0) {
+                        alert("success");
+                        window.location.href = "super_order_a.html";
+                    }else {
+                        alert("fail to add，Product name no repetition allowed!");
+                        /!*window.location.href = "h_goods_a.html";*!/
+                    }
+                }
+            });
+            return false;
+        });*/
+
+        //第一个实例
+        var tableInst = table.render({
+            elem: '#demo',
+            url: '/orderSuper/listOrderSuper',
+            height: 'full-90',
+            where: {
+                order_id: order_id
+            },
+            cols: [[
+                {type: 'numbers', title: '序号'},
+                {field: 'super_time', title: '时间'},
+                {field: 'super_text', title: '文字'},
+                {field: 'super_url', title: '图片' , templet: '#img'},
+                {title: '操作', toolbar: '#barDemo'}
+            ]],
+            /*page: true*/
+        });
+        /*table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if (layEvent === 'del') {
+                layer.confirm('确认受理', function (index) {
+                    alert("删除成功!");
+                });
+            }
+        });*/
+    });
+</script>
+
+</body>
+
+</html>

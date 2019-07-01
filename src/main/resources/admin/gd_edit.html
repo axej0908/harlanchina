@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>商品管理-自营商品</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+	<link rel="stylesheet" href="src/css/a_admin_manage.css">
+	<style type="text/css">
+		.layui-form-label {
+			padding: 9px 3px;
+			min-width: 56px;
+		}
+
+		.layui-upload {
+			float: left;
+			margin-left: 32px;
+		}
+
+		.layui-upload-img {
+			width: 92px;
+			height: 92px;
+			margin: 0 10px 10px 0;
+		}
+
+		.layui-table-cell {
+			height: inherit;
+		}
+
+		.txt_div {
+			width: 100%;
+			height: 81px;
+			white-space: normal;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		.img_area {
+			width: 60px;
+			height: 60px;
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+			border-radius: 50%;
+			border: 1px solid red;
+			margin: 0 auto;
+		}
+
+		.layui-text {
+			line-height: 38px;
+		}
+
+		.select_mini {
+			width: 71px;
+			float: left;
+			margin-left: -11px;
+		}
+		/*输入框列表样式*/
+		.input_contain{
+			float: left;
+			margin-left: 10px;
+			width: 500px;
+			margin-top: -10px;
+			min-height: 44px;
+		}
+		.layui-input-sm-inline{
+			width: 90px;
+			margin-right: 10px;
+			float: left;
+			margin-top: 10px;
+		}
+		.layui-btn-area{
+			float: left;
+		}
+		/*输入框列表样式结束*/
+	</style>
+	<link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div class="layui-tab layui-tab-brief layui-form" lay-filter="docDemoTabBrief">
+	<div class="layui-tab-content" style="">
+		<div class="layui-tab-item layui-show">
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+				<legend>编辑商品</legend>
+			</fieldset>
+			<form class="layui-form" lay-filter="formTest" id="sear">
+				<div class="layui-form-item">
+					<div>
+						<input type="text" name="goods_id" id="goods_id" lay-filter="goods_id" style="display: none">
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">商品名称：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="goods_name" id="goods_name" lay-verify="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">商品分类：</label>
+						<div class="layui-input-inline layui-form" lay-filter="aihao">
+							<select name="one_type" id="one_type" lay-filter="one_type">
+							</select>
+						</div>
+						<div class="layui-input-inline layui-form" lay-filter="aihao">
+							<select name="two_type" id="two_type"></select>
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">商品价格：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="current_price" id="current_price" lay-verify="" autocomplete="off"
+								   class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">商品纯度：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="goods_purity" id="goods_purity" lay-verify="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">英文名称：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="goods_name_en" id="goods_name_en" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">CAS：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="cas" id="cas" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">分子量：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="molecular_weight" id="molecular_weight" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">PSA：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="pas" id="pas" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">精确质量：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="precise_quality" id="precise_quality" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">货物规格：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="specification" id="specification" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">货期：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="goods_deliver" id="goods_deliver" autocomplete="off" class="layui-input">
+						</div>
+						<label class="layui-text">天</label>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">数量：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="goods_num" id="goods_num" autocomplete="off" class="layui-input">
+						</div>
+						<div class="select_mini">
+							<select name="goods_unit" id="goods_unit" class="select_mini">
+								<option value="">吨</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="layui-inline">
+						<label class="layui-form-label">市场价格：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="market_price" id="market_price" autocomplete="off" class="layui-input">
+						</div>
+						<label class="layui-text">元</label>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">付款方式：</label>
+						<div class="layui-input-block layui-form" lay-filter="aihao">
+							<select name="payment_opt" id="payment_opt">
+								<option value="">银联</option>
+								<option value="0">支付宝</option>
+								<option value="1">微信</option>
+								<option value="2">线下支付</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">运输方式：</label>
+						<div class="layui-input-block">
+							<select name="transport_opt" id="transport_opt" lay-filter="aihao">
+								<option value=""></option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">使用说明：</label>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn layui-btn-normal" id="uploadC1">选择文件</button>
+						<button type="button" class="layui-btn" id="uploadB1">开始上传</button>
+						<!--hidden form -->
+						<input id="application_scheme" name="application_scheme" style="display: none;">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">商品缩略图：</label>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn" id="uploadC2">上传图片</button>
+						<!--hidden form -->
+						<input id="product_picture" name="product_picture" style="display: none;">
+						<div class="layui-upload-list">
+							<img class="layui-upload-img" id="demo1">
+							<p id="demoText"></p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">生产状态：</label>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn layui-btn-normal" id="uploadC3">选择文件</button>
+						<!--hidden form -->
+						<input id="production_state" name="production_state" style="display: none;">
+						<button type="button" class="layui-btn" id="uploadB3">开始上传</button>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">检测报告：</label>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn layui-btn-normal" id="uploadC4">选择文件</button>
+						<!--hidden form -->
+						<input id="detect_report" name="detect_report" style="display: none;">
+						<button type="button" class="layui-btn" id="uploadB4">开始上传</button>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">检测视频：</label>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn layui-btn-normal" id="uploadC5">选择文件</button>
+						<!--hidden form -->
+						<input id="detect_video" name="detect_video" style="display: none;">
+						<button type="button" class="layui-btn" id="uploadB5">开始上传</button>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">UV数据报告：</label>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn layui-btn-normal" id="uploadC6">选择文件</button>
+						<!--hidden form -->
+						<input id="detect_uv" name="detect_uv" style="display: none;">
+						<button type="button" class="layui-btn" id="uploadB6">开始上传</button>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">测色数据报告：</label>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn layui-btn-normal" id="uploadC7">选择文件</button>
+						<!--hidden form -->
+						<input id="detect_colourimeter" name="detect_colourimeter" style="display: none;">
+						<button type="button" class="layui-btn" id="uploadB7">开始上传</button>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">样品图片：</label>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn" id="uploadC8">上传图片</button>
+						<!--hidden form -->
+						<input id="detect_sample_imgs" name="detect_sample_imgs" style="display: none;">
+						<div class="layui-upload-list">
+							<img class="layui-upload-img" id="demo1">
+							<p id="demoText"></p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">大货图片：</label>
+					<div class="layui-upload">
+						<button type="button" class="layui-btn" id="uploadC9">上传图片</button>
+						<!--hidden form -->
+						<input id="detect_bulk_imgs" name="detect_bulk_imgs" style="display: none;">
+						<div class="layui-upload-list">
+							<img class="layui-upload-img" id="demo1">
+							<p id="demoText"></p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">包装：</label>
+						<div class="input_contain" id="package_opt">
+							<div class="layui-input-sm-inline">
+								<input type="text" name="package_opt" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-btn-area">
+							<div class="layui-btn add_btn" data-nm="package_opt">增加</div>
+							<div class="layui-btn del_btn">删除</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">强度(色力)：</label>
+						<div class="input_contain" id="color_power">
+							<div class="layui-input-sm-inline">
+								<input type="text" name="color_power" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-btn-area">
+							<div class="layui-btn add_btn" data-nm="color_power">增加</div>
+							<div class="layui-btn del_btn">删除</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">强色光：</label>
+						<div class="input_contain" id="color_light">
+							<div class="layui-input-sm-inline">
+								<input type="text" name="color_light" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-btn-area">
+							<div class="layui-btn add_btn" data-nm="color_light">增加</div>
+							<div class="layui-btn del_btn">删除</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+
+					<div class="layui-inline">
+						<label class="layui-form-label">外观要求：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="quality_aspect" id="quality_aspect" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">水分：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="quality_moisture" id="quality_moisture" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">不溶物要求：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="quality_insoluble" id="quality_insoluble" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">溶解度：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="quality_solubility" id="quality_solubility" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">氯离子含量：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="quality_clContent" id="quality_clContent" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">盐分：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="quality_salinity" id="quality_salinity" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">电导率：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="quality_conductivity" id="quality_conductivity" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">米氏酮：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="quality_michlerKetone" id="quality_michlerKetone" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">固含量要求：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="quality_solidContent" id="quality_solidContent" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">铜离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_cu" id="metal_cu" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">铅离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_pb" id="metal_pb" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">锌离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_zn" id="metal_zn" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">锡离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_sn" id="metal_sn" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">镍离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_ni" id="metal_ni" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">钴离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_co" id="metal_co" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">锑离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_sb" id="metal_sb" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">汞离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_hg" id="metal_hg" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">镉离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_cd" id="metal_cd" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">铋离子：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="metal_bi" id="metal_bi" autocomplete="off" class="layui-input">
+							<input type="text" name="goods_type" value="harlan_normal" style="display: none;">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+							<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--商品名称模板-->
+<script type="text/html" id="goodimg">
+	<div class="img_area" style="background-image:url(/{{d.product_picture}});"></div>
+</script>
+<!---->
+<script src="./plugins/layui/layui.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script type="text/javascript" src="src/js/common.js"></script>
+<script>
+    var form, $;
+    layui.use(['form', 'layedit', 'laydate', "element", "table", "upload", "jquery", "layer"], function () {
+        form = layui.form;
+        $ = layui.jquery;
+        var layer = parent.layer === undefined ? layui.layer : parent.layer;
+        var layer = layui.layer,
+            laydate = layui.laydate,
+            table = layui.table,
+            element = layui.element,
+            upload = layui.upload;
+
+        $(function () {
+            //step2:preload分类
+            preLoadGoodsCate();
+        });
+
+        //10.9 大货图片 文件上传
+        upload.render({
+            elem: '#uploadC9',
+            url: '/file/upload',
+            done: function (r) {
+                if (r.code == 0) {
+                    $("#detect_bulk_imgs").val(r.data);
+                    layer.msg("success");
+                }
+            }
+        });
+
+        //10.8 样品图片 文件上传
+        upload.render({
+            elem: '#uploadC8',
+            url: '/file/upload',
+            done: function (r) {
+                if (r.code == 0) {
+                    $("#detect_sample_imgs").val(r.data);
+                    layer.msg("success");
+                }
+            }
+        });
+
+        //10.7 测色仪数据 文件上传
+        upload.render({
+            elem: '#uploadC7',
+            url: '/file/upload',
+            bindAction: '#uploadC7',
+            done: function (r) {
+                if (r.code == 0) {
+                    $("#detect_colourimeter").val(r.data);
+                    layer.msg("success");
+                }
+            }
+        });
+
+        //10.6 UV数据报告 文件上传
+        upload.render({
+            elem: '#uploadC6',
+            url: '/file/upload',
+            bindAction: '#uploadC6',
+            done: function (r) {
+                if (r.code == 0) {
+                    $("#detect_uv").val(r.data);
+                    layer.msg("success");
+                }
+            }
+        });
+
+        //10.5 检测视频 文件上传
+        upload.render({
+            elem: '#uploadC5',
+            url: '/file/upload',
+            bindAction: '#uploadC5',
+            done: function (r) {
+                if (r.code == 0) {
+                    $("#detect_video").val(r.data);
+                    layer.msg("success");
+
+                }
+            }
+        });
+
+        //10.4 检测报告 文件上传
+        upload.render({
+            elem: '#uploadC4',
+            url: '/file/upload',
+            bindAction: '#uploadC4',
+            done: function (r) {
+                if (r.code == 0) {
+                    $("#detect_report").val(r.data);
+                }
+            }
+        });
+
+        //10.3 生产状态 文件上传
+        upload.render({
+            elem: '#uploadC3',
+            url: '/file/upload',
+            bindAction: '#uploadC3',
+            done: function (r) {
+                if (r.code == 0) {
+                    $("#production_state").val(r.data);
+                    layer.msg("success");
+                }
+            }
+        });
+
+        //10.2 产品图片 文件上传
+        upload.render({
+            elem: '#uploadC2',
+            url: '/file/upload',
+            done: function (r) {
+                if (r.code == 0) {
+                    layer.msg("success");
+
+                    $("#product_picture").val(r.data);
+                }
+            }
+        });
+
+        //10.1 应用方案/使用说明文件上传
+        upload.render({
+            elem: '#uploadC1',
+            url: '/file/upload/',
+            auto: false,
+            accept: "file",
+            bindAction: '#uploadB1',
+            done: function (r) {
+                if (r.code == 0) {
+                    layer.msg("success");
+                    $("#application_scheme").val(r.data);
+                }
+            }
+        });
+
+        /**
+         * 9.submit form
+         */
+        form.on('submit(demo1)', function (data) {
+            console.log(data.field);
+            console.log($("#sear").serialize());
+            $.ajax({
+                url: '/goodsMall/update',
+                type: 'post',
+                data: $("#sear").serialize(),
+                dataType: 'json',
+                success: function (r) {
+                    if (r.code == 0) {
+                        alert("success");
+                        window.location.href = "h_goods_a.html";
+                    }else {
+                        alert("fail to add，Product name no repetition allowed!");
+                        /*window.location.href = "h_goods_a.html";*/
+                    }
+                }
+            });
+            return false;
+        });
+
+        //8 二级分类联动事件
+        form.on('select(one_type)', function (data) {
+            var selTopCate = data.value;
+            categories.forEach(function (item, index) {
+                if (item.text == selTopCate) {
+                    var secCateStr = initCateStr(item.list);
+                    $('select[name=two_type]').html(secCateStr);
+                    form.render('select');
+                }
+            })
+        });
+
+
+        /**
+         * 7.赋值下拉框
+         */
+        function initCateStr(arr) {
+            var strVal = '<option>请选择</option>';
+            if (typeof arr == "undefined") {
+                return strVal;
+            } else {
+                for (var i = 0; i < arr.length; i++) {
+                    //step2.1初始化下拉菜单
+                    strVal += '<option value="' + arr[i].text + '">' + arr[i].text + '</option>';
+                }
+            }
+            return strVal;
+        }
+
+
+        /**
+         * 6.preload all categories of goods
+         */
+        function preLoadGoodsCate() {
+            $.ajax({
+                url: "/category/recursion",
+                type: "post",
+                data: {},
+                dataType: 'json',
+                success: function (r) {
+                    categories = r.data;
+                    var topCateStr = initCateStr(categories);
+                    $('select[name=one_type]').html(topCateStr);
+                    form.render();
+                }
+            })
+        }
+
+        //按钮添加删除
+        //添加
+        $(".layui-btn-area").on("click",".add_btn",function(){
+            var input_con = $(this).parent().siblings(".input_contain");
+            var item = $('<div class="layui-input-sm-inline"><input type="text" class="layui-input"></div>');
+            item.find("input").attr("name",$(this).data("nm"));
+            // if($(this).data("nm") == "package_opt"){
+
+            // }else if($(this).data("nm") == "color_power"){
+
+            // }else if($(this).data("nm") == "color_light"){
+
+            // }
+            input_con.append(item)
+        })
+        //删除
+        $(".layui-btn-area").on("click",".del_btn",function(){
+            var input_con = $(this).parent().siblings(".input_contain");
+            input_con.find(".layui-input-sm-inline").last().remove()
+        })
+
+        var goods_id = format3(getQueryString("goods_id"));
+        $.ajax({
+            async: false,
+            url:"/goodsMall/detail",
+            type:"post",
+            data:{
+                "goods_id":goods_id
+            },
+            dataType:"json",
+            success : function (r) {
+                if(r.code == 0){
+                    goodsMall = r.data;
+                    console.log(goodsMall);
+                    //ID
+                    $("#goods_id").val(goodsMall.goods_id);
+                    //货物名称
+                    $("#goods_name").val(goodsMall.goods_name);
+                    //一级类型
+                    $("#one_type").val("Agrochemicals");
+                    /*form.render('select');*/
+                    /*form.render();*/
+                    //二级类型
+                    /*alert(goodsMall.two_type);
+                    var secCateStr = initCateStr(goodsMall.two_type);
+                    $('select[name=two_type]').html(secCateStr);*/
+                    //出售价 最低价
+                    $("#current_price").val(goodsMall.current_price);
+                    //货物纯度
+                    $("#goods_purity").val(goodsMall.goods_purity);
+                    //商品英语名称
+                    $("#goods_name_en").val(goodsMall.goods_name_en);
+                    //CAS
+                    $("#cas").val(goodsMall.cas);
+                    //分子量
+                    $("#molecular_weight").val(goodsMall.molecular_weight);
+                    //PAS
+                    $("#pas").val(goodsMall.pas);
+                    //精确质量
+                    $("#precise_quality").val(goodsMall.precise_quality);
+                    //货物规格
+                    $("#specification").val(goodsMall.specification);
+                    //货期
+                    $("#goods_deliver").val(goodsMall.goods_deliver);
+                    //货物数量
+                    $("#goods_num").val(goodsMall.goods_num);
+                    //数量单位
+                    $("#goods_unit").val(goodsMall.goods_unit);
+                    //市场价-商品
+                    $("#market_price").val(goodsMall.market_price);
+                    //付款方式
+					$("#payment_opt").val(goodsMall.payment_opt);
+                    form.render("select","aihao");
+
+
+					//包装
+                    package(goodsMall.package_opt);
+                    //强度(色力)
+                    intension(goodsMall.color_power);
+					//色光
+                    coloured(goodsMall.color_light);
+
+                    //应用方案（文件）使用说明
+                    $("#application_scheme").val(goodsMall.application_scheme);
+                    //产品图片(商品缩略图)
+                    $("#product_picture").val(goodsMall.product_picture);
+                    //生产状态（文件）
+                    $("#production_state").val(goodsMall.production_state);
+                    //检测报告
+                    $("#detect_report").val(goodsMall.detect_report);
+                    //检测视频
+                    $("#detect_video").val(goodsMall.detect_video);
+                    //UV数据
+                    $("#detect_uv").val(goodsMall.detect_uv);
+                    //测色仪数据
+                    $("#detect_colourimeter").val(goodsMall.detect_colourimeter);
+                    //样品图片
+                    $("#detect_sample_imgs").val(goodsMall.detect_sample_imgs);
+                    //大货图片
+                    $("#detect_bulk_imgs").val(goodsMall.detect_bulk_imgs);
+
+
+					//外观
+					$("#quality_aspect").val(goodsMall.quality_aspect);
+					//水分
+					$("#quality_moisture").val(goodsMall.quality_moisture);
+					//不溶物
+					$("#quality_insoluble").val(goodsMall.quality_insoluble);
+					//溶解度
+					$("#quality_solubility").val(goodsMall.quality_solubility);
+					//氯离子含量
+					$("#quality_clContent").val(goodsMall.quality_clContent);
+					//盐分
+					$("#quality_salinity").val(goodsMall.quality_salinity);
+					//电导率
+					$("#quality_conductivity").val(goodsMall.quality_conductivity);
+					//米氏酮
+					$("#quality_michlerKetone").val(goodsMall.quality_michlerKetone);
+					//固含量
+					$("#quality_solidContent").val(goodsMall.quality_solidContent);
+					//铜离子
+					$("#metal_cu").val(goodsMall.metal_cu);
+					//铅离子
+					$("#metal_pb").val(goodsMall.metal_pb);
+					//锌离子
+					$("#metal_zn").val(goodsMall.metal_zn);
+					//锡离子
+					$("#metal_sn").val(goodsMall.metal_sn);
+					//镍离子
+					$("#metal_ni").val(goodsMall.metal_ni);
+					//钴离子
+					$("#metal_co").val(goodsMall.metal_co);
+					//锑离子
+					$("#metal_sb").val(goodsMall.metal_sb);
+					//汞离子
+					$("#metal_hg").val(goodsMall.metal_hg);
+					//镉离子
+					$("#metal_cd").val(goodsMall.metal_cd);
+					//铋离子
+					$("#metal_bi").val(goodsMall.metal_bi);
+
+                    /**
+					 * 商品类型
+					 * 1自营商品self
+					 * 2用户商品others
+					 * 3自营热销hotSale
+					 *
+					 * */
+					$("#goods_type").val(goodsMall.goods_type);
+                }
+            }
+        })
+		//包装
+		function package(data) {
+			if(data != null && data != "" && data != undefined){
+			    var str = '';
+			    if(data.indexOf(",") > 0){
+			        var arr = data.split(",");
+					for(var i = 0; i < arr.length; i++){
+					    str += '<div class="layui-input-sm-inline">';
+					    str += '	<input type="text" name="package_opt" class="layui-input" value="'+arr[i]+'">';
+					    str += '</div>';
+					}
+				}else {
+                    str += '<div class="layui-input-sm-inline">';
+                    str += '	<input type="text" name="package_opt" class="layui-input" value="'+data+'">';
+                    str += '</div>';
+				}
+				$("#package_opt").html(str);
+			}
+        }
+        //强度(色力)
+		function intension(data) {
+            if(data != null && data != "" && data != undefined){
+                var str = '';
+                if(data.indexOf(",") > 0){
+                    var arr = data.split(",");
+                    for(var i = 0; i < arr.length; i++){
+                        str += '<div class="layui-input-sm-inline">';
+                        str += '	<input type="text" name="color_power" class="layui-input" value="'+arr[i]+'">';
+                        str += '</div>';
+                    }
+                }else {
+                    str += '<div class="layui-input-sm-inline">';
+                    str += '	<input type="text" name="color_power" class="layui-input" value="'+data+'">';
+                    str += '</div>';
+                }
+                $("#color_power").html(str);
+            }
+        }
+        //色光
+        function coloured(data){
+            if(data != null && data != "" && data != undefined){
+                var str = '';
+                if(data.indexOf(",") > 0){
+                    var arr = data.split(",");
+                    for(var i = 0; i < arr.length; i++){
+                        str += '<div class="layui-input-sm-inline">';
+                        str += '	<input type="text" name="color_light" class="layui-input" value="'+arr[i]+'">';
+                        str += '</div>';
+                    }
+                }else {
+                    str += '<div class="layui-input-sm-inline">';
+                    str += '	<input type="text" name="color_light" class="layui-input" value="'+data+'">';
+                    str += '</div>';
+                }
+                $("#color_light").html(str);
+            }
+		}
+
+        /*form.val("formTest", {
+            "goods_name": goodsMall.goods_name
+            ,"one_type": goodsMall.one_type
+            ,"two_type": goodsMall.two_type
+            ,"current_price": goodsMall.current_price
+            ,"goods_purity": goodsMall.goods_purity
+            ,"goods_name_en": goodsMall.goods_name_en
+            ,"cas": goodsMall.cas
+            ,"molecular_weight": goodsMall.molecular_weight
+            ,"pas": goodsMall.pas
+            ,"precise_quality": goodsMall.precise_quality
+            ,"specification": goodsMall.specification
+            ,"goods_deliver": goodsMall.goods_deliver
+            ,"goods_num": goodsMall.goods_num
+            ,"goods_unit": goodsMall.goods_unit
+            ,"market_price": goodsMall.market_price
+            ,"payment_opt": goodsMall.payment_opt
+            ,"transport_opt": goodsMall.transport_opt
+        })*/
+    });
+</script>
+
+</body>
+
+</html>

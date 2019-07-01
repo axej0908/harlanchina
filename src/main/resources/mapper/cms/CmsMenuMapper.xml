@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.CmsMenuDao">
+
+    <sql id="criteria">
+        <where>
+            <if test="type!=null and type!=''">
+                type= #{type}
+            </if>
+            <if test="pub_id!=null and pub_id!=0">
+                and pub_id = #{pub_id}
+            </if>
+            <if test="title!=null and title.trim()!=''">
+                and title = #{title}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="save" parameterType="com.axej.harlan.cms.bean.CmsMenu" useGeneratedKeys="true">
+        insert into cms_menu (
+        nickname,
+        principal,
+        credentials,
+        status,
+        create_time_
+        )
+        values
+        (
+        #{nickname},
+        #{principal},
+        #{credentials},
+        #{status},
+        #{create_time}
+        )
+    </insert>
+
+    <delete id="delete">
+        delete from cms_menu where user_id = #{user_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.cms.bean.CmsMenu">
+        update cms_menu
+        <trim prefix="set" suffixOverrides=",">
+            <if test="nickname!=null and nickname.trim()!=''">nickname=#{nickname},</if>
+            <if test="principal!=null and principal.trim()!=''">principal=#{principal},</if>
+            <if test="credentials!=null and credentials.trim()!=''">credentials=#{credentials},</if>
+            <if test="status!=null and status.trim()!=''">status=#{status},</if>
+            <if test="create_time!=null and create_time.trim()!=''">create_time=#{create_time}</if>
+        </trim>
+        where user_id = #{user_id}
+    </update>
+
+    <select id="queryObject" resultType="com.axej.harlan.cms.bean.CmsMenu">
+        select * from cms_menu
+        <where>
+            <if test="user_id!=null and user_id!=0">
+                user_id = #{user_id}
+            </if>
+            <if test="principal!=null and principal.trim()!=''">
+                and principal = #{principal}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.cms.bean.CmsMenu">
+        select
+        cms_menu.menu_id id ,cms_menu.*
+        from cms_menu
+        <include refid="criteria"></include>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from cms_menu
+        <include refid="criteria"></include>
+    </select>
+    
+    <select id="queryUserList" parameterType="map" resultType="com.axej.harlan.cms.bean.CmsMenu">
+        select
+            cm.*,
+            cm.menu_id id
+        from
+            cms_user cu
+        left join cms_user_role cur on cu.user_id = cur.user_id
+        left join cms_role_menu crm on cur.role_id = crm.role_id
+        left join cms_menu cm on crm.menu_id = cm.menu_id
+        <where>
+            <if test="user_id != 0">
+                cu.user_id = #{user_id}
+            </if>
+        </where>
+    </select>
+
+</mapper>

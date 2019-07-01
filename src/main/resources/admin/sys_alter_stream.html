@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<style type="text/css">
+    .layui-layedit{
+        margin-left:60px;
+    }
+    .layui-input-block{
+        margin-left:60px;
+    }
+
+</style>
+<body>
+<form class="layui-form" action="" style="width: 800px; margin-left: 50px; margin-top: 20px;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">名称:</label>
+        <div class="layui-input-block">
+            <input type="text" name="updown_name" id="updown_name" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+
+    <label class="layui-form-label">内容:</label>
+    <div class="layui-form-item">
+        <textarea class="layui-textarea" id="updown_stream" style="display: block; margin-left:60px; "></textarea>
+    </div>
+
+    <input type="tel" name="updown_id" id="updown_id" style="display: none">
+    <input type="tel" name="cpd_id" id="cpd_id" style="display: none">
+
+    <div class="layui-form-item" style="margin-top: 20px;">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+<!--<div class="site-demo-button" style="margin-top: 20px;">
+    <button class="layui-btn site-demo-layedit" data-type="content">获取编辑器内容</button>
+    <button class="layui-btn site-demo-layedit" data-type="text">获取编辑器纯文本内容</button>
+    <button class="layui-btn site-demo-layedit" data-type="selection">获取编辑器选中内容</button>
+</div>-->
+<script src="./plugins/layui/layui.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="plugins/jquery/jQueryURL.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', 'upload'], function(){
+        var form = layui.form,
+            $ = layui.jquery,
+            upload = layui.upload;
+            layedit = layui.layedit;
+
+        $(function () {
+            var updown_id = getQueryString("updown_id");
+            initTable(updown_id);
+        });
+
+
+        //构建一个默认的编辑器
+       /* var index = layedit.build('LAY_demo');*/
+
+        //编辑器外部操作
+        var active = {
+            content: function(){
+                alert(layedit.getContent(index)); //获取编辑器内容
+            }
+            ,text: function(){
+                alert(layedit.getText(index)); //获取编辑器纯文本内容
+            }
+            ,selection: function(){
+                alert(layedit.getSelection(index));
+            }
+        };
+
+        $('.site-demo-layedit').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //自定义工具栏
+        layedit.build('LAY_demo2', {
+            tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
+            ,height: 100
+        });
+
+
+        layedit.set({
+            uploadImage: {
+                url: '/cmsNews/upload',
+                type: 'post'
+            }
+        });
+
+        var editIndex = layedit.build('updown_stream', {
+            height: 400
+        });
+
+        form.on('submit(demo1)', function (data) {
+            //合成路线
+            data.field.updown_stream = layedit.getContent(editIndex);
+            $.ajax({
+                url: '/upDownStream/alter',
+                type: 'post',
+                data: data.field,
+                dataType: 'json',
+                success: function (r) {
+                    if (r.code == 0) {
+                        alert("success");
+                        window.open("sys_synthetic_route.html?cpd_id="+data.field.cpd_id , "_self");
+                    }else {
+                        alert("failde");
+                    }
+                }
+            });
+            return false;
+        });
+
+        function initTable(updown_id) {
+            $.ajax({
+                url:'/upDownStream/get',
+                type:"post",
+                data:{
+                    updown_id:updown_id
+                },
+                dataType:"json",
+                success : function (r) {
+                    if(r.code == 0){
+                        $("#updown_id").val(r.data.updown_id);
+                        $("#cpd_id").val(r.data.cpd_id);
+                        //名称
+                        $("#updown_name").val(r.data.updown_name);
+                        //合成路线
+                        layedit.setContent(editIndex,r.data.updown_stream);
+                    }
+                }
+            })
+        }
+    });
+</script>
+</body>
+</html>

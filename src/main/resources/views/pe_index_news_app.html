@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HarLan | Better Applying Chemistry</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pe_index_news_app.css"/>
+</head>
+
+<body>
+<div id="rrapp">    
+    <div class="entire">       
+        <div class="second">
+            <div class="second_title">
+                <div class="second_title_top">{{news.news_title}}</div>
+                <div class="second_title_cent">
+                	<span>http://www.harlanchina.com</span><a href="">HarLanChina</a>
+                	<p>{{news.create_time}}</p>
+                </div>
+            </div>
+            <div class="second_cont">
+                <div id="editor" v-html="news.news_content"></div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+</body>
+<script type="text/javascript" src="js/jQuery/jquery-1.11.2.js"></script>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/common.js"></script>
+<script src="ueditor/ueditor.config.js"></script>
+<script src="ueditor/ueditor.all.js"> </script>
+<script src="plugins/vue/vue.min.js"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<script src="js/top_bottom.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/pe_index_news.js" type="text/javascript" charset="utf-8"></script>
+</html>

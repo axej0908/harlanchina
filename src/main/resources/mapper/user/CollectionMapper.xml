@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.user.dao.CollectionDao">
+
+    <insert id="save" parameterType="com.axej.harlan.user.bean.CollectionBean">
+        <selectKey keyProperty="col_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_collect (
+        user_id,
+        col_type,
+        mer_id,
+        product_picture,
+        cargo_name,
+        cargo_purity,
+        market_price,
+        checked,
+        shop_id,
+        com_name,
+        com_logo
+        )
+        values
+        (
+        #{user_id},
+        #{col_type},
+        #{mer_id},
+        #{product_picture},
+        #{cargo_name},
+        #{cargo_purity},
+        #{market_price},
+        #{checked},
+        #{shop_id},
+        #{com_name},
+        #{com_logo}
+        )
+    </insert>
+
+    <delete id="delete">
+        delete from sys_collect where col_id = #{col_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.user.bean.CollectionBean">
+        update sys_collect
+        <set>
+            <if test="col_type != null and col_type.trim()!=''">col_type=#{col_type},</if>
+            <if test="mer_id != null and mer_id.trim()!=''">mer_id=#{mer_id},</if>
+            <if test="product_picture != null and product_picture.trim()!=''">product_picture=#{product_picture},</if>
+            <if test="cargo_name != null and cargo_name.trim()!=''">cargo_name=#{cargo_name},</if>
+            <if test="cargo_purity != null and cargo_purity.trim()!=''">cargo_purity=#{cargo_purity},</if>
+            <if test="market_price != null and market_price.trim()!=''">market_price=#{market_price},</if>
+            <if test="checked != null and checked.trim()!=''">checked=#{checked},</if>
+            <if test="shop_id != null and shop_id.trim()!=''">shop_id=#{shop_id},</if>
+            <if test="com_name != null and com_name.trim()!=''">com_name=#{com_name},</if>
+            <if test="com_logo != null and com_logo.trim()!=''">com_logo=#{com_logo},</if>
+        </set>
+        where col_id = #{col_id}
+    </update>
+
+    <select id="queryObject" parameterType="map" resultType="com.axej.harlan.user.bean.CollectionBean">
+        select * from sys_collect
+        <where>
+            <if test="user_id!=null and user_id!=0">
+                user_id = #{user_id}
+            </if>
+            <if test="col_id!=null and col_id!=0">
+                and col_id = #{col_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.user.bean.CollectionBean">
+        select * from sys_collect
+        <where>
+            <if test="user_id!=null">
+                and user_id = #{user_id}
+            </if>
+            <if test="col_type!=null and col_type.trim()!=''">
+                and col_type = #{col_type}
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from sys_collect
+        <where>
+            <if test="user_id!=null">
+                user_id = #{user_id}
+            </if>
+            <if test="col_type!=null and col_type.trim()!=''">
+                and col_type = #{col_type}
+            </if>
+        </where>
+    </select>
+
+</mapper>

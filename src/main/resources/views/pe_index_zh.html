@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pe_index.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<div class="entire" id="rrapp">
+ <!--顶部区域开始-->
+		<div class="header">
+			<div class="header_sub">
+				<ul class="header_fl">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="new_explain16_c.html">合作与服务</a></li>
+					<li><a href="shop_cart_en.html">我的购物车 </a></li>
+				</ul>
+				<ul class="header_fr">
+					<li><a href="login_zh.html">退出</a></li>
+					<li><a href="pe_index_zh.html">我的化浪</a></li>
+					<li><a href="new_explain17_c.html">帮助中心</a></li>
+					
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+        <!------------------顶部区域结束-------------->
+    <div class="first">
+        <div class="first_sub">
+           <a href="index.html"><div class="logo"></div></a>
+            <ul class="mn_list">
+                <li class="mn_active"><a href="pe_index_zh.html">首页</a></li>
+                <li><a @click="lnkInfo">我的资料</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="second">
+        <div class="second_sub">
+            <div class="second_mn">
+               <ul class="second_mn_list">
+                    <li><a href="pbm_order_seller1.html">我的订单</a></li>
+                    <li><a href="pe_index_f_zh.html">我的商品</a></li>
+                    <li><a href="pe_index_vip.html">我的会员</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=01">申请国际市场开拓</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=02">申请知识产权分析</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=03">申请供应链金融</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=04">申请交易补贴</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=05">申请报关商检</a></li>
+                    <li><a href="pe_data_query_zh.html?type=data">采购数据查询</a></li>
+                    <li><a href="pe_data_query_zh.html?type=credit">采购商征信查询</a></li>
+                    <li><a href="my_free_search_zh.html">系统询盘</a></li>
+                    <li><a href="pe_index_inquiry_x_zh.html">供应商询盘</a></li>
+                    <li><a href="pe_index_inquiry_zh.html">待处理询盘</a></li>
+                    <li><a href="pe_index_inquiry2_zh.html">已处理询盘</a></li>
+                </ul>
+                <div class="mn_bg"></div>
+            </div>
+            <div class="second_two">
+                <div class="second_two_a">
+                    <div class="head_div">
+                        <div class="head_op">
+                            <div class="head_pic" :style="'backgroundImage:url('+user.user_photo+')'"></div>
+                            <div class="hh_op">
+                                <p class="h_nm">{{user.user_name}}</p>
+                                <p class="h_edit"><a href="pe_data_a_zh.html">完善资料</a></p>
+                            </div>
+                            <div class="open_shop_btn" @click="preOpenShop">我要开店</div>
+                            <div class="open_shop"></div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="order_div">
+                        <div class="order_div_til">
+                            <div class="order_til_l">
+                                订单最新动态
+                            </div>
+                            <div class="order_til_r">
+                                我的供货订单
+                            </div>
+                        </div>
+                        <div class="order_list">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+     
+   <div class="foot_bottom">
+    <div class="foot_sub">
+        <div class="download">
+            <div class="load_txt">下载 :</div>
+            <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+            <div class="load_pic_b"><a href="hualang.apk"></a></div>
+        </div>
+        <div class="a_txt">
+            <a href="new_explain14_c.html">联系我们</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain15_c.html">联系客服</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain16_c.html">合作招商</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain17_c.html">商家帮助</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain18_c.html">手机化浪</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="search.html">产品库</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain20_c.html">友情链接</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain21_c.html">隐私政策</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain22_c.html">法律声明</a>
+        </div>
+        <div class="foot_line"></div>
+        <div class="a_txt_b">
+            按字母顺序浏览 ：
+            <a href="new_explain17_c.html">Onetouch</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain17_c.html">陈列室 </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain17_c.html">国家搜索 </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="master.html">供应商</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="master.html">批发商 </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain16_c.html">加盟 产品列表政策 - 知识产权保护</a>
+        </div>
+        <div class="a_txt_b">
+            产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+        </div>
+        <div class="a_txt_b">
+             copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+        </div>
+    </div>
+</div>
+    </div>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/base64.js"></script>
+<script src="lib/common.js"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/pe_index.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/pe_index1.js"></script>
+</body>
+</html>

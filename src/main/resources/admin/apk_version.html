@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+
+    <title>Document</title>
+</head>
+<style type="text/css">
+    html { width:100%; height:100%; }
+    body{background:#E0E0E0 repeat-x 0}
+    .button {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font: 14px/100% Arial, Helvetica, sans-serif;
+        padding: .5em 2em .55em;
+        text-shadow: 0 1px 1px rgba(0,0,0,.3);
+        -webkit-border-radius: .5em;
+        -moz-border-radius: .5em;
+        border-radius: .5em;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    }
+    .button:hover {
+        text-decoration: none;
+    }
+    .button:active {
+        position: relative;
+        top: 1px;
+    }
+    table.gridtable {
+        font-family: verdana,arial,sans-serif;
+        font-size:12px;
+        color:#333333;
+        border-width: 2px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+    table.gridtable th {
+        border-width: 2px;
+        padding: 10px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #dedede;
+    }
+    table.gridtable td {
+        border-width: 2px;
+        padding: 10px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #ffffff;
+    }
+</style>
+
+<body>
+
+<div id="rrapp">
+    <div style="margin: 145px auto;width: 36%;">
+        <table class="gridtable" style="width: 371px;" >
+            <tr>
+                <th>编号</th><th style="width: 72px;">版本号</th><th style="width: 85px;">更新时间</th><th>是否强制</th>
+            </tr>
+            <tr id="vers">
+                <td>1</td><td>{{apk.apk_num}}</td><td>{{apk.apk_time}}</td>
+                <td v-if="apk.is_coercion == 'true'">是</td>
+                <td v-if="apk.is_coercion == 'false'">否</td>
+            </tr>
+
+        </table>
+    </div>
+    <div style="margin: 80px auto;width: 36%;">
+        <table class="gridtable">
+            <tr>
+                <th>标 题</th><th>内 容</th>
+            </tr>
+            <tr>
+                <td>版本号</td><td><input type="text" name="apk_num" v-model="obj.apk_num"/></td>
+            </tr>
+            <tr>
+                <td>app安装包</td><td><input type="file" name="apk" id="apk" @change="upload"/></td>
+            </tr>
+            <tr>
+                <td>是否强制更新</td>
+                <td>
+                    <label><input name="is_coercion" type="radio"  value="true" >是</label>
+                    <label><input name="is_coercion"  type="radio" value="false" >否</label>
+                </td>
+            </tr>
+        </table>
+        <div style="margin: 20px auto;width: 10%;">
+            <input class="button" type="button" value="提交" @click="sub" />
+        </div>
+        <div style="margin: 20px auto;width: 10%;color: red">
+        </div>
+    </div>
+</div>
+<canvas height="100%" width="100%" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 1;"  id="canvas"></canvas>
+<script src="js/jquery-1.11.2.js"></script>
+<script src="js/ajaxfileupload.js"></script>
+<script src="js/vue/vue.min.js"></script>
+<script src="lib/apk_version.js"></script>
+<script>
+    var canvas,
+        ctx,
+        width,
+        height,
+        size,
+        lines,
+        tick;
+
+    function line() {
+        this.path = [];
+        this.speed = rand(10, 20);
+        this.count = randInt(10, 30);
+        this.x = width / 2, +1;
+        this.y = height / 2 + 1;
+        this.target = {
+            x: width / 2,
+            y: height / 2
+        };
+        this.dist = 0;
+        this.angle = 0;
+        this.hue = tick / 5;
+        this.life = 1;
+        this.updateAngle();
+        this.updateDist();
+    }
+
+    line.prototype.step = function(i) {
+        this.x += Math.cos(this.angle) * this.speed;
+        this.y += Math.sin(this.angle) * this.speed;
+
+        this.updateDist();
+
+        if (this.dist < this.speed) {
+            this.x = this.target.x;
+            this.y = this.target.y;
+            this.changeTarget();
+        }
+
+        this.path.push({
+            x: this.x,
+            y: this.y
+        });
+        if (this.path.length > this.count) {
+            this.path.shift();
+        }
+
+        this.life -= 0.001;
+
+        if (this.life <= 0) {
+            this.path = null;
+            lines.splice(i, 1);
+        }
+    };
+
+    line.prototype.updateDist = function() {
+        var dx = this.target.x - this.x,
+            dy = this.target.y - this.y;
+        this.dist = Math.sqrt(dx * dx + dy * dy);
+    }
+
+    line.prototype.updateAngle = function() {
+        var dx = this.target.x - this.x,
+            dy = this.target.y - this.y;
+        this.angle = Math.atan2(dy, dx);
+    }
+
+    line.prototype.changeTarget = function() {
+        var randStart = randInt(0, 3);
+        switch (randStart) {
+            case 0: // up
+                this.target.y = this.y - size;
+                break;
+            case 1: // right
+                this.target.x = this.x + size;
+                break;
+            case 2: // down
+                this.target.y = this.y + size;
+                break;
+            case 3: // left
+                this.target.x = this.x - size;
+        }
+        this.updateAngle();
+    };
+
+    line.prototype.draw = function(i) {
+        ctx.beginPath();
+        var rando = rand(0, 10);
+        for (var j = 0, length = this.path.length; j < length; j++) {
+            ctx[(j === 0) ? 'moveTo' : 'lineTo'](this.path[j].x + rand(-rando, rando), this.path[j].y + rand(-rando, rando));
+        }
+        ctx.strokeStyle = 'hsla(' + rand(this.hue, this.hue + 30) + ', 80%, 55%, ' + (this.life / 3) + ')';
+        ctx.lineWidth = rand(0.1, 2);
+        ctx.stroke();
+    };
+
+    function rand(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    function randInt(min, max) {
+        return Math.floor(min + Math.random() * (max - min + 1));
+    };
+
+    function init() {
+        canvas = document.getElementById('canvas');
+        ctx = canvas.getContext('2d');
+        size = 30;
+        lines = [];
+        reset();
+        loop();
+    }
+
+    function reset() {
+        width = Math.ceil(window.innerWidth / 2) * 2;
+        height = Math.ceil(window.innerHeight / 2) * 2;
+        tick = 0;
+
+        lines.length = 0;
+        canvas.width = width;
+        canvas.height = height;
+    }
+
+    function create() {
+        if (tick % 10 === 0) {
+            lines.push(new line());
+        }
+    }
+
+    function step() {
+        var i = lines.length;
+        while (i--) {
+            lines[i].step(i);
+        }
+    }
+
+    function clear() {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = 'hsla(0, 0%, 0%, 0.1';
+        ctx.fillRect(0, 0, width, height);
+        ctx.globalCompositeOperation = 'lighter';
+    }
+
+    function draw() {
+        ctx.save();
+        ctx.translate(width / 2, height / 2);
+        ctx.rotate(tick * 0.001);
+        var scale = 0.8 + Math.cos(tick * 0.02) * 0.2;
+        ctx.scale(scale, scale);
+        ctx.translate(-width / 2, -height / 2);
+        var i = lines.length;
+        while (i--) {
+            lines[i].draw(i);
+        }
+        ctx.restore();
+    }
+
+    function loop() {
+        requestAnimationFrame(loop);
+        create();
+        step();
+        clear();
+        draw();
+        tick++;
+    }
+
+    function onresize() {
+        reset();
+    }
+
+    window.addEventListener('resize', onresize);
+
+    init();
+
+    }
+
+</script>
+
+</body>
+</html>

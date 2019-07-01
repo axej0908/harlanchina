@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.order.dao.OrderDao">
+    
+    <insert id="save" parameterType="com.axej.harlan.order.bean.OrderBean">
+        insert into order_biz (
+        order_id,
+        buyer_id,
+        seller_id,
+        total_money,
+        addr_id,
+        supv_id,
+        check_state,
+        super_state,
+        place_time,
+        pay_time,
+        done_time,
+        transport_corporation,
+        transport_number,
+        payment_opt,
+        color_light,
+        color_power,
+        goods_id,
+        status,
+        chain_state,
+        goods_name,
+        goods_price,
+        goods_num,
+        contract,
+        package_opt
+        )
+        values
+        (
+        #{order_id},
+        #{buyer_id},
+        #{seller_id},
+        #{total_money},
+        #{addr_id},
+        #{supv_id},
+        #{check_state},
+        #{super_state},
+        #{place_time},
+        #{pay_time},
+        #{done_time},
+        #{transport_corporation},
+        #{transport_number},
+        #{payment_opt},
+        #{color_light},
+        #{color_power},
+        #{goods_id},
+        #{status},
+        #{chain_state},
+        #{goods_name},
+        #{goods_price},
+        #{goods_num},
+        #{contract},
+        #{package_opt}
+        )
+    </insert>
+
+    <delete id="cancel">
+        delete from order_biz
+        <where>
+            <if test="order_id!=null and order_id!=''">order_id = #{order_id}</if>
+        </where>
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.order.bean.OrderBean">
+        update order_biz
+        <set>
+            <if test="order_id!=null">order_id=#{order_id},</if>
+            <if test="buyer_id!=null and buyer_id!=0">buyer_id=#{buyer_id},</if>
+            <if test="seller_id!=null and seller_id!=0">seller_id=#{seller_id},</if>
+            <if test="check_state !=null">check_state=#{check_state},</if>
+            <if test="super_state != null">super_state=#{super_state},</if>
+            <if test="total_money!=null and total_money!=''">total_money=#{total_money},</if>
+            <if test="addr_id!=null and addr_id!=0">addr_id=#{addr_id},</if>
+            <if test="supv_id!=null and supv_id!=0">supv_id=#{supv_id},</if>
+            <if test="place_time!=null and place_time!=''">place_time=#{place_time},</if>
+            <if test="pay_time!=null and pay_time!=''">pay_time=#{pay_time},</if>
+            <if test="done_time!=null and done_time!=''">done_time=#{done_time},</if>
+            <if test="transport_corporation!=null and transport_corporation!=''">
+                transport_corporation=#{transport_corporation},
+            </if>
+            <if test="transport_number!=null and transport_number!=''">transport_number=#{transport_number},</if>
+            <if test="payment_opt!=null and payment_opt!=''">payment_opt=#{payment_opt},</if>
+            <if test="status != null and status != ''">status=#{status},</if>
+            <if test="chain_state!=null and chain_state.trim()!=''">chain_state=#{chain_state}</if>
+        </set>
+        where order_id = #{order_id}
+    </update>
+
+    <select id="detail" resultType="map">
+        select * from view_shop_order
+        <where>
+            <if test="order_id!=null">
+                order_id = #{order_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.order.bean.OrderBean">
+        select * from order_biz
+        <where>
+            <if test="status!=null and status.trim()!=''">
+                status = #{status}
+            </if>
+            <if test="buyer_id!=null">
+                and buyer_id = #{buyer_id}
+            </if>
+            <if test="seller_id!=null">
+                and seller_id = #{seller_id}
+            </if>
+        </where>
+        order by order_time,pay_time,finish_time desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from order_biz
+        <where>
+            <if test="status!=null and status.trim()!=''">
+                status = #{status}
+            </if>
+            <if test="buyer_id!=null">
+                and buyer_id = #{buyer_id}
+            </if>
+            <if test="seller_id!=null">
+                and seller_id = #{seller_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="querySupplyOrdersList" parameterType="map" resultType="com.axej.harlan.order.bean.OrderBean">
+        SELECT * FROM view_shop_order
+        <where>
+            <if test="status!=null and status!=''">
+                status = #{status}
+            </if>
+            <if test="1 == 1">
+                and status != '0'
+            </if>
+            <if test="chain_state!=null and chain_state.trim()!=''">
+                and chain_state != #{chain_state}
+            </if>
+            <if test="1==1">
+                and user_id = #{user_id}
+            </if>
+        </where>
+        order by place_time DESC
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="querySupplyOrdersTotal" parameterType="map" resultType="int">
+        SELECT COUNT(1) FROM view_shop_order
+        <where>
+            <if test="status!=null and status!=''">
+                status = #{status}
+            </if>
+            <if test="1 == 1">
+                and status != '0'
+            </if>
+            <if test="chain_state!=null and chain_state.trim()!=''">
+                and chain_state != #{chain_state}
+            </if>
+            <if test="1==1">
+                and user_id = #{user_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryPurchaseOrdersList" parameterType="map" resultType="com.axej.harlan.order.bean.OrderBean">
+        select * from view_shop_order
+        <where>
+            <if test="status!=null and status!=''">
+                status = #{status}
+            </if>
+            <if test="1 == 1">
+                and status != '0'
+            </if>
+            <if test="chain_state != null and chain_state.trim()!=''">
+                and chain_state != #{chain_state}
+            </if>
+            <if test="buyer_id!=null and buyer != 0">
+                and buyer_id = #{buyer_id}
+            </if>
+        </where>
+        order by place_time desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryPurchaseOrdersTotal" parameterType="map" resultType="int">
+        SELECT count(1) FROM view_shop_order
+        <where>
+            <if test="status!=null and status!=''">
+                status = #{status}
+            </if>
+            <if test="1 == 1">
+                and status != '0'
+            </if>
+            <if test="chain_state != null and chain_state.trim()!=''">
+                and chain_state != #{chain_state}
+            </if>
+            <if test="buyer_id!=null and buyer != 0">
+                and buyer_id = #{buyer_id}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateOrderStateById" parameterType="com.axej.harlan.order.bean.OrderBean">
+        update order_biz
+        <set>
+            <if test="status!=null and status!=''">
+                status = #{status}
+            </if>
+            <if test="chain_state!=null and chain_state.trim()!=''">
+                chain_state = #{chain_state}
+            </if>
+        </set>
+        where order_id = #{order_id}
+    </update>
+    
+    <select id="queryTimeOrderList" parameterType="map" resultType="com.axej.harlan.order.bean.OrderBean">
+        SELECT * FROM view_shop_order
+        <where>
+            <if test="status!=null and status!=''">
+                status = #{status}
+            </if>
+            <if test="1==1">
+                AND buyer_id = #{buyer_id}
+            </if>
+            <if test="start != null">
+                AND place_time &gt; #{start}
+            </if>
+            <if test="end != null">
+                AND place_time &lt; #{end}
+            </if>
+        </where>
+        order by place_time DESC
+    </select>
+
+    <select id="queryTimeOrderTotal" parameterType="map" resultType="int">
+        SELECT COUNT(1) FROM view_shop_order
+        <where>
+            <if test="status!=null and status!=''">
+                status = #{status}
+            </if>
+            <if test="1==1">
+                AND buyer_id = #{buyer_id}
+            </if>
+            <if test="start != null">
+                AND place_time &gt; #{start}
+            </if>
+            <if test="end != null">
+                AND place_time &lt; #{end}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryNameOrderList" parameterType="map" resultType="com.axej.harlan.order.bean.OrderBean">
+        SELECT * FROM view_shop_order
+        <where>
+            <if test="status!=null and status!=''">
+                status = #{status}
+            </if>
+            <if test="1==1">
+                AND buyer_id = #{buyer_id}
+            </if>
+            <if test="goods_name != null">
+                AND goods_name like CONCAT(CONCAT('%',#{goods_name}),'%')
+            </if>
+        </where>
+        order by place_time DESC
+    </select>
+
+    <select id="queryNameOrderTotal" parameterType="map" resultType="int">
+        SELECT COUNT(1) FROM view_shop_order
+        <where>
+            <if test="status!=null and status!=''">
+                status = #{status}
+            </if>
+            <if test="1==1">
+                AND buyer_id = #{buyer_id}
+            </if>
+            <if test="goods_name != null">
+                AND goods_name like CONCAT(CONCAT('%',#{goods_name}),'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="queryObject" parameterType="com.axej.harlan.order.bean.OrderBean" resultType="com.axej.harlan.order.bean.OrderBean">
+        SELECT * FROM order_biz WHERE order_id = #{order_id}
+    </select>
+
+    <select id="checkOrder" parameterType="map" resultType="com.axej.harlan.order.bean.OrderBean">
+        SELECT * FROM order_biz
+        <where>
+            <if test="check_state!=null">
+                check_state = #{check_state}
+            </if>
+            <if test="1 == 1">
+                and status != '0'
+            </if>
+        </where>
+        order by place_time DESC
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="checkTotal" parameterType="map" resultType="int">
+        SELECT COUNT(1) FROM order_biz
+        <where>
+            <if test="check_state!=null">
+                check_state = #{check_state}
+            </if>
+            <if test="1 == 1">
+                and status != '0'
+            </if>
+        </where>
+    </select>
+
+    <select id="superOrder" parameterType="map" resultType="com.axej.harlan.order.bean.OrderBean">
+        SELECT * FROM order_biz
+        <where>
+            <if test="super_state!=null">
+                super_state = #{super_state}
+            </if>
+        </where>
+        order by place_time DESC
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="superTotal" parameterType="map" resultType="int">
+        SELECT COUNT(1) FROM order_biz
+        <where>
+            <if test="super_state!=null">
+                super_state = #{super_state}
+            </if>
+        </where>
+    </select>
+    
+    <select id="dimOrder" parameterType="map" resultType="com.axej.harlan.order.bean.OrderBean">
+        select
+            ob.*,
+            oc.upload as upload
+        from
+            info_goods ig
+        join order_biz ob on ig.goods_id = ob.goods_id
+        left join order_chain oc on ob.order_id = oc.order_id
+        <where>
+            <if test="status != null">
+                ob.status = #{status}
+            </if>
+            <choose>
+                <when test="chain_state != null">
+                    and ob.chain_state = #{chain_state}
+                </when>
+                <otherwise>
+                    and (ob.chain_state = '0' or ob.chain_state = '1')
+                </otherwise>
+            </choose>
+            <if test="goods_type != null">
+                and ig.goods_type like CONCAT(CONCAT('%',#{goods_type}),'%')
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="dimTotal" parameterType="map" resultType="int">
+        select
+            count(1)
+        from
+            info_goods ig
+        join order_biz ob on ig.goods_id = ob.goods_id
+        left join order_chain oc on ob.order_id = oc.order_id
+        <where>
+            <if test="status != null">
+                ob.status = #{status}
+            </if>
+            <choose>
+                <when test="chain_state != null">
+                    and ob.chain_state = #{chain_state}
+                </when>
+                <otherwise>
+                    and (ob.chain_state = '0' or ob.chain_state = '1')
+                </otherwise>
+            </choose>
+            <if test="goods_type != null">
+                and ig.goods_type like CONCAT(CONCAT('%',#{goods_type}),'%')
+            </if>
+        </where>
+    </select>
+</mapper>

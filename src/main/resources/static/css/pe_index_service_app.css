@@ -1,0 +1,97 @@
+html,body{
+	font-family: "微软雅黑";
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.my_fw{
+	width: 100%;
+	height: 2rem;
+	position: absolute;
+	top: 0rem;
+	left: 0;
+	overflow-x: auto;
+}
+.tab_div{
+	width: 187%;
+	height: 100%;
+	margin: 0 auto;	
+}
+.tab_div li{
+	width: 5rem;
+	height: 100%;
+	float: left;
+	font-size: 0.7rem;
+	color: #333333;
+	text-align: center;
+	line-height: 2rem;
+	margin-left: %;
+}
+.tab_li_current{
+	color: #317EE7 !important; 
+	font-weight: bold;
+}
+.tab_li_current span{
+	border-bottom: 0.1rem #317EE7 solid;
+}
+.main{
+	width: 100%;
+	height: calc(100% - 2rem);
+	background-color: #FFFFFF;
+	position: absolute;
+	top: 2rem;
+	left: 0;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	padding-bottom: 1rem;
+	background-color: #f2f2f2;
+}
+.main_con{
+	width: 100%;
+	height: auto;
+	padding: 0;
+	font-size: 0.65rem;
+	color: #666666;
+	margin-top: 0.5rem;
+	background-color: #FFFFFF;
+}
+.con_head{
+	width: 100%;
+	height: 2rem;
+	padding: 0 4%;
+	border-bottom: 1px #333333 solid;
+	line-height: 2rem;
+}
+.head_r{
+	color: #317EE7;
+}
+.con_body{
+	width: 100%;
+	line-height: 1.8rem;
+	padding: 0 4%;
+}
+.con_foot{
+	padding: 0 4%;
+	width: 100%;
+	height: 2.5rem;
+	border-top: 1px #333333 solid;
+}
+.jc_btn{
+	float: right;
+	width: 4rem;
+	height: 1.6rem;
+	line-height: 1.6rem;
+	text-align: center;
+	color: #317EE7;
+	border: 1px #317EE7 solid;
+	border-radius: 0.8rem;
+	margin-top: 0.45rem;
+	margin-right: 0.5rem;
+}

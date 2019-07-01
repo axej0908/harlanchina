@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.user.dao.AuthDao">
+
+    <insert id="save" parameterType="com.axej.harlan.user.bean.AuthBean">
+        <selectKey keyProperty="auth_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_auth (
+        real_name,
+        id_card,
+        opposite_pic,
+        negative_pic,
+        user_id
+        )
+        values
+        (
+        #{real_name},
+        #{id_card},
+        #{opposite_pic},
+        #{negative_pic},
+        #{user_id}
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.axej.harlan.user.bean.AuthBean">
+        delete from sys_auth
+        <where>
+            <if test="auth_id!=null">auth_id = #{auth_id}</if>
+        </where>
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.user.bean.AuthBean">
+        update sys_auth
+        <set>
+           <if test="real_name!=null and real_name!=''">real_name = #{real_name},</if>
+           <if test="id_card!=null and id_card!=''">id_card = #{id_card},</if>
+           <if test="opposite_pic!=null and opposite_pic!=''">opposite_pic = #{opposite_pic},</if>
+           <if test="negative_pic!=null and negative_pic!=''">negative_pic = #{negative_pic},</if>
+           <if test="is_audit!=null and is_audit!=''">is_audit = #{is_audit},</if>
+           <if test="user_id!=null and user_id!=''">user_id = #{user_id}</if>
+        </set>
+        where auth_id = #{auth_id}
+    </update>
+
+    <select id="queryObject" parameterType="com.axej.harlan.user.bean.AuthBean" resultType="com.axej.harlan.user.bean.AuthBean">
+        select * from sys_auth
+        <where>
+            <if test="user_id!=0">
+                user_id = #{user_id}
+            </if>
+            <if test="auth_id!=0">
+                and auth_id = #{auth_id}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>系统询盘已受理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css">
+    <style type="text/css">
+        .layui-form-label {
+            padding: 9px 3px;
+            min-width: 56px;
+        }
+
+        .layui-table-cell {
+            height: inherit;
+        }
+
+        .txt_div {
+            width: 100%;
+            max-height: 81px;
+            white-space: normal;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+<body>
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <!--筛选条件开始-->
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">开始时间：</label>
+            <div class="layui-input-inline">
+                <input type="text" id="dt_a" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">结束时间：</label>
+            <div class="layui-input-inline">
+                <input type="text" id="dt_b" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-btn" id="search">搜索</div>
+    </div>
+    <!--筛选条件结束-->
+    <table class="layui-table" lay-filter="test" id="test"></table>
+    <!---->
+</div>
+<!--表格工具条模板-->
+<script type="text/html" id="barDemo">
+    <a href="#" class="layui-btn layui-btn layui-btn-mini" lay-event="detail">详情</a>
+</script>
+<!---->
+<!--留言模板-->
+<!--<script type="text/html" id="node_div">
+    <div class="txt_div">授权</div>
+</script>-->
+<!--商品链接模板-->
+<script type="text/html" id="see_detail">
+    <a href="#" class="see_link"/></div>
+</script>
+<script src="./plugins/layui/layui.js"></script>
+<script>
+    layui.use(['form', 'laydate', "table", "jquery"], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            laydate = layui.laydate,
+            $ = layui.jquery,
+            table = layui.table;
+
+
+        /**
+         * 4.row obj operation
+         */
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            var tr = obj.tr;
+            if (layEvent === 'detail') {
+                window.location.href = "o_xp_detail.html?goods_id="+data.goods_id;
+                //window.open("o_xp_detail.html?goods_id="+data.goods_id,"_blank")
+            }
+        });
+
+        /**
+         * 3.query by Date
+         */
+        $("#search").click(function () {
+            queryByCriteria();
+        });
+
+        function queryByCriteria() {
+            if (start_dt == undefined || end_dt == undefined) {
+                layer.msg("check date first");
+                return false;
+            }
+            if (new Date(start_dt).getTime() > new Date(end_dt).getTime()) {
+                layer.alert('开始日期不能大于结束日期', {
+                    title: "warn",
+                    skin: 'layer-ext-moon'
+                });
+                return false;
+            }
+            tableIns.reload({
+                where: {
+                    goods_type: "enquiry", goods_state: "up", beginTime: start_dt, limitTime: end_dt
+                }, page: {
+                    curr: 1
+                }
+            });
+        }
+
+        /**
+         * 2.start and limit time
+         */
+        var start_dt = undefined;
+        var end_dt = undefined;
+        laydate.render({
+            elem: '#dt_a',
+            type: 'date',
+            done: function (value, date, endDate) {
+                start_dt = value;
+            }
+        });
+        laydate.render({
+            elem: '#dt_b',
+            type: 'date',
+            done: function (value, date, endDate) {
+                end_dt = value;
+            }
+        });
+
+        /**
+         * 1.preload table
+         */
+        var tableIns = table.render({
+            elem: '#test',
+            url: '/cmsEnquiry/pager',
+            where: {goods_type: "enquiry", goods_state: "up"},
+            height: 'full-90',
+            cols:
+                [[
+                    {type: 'numbers', title: '序号'},
+                    {field: 'goods_name', title: '商品名称'},
+                    {field: 'create_time', title: '申请时间'},
+                    {
+                        title: '申请状态', templet: function (d) {
+                        if (d.goods_state == 'up') {
+                            return "已受理";
+                        } else if (d.goods_state == 'wait_audit') {
+                            return "未受理";
+                        } else {
+                            return "error";
+                        }
+                    }
+                    },
+                    {title: '操作', toolbar: '#barDemo'}
+                ]], page: true
+        });
+    });
+</script>
+
+</body>
+
+</html>

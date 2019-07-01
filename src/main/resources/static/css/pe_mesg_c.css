@@ -1,0 +1,261 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+
+/*--------------------------------first-----------------------------------------------*/
+.first{
+	width: 100%;
+	/*height: 105px;*/
+	padding-top: 68px;
+    border-bottom: 4px solid #1a669f
+}
+.first_sub{
+	width: 1200px;
+	height: 105px;
+	margin: 0 auto;
+}
+.logo{
+    width: 214px;
+    height: 94px;
+    background: url(../imgs/logo_welcom4.png) no-repeat center;
+    background-size: contain;
+    float: left;
+    margin-top: 11px;
+}
+.mn_list{
+	height: 64px;
+	float: left;
+	margin-top: 41px;
+	margin-left: 50px;
+	float: left;
+}
+.mn_list li{
+	padding-left: 34px;
+	padding-right: 34px;
+	height: 64px;
+	line-height: 64px;
+	font-size: 18px;
+	float: left;
+}
+.mn_active{
+	background-color: #0696dc;
+	color: #fff;
+}
+.mesg_tip{
+	background-image: url(../imgs/red_point.png); 
+	background-repeat:no-repeat;
+    background-position: 73px 17px;
+	background-size: 7px 7px;
+}
+.search_area{
+	width: 446px;
+	height: 45px;
+	border: 1px solid #0587d0;
+	float: right;
+	padding-right: 22px;
+	margin-top: 30px;
+}
+.search_input{
+	width: 397px;
+	height: 100%;
+	float: left;
+}
+.search_input input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	padding-left: 10px;
+}
+.search_btn{
+	float: right;
+	width: 25px;
+	height: 100%;
+	background: url(../imgs/per_search.png) no-repeat center;
+	background-size: 25px 25px;
+	cursor: pointer;
+}
+/*------------------------second-------------------------------------------*/
+.second{
+	width: 100%;
+	padding-top: 21px;
+	margin-bottom: 36px;
+}
+.second_sub{
+	width: 1200px;
+	margin: 0 auto;
+}
+.second_mn{
+	width: 206px;
+	height: 834px;
+	position: relative;
+	float: left;
+}
+.second_mn_list{
+	width: 100%;
+}
+.second_mn_list li{
+	padding-left: 37px;
+	width: 100%;
+	height: 53px;
+	line-height: 43px;
+}
+.second_mn_list li:not(:first-child){
+	margin-top: 10px;
+}
+.current_bg{
+	background: url(../imgs/per_li_bg.png) no-repeat center;
+	background-size: 205px 53px;
+	color: #fff;
+}
+.mn_bg{
+	width: 191px;
+	height: 100%;
+	position: absolute;
+	background-color: #F7F7F7;
+	top: 0;
+	right: 0;
+	z-index: -1;
+}
+/*---------second_two----------------------*/
+.second_two{
+	float: left;
+	width: 597px;
+	margin-left: 43px;
+}
+.tzxx_list{
+	width: 100%;
+}
+.tzxx_item{
+	margin-top: 22px;
+	width: 100%;
+	border-bottom: 4px solid #efefef;
+	padding-bottom: 13px;
+}
+.tzxx_top{
+	width: 100%;
+	height: 45px;
+	font-size: 18px;
+	border-bottom: 1px solid #E6E6E6;
+	color: #999;
+	line-height: 44px;
+}
+.tzxx_top span{
+	font-weight: bold;
+}
+.spa{
+	color: #399bff;
+}
+.spb{
+	color: #ffb400;
+}
+.spc{
+	color: #30850f;
+}
+.spd{
+	color: #683685;
+}
+.spe{
+	color: #2c2c2c;
+}
+.tzxx_area{
+	margin-top: 10px;
+	width: 100%;
+	position: relative;
+}
+.tzxx_mesg{
+	width: 408px;
+	font-size: 16px;
+	line-height: 22px;
+	color: #323232;
+	text-align: justify;
+}
+.dt{
+	margin-top: 24px;
+	width: 408px;
+	height: 24px;
+	line-height: 24px;
+	font-size: 16px;
+	color: #9c9c9c;
+}
+.tz_btn{
+	width: 109px;
+	height: 39px;
+	border-radius: 20px;
+	text-align: center;
+	line-height: 39px;
+	font-size: 16px;
+	color: #fff;
+	position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0,-50%);
+}
+.tz_btn_a{
+	background-color: #399bff;
+}
+.tz_btn_b{
+	background-color: #ffb400;
+}
+.tz_btn_c{
+	background-color: #30850f;
+}
+.tz_btn_d{
+	background-color: #683685;
+}
+.tz_btn_e{
+	background-color: #2c2c2c;
+}
+/*-------second-three--------*/
+.second_three{
+	width: 320px;
+	height: 384px;
+	border: 1px solid #fee49c;
+	background-color: #ffffe2;
+	float: right;
+	padding-left: 18px;
+	padding-right: 18px;
+}
+.second_three_til{
+	width: 100%;
+	height: 50px;
+	line-height: 49px;
+	font-size: 16px;
+	color: #ff7b1a;
+	border-bottom: 1px dashed #fee49c;
+}
+.bj_list{
+	width: 100%;
+}
+.bj_item{
+	width: 100%;
+	font-size: 12px;
+	color: #666;
+	margin-top: 14px;
+}
+.bj_gd{
+	line-height: 20px;
+	width: 171px;
+	float: left;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+
+}
+.bj_num{
+	height: 20px;
+	line-height: 20px;
+	width: 97px;
+	text-align: right;
+	float: right;
+}

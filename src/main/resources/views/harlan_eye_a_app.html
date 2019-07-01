@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+	<meta content="telephone=no" name="format-detection" />
+    <title>ThirdPart Support | Harlan</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/harlan_eye_app.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <script src="js/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/common.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="entire" id="lava">
+	    <!--搜索区域结束-->
+		<div class="third_sub">
+			<div class="lct">
+			Inspection inquiry form 检验咨询表
+			</div>
+		    <form method="post" id="imgform">
+			<div class="check_block">
+				<div class="check_a">
+					<div class="check_til"><hr />客户信息<span class="til_sub">CLEINT INFORMATION</span></div>
+					<div class="check_mesg">
+						<div class="dptx">
+							<div class="dptx_a">公司名称</div>
+							<input type="text" id="company_zname" name="thirdCheckCorp" />
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">Company Name<span>*</span></div>
+							<input type="text" id="company_ename" name="thirdCheckCorpEn" />
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">公司地址/邮编</div>
+							<input type="text" id="company_zaddress" name="thirdCheckAddr" />
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">Add./PC<span>*</span></div>
+							<input type="text" id="company_eaddress" name="thirdCheckAddrEn" />
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">联系人 Contact Person<span>*</span></div>
+							<input type="text" id="contact_name" name="thirdCheckContact" />
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">电话 Tel.<span>*</span></div>
+							<input type="text" id="contact_tel" name="thirdCheckContactTel" />
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">电子邮箱 E-mail Address<span>*</span></div>
+							<input type="text" id="email" name="thirdCheckEmail" />
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">传真 Fax<span>*</span></div>
+							<input type="text" id="fax" name="thirdCheckFax" />
+						</div>
+					</div>
+				</div>
+				<div class="check_b">
+					<div class="check_til"><hr />发票和报告要求<span class="til_sub">INVOICE AND REPORT REQUIREMENT</span></div>
+					<div class="fpxz">
+						<div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex1" value="1" /><label for="sex1">专票 Speciai VAT</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex2" value="2" /><label for="sex2">普票 Non Speciai VAT</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex3" value="3" checked /><label for="sex3">电子发票  Electronic invoice</label></div>
+					</div>
+					<div class="fptt">
+						<div class="fptt_a">发票抬头 Invoice title:<span>*</span></div>
+						<input type="text" id="fp_name" name="thirdCheckInvoiceDes" />
+					</div>
+					<div class="fpxz">
+						<div class="fpxz_b" style="line-height: 1.5rem;"><input type="checkbox" name="reportType" id="sexs1" value="0" checked /><label for="sexs1">中文报告  Chinese</label></div>
+						<div class="fpxz_b" style="margin-top: -.1rem; line-height: normal;"><input type="checkbox" name="reportType" id="sexs2" value="1" /><label for="sexs2">英文报告 English<br />（英文报告需加收￥200元/English report charged RMB 200）</label></div>
+					</div>
+				</div>
+				<div class="check_c">
+					<div class="check_til"><hr />发送方式<span class="til_sub">Dispatch via</span></div>
+					<div class="fpxz">
+						<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd1" value="1" /><label for="sexd1">快递  Via Express</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd2" value="2" /><label for="sexd2">自取  Self Pick Up</label></div>
+						<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd3" value="3" checked /><label for="sexd3">邮件  Via Email</label></div>
+					</div>
+					<div class="yjdz">
+						<div class="yjdz_a">邮寄地址  delivery address</div>
+						<input type="text" id="mail_address" name="thirdCheckMailaddr" />
+					</div>
+				</div>
+				<div class="check_d">
+					<div class="check_til"><hr />检测要求<span class="til_sub">TESTING REQUIREMENT</span></div>
+					<div class="dptx">
+						<div class="dptx_a">样品名称 Sample Name<span>*</span></div>
+						<input type="text" id="exm_name" name="thirdCheckGname" />						
+					</div>
+					<div class="dptx">
+						<div class="dptx_a">样品数量 Sample Quantity<span>*</span></div>
+						<input type="text" id="exm_num" name="thirdCheckGquantity" />
+					</div>
+					<div class="dptx">
+						<div class="dptx_a">样品包装 Sample Package<span>*</span></div>
+						<input type="text" id="exm_pacage" name="thirdCheckGpack" />						
+					</div>
+					<div class="dptx">
+						<div class="dptx_a">样品状态 Sample Condition<span>*</span></div>
+						<input type="text" id="exm_status" name="thirdCheckGstatus" />
+					</div>
+					<ul class="ypsj">
+						<li>
+							<div class="ypsj_top">样品编号 Sample No.<span>*</span></div>
+							<textarea name="thirdCheckGnumber" id="exm_id" rows="" cols="" class="ypsj_bottom"></textarea>
+						</li>
+						<li>
+							<div class="ypsj_top">检测项目及规格 Testing Items / Specification<span>*</span></div>
+							<textarea name="thirdCheckGitems" id="exm_type" rows="" cols="" class="ypsj_bottom"></textarea>
+						</li>
+						<li>
+							<div class="ypsj_top">依据标准 Testing Standard<span>*</span></div>
+							<textarea name="thirdCheckGstandard" id="exm_standard" rows="" cols="" class="ypsj_bottom"></textarea>
+						</li>
+					</ul>
+					<div class="jcrq">
+						其他Others：1.检测周期（从开始检测算起）TAT(From the date the starting test)：
+						<input type="text" id="exm_data" name="thirdCheckCycle" />
+						工作日 Work Days
+					</div>
+					<div class="bjsm">
+						&#12288;本报价自报出日起1个月内有效。Quotation valid for one month from the quotation date.<br />
+						&#12288;根据公司规定，样品检测后保存1个月，到期后，我司有权自行处理样品。如有特殊留样或返样要求，请在以上备注中说明。<br />
+						&#12288;Per our policy, samples will be saved for one months after testing, expired samples will be disposed by us without <br />
+						&#12288;further notice to client. If there is any special request, please indicate in the remarks
+					</div>
+				</div>
+				<div class="tjsq">
+					<div class="btn" v-on:click="postSupplier()">提交申请</div>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</body>
+	<script src="plugins/jquery.pagination.js"></script>
+	<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/goods_employed_third.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/top_bottom.js"></script>
+	<script src="plugins/vue/vue.min.js"></script>
+	
+	<script type="text/javascript">
+
+		$(function(){ 
+		    //getCurrentUser();
+		}); 
+        function getCurrentUser() {
+            $.ajax({
+                url: "/log/currentUser",
+                type: "post",
+                data: {},
+                dataType: "json",
+                success: function (r) {
+                    if (r.data == null) {
+                        alert("please sign in again!");
+                        window.open("login_en.html", "_self");
+                        return;
+                    }else {
+						
+                    }
+                }
+            })
+        }
+	</script>
+  <script src="lib/goods_employed_third_app.js"></script>
+</html>

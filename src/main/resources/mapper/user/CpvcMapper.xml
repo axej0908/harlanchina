@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.user.dao.CpvcDao">
+
+    <insert id="save" parameterType="com.axej.harlan.user.bean.CpvcBean">
+        insert into tmp_cpvc (
+            mobile,
+            cpvc,
+            last_modified
+        )
+        values
+        (
+            #{mobile},
+            #{cpvc},
+            #{last_modified}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.axej.harlan.user.bean.CpvcBean">
+        update tmp_cpvc
+        <set>
+            <if test="cpvc!=null and cpvc.trim()!=''">cpvc=#{cpvc},</if>
+            <if test="last_modified!=null and last_modified.trim()!=''">last_modified=#{last_modified}</if>
+        </set>
+        where mobile = #{mobile}
+    </update>
+
+    <select id="queryObject" resultType="com.axej.harlan.user.bean.CpvcBean">
+        select * from tmp_cpvc where mobile = #{mobile}
+    </select>
+</mapper>

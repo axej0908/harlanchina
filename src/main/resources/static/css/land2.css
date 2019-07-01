@@ -1,0 +1,258 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.top{
+	width: 100%;
+	height: 33px;
+	min-width: 1300px;
+	background-color: #d7d7d7;
+}
+.top_sub{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+}
+.mn{
+	width: 848px;
+	height: 100%;
+	margin: 0 auto;
+}
+.mn li{
+	width: 106px;
+	height: 100%;
+	float: left;
+}
+.mn li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 33px;
+	text-align: center;
+	font-size: 18px;
+	color: #3b527c;
+}
+.logo{
+	width: 100%;
+	height: 138px;
+	border: 1px solid #fff;
+}
+.logo_sub{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+	
+}
+.logo_bg{
+	margin-top: 44px;
+	width: 342px;
+    height: 50px;
+	background: url(../imgs/logo_hualang3.png) no-repeat center;
+	background-size: 100% 100%;
+	float: left;
+}
+.logo_bg a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.tel{
+	float: right;
+	height: 100%;
+	line-height: 136px;
+}
+
+.sp1{
+	font-size: 20px;
+	color: #000;
+}
+.sp2{
+	font-size: 20px;
+	color: #fa727f;
+}
+.sp3{
+	font-size: 16px;
+	color: #000;
+}
+.land_area{
+	width: 100%;
+	height: 587px;
+	padding-top: 109px;
+	background: url(../imgs/login_form_bg.png) no-repeat center;
+	background-size: cover;
+}
+.form_prt{
+	width: 506px;
+	height: 420px;
+	background-color: rgba(255,255,255,0.1);
+	padding-top: 16px;
+	margin: 0 auto;
+}
+.land_area_sub{
+	 width: 470px;
+    height: 390px;
+	background-color: rgba(255,255,255,0.3);
+	margin: 0 auto;
+	padding-top: 32px;
+}
+.til{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 30px;
+	color: #fff;
+}
+.u_name,.u_pwd{
+	width: 320px;
+	height: 42px;
+	
+    border: 1px solid #fff;
+	margin: 0 auto;
+}
+.u_name{
+	margin-top: 32px;
+}
+.u_pwd{
+	margin-top: 12px;
+}
+.u_name label{
+	background-image: url(../imgs/u_icon_bg.png);
+}
+.u_pwd label{
+	background-image: url(../imgs/u_pwd_icon.png);
+}
+.u_name label,.u_pwd label{
+	display: block;
+	float: left;
+	width: 42px;
+	height: 42px;
+	height: 100%;
+	line-height: 43px;
+	color: #fff;
+	font-size: 14px;
+	background-color: rgba(255,255,255,0.1);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 21px 24px;
+}
+.u_name input,.u_pwd input{
+    display: block;
+    width: 276px;
+    height: 100%;
+    line-height: 43px;
+    font-size: 14px;
+    float: right;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+ ::-moz-placeholder{color:#fff;}              
+::-webkit-input-placeholder{color:#fff;}     
+:-ms-input-placeholder{color:#fff;}  
+.select_radio{
+	width: 376px;
+	height: 22px;
+	margin: 10px auto 0 auto;
+}
+.radio_div{
+	height: 100%;
+	line-height: 22px;
+	color: #fff;
+}
+/*改变单选框按钮的样式*/
+.radio_div label{
+	width:15px;
+	height:15px;
+	display:inline-block;
+	cursor:pointer;
+	position: relative;
+	top: 4px;
+	}
+.radio_div label input[type="radio"],.radio_div label span{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.radio_div{
+	font-size: 14px;
+}
+.radio_div label input[type="radio"]{
+	appearance: none; 
+	-webkit-appearance: none;
+	outline: none;
+	z-index: 1;
+	background: transparent;
+    opacity: 0;
+}
+
+.radio_div label input[type="radio"] + span{
+	display:inline-block;background:url(../imgs/radio_n.png) no-repeat;
+	 background-position:center;
+	 background-size: contain;
+ }
+.radio_div label input[type="radio"]:checked + span{
+	background-position:center;
+	background:url(../imgs/radio_y.png)  no-repeat;
+	background-size: 15px 15px;
+}
+.check_radio span{
+	color: #fff;
+}
+.a_link{
+	width: 320px;
+	height: 24px;
+	line-height: 24px;
+	margin: 10px auto 0 auto;
+	text-align: right;
+	font-size: 14px;
+}
+.a_link a:last-child{
+	color: #fff;
+}
+
+.a_link a:first-child{
+	color: #fd9c35;
+}
+.land_btn{
+	width: 218px;
+	height: 48px;
+	border-radius: 24px;
+	background-color: #f29129;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	line-height: 48px;
+	margin: 30px auto 0 auto;
+	cursor: pointer;
+}
+.a_index{
+	width: 387px;
+    font-size: 12px;
+    text-align: right;
+    margin-top: 10px;
+    color: #fff;
+}
+
+/*重新设置底部样式*/
+.foot_bottom {
+    background-color: #ffffff;
+}
+.foot_line {
+    background-color: #bbbbbb;
+}
+.load_txt,.a_txt,.a_txt_b{
+    color: #626262;
+}

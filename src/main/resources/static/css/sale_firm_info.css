@@ -1,0 +1,139 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #f2f3f7;
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.my_info{
+	width: 100%;
+    padding: 18px;
+    padding-right: 18px;
+    background-color: #fff;
+    padding-top: 16px;
+    padding-bottom: 36px;
+}
+.pe_til{
+	width: 100%;
+	height: 55px;
+	border-bottom: 1px solid #DBDBDB;
+	font-size: 14px;
+	color: #333333;
+	line-height: 54px;
+	padding-left: 15px;
+}
+.info_area{
+	width: 100%;
+}
+.info_item{
+	margin-top: 18px;
+}
+.info_label{
+	width: 152px;
+	font-size: 14px;
+	color: #323232;
+	height: 32px;
+	line-height: 32px;
+	float: left;
+	text-align: right;
+}
+.info_box{
+	width: 270px;
+	height: 32px;
+	border: 1px solid #DBDBDB;
+	float: left;
+	margin-left: 10px;
+}
+.info_box input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+	color: #333;
+}
+.select_radio{
+    float: left;
+    height: 32px;
+    text-align: center;
+    margin-left: 10px;
+}
+.radio_div{
+	display:inline-block;
+	height: 100%;
+	line-height: 32px;
+	font-size: 14px;
+	position: relative;
+    padding-left: 20px;
+}
+.radio_div:nth-child(2){
+	margin-left: 50px;
+}
+/*改变单选框按钮的样式*/
+.radio_sub{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.radio_div label{
+	width:100%;
+	height:100%;
+	display:block;
+	cursor:pointer;
+	position: relative;
+}
+.radio_div label input[type="radio"]{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.radio_div label span{
+	display: block;
+	width: 15px;
+	height: 100%;
+}
+
+.radio_div label input[type="radio"]{
+	appearance: none; 
+	-webkit-appearance: none;
+	outline: none;
+	z-index: 1;
+	background: transparent;
+    opacity: 0;
+}
+
+.radio_div label input[type="radio"] + span{
+	background-image:url(../imgs/radio_n.png);
+	 background-position:center;
+	 background-size: 15px 15px;
+	 background-repeat: no-repeat;
+ }
+.radio_div label input[type="radio"]:checked + span{
+	background-image:url(../imgs/radio_y.png);
+}
+/*.check_radio span{
+	color: #048ed6;
+}*/
+.btn{
+	width: 270px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #29a5fc;
+	font-size: 16px;
+	color: #fff;
+	margin-top: 28px;
+	margin-left: 152px;
+	cursor: pointer;
+}

@@ -1,0 +1,80 @@
+html,body{
+	min-width: 1300px;
+}
+.contact{
+	margin-top: 44px;
+	width: 100%;
+	height: 287px;
+	background-color: #fff;
+}
+.contact_sub{
+	width: 1200px;
+	height: 100%;
+	padding-top: 78px;
+	margin: 0 auto;
+}
+.contact_1,.contact_2,.contact_3,.contact_4,.contact_5{
+	float: left;
+}
+.contact_6{
+	float: right;
+}
+.contact_1{
+}
+.contact_2,.contact_3,.contact_4,.contact_5{
+	margin-left: 60px;
+}
+.logo_small{
+	width:184px;
+	height: 80px;
+	background: url(../imgs/logo_hualang2.png) no-repeat center;
+	background-size: contain;
+}
+.tel{
+	margin-top: 3px;
+	font-size: 24px;
+	color: #066da7;
+	font-weight: bold;
+	height: 48px;
+	line-height: 48px;
+}
+.tel_ex{
+	font-size: 14px;
+	color: #999;
+}
+.cntact_p1{
+	font-size: 18px;
+	color: #000;
+	height: 31px;
+}
+.contact_p2{
+	font-size: 18px;
+	height: 42px;
+	line-height: 42px;
+}
+.contact_p2 a{
+	color: #999;
+}
+.code_pic{
+	width: 133px;
+	height: 133px;
+	background: no-repeat center;
+	background-size: contain;
+	float: left;
+}
+.code_pic_tip{
+	height: 133px;
+	line-height: 133px;
+	font-size: 18px;
+	color: #999;
+	float: left;
+}
+.foot{
+	width: 100%;
+	height: 60px;
+	background-color: #d9d9d9;
+	font-size: 16px;
+	color: #666;
+	line-height: 60px;
+	text-align: center;
+}

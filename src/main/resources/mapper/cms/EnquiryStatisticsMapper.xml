@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.EnquiryStatisticsDao">
+
+    <select id="querySystemSumStatistics" parameterType="map" resultType="com.axej.harlan.cms.bean.CmsStatisticsBean">
+        select
+            count(1) as yAxis
+        from
+            info_goods
+        <where>
+            <if test="1 == 1">
+                goods_type = 'enquiry'
+            </if>
+            <if test="goods_state != null">
+                and goods_state = #{goods_state}
+            </if>
+            <if test="create_time != null">
+                and create_time like concat(concat('%',#{create_time}),'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="queryTripartiteSumStatistics" parameterType="map" resultType="com.axej.harlan.cms.bean.CmsStatisticsBean">
+        select
+            count(1) as yAxis
+        from
+            serv_enquiry
+        <where>
+            <if test="tar_status != null">
+                tar_status = #{tar_status}
+            </if>
+            <if test="create_time != null">
+                and create_time like concat(concat('%',#{create_time}),'%')
+            </if>
+        </where>
+    </select>
+</mapper>

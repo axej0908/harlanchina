@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <!--引入城市插件css-->
+    <link rel="stylesheet" href="css/city/city-picker.css"/>
+    <link rel="stylesheet" href="css/pe_data_a.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<div id="rrapp">
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="/">Harlan Mall</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide_zh.html">中国供应商入口</a></li>
+                <!--<li><a href="shop_cart_en.html">My shopping cart ></a></li>-->
+                <li class="red_bg"><a href="goods_employed_self.html">Self-support</a></li>
+                <li class="red_bg"><a href="goods_employed_third.html">ThirdPart-support</a></li>
+				<li class="red_bg" style="color:#ff792d;"><a href="find_goods_list.html"><strong>Inquiry Platform</strong> </a></li>
+            </ul>
+            <ul class="header_fr">
+                <li v-if="user!=null" @click="logout">Sign out</li>
+                <li v-if="user!=null"><a href="pe_index_b.html">My harlan</a></li>
+                <li v-if="user==null"><a href="login_en.html">Sign in</a> <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span> <a
+                        href="register_en.html">Register</a>
+                </li>
+                <li><a href="new_explain8_e.html">Help Center</a></li>
+
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!------------------顶部区域结束-------------->
+    <div class="entire">
+        <div class="first">
+            <div class="first_sub">
+                <a href="index.html">
+                    <div class="logo"></div>
+                </a>
+                <ul class="mn_list">
+                    <li><a href="pe_index_b.html">Home page</a></li>
+                    <li class="mn_active"><a href="pe_data_a.html">My information</a></li>
+                </ul>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="second">
+            <div class="second_sub">
+                <div class="second_mn">
+                    <ul class="second_mn_list">
+                        <li class="current_bg"><a href="pe_data_a.html">Basic Information</a></li>
+                        <li><a href="pe_data_b.html">Identity verification</a></li>
+                        <li><a href="pe_data_c.html">Account security</a></li>
+                        <li><a href="pe_data_d.html">Address management</a></li>
+                    </ul>
+                    <div class="mn_bg"></div>
+                </div>
+                <div class="second_two">
+                    <div class="jbxx">
+                        <div class="head_pic" :style="'backgroundImage:url('+user.user_photo+')'">
+                        </div>
+                        <div class="xgtx_op">
+                            <input onchange="upload(this)" type="file" id="file" name="file" accept="image/*"/>
+                            <span>Profile picture</span>
+                        </div>
+                        <!--<div class="open_shop_btn" @click="preOpenShop">我要开店</div>-->
+                        <div class="a1">
+                            <button><a @click="preOpenShop">I open a shop</a></button>
+                        </div>
+                        <div class="item_a">
+
+                            <div class="clear"></div>
+                        </div>
+                        <div class="item_a">
+                            <div class="input_label">nickname:</div>
+                            <div class="input_box">
+                                <input type="text" v-model="user.user_name"/>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="item_b">
+                            <div class="input_label">gender:</div>
+                            <select v-model="user.user_gender">
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                            </select>
+                            <div class="clear"></div>
+                        </div>
+                        <!--<div class="item_b">-->
+                        <!--<div class="input_label">district:</div>-->
+                        <!--<div class="adr">-->
+                        <!--<div class="city-picker-selector" id="city-picker-selector">-->
+                        <!--<div class="selector-item storey province">-->
+                        <!--</div>-->
+                        <!--<div class="selector-item storey city">-->
+                        <!--</div>-->
+                        <!--<div class="selector-item storey district">-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="clear"></div>-->
+                        <!--</div>-->
+                        <div class="save_btn" @click="saveUserInfo">save</div>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">download :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain1_e.html">Contact Us</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_file1_e.html">Contact Customer Service</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <a href="new_explain2_e.html">Business Cooperation</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_explain8_e.html">Merchant help</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+                <span>&nbsp;|&nbsp;</span> -->
+                <a href="new_explain4_e.html">Product Library</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain5_e.html">Friendly Link</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain6_e.html">Privacy Policy</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain7_e.html">Legal Statement</a>
+            </div>
+            <div class="foot_line"></div>
+            <!-- <div class="a_txt_b">
+                Browse Alphabetically:
+                <a href="new_explain8_e.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain9_e.html">Showroom </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain10_e.html">Country Search </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain11_e.html">Suppliers</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain12_e.html">Wholesaler </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain13_e.html">Affiliate</a>
+            </div>
+            <div class="a_txt_b">
+                Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+                Enforcement
+                Compliance Guide
+            </div> -->
+            <div class="a_txt_b">
+                copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<!--引入城市插件-->
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<script src="js/city/citydata.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/city/cityPicker-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/pe_data_a.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/base64.js"></script>
+<script src="plugins/ajaxfileupload.js"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/pe_data_a.js"></script>
+</body>
+</html>

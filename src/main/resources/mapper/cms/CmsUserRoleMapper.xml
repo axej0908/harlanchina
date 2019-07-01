@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.CmsUserRoleDao">
+
+    <!--<insert id="save" parameterType="com.axej.harlan.cms.bean.CmsUserRole" useGeneratedKeys="true">
+        insert into cms_user_role (
+             user_id,
+             role_id
+        )
+        values
+        <foreach collection="roleIds" item="role_id" open="(" separator="," close=")">
+            (
+                 #{user_id},
+                 #{role_id}
+            )
+        </foreach>
+
+    </insert>-->
+    <insert id="save" parameterType="com.axej.harlan.cms.bean.CmsUserRole" useGeneratedKeys="true">
+        insert into cms_user_role (
+	        user_id,
+	        role_id
+		)
+		values
+		(
+		   #{user_id},
+		   #{role_id}
+		)
+
+    </insert>
+
+    <delete id="delete">
+        delete from cms_user_role where user_id = #{user_id}
+    </delete>
+
+    <select id="queryList" resultType="Integer">
+        select role_id from cms_user_role where user_id = #{user_id}
+    </select>
+
+</mapper>

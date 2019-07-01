@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>免费找货-找货中</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css">
+	<style type="text/css">
+		.layui-form-label {
+		    padding: 9px 3px;
+		    min-width: 56px;
+		}
+	</style>
+	
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+<body>
+	<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+		<!--筛选条件开始-->
+		<div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">手机号：</label>
+                <div class="layui-input-inline">
+                    <input type="tel" name="phone" lay-verify="phone" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">找货编号：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+             <div class="layui-inline">
+                <label class="layui-form-label">时间段：</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="dt_a" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">搜索</button>
+        </div>
+		<!--筛选条件结束-->
+		 <table class="layui-table"  lay-filter="test" id="test">
+	    </table>
+	    <!---->
+	</div> 
+	<!--表格工具条模板-->
+	<script type="text/html" id="barDemo">
+	  <a class="layui-btn layui-btn-mini" lay-event="find_y">已找到</a>
+	  <a class="layui-btn layui-btn-mini" lay-event="find_n">未找到</a>
+	  <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="see_detail">查看详情</a>
+	  <!-- 这里同样支持 laytpl 语法，如： -->
+	  <!--{{#  if(d.auth > 2){ }}
+	    <a class="layui-btn layui-btn-mini" lay-event="check">审核</a>
+	  {{#  } }}-->
+	</script>
+	 <!---->
+    <script src="./plugins/layui/layui.js"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+    <script>
+        layui.use(['form', 'layedit', 'laydate',"table"], function() {
+            var form = layui.form,
+                layer = layui.layer,
+                layedit = layui.layedit,
+                laydate = layui.laydate;
+        	var table = layui.table;
+			  //日期范围
+			  laydate.render({
+			    elem: '#dt_a'
+			    ,range: true
+			  });
+            //表格数据
+			table.render({
+			    elem: '#test'
+			    ,url:'datas/table.json'
+			    ,height: 'full-90'
+			    ,cols: [[
+//			      {type:'checkbox'}//是否开启复选框
+			      {field:'id',  title: '找货编号', sort: true}
+			      ,{field:'username',  title: '货物名称'}
+			      ,{field:'role',  title: '用户名'}
+			      ,{field:'head_bg',  title: '联系方式'}
+			      ,{field:'head_bg',  title: '生产时间'}
+			      ,{field:'optate', title: '操作',width:"300",toolbar: '#barDemo'}
+			    ]]
+			    ,page: true
+			  });
+       
+			//表格监听工具条
+			table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+			  var data = obj.data; //获得当前行数据
+			  var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+			  var tr = obj.tr; //获得当前行 tr 的DOM对象
+			 
+			 if(layEvent === 'find_y'){ //开始找货
+			    layer.confirm('已找到', function(index){
+			      layer.close(index);
+			      //向服务端发送删除指令
+			    });
+			  }else if(layEvent === 'find_n'){ //开始找货
+			    layer.confirm('未找到', function(index){
+			      layer.close(index);
+			      //向服务端发送删除指令
+			    });
+			  } else if(layEvent === 'see_detail'){ //查看详情
+			    layer.confirm('查看详情', function(index){
+			      layer.close(index);
+			      //向服务端发送删除指令
+			    });
+			  }
+			});
+        });
+    </script>
+
+</body>
+
+</html>

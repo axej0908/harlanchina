@@ -1,0 +1,400 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	background: url(../imgs/register_bg.png) no-repeat center;
+	background-size: cover;
+	
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.logo{
+	width: 100%;
+	min-width: 1300px;
+	height: 93px;
+	background-color: #048cd4;
+}
+.logo_sub{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+	
+}
+.logo_bg{
+    width: 112px;
+    height: 46px;
+    background: url(../imgs/logo_foget_pwd.png) no-repeat center;
+    background-size: 100% 100%;
+    float: left;
+    margin-top: 23px;
+}
+.logo_bg a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.page_tip{
+    margin-top: 29px;
+    float: left;
+    font-size: 16px;
+    height: 36px;
+    line-height: 36px;
+    border-left: 1px solid #fff;
+    color: #fff;
+    margin-left: 8px;
+    padding-left: 8px;
+}
+.page_tip a{
+	display: block;
+	width:100%;
+	height:100%;
+}
+.tel{
+	float: right;
+	height: 100%;
+	line-height: 93px;
+	color: #fff;
+	font-size: 14px;
+}
+.land_area{
+	width: 100%;
+	margin-top: 112px;
+    padding-bottom: 70px;
+}
+.con_list{
+	width: 100%;
+}
+.con_area{
+	width: 100%;
+}
+.land_area_sub{
+    width: 522px;
+    min-height: 582px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding-top: 40px;
+    border: 1px solid #fff;
+    padding-bottom: 40px;
+}
+
+.select_radio{
+	width: 376px;
+	height: 22px;
+	margin: 10px auto 0 auto;
+	text-align: center;
+	margin-bottom: 28px;
+}
+.radio_div{
+	display:inline-block;
+	height: 100%;
+	line-height: 22px;
+	font-size: 12px;
+	position: relative;
+    padding-left: 20px;
+}
+.radio_div:nth-child(2){
+	margin-left: 50px;
+}
+/*改变单选框按钮的样式*/
+.radio_sub{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.radio_div label{
+	width:100%;
+	height:100%;
+	display:block;
+	cursor:pointer;
+	position: relative;
+}
+.radio_div label input[type="radio"]{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.radio_div label span{
+	display: block;
+	width: 15px;
+	height: 100%;
+}
+
+.radio_div label input[type="radio"]{
+	appearance: none; 
+	-webkit-appearance: none;
+	outline: none;
+	z-index: 1;
+	background: transparent;
+    opacity: 0;
+}
+
+.radio_div label input[type="radio"] + span{
+	background-image:url(../imgs/radio_n.png);
+	 background-position:center;
+	 background-size: 15px 15px;
+	 background-repeat: no-repeat;
+ }
+.radio_div label input[type="radio"]:checked + span{
+	background-image:url(../imgs/radio_y.png);
+}
+.check_radio span{
+	color: #048ed6;
+}
+.info_line{
+    width: 386px;
+	height: 40px;
+	background-color: #fff;
+	margin: 0 auto;
+	border: 1px solid #DBDBDB;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 12px;
+}
+.input_label{
+	float: left;
+	height: 100%;
+	line-height: 38px;
+    margin-right: 16px;
+    font-size: 14px;
+    color: #202020;
+}
+.input_box{
+	overflow: hidden;
+	height: 100%;
+}
+.input_box input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	font-size: 14px;
+	color: #333;
+}
+.pic_area{
+	width: 386px;
+	margin: 12px auto 0 auto;
+}
+.pic_label{
+	font-size: 14px;
+    color: #202020;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+.pic_list{
+	width: 100%;
+	text-align: center;
+}
+.pic_item{
+	display: inline-block;
+	width: 118px;
+	height: 120px;
+	position: relative;
+}
+.pic_item:not(:first-child){
+	margin-left: 4px;
+}
+.pic{
+	width: 118px;
+	height: 78px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+	border: 1px solid#DBDBDB;
+}
+.pic input,.pic_b input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+.pic_txt{
+	width: 100%;
+	padding-left: 6px;
+	padding-right: 6px;
+	font-size: 12px;
+	color: #6d6d6d;
+	line-height: 20px;
+	word-wrap: break-word;
+	text-align: center;
+	position: absolute;
+	top: 80px;
+	left: 0;
+}
+.pic_inline{
+    width: 386px;
+    height: 42px;
+    padding-left: 10px;
+	padding-right:10px;
+    margin: 12px auto 0 auto;
+}
+.pic_label_b{
+    float: left;
+    height: 100%;
+    line-height: 42px;
+    font-size: 14px;
+    color: #202020;
+}
+.pic_b{
+	margin-left: 12px;
+	float: left;
+	width: 96px;
+	height: 40px;
+	border-radius: 4px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+	border: 1px solid #DBDBDB;
+}
+.tip_up{
+	float: left;
+    height: 100%;
+    line-height: 42px;
+    font-size: 12px;
+    color: #202020;
+    margin-left: 10px;
+    text-decoration: underline;
+}
+.error_tip{
+	width: 386px;
+	line-height: 20px;
+	font-size: 12px;
+	color: red;
+	margin: 0 auto;
+	word-wrap: break-word;
+}
+.land_btn{
+    width: 386px;
+    height: 40px;
+    background-color: #03689d;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    margin: 40px auto 0 auto;
+    cursor: pointer;
+}
+.p_link{
+	width: 386px;
+	height: 24px;
+	line-height: 24px;
+	text-align: right;
+	font-size: 14px;
+	color: #a7a7a7;
+	margin: 5px auto 0 auto;
+}
+.p_link span{
+   display: block;
+}
+
+.p_link a{
+	color: #048ed7;
+}
+.company{
+	width: 100%;
+	height: 100%;
+	padding-top: 36px;
+}
+.c_tip{
+	width: 320px;
+	height: 24px;
+	margin: 0 auto;
+	font-size: 16px;
+	color: #585858;
+	line-height: 24px;
+}
+.c_name,.c_adr,.c_tel{
+	width: 320px;
+	height: 40px;
+	border: 1px solid #c6c5c6;
+	margin:15px auto 0 auto;
+}
+.c_name input,.c_adr input,.c_tel input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	font-size: 12px;
+	padding-left: 12px;color: #000;
+	border: none;
+	outline: none;
+}
+.person{
+	width: 100%;
+	height: 100%;
+	padding-top: 36px;
+}
+.person_tip{
+	width: 320px;
+	height: 24px;
+	margin: 0 auto;
+	font-size: 16px;
+	color: #585858;
+	line-height: 24px;
+}
+
+.goos_area{
+	width: 324px;
+	margin: 0 auto;
+}
+.ul_con{
+	width: 100%;
+	height: 144px;
+}
+.ul_con li{
+	width: 103px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 16px;
+	color: #a3a3a3;
+	border: 1px solid #f3f3f3;
+	border-radius: 5px;
+	margin:18px 2px 0 2px;
+	float: left;
+	background-color: #fff;
+	cursor: pointer;
+}
+.ul_con .li_current{
+    color: #03689d;
+    border-color: #03689d;
+}
+.refresh{
+	width: 83px;
+	height: 21px;
+	margin:26px auto 0 auto;
+	padding-left: 25px;
+	font-size: 16px;
+	color: #0390da;
+	background: url(../imgs/refresh.png) no-repeat;
+	background-size: 21px 14px;
+	background-position: left center;
+	cursor: pointer;
+}
+.link_other{
+	margin-top: 81px;
+}
+.foot{
+	margin-top: 10px;
+}
+.link_other,.foot{
+	width: 100%;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	font-size: 14px;
+	color: #858585;
+}
+.link_other a{
+	color: #858585;
+}
+.link_other a:hover{
+	color: #03689d;
+}

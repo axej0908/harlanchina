@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"></link>
+    <link rel="stylesheet" href="css/index_type.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/pagination.css"></link>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></link>
+</head>
+<body>
+<!--<div style="display:none">
+    <input id="oneType" th:value="${oneType}"/>
+    <input id="twoType" th:value="${twoType}"/>
+</div>-->
+<div id="rrapp">
+
+<!--顶部区域开始-->
+<div class="header">
+    <div class="header_sub">
+        <ul class="header_fl">
+            <li>
+                <a href="/">Harlan Mall
+                </a>
+            </li>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a href="guide_zh.html">中国供应商入口</a>
+            </li>
+            <li class="red_bg">
+                <a href="goods_employed_self.html">Self-support</a>
+            </li>
+            <li class="red_bg">
+                <a href="goods_employed_third.html">ThirdPart-support</a>
+            </li>
+			<li class="red_bg" style="color:#ff792d;">
+                <a href="find_goods_list.html">
+                    <strong>Inquiry Platform</strong>
+                </a>
+            </li>
+        </ul>
+        <ul class="header_fr">
+            <!--登录之后显示-->
+            <li v-if="user!=null" class="out_area">
+                <a v-on:click="lnkPersonalCenter">My harlan</a>
+                <a v-on:click="logout">Sign out</a>
+            </li>
+            <!--登录之前显示-->
+            <li v-if="user==null" class="no_land">
+                <a href="login_en.html">Sign in</a> | <a href="register_en.html">Register</a>
+            </li>
+            <li>
+                <a href="new_explain17_c.html">Help Center</a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--顶部区域结束-->
+<div class="entire">
+    <!--搜索区域开始-->
+    <div class="search_area">
+        <div class="search_area_sub">
+            <div class="search_logo">
+                <a href="index.html"></a>
+            </div>
+            <div class="search_btn_list">
+                <a href="shop_cart_en.html" class="cart_btn" v-show="carShow">My cart <span>{{gross}}</span></a>
+            </div>
+            <div class="search_div">
+                <div class="search_fl">
+                    <div class="search_whitch">Supplier</div>
+                    <ul class="search_ul" style="display: none;">
+                        <li v-on:click="searchType='product'">Product</li>
+                        <li v-on:click="searchType='supplier'">Supplier</li>
+                        <li v-on:click="searchType='cas'">CAS</li>
+                    </ul>
+                    <div class="search_input_div">
+                        <input type="text" v-model="searchParam"/>
+                    </div>
+                </div>
+                <div class="search_btn" v-on:click="redirectSel">Search</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="crumb">
+        <a href="index.html">Home Page</a>&gt;<a href="#">Proprietary mall</a>
+    </div>
+
+    <div class="third">
+        <div class="third_left">
+            <div class="ask">
+                <ul>
+                    <li><h2></h2>
+                        <p>If you have any questions in our mall, <br>
+                            please feel free to contact us.</p>
+                    </li>
+                    <li class="li-h"><i class="phone"></i><span>0086-0574-89210089</span></li>
+                    <li>
+                        <a href="#"><i class="mail"></i></a><span><a href="mailto:service@molbase.com">service@harlanchina.com</a></span>
+                    </li>
+                    <li>
+                        <a href="#" class="btn-bg" target="_blank">Ask HarLan</a><a href="new_explain17_c.html" class="btn-bg faq">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="pri_list" class="pri_list">
+                <a href="new_file15.html" class="pri_item" v-for="item in priceNews">
+                    <div class="item_nm">{{item.goods_name}}</div>
+                    <div class="pri_con">${{item.goods_price}}/{{item.price_unit}}</div>
+                </a>
+            </div>
+            <div class="follow-us">
+                <h2>Follow Us:</h2>
+                <p>
+                    <a href="#" target="_blank"><img src="imgs/index_type/share0.jpg" alt=""/></a>
+                    <a href="#" target="_blank"><img src="imgs/index_type/share1.jpg" alt=""/></a>
+                    <a href="#" target="_blank"><img src="imgs/index_type/share2.jpg" alt=""/></a>
+                    <a href="#" target="_blank"><img src="imgs/index_type/share3.jpg" alt=""/></a>
+                </p>
+            </div>
+        </div>
+        <div class="good_list">
+            <ul class="good_list_ul" v-for="(item,index) in goods">
+                <li>
+                    <p v-on:click="queryCargoDetail(item)" class="good_name">{{item.goods_name}}</p>
+                    <div v-on:click="queryCargoDetail(item)" class="g_pic"
+                         :style="'backgroundImage:url('+item.product_picture+')'"></div>
+                    <div class="g_mesg">
+                        <p>CAS：<span>{{item.cas}}</span></p>
+
+                        <p>purity：<span>{{item.goods_purity}}</span></p>
+                        <p>Specifications：<span>{{item.specification}}</span></p>
+                        <p class="n_price">US:$<span>{{item.current_price}}</span></p>
+                    </div>
+                </li>
+            </ul>
+            <div class="clear"></div>
+            <div class="page">
+                <!--分页开始-->
+                <div id="pagerBar" class="pagination"></div>
+                <!--分页结束-->
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">download :</div>
+                <div class="load_pic_a">
+                    <a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a>
+                </div>
+                <div class="load_pic_b">
+                    <a href="hualang.apk"></a>
+                </div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain1_e.html">Contact Us</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain2_e.html">Business Cooperation</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain4_e.html">Product Library</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain5_e.html">Friendly Link</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain6_e.html">Privacy Policy</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain7_e.html">Legal Statement</a>
+            </div>
+            <div class="foot_line"></div>
+
+            <div class="a_txt_b">
+                copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jQuery/jquery-1.11.2.js"></script>
+<script src="js/jQuery/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<script src="lib/base64.js"></script>
+<script src="lib/common.js"></script>
+<script src="plugins/jquery.pagination.js"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/e_spot_supplies.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/index_type.js"></script>
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

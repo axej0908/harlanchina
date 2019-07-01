@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>ThirdPart Support | Harlan</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" href="css/harlan_eye.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+</head>
+<body>
+	
+<div class="entire" id="lava">
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="/">Harlan Mall</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide_zh.html">中国供应商入口</a></li>
+                <!--<li><a href="new_explain16_c.html">Cooperation and service</a></li>-->
+                <li><a href="goods_employed_self.html">Self-support</a></li>
+                <li><a href="goods_employed_third.html">ThirdPart-support</a></li>
+				<li style="color:#ff792d;"><a href="find_goods_list.html"><strong>Inquiry Platform</strong> </a></li>
+            </ul>
+            <ul class="header_fr">
+                <!--登录之后显示-->
+                <li v-if="user!=null" class="out_area"><a @click="lnkPersonalCenter">My harlan</a> <a
+                        @click="logout">Sign out</a></li>
+                <!--登录之前显示-->
+                <li v-if="user==null" class="no_land">
+                    <a href="login_en.html">Sign in</a> | <a href="register_en.html">Register</a>
+                </li>
+                <li><a href="new_explain17_c.html">Help Center</a></li>
+                <!--<li class="lang_li">
+                    <span>Language</span>
+                    <div class="span_sj"></div>
+                    <div id="lang_mn" class="lang_mn" style="display: none;">
+                        <div class="lang_item"><a href="#">简体中文</a></div>
+                        <div class="lang_item"><a href="#">繁體中文</a></div>
+                        <div class="lang_item"><a href="#">English</a></div>
+                        <div class="lang_item"><a href="#">한국어 </a></div>
+                        <div class="lang_item"><a href="#">日本語</a></div>
+                    </div>
+                </li>-->
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!------------------顶部区域结束-------------->
+    <!--搜索区域-->
+    <div class="first">
+        <div class="first_sub">
+            <div class="logo fl"></div>
+            <div class="search_area">
+                <div class="search_area_sub">
+                    <div class="search_logo"><a href="index.html"></a></div>
+
+                    <div class="search_btn_list">
+                        <a href="shop_cart_en.html" class="cart_btn" v-show="carShow">My cart <span>{{gross}}</span></a>
+                    </div>
+                    <div class="search_div">
+                        <div class="search_fl">
+                            <div class="search_whitch">Supplier</div>
+                            <ul class="search_ul" style="display: none;">
+                                <li @click="searchType='product'">Product</li>
+                                <li @click="searchType='supplier'">Supplier</li>
+                                <li @click="searchType='cas'">CAS</li>
+                            </ul>
+                            <div class="search_input_div">
+                                <input type="text" v-model="searchParam"/>
+                            </div>
+                        </div>
+                        <div class="search_btn" @click="redirectSel">Search</div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!--搜索区域结束-->
+    <div class="second">
+        <div class="second_sub">
+            <div class="brum_url">
+                <a href="index.html">Home Page</a> &gt; <a href="#">Harlan Eye</a>
+            </div>
+            <div class="con_area">
+                <div class="con_left">
+                    <div class="ask">
+                        <ul>
+                            <li><h2></h2>
+                                <p>Please feel free to<br>send us your questions<br>about our company or<br>our
+                                    products.</p></li>
+                            <li class="li-h"><i class="phone"></i><span>0086-400-7281-666</span></li>
+                            <li><a href="#"><i class="mail"></i></a><span><a href="mailto:service@molbase.com">service@molbase.com</a></span>
+                            </li>
+                            <li><a href="#" class="btn-bg" target="_blank">Ask HarLan</a><a
+                                    href="#" class="btn-bg faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="pri_list">
+                        <a href="new_file15.html" class="pri_item" v-for="item in priceNews">
+                            <div class="item_nm">{{item.goods_name}}</div>
+                            <div class="pri_con">${{item.goods_price}}/{{item.price_unit}}</div>
+                        </a>
+                    </div>
+                    <div class="follow-us">
+                        <h2>Follow Us:</h2>
+                        <p>
+                            <a href="#" target="_blank"><img src="imgs/index_type/share0.jpg" alt=""></a>
+                            <a href="#" target="_blank"><img src="imgs/index_type/share1.jpg" alt=""></a>
+                            <a href="#" target="_blank"><img src="imgs/index_type/share2.jpg" alt=""></a>
+                            <a href="#" target="_blank"><img src="imgs/index_type/share3.jpg" alt=""></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="content_r">
+					<div class="third_sub">
+						<div class="lct">
+							检验咨询表 Inspection inquiry form
+						</div>
+					    <form method="post" id="imgform">
+						<div class="check_block">
+							<div class="check_a">
+								<div class="check_til"><hr />客户信息<span class="til_sub">CLEINT INFORMATION</span></div>
+								<div class="check_mesg">
+									<div class="dptx">
+										<div class="dptx_a">公司名称</div>
+										<input type="text" id="company_zname" name="thirdCheckCorp" />
+									</div>
+									<div class="dptx">
+										<div class="dptx_a">Company Name<span>*</span></div>
+										<input type="text" id="company_ename" name="thirdCheckCorpEn" />
+									</div>
+									<div class="dptx">
+										<div class="dptx_a">报验公司地址</div>
+										<input type="text" id="company_zaddress" name="thirdCheckAddr" />
+									</div>
+									<div class="dptx">
+										<div class="dptx_a">Company Address<span>*</span></div>
+										<input type="text" id="company_eaddress" name="thirdCheckAddrEn" />
+									</div>
+									<div class="fpxz">
+										<div class="dptx_a">付款方 payer's Info</div>
+										<div class="fpxz">
+											<div class="fpxz_a"><input type="radio" name="input_radio1" id="input_rd1" value="1" checked /><label for="input_rd1">同报验公司  Same compony</label></div>
+											<div class="fpxz_a"><input type="radio" name="input_radio1" id="input_rd2" value="2" /><label for="input_rd2">其他 Others</label></div>
+                                          	<input class="other_in" type="text" />
+										</div>	
+									</div>
+									<div class="sptx">
+										<div class="sptx_a">联系人 Contact Person<span>*</span></div>
+										<input type="text" id="contact_name" name="thirdCheckContact" />
+										<div class="sptx_a">电话 Tel.<span>*</span></div>
+										<input type="text" id="contact_tel" name="thirdCheckContactTel" />
+									</div>
+									<div class="sptx">
+										<div class="sptx_a">电子邮箱 E-mail Address<span>*</span></div>
+										<input type="text" id="email" name="thirdCheckEmail" />
+										<div class="sptx_a">传真 Fax<span>*</span></div>
+										<input type="text" id="fax" name="thirdCheckFax" />
+									</div>
+									<div class="sptx">
+										<div class="sptx_a">货品名称 Commority<span>*</span></div>
+										<input type="text" id="good_name"/>
+										<div class="sptx_a">数量 Quantity<span>*</span></div>
+										<input type="text" id="good_num"/>
+									</div>
+									<div class="sptx">
+										<div class="sptx_a">船名 Vessel<span>*</span></div>
+										<input type="text" id="boat_name" />
+										<div class="sptx_a">包装 Packing<span>*</span></div>
+										<input type="text" id="package"/>
+									</div>
+									<div class="sptx">
+										<div class="sptx_a">粒度 Size<span>*</span></div>
+										<input type="text" id="lidu" />
+										<div class="sptx_a">装运港 Load Port<span>*</span></div>
+										<input type="text" id="boat_port"/>
+									</div>
+									<div class="sptx">
+										<div class="sptx_a">目的港 Destination<span>*</span></div>
+										<input type="text" id="destination"/>
+										<div class="sptx_a" style="line-height: 20px;">要求检验地点 <br />Inspection Location<span>*</span></div>
+										<input type="text" id="inspection_lacation" />
+									</div>
+									<div class="dptx">
+										<div class="dptx_a" style="line-height: 20px;">预计检验时间 <br />Required Inspection Date<span>*</span></div>
+										<input type="text" id="inspection_date" />
+									</div>
+									<div class="fpxz">
+										<div class="dptx_a" style="line-height: 20px; width: 400px;">
+											证书上是否需要显示L/C信息？(若是，请传真信用证相关内容) 
+											<br />
+											If L/C No.needed to be mentioned in SGS certificate?
+										</div>
+										<div class="fpxz">
+											<div class="fpxz_a"><input type="radio" name="input_radio2" id="input_rd3" value="1" checked/><label for="input_rd3">是 Yes</label></div>
+											<div class="fpxz_a"><input type="radio" name="input_radio2" id="input_rd4" value="0" /><label for="input_rd4">否 No</label></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="check_d">
+								<div class="check_til"><hr />检测内容<span class="til_sub">SERVICES REQUIRED</span></div>
+								<div class="check_con_h">
+									1.取样 Sampling at:
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c">1)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox1" id="input_cb1" value="5" /><label for="input_cb1">在仓库  Warehouse</label></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox1" id="input_cb2" value="6" /><label for="input_cb2">在厂家 Plant</label></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox1" id="input_cb3" value="7" /><label for="input_cb3">在码头 Quayside</label></div>
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c">2)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox2" id="input_cb4" value="8" /><label for="input_cb4">100%取样  100% Sampling</label></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox2" id="input_cb5" value="9" /><label for="input_cb5">随机取样 Random Sampling</label></div>
+								</div>
+								<div class="check_con_h">
+									2.重量检验 Weighing at:
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c">1)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox3" id="input_cb6" value="10" /><label for="input_cb6">在仓库  Warehouse</label></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox3" id="input_cb7" value="11" /><label for="input_cb7">在厂家 Plant</label></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox3" id="input_cb8" value="12" /><label for="input_cb8">在码头 Quayside</label></div>
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c" style="width: 255px;">2) 重量检测 Weighing scale：</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox4" id="input_cb9" value="13" /><label for="input_cb9">100%称重  100% weighing</label></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox4" id="input_cb10" value="14" /><label for="input_cb10">随机抽样称重 Random weighing</label></div>
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c" style="width: 255px;"></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox4" id="input_cb11" value="15" /><label for="input_cb11">磅房监中 Weigh-bridge supervision</label></div>
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c" style="width: 255px;">3) 水尺监重 Draft survey:</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox5" id="input_cb12" value="16" /><label for="input_cb12">初，末水尺  Initial & final</label></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox5" id="input_cb13" value="17" /><label for="input_cb13">中间水尺 Intermadiate</label></div>
+								</div>
+								<div class="check_con_h">
+									3.货物状况检验 Cargo condition check at:
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c">1)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox6" id="input_cb14" value="18" /><label for="input_cb14">在仓库  Warehouse</label></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox6" id="input_cb15" value="19" /><label for="input_cb15">在厂家 Plant</label></div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox6" id="input_cb16" value="20" /><label for="input_cb16">在码头 Quayside</label></div>
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c">2)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox7" id="input_cb17" value="21" /><label for="input_cb17">货物外观目测  Vessle loading supervision</label></div>
+									<div class="fpxz_c">3)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox8" id="input_cb18" value="22" /><label for="input_cb18">包装情况 Packing condition</label></div>
+									<div class="fpxz_c">4)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox9" id="input_cb19" value="23" /><label for="input_cb19">核验标识 Check marking</label></div>
+								</div>
+								<div class="check_con_h">
+									4.港口作业 Port Handling:
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c">1)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox10" id="input_cb20" value="24" /><label for="input_cb20">监督货物装船  Vessel loading supervision</label></div>
+									<div class="fpxz_c">2)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox11" id="input_cb21" value="25" /><label for="input_cb21">监督货物卸船 Vessel discharging supervision</label></div>
+									<div class="fpxz_c">3)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox12" id="input_cb22" value="26" /><label for="input_cb22">货舱检验 Cargo hold inspection</label></div>
+								</div>
+								<div class="check_con_h">
+									5.集装箱 Containe:
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c">1)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox13" id="input_cb23" value="27" /><label for="input_cb23">集装箱监装  Stuffing supervision</label></div>
+									<div class="fpxz_c">2)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox14" id="input_cb24" value="28" /><label for="input_cb24">集装箱加封 Seal stuffed container(s)</label></div>
+									<div class="fpxz_c">3)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox15" id="input_cb25" value="29" /><label for="input_cb25">集装箱监卸 Unloading supervision</label></div>
+								</div>
+								<div class="check_con_h">
+									6.点数 Tally at:
+								</div>
+								<div class="check_con">
+									<div class="fpxz_c">1)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox16" id="input_cb26" value="30" /><label for="input_cb26">集装箱点数  Container</label></div>
+									<div class="fpxz_c">2)</div>
+									<div class="fpxz_b"><input type="checkbox" name="input_checkbox17" id="input_cb27" value="31" /><label for="input_cb27">装船点数 Vessle loading</label></div>
+								</div>
+								<div class="dptx" style="background-color: #f2f2f2; font-size: 14px;">
+									<div class="dptx_a" style="width: 300px;">7.其他要求 Other Requirements:</div>
+									<input type="text" style="width: 600px;" id="other_req"/>
+								</div>
+								<div class="check_con_h">
+									8.样品分析 Sample Analysis:
+								</div>
+								<div class="dptx" style="font-size: 14px;">
+									<div class="dptx_a" style="width: 300px;">1) 化学项目 Chemical items:</div>
+									<input type="text" style="width: 600px;" id="chemical_items"/>
+								</div>
+								<div class="dptx" style="font-size: 14px;">
+									<div class="dptx_a" style="width: 300px;">2) 物理项目 Physical items:</div>
+									<input type="text" style="width: 600px;" id="physical_items" />
+								</div>
+								<div class="dptx" style="font-size: 14px; height: 80px;">
+									<div class="dptx_a" style="width: 100%; height: 50%; border-bottom: 1px solid #e4e4e4;">3) 产品规格|分析标准|其他分析要求 Specification/Analysis standards/Other analysis requirements:</div>
+									<input type="text" id="product_stand" style="width: 100%; height: 50%;"/>
+								</div>
+							</div>
+							
+							
+							
+							<div class="check_b">
+								<div class="check_til"><hr />发票和报告要求<span class="til_sub">INVOICE AND REPORT REQUIREMENT</span></div>
+                              	<div class="check_mesg">
+                                    <div class="fpxz">
+                                        <div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex1" value="1" /><label for="sex1">专票 Speciai VAT</label></div>
+                                        <div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex2" value="2" /><label for="sex2">普票 Non Speciai VAT</label></div>
+                                        <div class="fpxz_a"><input type="radio" name="thirdCheckInvoice" id="sex3" value="3" checked /><label for="sex3">电子发票  Electronic invoice</label></div>
+                                    </div>
+                                    <div class="dptx">
+                                        <div class="dptx_a">发票抬头 Invoice title:<span>*</span></div>
+                                        <input type="text" id="fp_name" name="thirdCheckInvoiceDes" />
+                                    </div>
+                                    <div class="fpxz">
+                                        <div class="fpxz_b"><input type="checkbox" name="reportType" id="sexs1" value="0"  /><label for="sexs1">中文报告  Chinese</label></div>
+                                        <div class="fpxz_b"><input type="checkbox" name="reportType" id="sexs2" value="1" /><label for="sexs2">英文报告 English（英文报告需加收￥200元/English report charged RMB 200）</label></div>
+                                    </div>
+                                </div>
+							</div>
+							<div class="check_c">
+								<div class="check_til"><hr />发送方式<span class="til_sub">DISPATCH VIA</span></div>
+								<div class="fpxz">
+									<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd1" value="1" /><label for="sexd1">快递  Via Express</label></div>
+									<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd2" value="2" /><label for="sexd2">自取  Self Pick Up</label></div>
+									<div class="fpxz_a"><input type="radio" name="thirdCheckGiveWay" id="sexd3" value="3" checked /><label for="sexd3">邮件  Via Email</label></div>
+								</div>
+								<div class="yjdz">
+									<div class="yjdz_a">邮寄地址  delivery address</div>
+									<input type="text" id="mail_address" name="thirdCheckMailaddr" />
+								</div>
+								<div class="jcrq">
+
+								</div>
+								<div class="bjsm" style="height: 140px;">
+									<p>Remark:</p>
+									1) 请将此表填好后传回我公司，以作为报价的依据。<br />
+									upon filling in the form, please fax it back to our office, base of which our quotation will be made.<br />
+									2） 如有问询，请于以下人员联系 for any queeies, please contact following persons with fax.tel.no.Given below:<br />
+									Name: Jessica Jin Tel: 022-6528 8149 Fax: 022-2529 3819/Minerals TianJin SGS-CSTS Ltd.
+								</div>
+								<div class="dptx">
+									<div class="dptx_a" style="width: 56%; border: none; font-size: 14px;">申请方代表人签字/盖章 Signed by for and be half of application party/stamp:</div>
+									<input type="text" style="width: 44%;" id="req_name" />
+								</div>
+								<div class="dptx">
+									<div class="dptx_a" style="width: 22%; border: none; font-size: 14px;">申请时间 Application Time:</div>
+									<input type="text" style="width: 78%;" id="req_time" />
+								</div>
+							</div>
+							
+							<div class="tjsq">
+								<div class="btn">Submit</div>
+								<div class="tjsq_a">
+									<div class="tjsq_qr" v-on:click="postSupervision()">Confirm</div>
+									<div class="tjsq_xg">Modify</div>
+								</div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">download :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain1_e.html">Contact Us</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_file1_e.html">Contact Customer Service</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <a href="new_explain2_e.html">Business Cooperation</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_explain8_e.html">Merchant help</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+                <span>&nbsp;|&nbsp;</span> -->
+                <a href="new_explain4_e.html">Product Library</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain5_e.html">Friendly Link</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain6_e.html">Privacy Policy</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain7_e.html">Legal Statement</a>
+            </div>
+            <div class="foot_line"></div>
+            <!-- <div class="a_txt_b"> -->
+                <!-- Browse Alphabetically: -->
+                <!-- <a href="new_explain8_e.html">Onetouch</a> -->
+                <!-- <span>&nbsp;|&nbsp;</span> -->
+                <!-- <a href="new_explain9_e.html">Showroom </a> -->
+                <!-- <span>&nbsp;|&nbsp;</span> -->
+                <!-- <a href="new_explain10_e.html">Country Search </a> -->
+                <!-- <span>&nbsp;|&nbsp;</span> -->
+                <!-- <a href="new_explain11_e.html">Suppliers</a> -->
+                <!-- <span>&nbsp;|&nbsp;</span> -->
+                <!-- <a href="new_explain12_e.html">Wholesaler </a> -->
+                <!-- <span>&nbsp;|&nbsp;</span> -->
+                <!-- <a href="new_explain13_e.html">Affiliate</a> -->
+            <!-- </div> -->
+            <!-- <div class="a_txt_b"> -->
+                <!-- Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law -->
+                <!-- Enforcement -->
+                <!-- Compliance Guide -->
+            <!-- </div> -->
+            <div class="a_txt_b">
+                copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/jquery.pagination.js"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/goods_employed_third.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/goods_employed_third.js"></script>
+<script type="text/javascript">
+			$('.btn').click(function(){
+              	$(".btn").hide();
+              	$(".tjsq_a").show()
+				$('#imgform input').attr("readonly", "readonly");
+              	$('#imgform textarea').attr("readonly", "readonly");
+             	//$(".fpxz input").attr("disabled","disabled");
+ 
+			});
+         	 $('.tjsq_xg').click(function(){
+                $(".btn").show();
+               	$(".tjsq_a").hide();
+				$("input").removeAttr("readonly");
+               	$("input").removeAttr("disabled");
+              	$("textarea").removeAttr("readonly");              	
+             });
+$(function(){ 
+    getCurrentUser();
+}); 
+        function getCurrentUser() {
+            $.ajax({
+                url: "/log/currentUser",
+                type: "post",
+                data: {},
+                dataType: "json",
+                success: function (r) {
+                    if (r.data == null) {
+                        alert("please sign in again!");
+                        window.open("login_en.html", "_self");
+                        return;
+                    }else {
+						
+                    }
+                }
+            })
+        }
+		</script>
+</body>
+</html>

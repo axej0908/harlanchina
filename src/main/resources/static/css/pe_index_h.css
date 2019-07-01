@@ -1,0 +1,276 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+
+/*--------------------------------first-----------------------------------------------*/
+.first{
+	width: 100%;
+	/*height: 105px;*/
+	padding-top: 68px;
+    border-bottom: 4px solid #1a669f
+}
+.first_sub{
+	width: 1200px;
+	height: 105px;
+	margin: 0 auto;
+}
+.logo{
+    width: 214px;
+    height: 94px;
+    background: url(../imgs/logo_welcom4.png) no-repeat center;
+    background-size: contain;
+    float: left;
+    margin-top: 11px;
+}
+.mn_list{
+	height: 64px;
+	float: left;
+	margin-top: 41px;
+	margin-left: 50px;
+	float: left;
+}
+.mn_list li{
+	padding-left: 34px;
+	padding-right: 34px;
+	height: 64px;
+	line-height: 64px;
+	font-size: 18px;
+	float: left;
+}
+.mn_active{
+	background-color: #0696dc;
+	color: #fff;
+}
+.mesg_tip{
+	background-image: url(../imgs/red_point.png); 
+	background-repeat:no-repeat;
+    background-position: 73px 17px;
+	background-size: 7px 7px;
+}
+.search_area{
+	width: 446px;
+	height: 45px;
+	border: 1px solid #0587d0;
+	float: right;
+	padding-right: 22px;
+	margin-top: 30px;
+}
+.search_input{
+	width: 397px;
+	height: 100%;
+	float: left;
+}
+.search_input input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	padding-left: 10px;
+}
+.search_btn{
+	float: right;
+	width: 25px;
+	height: 100%;
+	background: url(../imgs/per_search.png) no-repeat center;
+	background-size: 25px 25px;
+	cursor: pointer;
+}
+/*------------------------second-------------------------------------------*/
+.second{
+	width: 100%;
+	padding-top: 21px;
+	margin-bottom: 36px;
+}
+.second_sub{
+	width: 1200px;
+	margin: 0 auto;
+}
+.second_mn{
+	width: 206px;
+	height: 834px;
+	position: relative;
+	float: left;
+}
+.second_mn_list{
+	width: 100%;
+}
+.second_mn_list li{
+	padding-left: 37px;
+	width: 100%;
+	height: 53px;
+	line-height: 43px;
+}
+.second_mn_list li:not(:first-child){
+	margin-top: 10px;
+}
+.current_bg{
+	background: url(../imgs/per_li_bg.png) no-repeat center;
+	background-size: 205px 53px;
+	color: #fff;
+}
+.mn_bg{
+	width: 191px;
+	height: 100%;
+	position: absolute;
+	background-color: #F7F7F7;
+	top: 0;
+	right: 0;
+	z-index: -1;
+}
+.second_two{
+	float: left;
+	width: 961px;
+	margin-left: 16px;
+}
+.tab_div{
+	width: 100%;
+	height: 70px;
+	background-color: #f7f7f7;
+	border-bottom: 2px solid #01a0ed;
+	padding-left: 14px;
+	font-size: 20px;
+	color: #333;
+	line-height:68px;
+}
+.jc_list{
+	width:100%;
+	margin-top: 30px;
+}
+.jc_head{
+	width: 100%;
+	height: 36px;
+	background-color: #F7F7F7;
+}
+.jc_a{
+	width: 454px;
+}
+.jc_b{
+	width: 197px;
+}
+.jc_d{
+	width: 174px;
+}
+.jc_e{
+	width: 133px;
+}
+.jc_a,.jc_b,.jc_c,.jc_d,.jc_e{
+	height: 100%;
+}
+.jc_head>div{
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 36px;
+	font-size: 14px;
+	color: #0587d0;
+}
+.jc_row{
+	margin-top: 22px;
+	width: 100%;
+	height: 120px;
+	border: 1px solid #E6E6E6;
+}
+.jc_row>div{
+	float: left;
+	height: 100%;
+}
+.jc_row .jc_b,.jc_row .jc_c,.jc_row .jc_d,.jc_row .jc_e{
+	border-left: 1px solid #E6E6E6;
+}
+.jc_row .jc_a{
+	padding-left: 12px;
+	padding-right: 12px;
+}
+.jc_nm{
+    width: 100%;
+    margin-top: 48px;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.jc_row .jc_b{
+	padding-left: 12px;
+	padding-top: 36px;
+}
+.dt_time,.da_day{
+	width: 100%;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	color: #999;
+}
+.jc_row .jc_c{
+	text-align: center;
+	line-height:120px;
+	font-size: 14px;
+	color: #333;
+	font-weight: bold;
+}
+.jc_row .jc_d{
+	text-align: center;
+	line-height:120px;
+	font-size: 14px;
+	color: #fc5656;
+}
+.jc_btn{
+	width:77px;
+	height: 28px;
+	background-color: #0696dc;
+	font-size: 14px;
+	color: #fff;
+	line-height: 28px;
+	text-align: center;
+	margin: 46px auto 0 auto;
+}
+/*页码按钮*/
+.page{
+	height: 44px;
+	float: right;
+	margin-top: 39px;
+	margin-bottom: 39px;
+}
+.page_num{
+	width: 39px;
+	height: 100%;
+	text-align: center;
+	background-color: #f6f6f6;
+	line-height: 44px;
+	text-align: center;
+	font-size: 16px;
+	color: #999999;
+	border: 1px solid #E6E6E6;
+	float: left;
+}
+.page_pre,.page_nxt{
+	width: 88px;
+	height:100%;
+	line-height: 44px;
+	text-align: center;
+	border: 1px solid #E6E6E6;
+	font-size: 16px;
+	color: #999999;
+	float: left;
+}
+.jl{
+	font-size: 12px;
+	color: #999;
+	float: left;
+	line-height: 44px;
+	padding-left: 15px;
+	padding-right: 15px;
+}

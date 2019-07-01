@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+		<meta content="telephone=no" name="format-detection" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/pe_index_service_app.css"/>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		<div class="entire" id="rrapp">
+<!--			头部-->
+			<div class="my_fw">
+				<ul class="tab_div">
+					<li class="tab_li_current"><span class="span_txt">All orders</span> <div class="span_line"></div></li> 
+            		<li><span class="span_txt">To be handled</span> <div class="span_line"></div></li>
+            		<li><span class="span_txt">To be paid</span> <div class="span_line"></div></li>
+            		<li><span class="span_txt">To be tested</span> <div class="span_line"></div></li>
+            		<li><span class="span_txt">Under testing</span> <div class="span_line"></div></li>
+            		<li><span class="span_txt">Completed</span> <div class="span_line"></div></li>
+            		<li><span class="span_txt">Cancelled</span> <div class="span_line"></div></li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+<!--			头部结束-->
+<!--			主体-->
+			<div class="main">
+				<div class="main_con" v-for="item in services">
+					<div class="con_head">
+						<div class="head_l fl">
+							apply_date: <span>{{item.apply_date}}</span>
+						</div>
+						<div class="head_r fr">
+								<a v-if="har1Show" @click="goOrder(item.testing_id)"> details</a>
+								<a v-if="har2Show" @click="goOrder(item.supervision_id)"> details</a>
+								<a v-if="har3Show" @click="goOrder(item.factory_id)"> details</a>
+							
+						</div>
+					</div>
+					<div class="con_body">
+						<p>Inspection fee: <span>{{item.total_fee}}</span></p>
+						<p>Status:
+								<span v-if="item.status=='1'">To be handled</span>
+								<span v-if="item.status=='2'">Cancelled</span>
+								<span v-if="item.status=='3'">To be paid</span>
+								<span v-if="item.status=='4'">To be tested</span>
+								<span v-if="item.status=='5'">Under testing</span>
+								<span v-if="item.status=='6'">Completed</span></p>
+						
+					</div>
+					<div class="con_foot">
+								<!--<div class="jc_btn" style="position:relative;" v-if="item.status==3 && har1Show">
+									<div style="top:0;left:0;width:100%;height:100%;position:absolute;">upload</div>
+									<input id="file1" type="file" style="top:0;left:0;width:100%;height:100%;opacity:0;z-index:2;position:absolute;" class="entrustfile" @change="fileUpload($event, item.testing_id)" />
+								</div>
+                              	<div class="jc_btn" style="position:relative;" v-if="item.status==3 && har2Show">
+									<div style="top:0;left:0;width:100%;height:100%;position:absolute;">upload</div>
+									<input id="file2" type="file" style="top:0;left:0;width:100%;height:100%;opacity:0;z-index:2;position:absolute;" class="entrustfile" @change="fileUpload($event, item.supervision_id)" />
+								</div>
+                              	<div class="jc_btn" style="position:relative;" v-if="item.status==3 && har3Show">
+									<div style="top:0;left:0;width:100%;height:100%;position:absolute;">upload</div>
+									<input id="file3" type="file" style="top:0;left:0;width:100%;height:100%;opacity:0;z-index:2;position:absolute;" class="entrustfile" @change="fileUpload($event, item.factory_id)" />
+								</div>-->
+								<a v-if="item.status==6" :href="['/'+item.invoice_filepath]"><div class="jc_btn_b">download bill</div></a>
+                                <a v-if="item.status==6" :href="['/'+item.report_filepath]"><div class="jc_btn_b">download report</div></a>
+                            	<a v-if="item.status==3 && har1Show" @click="toPay(item.testing_id,1,item.total_fee)"><div class="jc_btn">pay</div></a>
+								<a v-if="item.status==3 && har2Show" @click="toPay(item.supervision_id,2,item.total_fee)"><div class="jc_btn">pay</div></a>
+								<a v-if="item.status==3 && har3Show" @click="toPay(item.factory_id,3,item.total_fee)"><div class="jc_btn">pay</div></a>
+                              	<a v-if="item.status==3 && har1Show" @click="toCancel(item.testing_id)"><div class="jc_btn">cancel</div></a>
+								<a v-if="item.status==3 && har2Show" @click="toCancel(item.supervision_id)"><div class="jc_btn">cancel</div></a>
+								<a v-if="item.status==3 && har3Show" @click="toCancel(item.factory_id)"><div class="jc_btn">cancel</div></a>
+                 
+					</div>
+				</div>
+			</div>
+<!--			主体结束-->
+			 <!--分页<div class="pagination" id="pagerBarStartSale"></div>	-->
+                    	
+		</div>
+	</body>
+	<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/base64.js"></script>
+	<script src="plugins/jquery.pagination.js"></script>
+	<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+	<!--时间插件-->
+	<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+	<script src="lib/common.js"></script>
+	<script src="plugins/vue/vue.min.js"></script>
+	<!--<script src="lib/pe_index_service.js"></script>-->
+	<script src="plugins/ajaxfileupload.js"></script>
+	<script>	
+	var limit = 100000000;
+var flag = true;
+var vm = new Vue({
+    el: "#rrapp",
+    data: {
+        user: {},
+        //服务类别
+        service: {},
+        //my 申请的服务列表
+        services:[],
+        har1Show:false,
+        har2Show:false,
+        har3Show:false,
+        ser3Show:false,
+		type:'har1',
+		
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+			vm.type= getQueryString("type");
+			vm.user.user_id= getQueryString("user_id");
+			if(vm.type=='har1'){
+				vm.har1Show = true;
+				vm.getAppList(0,0);
+			}else if(vm.type=='har2'){
+				vm.har2Show = true;
+				vm.getSuperList(0,0);
+			}else if(vm.type=='har3'){
+				vm.har3Show = true;
+				vm.getFactoryList(0,0);
+			}
+        })
+    },
+    filters: {
+        serialSel: function (val) {
+            return val + "" + new Date().getTime();
+        }
+    },
+    computed: {
+    },
+    methods: {
+		/**
+         * SuperList
+         */
+		getAppList:function(state,page){
+				 if (!$.isNumeric(page)) {
+                page = 0;
+            }	
+			$.ajax({
+                    url: '/Testing/getTestingByUserAndStatus',
+                    async: false,
+                    data: {
+                        user_id: vm.user.user_id,
+						limit: 100000000,
+						page:page+1,
+						testing_status: state},
+                    type: "post",
+                    datatype: "json",
+                    success : function (r) {
+						console.log("result==>"+r)
+						var obj = JSON.parse(r);
+                        if (obj.code == 200) {
+                        if (flag) {
+                            $("#pagerBarStartSale").pagination(obj.data.recordTotal, {
+                                items_per_page: limit,
+                                num_edge_entries: 0,
+                                num_display_entries: 2,
+                                callback: vm.getAppList//回调函数
+                            });
+                            flag = false;
+                        } 
+                        vm.services = obj.data.content;
+                    }else{
+						vm.services={};
+                    }
+                    }
+                })
+		},
+		/**
+         * SuperList
+         */
+		getSuperList:function(state,page){
+				 if (!$.isNumeric(page)) {
+                page = 0;
+            }	
+			$.ajax({
+                    url: '/Supervision/getSupervisionByUserAndStatus',
+                    async: false,
+                    data: {
+                        user_id: vm.user.user_id,
+						limit: 100000000,
+						page:page+1,
+						supervision_status: state},
+                    type: "post",
+                    datatype: "json",
+                    success : function (r) {
+						console.log("result==>"+r)
+						var obj = JSON.parse(r);
+                        if (obj.code == 200) {
+                        if (flag) {
+                            $("#pagerBarStartSale").pagination(obj.data.recordTotal, {
+                                items_per_page: limit,
+                                num_edge_entries: 0,
+                                num_display_entries: 2,
+                                callback: vm.getSuperList//回调函数
+                            });
+                            flag = false;
+                        }
+                        vm.services = obj.data.content;
+                    }else{
+						vm.services={};
+                    }
+                    }
+                })
+		},
+		/**
+         * factory_list
+         */
+		getFactoryList:function(state,page){
+			 if (!$.isNumeric(page)) {
+                page = 0;
+            }	
+			$.ajax({
+                    url: '/FactoryAudit/getFactoryAuditByUserAndStatus',
+                    async: false,
+                    data: {
+                        user_id: vm.user.user_id,
+						limit: 100000000,
+						page:page+1,
+						factoryAudit_status: state},
+                    type: "post",
+                    datatype: "json",
+                    success : function (r) {
+						console.log("result==>"+r)
+						var obj = JSON.parse(r);
+                        if (obj.code == 200) {
+                        if (flag) {
+                            $("#pagerBarStartSale").pagination(obj.data.recordTotal, {
+                                items_per_page: limit,
+                                num_edge_entries: 0,
+                                num_display_entries: 2,
+                                callback: vm.getFactoryList//回调函数
+                            });
+                            flag = false;
+                        }
+                        vm.services = obj.data.content;
+                    }else{
+						vm.services={};
+                    }
+                    }
+                })
+		},
+		/**
+         * for type to select
+         */
+		gotoType:function(type){
+			if(vm.har1Show){vm.getAppList(type,0)};
+			if(vm.har2Show){vm.getSuperList(type,0)};
+			if(vm.har3Show){vm.getFactoryList(type,0)};
+		},
+		/**
+         * for type to select
+         */
+		toPay:function(orderId,type,total){
+			window.open("toPay?id="+orderId+"&type="+type+"&total="+total, "_self");
+		},
+		toCancel:function(orderId){
+			if(vm.har1Show){
+				$.ajax({
+					url:'/Testing/updateTesting',
+					data:{
+						testing_id:orderId,
+						testing_status:'2'
+					},
+					type:'post',
+					success:function(r){
+						alert("success");
+						vm.getAppList(0,0);
+						//if(confirm("success")){
+						//	window.open("harlan_goback", "_self");
+						//}
+					}
+				});
+			}else if(vm.har2Show){
+					$.ajax({
+					url:'/Supervision/updateSupervisionStatusById',
+					data:{
+						supervision_id:orderId,
+						supervision_status:'2'
+					},
+					type:'post',
+					success:function(r){
+						alert("success");
+						vm.getSuperList(0,0);
+						//if(confirm("success")){
+							//window.open("harlan_goback", "_self");
+						//}
+					}
+				});
+			}else{
+				$.ajax({
+					url:'/FactoryAudit/updateFactoryAuditStatus',
+					data:{
+						factoryAudit_id:orderId,
+						factoryAudit_status:'2'
+					},
+					type:'post',
+					success:function(r){
+						alert("success");
+						vm.getFactoryList(0,0);
+						//if(confirm("success")){
+							//window.open("harlan_goback", "_self");
+						//}
+						
+					}
+				});
+			}
+		},
+		/**
+         * uploadFile
+         */
+		 fileUpload: function(event,id){
+			 var obj=event.target;
+			
+			 if(vm.har1Show){
+				var formData = new FormData();
+				formData.append("file",$("#file1")[0].files[0]);
+				formData.append("testing_id",id);
+				formData.append("fileType",1);
+				$.ajax({
+                url: "/Testing/uploadFiles",
+                type: "post",
+                data:formData,
+                processData : false,
+                contentType : false,
+                success: function (r) {
+					console.log("fileupload===="+r)
+                    if(r.code==200){
+						//文件路径
+                   alert("uploadFile success");
+					}
+                },
+                error: function (e) {
+                    alert(e);
+                }
+            })
+			 };
+			 if(vm.har2Show){
+				var formData = new FormData();
+				formData.append("file",$("#file2")[0].files[0]);
+				formData.append("supervision_id",id);
+				formData.append("fileType",1);
+				$.ajax({
+                url: "/Supervision/uploadFiles",
+                type: "post",
+                data:formData,
+                processData : false,
+                contentType : false,
+                success: function (r) {
+					console.log("fileupload===="+r)
+                    if(r.code==200){
+						//文件路径
+                   alert("uploadFile success");
+					}
+                },
+                error: function (e) {
+                    alert(e);
+                }
+            })
+			 };
+			 if(vm.har3Show){
+				var formData = new FormData();
+				formData.append("file",$("#file3")[0].files[0]);
+				formData.append("factoryAudit_id",id);
+				formData.append("fileType",1);
+				$.ajax({
+                url: "/FactoryAudit/uploadFiles",
+                type: "post",
+                data:formData,
+                processData : false,
+                contentType : false,
+                success: function (r) {
+					console.log("fileupload===="+r)
+					if(r.code==200){
+						//文件路径
+                   alert("uploadFile success");
+					}
+                },
+                error: function (e) {
+                    alert(e);
+                }
+            })
+			 };
+		 },
+		 goOrder:function(order_id){
+			 if(vm.har1Show){window.open("harlan_eye_a_user_app.html?id="+order_id, "_self");}
+			 if(vm.har2Show){window.open("harlan_eye_b_user_app.html?id="+order_id, "_self");}
+			 if(vm.har3Show){window.open("harlan_eye_c_user_app.html?id="+order_id, "_self");}
+		 }
+	},
+      
+});
+	</script>
+		<script>
+	    //tab页一级菜单
+	    $(".tab_div").on("click","li",function(){
+	        $(this).addClass("tab_li_current").siblings().removeClass("tab_li_current");
+			if($(".tab_div li").index(this)==0){vm.gotoType(0);}
+			if($(".tab_div li").index(this)==1){vm.gotoType(1);}
+			if($(".tab_div li").index(this)==2){vm.gotoType(3);}
+			if($(".tab_div li").index(this)==3){vm.gotoType(4);}
+			if($(".tab_div li").index(this)==4){vm.gotoType(5);}
+			if($(".tab_div li").index(this)==5){vm.gotoType(6);}
+			if($(".tab_div li").index(this)==6){vm.gotoType(2);}
+	    })
+	</script>
+</html>

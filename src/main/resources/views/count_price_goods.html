@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <!--引入城市插件css-->
+    <link rel="stylesheet" href="css/city/city-picker.css"/>
+    <link rel="stylesheet" href="css/count_price.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<!--顶部区域开始-->
+<div class="header">
+    <div class="header_sub">
+        <ul class="header_fl">
+            <li><a href="/">Harlan Mall</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="guide_zh.html">中国供应商入口</a></li>
+            <!--<li><a href="shop_cart_en.html">My shopping cart ></a></li>-->
+            <li class="red_bg"><a href="goods_employed_self.html">Self-support</a></li>
+            <li class="red_bg"><a href="goods_employed_third.html">ThirdPart-support</a></li>
+			<li class="red_bg" style="color:#ff792d;"><a href="find_goods_list.html"><strong>Inquiry Platform</strong></a></li>
+        </ul>
+        <ul class="header_fr">
+            <li><a href="pe_index_b.html">My harlan</a></li>
+            <li><a href="login_en.html">Sign in</a> <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span> <a href="register_en.html">Register</a></li>
+            <li><a href="new_explain8_e.html">Help Center</a></li>
+            <!--<li class="lang_li">
+                <span>Language</span>
+                <div class="span_sj"></div>
+                <div class="lang_mn" style="display: none;">
+                    <div class="lang_item"><a href="#">简体中文</a></div>
+                    <div class="lang_item"><a href="#">繁體中文</a></div>
+                    <div class="lang_item"><a href="#">English</a></div>
+                    <div class="lang_item"><a href="#">한국어 </a></div>
+                    <div class="lang_item"><a href="#">日本語</a></div>
+                </div>
+            </li>-->
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+</div>
+
+<!------------------顶部区域结束-------------->
+<div class="entire" id="rrapp">
+    <!--搜索区域开始-->
+    <div class="search_area">
+        <div class="search_area_sub">
+            <div class="search_logo"><a href="index.html"></a></div>
+            <div class="search_div">
+                <div class="search_fl">
+                    <div class="search_whitch">Supplier</div>
+                    <ul class="search_ul" style="display: none;">
+                        <li @click="searchType='product'">Product</li>
+                        <li @click="searchType='supplier'">Supplier</li>
+                        <li @click="searchType='cas'">CAS</li>
+                    </ul>
+                    <div class="search_input_div">
+                        <input type="text" v-model="searchParam"/>
+                    </div>
+                </div>
+                <div class="search_btn" @click="redirectSel">Search</div>
+            </div>
+            <!-- <a href="f_free_find.html" class="inquiries_btn">Free Find</a> -->
+        </div>
+    </div>
+    <!--------------搜索区域结束-------------->
+    <div class="count_div">
+        <h6><a href="index.html">Home Page ></a> <a href="shop_cart_en.html">shopping cart ></a> <em><a href="#">settlement</a></em></h6>
+        <p class="count_area_tip">Fill in and check the order information</p>
+        <div class="count_box">
+            <div class="area_a">
+                <p class="area_a_tip">
+                    <span class="fl">Consignee information</span>
+                    <span class="adr_add_btn fr" @click="addressFrame=true">Add the receiving address</span>
+                </p>
+                <div class="adr_list">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <colgroup>
+                            <col class="tda">
+                            <col class="tdb">
+                            <col class="tdc">
+                            <col class="tdd">
+                            <col class="tde">
+                            <col class="tdf">
+                        </colgroup>
+                        <tr v-for="item in addrs">
+                            <td>
+                                <label class="radio_area"><input type="radio" v-model="order.addr_id"
+                                                                 :value="item.addr_id"/><span></span></label>&nbsp;&nbsp;
+                            </td>
+                            <td>{{item.consignee}}</td>
+                            <td>{{item.province}}{{item.city}}{{item.area}}{{item.detail}}</td>
+                            <td v-text="item.mobile"></td>
+                            <td>
+                                <div class="adr_zt">{{item.is_default}}</div>
+                            </td>
+                            <td>
+                                <div class="adr_op"><span @click="detail(item)">edit</span>&nbsp;&nbsp;<span
+                                        @click="del(item)">delete</span></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="adr_up_btn adr_show">Put the address</div>
+                </div>
+            </div>
+            <div class="area_b">
+                <div class="clear"></div>
+                <p class="area_b_tip">Method of payment</p>
+                <ul class="pay_type">
+                    <li class="plat">
+                        <label><input type="checkbox" :checked="order.state_3party"/><span></span></label>&nbsp;&nbsp;
+                        <img src="imgs/plat_a.png"/>
+                        <span>unionPay</span>
+                    </li>
+
+                    <li class="plat">
+                        <label><input type="checkbox" :checked="order.state_3party"/><span></span></label>&nbsp;&nbsp;
+                        <img src="imgs/plat_b.png"/>
+                        <span>AliPay</span>
+                    </li>
+                    <li class="plat">
+                        <label><input type="checkbox" :checked="order.state_3party"/><span></span></label>&nbsp;&nbsp;
+                        <img src="imgs/plat_c.png"/>
+                        <span>Wechat</span>
+                    </li>
+
+                    <li class="plat">
+                        <label><input type="checkbox" :checked="order.state_3party"/><span></span></label>&nbsp;&nbsp;
+                        <img src="imgs/plat_d.png"/>
+                        <span>Offline transfer</span>
+                    </li>
+                    <li class="plat">
+                        <label><input type="checkbox" :checked="order.state_3party"/><span></span></label>&nbsp;&nbsp;
+                        <img src="imgs/plat_e.png"/>
+                        <span>Supply chain finance</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="area_c">
+                <div class="clear"></div>
+                <p class="area_c_tip">Order contract</p>
+                <div class="pact">Order enterprise contract&nbsp;<span><a href="upload/0/InternationalHarLan.doc">【See】</a></span></div>
+            </div>
+            <div class="area_d">
+                <div class="clear"></div>
+                <p class="area_d_tip">Platform service</p>
+                <ul class="platform">
+                    <li class="plat">
+                        <label>
+                            <input type="checkbox" :checked="order.state_supervision"
+                                   @click="order.state_supervision=!order.state_supervision"/>
+                            <span></span>
+                        </label>&nbsp;&nbsp;
+                        <span>Apply for free supervision</span>
+                    </li>
+                    <li class="plat">
+                        <label><input type="checkbox" :checked="order.state_3party"/><span></span></label>&nbsp;&nbsp;
+                        <span>Apply for third-party testing</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="area_e">
+                <div class="clear"></div>
+                <p class="area_e_tip">Delivery list</p>
+                <div class="goods_list">
+                    <div class="goods_tal">
+                        <div class="tal_a">Product information</div>
+                        <div class="tal_b">Number</div>
+                        <div class="tal_c">Unit Price</div>
+                        <div class="tal_d">Subtotal</div>
+                    </div>
+                    <div class="goods_item" v-for="item in cartList">
+                        <div class="item_a">
+                            <div class="good_pic" :style="'backgroundImage:url('+item.product_picture+')'"></div>
+                            <div class="good_mesg">
+                                <p>No.：<span>{{item.cart_id}}</span></p>
+                                <p v-text="item.goods_name">N-[3-氯-4-(3-氟苄氧基)苯基]-6-碘喹唑啉-4-胺</p>
+                                <p>color power：<span v-text="item.color_power">99%</span></p>
+                            </div>
+                        </div>
+                        <div class="item_b"><span v-text="item.goods_num"></span></div>
+                        <div class="item_c"><span>￥{{item.goods_price}}</span></div>
+                        <div class="item_d">{{item.goods_num*item.goods_price}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn_area">
+            <div class="submit_text">  <span>Number of goods:</span> <em>1</em>    <span class="area_sb">Total commodityamount: </span><em>$1111</em></div>
+            <div class="submit_btn" @click="submitOrder">place order</div>
+        </div>
+    </div>
+</div>
+<div class="foot_bottom">
+    <div class="foot_sub">
+        <div class="download">
+            <div class="load_txt">download :</div>
+            <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+            <div class="load_pic_b"><a href="hualang.apk"></a></div>
+        </div>
+        <div class="a_txt">
+            <a href="new_explain1_e.html">Contact Us</a>
+            <span>&nbsp;|&nbsp;</span>
+            <!--<a href="new_file1_e.html">Contact Customer Service</a>
+            <span>&nbsp;|&nbsp;</span>-->
+            <a href="new_explain2_e.html">Business Cooperation</a>
+            <span>&nbsp;|&nbsp;</span>
+            <!--<a href="new_explain8_e.html">Merchant help</a>
+            <span>&nbsp;|&nbsp;</span>-->
+            <!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+            <span>&nbsp;|&nbsp;</span> -->
+            <a href="new_explain4_e.html">Product Library</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain5_e.html">Friendly Link</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain6_e.html">Privacy Policy</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain7_e.html">Legal Statement</a>
+        </div>
+        <div class="foot_line"></div>
+        <!-- <div class="a_txt_b">
+            Browse Alphabetically:
+            <a href="new_explain8_e.html">Onetouch</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain9_e.html">Showroom </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain10_e.html">Country Search </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain11_e.html">Suppliers</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain12_e.html">Wholesaler </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain13_e.html">Affiliate</a>
+        </div>
+        <div class="a_txt_b">
+            Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+            Enforcement
+            Compliance Guide
+        </div> -->
+        <div class="a_txt_b">
+            copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+        </div>
+    </div>
+</div>
+
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/base64.js"></script>
+<script src="lib/common.js"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<!--引入城市插件-->
+<script src="js/city/citydata.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/city/cityPicker-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/count_price.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/base64.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/count_price_byCart.js"></script>
+</body>
+</html>

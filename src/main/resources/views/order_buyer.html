@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pe_common.css"/>
+    <link rel="stylesheet" href="css/pe_index_b.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<div class="entire" id="rrapp">
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="/">Harlan Mall</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide_zh.html">中国供应商入口</a></li>
+                <li class="red_bg"><a href="index_type.html">Self-support</a></li>
+                <li class="red_bg"><a href="index_type.html">ThirdPart-support</a></li>
+                <li class="red_bg" style="color:#ff792d;"><a href="find_goods_list.html"><strong>Inquiry Platform</strong> </a></li>
+
+            </ul>
+            <ul class="header_fr">
+                <li v-if="user!=null" class="out_area">
+                    <a @click="lnkPersonalCenter">My harlan</a>
+                    <a @click="logout">Sign out</a>
+                </li>
+                <li v-if="user==null">
+                    <a href="login_en.html">Sign in</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                    <a href="register_en.html">Register</a>
+                </li>
+                <li><a href="new_explain17_c.html">Help Center</a></li>
+                <!--<li class="lang_li">
+                    <span>Language</span>
+                    <div class="span_sj"></div>
+                    <div id="lang_mn" class="lang_mn" style="display: none;">
+                        <div class="lang_item"><a href="#">简体中文</a></div>
+                        <div class="lang_item"><a href="#">繁體中文</a></div>
+                        <div class="lang_item"><a href="#">English</a></div>
+                        <div class="lang_item"><a href="#">한국어 </a></div>
+                        <div class="lang_item"><a href="#">日本語</a></div>
+                    </div>
+                </li>-->
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!--顶部区域结束-->
+    <div class="pe_one_top">
+        <div class="first_sub">
+            <div class="logo">
+                <a href="index.html"></a>
+            </div>
+            <ul class="mn_list">
+                <li class="mn_active"><a href="order_buyer.html">Home Page</a><span class="line_slide"></span></li>
+                <li><a href="buyer_info.html">My Information</a><span class="line_slide"></span></li>
+            </ul>
+            <div class="pe_top_btn">
+                <!-- <a href="shop_cart_en.html" class="cart_btn" v-show="carShow">My cart <span>{{gross}}</span></a> -->
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="pe_con">
+        <div class="pe_con_sub">
+            <div class="pe_con_mn">
+                <ul class="pe_con_mn_list">
+                    <li class="current_bg"><a href="order_buyer.html">My Order</a></li>
+                    <!--<li><a href="pe_index_service.html?type=ser1">Search for agents</a></li>-->
+                    <li><a href="pe_index_service.html?type=har1" title="Application oriented Detection">Applicaiton Testing</a></li>
+                    <li><a href="pe_index_service.html?type=har2">Loading Supervision Inspection</a></li>
+                    <li><a href="pe_index_service.html?type=har3">Supplier Creditability & Factory Audit</a></li>
+                    <li><a href="pe_index_supply.html">Supply Chain Financf</a></li>
+                    <!--<li><a href="pe_index_service.html?type=ser3">Platform monitoring</a></li>
+                    <li><a href="pe_index_service.html?type=ser4">Credit inquiry</a></li>
+                    <li><a href="pe_index_service.html?type=ser5">Complaints and disputes</a></li>-->
+                    <li><a href="my_free_search_buy.html">Free To Find Goods</a></li>
+                    <li><a href="pe_index_inquiry_x_en.html">Supplier Inquiry</a></li>
+                </ul>
+                <div class="mn_bg"></div>
+            </div>
+            <div class="pe_con_right">
+                <div class="wddd">
+                    <ul class="tab_div">
+                        <li class="tab_li_current">
+                            <span class="span_txt" @click="preLoadOPurchaseOrders(0)">All orders</span>
+                            <div class="span_line"></div>
+                        </li>
+                        <li>
+                            <span class="span_txt" @click="preLoadOPurchaseOrders(0,1)">For the payment</span>
+                            <div class="span_line"></div>
+                        </li>
+                        <li>
+                            <span class="span_txt" @click="preLoadOPurchaseOrders(0,2)">Waiting for delivery</span>
+                            <div class="span_line"></div>
+                        </li>
+                        <li>
+                            <span class="span_txt" @click="preLoadOPurchaseOrders(0,3)">Wait for receiving</span>
+                            <div class="span_line"></div>
+                        </li>
+                        <li>
+                            <span class="span_txt" @click="preLoadOPurchaseOrders(0,4)">Completed</span>
+                            <div class="span_line"></div>
+                        </li>
+                    </ul>
+                    <div class="dd_condition">
+                        <div class="dd_find_txt">Transaction Time</div>
+                        <div class="dd_find_box">
+                            <input type="text" placeholder="Please enter start time" v-model="order.start"/>
+                        </div>
+                        <div class="time_lj">
+                            ——
+                        </div>
+                        <div class="dd_find_box">
+                            <input type="text" placeholder="Enter the end time" v-model="order.end"/>
+                        </div>
+                        <div class="dd_find_btn" @click="searchTime">search</div>
+                        <div class="dd_find_box find_box_c">
+                            <input type="text" placeholder="Please enter a keyword" v-model="order.goods_name"/>
+                        </div>
+                        <div class="dd_find_btn" @click="searchName">search</div>
+                    </div>
+                    <div class="con_list">
+                        <div class="con">
+                            <div class="head_top">
+                                <div class="td_a">Product details</div>
+                                <div class="td_b">Consignee</div>
+                                <div class="td_c">Amount</div>
+                                <div class="td_d">Operate</div>
+                                <div class="td_e">Service</div>
+                            </div>
+                            <div class="list_area">
+                                <div class="order_item" v-for="item in purchaseOrders">
+                                    <div class="od_item_top">
+                                        <div class="ddbh">
+                                            Order number：<span>{{item.order_id}}</span>
+                                        </div>
+                                        <div class="tm">{{item.place_time}}</div>
+                                    </div>
+                                    <div class="od_item_gd">
+                                        <div class="td_a">
+                                            <div class="od_pic"
+                                                 :style="'backgroundImage:url('+item.product_picture+')'"></div>
+                                            <div class="od_mesg">
+                                                <div class="od_gd_nm">
+                                                    {{item.goods_name}}
+                                                </div>
+                                                <div class="od_nomal">
+                                                    <label>coloured light：<span>{{item.color_light}}</span>;</label>
+                                                    <label>color strength：<span>{{item.color_power}}</span>;</label>
+                                                    <label>package：<span>{{item.package_opt}}</span></label>
+                                                </div>
+                                                <div class="od_bz">
+                                                    <span>${{item.goods_price}} {{item.goods_unit}}</span>&nbsp;&nbsp;&nbsp;<span>X{{item.goods_num}}</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="td_b">
+                                            {{item.consignee}}
+                                        </div>
+                                        <div class="od_gd_pri td_c">
+                                            <!--<span>${{item.goods_price*item.goods_num}}</span>-->
+                                            <span>${{accMul(item.goods_price, item.goods_num)}}</span>
+                                        </div>
+                                        <div class="td_d">
+                                            <!--<div class="state">For the payment</div>-->
+                                            <!--<div class="pay_btn" v-if="item.status==1">Immediate Payment</div>-->
+                                            <div class="state">{{item.status | orderState}}</div>
+                                            <!-- 注释取消订单按钮 -->
+                                            <!--<div class="cancel_btn" @click="cancelOrder(item)" v-if="item.status<=2 && item.status!=0">
+                                                cancel an order
+                                            </div>-->
+                                            <div class="confirm_btn" @click="confirmReceipt(item)" v-if="item.status==3" >Confirm the delivery</div>
+                                            <div class="pay_btn" v-if="item.status>=3" @click="CheckLogistics(item)">Check the logistics</div>
+                                            <div class="cancel_btn" v-if="item.status<3" @click="cancelOrder(item)">Cancel an order</div>
+                                        </div>
+                                        <div class="td_e">
+                                            <div class="sev_btn">
+                                                <a :href="'pe_index_b_ptjc2.html?order_id='+item.order_id">
+                                                    Platform testing
+                                                </a>
+                                            </div>
+                                            <div class="sev_btn">
+                                                <a :href="'pe_index_b_jl2.html?order_id='+item.order_id">
+                                                    Free supervision
+                                                </a>
+                                            </div>
+                                            <div class="sev_btn">
+                                                <a :href="'pe_index_b_ddxq2.html?order_id='+item.order_id">
+                                                    The order details
+                                                </a>
+                                            </div>
+                                            <div class="sev_btn" v-if="item.payment_opt == 'chain'">
+                                                <a :href="'order_chain_e.html?order_id='+item.order_id">
+                                                    Supply chain
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--分页在这里-->
+                            <div class="pagination" id="pagerBarPur"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!--弹框蒙版-->
+    <div class="alert_black" v-show="masking"></div>
+    <!--弹框蒙版结束-->
+    <!--物流弹窗-->
+    <div class="alert_wl" v-show="modalLogistic">
+        <div class="alert_aub">
+            <div class="alert_sub_top">
+                <div class="alert_close" @click="modalLogistic=false"></div>
+                <div class="aler_til">Logistics details</div>
+            </div>
+            <div class="alert_con">
+                <div class="input_item">
+                    <div class="input_label">Logistics company：</div>
+                    <!--<div class="input_box">
+                        <div>{{logistics.transport_corporation}}</div>
+                    </div>-->
+                    <div class="input_label">{{logistics.transport_corporation}}</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="input_item">
+                    <div class="input_label">Logistics number：</div>
+                    <!--<div class="input_box">
+                        <div>{{logistics.transport_number}}</div>
+                    </div>-->
+                    <div class="input_label">{{logistics.transport_number}}</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--物流弹框结束-->
+    <!--取消订单弹框-->
+    <div class="alert_cansel_order alert_win" v-show="logistic">
+        <div class="alert_con">
+            <p class="alert_p_til">
+                Please select the reason to cansel the order
+            </p>
+            <div class="reason_list">
+                <div class="radio_div check_radio">
+                    <div class="radio_sub">
+                        <label><input type="radio" name="a" checked="checked"/><span></span></label>
+                    </div>
+                    <span>I don't want to buy it</span>
+                </div>
+                <div class="radio_div check_radio">
+                    <div class="radio_sub">
+                        <label><input type="radio" name="a" checked="checked"/><span></span></label>
+                    </div>
+                    <span>Fill in the wrong information and buy again</span>
+                </div>
+                <div class="radio_div check_radio">
+                    <div class="radio_sub">
+                        <label><input type="radio" name="a" checked="checked"/><span></span></label>
+                    </div>
+                    <span>Buyers are out of stock</span>
+                </div>
+                <div class="radio_div check_radio">
+                    <div class="radio_sub">
+                        <label><input type="radio" name="a" checked="checked"/><span></span></label>
+                    </div>
+                    <span>Logistics is too slow</span>
+                </div>
+                <div class="radio_div check_radio">
+                    <div class="radio_sub">
+                        <label><input type="radio" name="a" checked="checked"/><span></span></label>
+                    </div>
+                    <span>other</span>
+                </div>
+            </div>
+            <div class="btn_area">
+                <div class="cansel_btn" @click="showOrConceal">cancel</div>
+                <div class="sure_btn" @click="confirm">confirm</div>
+            </div>
+        </div>
+    </div>
+    <!--取消订单弹框结束-->
+    <!--填写物流弹框-->
+    <!--<div class="alert_wl_form alert_win" style="display:none">
+        <div class="alert_aub">
+            <div class="alert_sub_top">
+                <div class="alert_close"></div>
+            </div>
+            <div class="alert_con">
+                <p class="alert_p_til">Fill in the logistics information</p>
+                <div class="input_item">
+                    <div class="input_label">Logistics company：</div>
+                    <div class="input_box"><input type="text"/></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="input_item">
+                    <div class="input_label">Tracking Number：</div>
+                    <div class="input_box"><input type="text"/></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="alert_tj_btn">Confirm the delivery</div>
+            </div>
+        </div>
+    </div>-->
+    <!--填写物流弹框结束-->
+
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">download :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain1_e.html">Contact Us</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_file1_e.html">Contact Customer Service</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <a href="new_explain2_e.html">Business Cooperation</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_explain8_e.html">Merchant help</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+                <span>&nbsp;|&nbsp;</span> -->
+                <a href="new_explain4_e.html">Product Library</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain5_e.html">Friendly Link</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain6_e.html">Privacy Policy</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain7_e.html">Legal Statement</a>
+            </div>
+            <div class="foot_line"></div>
+            <!-- <div class="a_txt_b">
+                Browse Alphabetically:
+                <a href="new_explain8_e.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain9_e.html">Showroom </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain10_e.html">Country Search </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain11_e.html">Suppliers</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain12_e.html">Wholesaler </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain13_e.html">Affiliate</a>
+            </div>
+            <div class="a_txt_b">
+                Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+                Enforcement
+                Compliance Guide
+            </div> -->
+            <div class="a_txt_b">
+                copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript"></script>
+<script src="plugins/jquery.pagination.js"></script>
+<script src="js/placehoder.js" type="text/javascript"></script>
+<script src="lib/common.js"></script>
+<script src="js/pe_index_b.js" type="text/javascript"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/order_buyer.js"></script>
+</body>
+</html>

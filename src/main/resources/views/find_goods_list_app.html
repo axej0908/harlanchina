@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">	
+	<meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" href="css/find_goods_list_app.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="entire" id="lava">
+
+    <div class="con_right">
+        <!--<div class="con_table" style="text-align: center; margin-top: 2rem;"> System Inquiries</div>-->
+        <div class="con_table" style="border-bottom: 1px solid #c1c1c1;">
+            <ul style="list-style: none;">
+                <li style="width: 10% ">Num</li>
+                <li style="width: 25%;">GoodsName</li>
+                <li style="width: 25%;">Delivery time</li>
+                <li style="width: 10%;">Time</li>
+                <li style="width: 20%;">Publisher</li>
+                <li style="width: 10%">Info</li>
+            </ul>
+        </div>
+        <div class="con_table"style="border-bottom: 1px solid #c1c1c1;"v-for="(item, index) in goods">
+            <ul style="list-style: none">
+                <li style="width: 10% ">{{index+1}}</li>
+                <li style="width: 25%;" :title="item.goods_name">{{item.goods_name}}</li>
+                <li style="width: 25%;">{{item.goods_deliver}}  {{item.deliver_units}}</li>
+                <li style="width: 10%;">{{item.create_time}}</li>
+                <li style="width: 20%;" :title="item.user_name">{{item.user_name}}</li>
+                <li style="width: 10%"><a :href="'find_goods_details_app.html?goods_id='+item.goods_id" style="color: #ff7c31">details</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/jquery.pagination.js"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/goods_employed_third.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/find_goods_list.js"></script>
+</body>
+<script>
+    ;(function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+            recalc = function() {
+                win.clientWidth = docEl.clientWidth;
+                if(!win.clientWidth) return;
+                win.base = 40 * (win.clientWidth / 750);
+                docEl.style.fontSize = win.base + 'px';
+            };
+        recalc();
+        if(!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+</script>
+</html>

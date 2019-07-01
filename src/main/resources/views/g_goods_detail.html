@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <!--引入swiper样式-->
+    <link rel="stylesheet" href="css/swiper/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" href="css/g_goods_detail.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+    <div class="entire" id="rrapp">
+		<!--顶部区域开始-->
+		<div class="header">
+			<div class="header_sub">
+				<ul class="header_fl">
+					<li><a href="/">Harlan Mall</a></li>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="guide_zh.html">中国供应商入口</a></li>
+					<!--<li><a href="new_explain16_c.html">Cooperation and service</a></li>-->
+					<li><a href="goods_employed_self.html">Self-support</a></li>
+					<li><a href="goods_employed_third.html">ThirdPart-support</a></li>
+					<li style="color:#ff792d;"><a href="find_goods_list.html"><strong>Inquiry Platform</strong> </a></li>
+				</ul>
+				<ul class="header_fr">
+					<!--登录之后显示-->
+					<li v-if="user!=null" class="out_area"><a @click="lnkPersonalCenter">My harlan</a> <a
+							@click="logout">Sign out</a></li>
+					<!--登录之前显示-->
+					<li v-if="user==null" class="no_land">
+						<a href="login_en.html">Sign in</a> | <a href="register_en.html">Register</a>
+					</li>
+					<li><a href="new_explain17_c.html">Help Center</a></li>
+					<!--<li class="lang_li">
+						<span>Language</span>
+						<div class="span_sj"></div>
+						<div id="lang_mn" class="lang_mn" style="display: none;">
+							<div class="lang_item"><a href="#">简体中文</a></div>
+							<div class="lang_item"><a href="#">繁體中文</a></div>
+							<div class="lang_item"><a href="#">English</a></div>
+							<div class="lang_item"><a href="#">한국어 </a></div>
+							<div class="lang_item"><a href="#">日本語</a></div>
+						</div>
+					</li>-->
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+	    <!------------------顶部区域结束-------------->
+        <!--搜索区域-->
+	   	<div class="first">
+	        <div class="first_sub">
+	            <div class="logo fl"></div>
+	            <div class="search_area">
+	                <div class="search_area_sub">
+	                    <div class="search_logo"><a href="index.html"></a></div>
+	                    
+	                    <div class="search_btn_list">
+	                    	<a href="shop_cart_en.html" class="cart_btn">My cart <span>{{gross}}</span></a>
+		           			
+	                    </div>
+	                    <div class="search_div">
+	                        <div class="search_fl">
+	                            <div class="search_whitch">Supplier</div>
+	                            <ul class="search_ul" style="display: none;">
+	                                <li @click="searchType='product'">Product</li>
+	                                <li @click="searchType='supplier'">Supplier</li>
+									<li @click="searchType='cas'">CAS</li>
+	                            </ul>
+	                            <div class="search_input_div">
+	                                <input type="text" v-model="searchParam"/>
+	                            </div>
+	                        </div>
+	                        <div class="search_btn" @click="redirectSel">Search</div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="clear"></div>
+	        </div>
+	    </div>
+	    <!--搜索区域结束-->
+        <!--<div class="crumb"><a href="index.html">Home Page</a>&gt;<a href="g_goods_detail.html">Commodity details</a></div>-->
+		<div class="crumb">
+			<a href="index.html">Home Page</a>&gt;
+			<a v-if="goods.one_type != ''">{{goods.one_type}}</a>&gt;
+			<a v-if="goods.two_type != ''">{{goods.two_type}}</a>&gt;
+			<a>{{goods.goods_name}}</a>
+		</div>
+        <div class="third">
+
+            <div class="third_left">
+                <div class="third_left_one">
+                    <div class="one_pic">
+                        <div class="big_pic" :style="'backgroundImage:url('+goods.product_picture+')'"></div>
+                        <div class="small_pic">
+                            <ul class="small_pic_list">
+                                <li class="small_pic_item"
+                                    :style="'backgroundImage:url('+goods.product_picture+')'"></li>
+                                    <li class="small_pic_item"
+                                    :style="'backgroundImage:url('+goods.product_picture+')'"></li>
+                                    <li class="small_pic_item"
+                                    :style="'backgroundImage:url('+goods.product_picture+')'"></li>
+                                    <li class="small_pic_item"
+                                    :style="'backgroundImage:url('+goods.product_picture+')'"></li>
+
+                            </ul>
+                        </div>
+                        <a href="#" class="mesg_d" v-show="inquiryShow">
+                            <div class="mesg_d_sub">Inquiries to good</div>
+                        </a>
+                    </div>
+                    <div class="one_mesg">
+                        <div class="mesg_name">{{goods.goods_name}}</div>
+                        <div class="mesg_eg">
+                            <div class="cino">C.I.NO：<span v-text="goods.cino">525-59-1</span></div>
+                            <div class="cas">CAS：<span v-text="goods.cas">525-59-1</span></div>
+                            <!--<div class="cus_code">Customs code：<span>151515585451</span></div>-->
+                            <div class="clear"></div>
+                        </div>
+                        <div class="mesg_c">
+                            <div><label>Specifications：</label><span
+                                    v-text="goods.specification">100kg/bucket</span>
+                            </div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div><label>purity：</label><span v-text="goods.goods_purity">90.5%</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div><label>Delivery：</label><span v-text="goods.goods_deliver">10day</span></div>
+                            <div class="clear"></div>
+                        </div>
+                         <!--<div class="ckbk"><a href="encyclopedia.html">View encyclopedia</a></div>-->
+						<div class="ckbk"><a @click="views(goods)">View encyclopedia</a></div>
+                        <div class="mesg_e">
+                            <div class="mesg_e_n">
+                                <label>Selling Price:</label>
+                                <span>${{goods.current_price}}</span>
+                            </div>
+                            <div class="mesg_e_op">
+                                <label>market price:</label>
+                                <span>${{goods.market_price}}</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="mesg_g">
+                            <div class="g_label">Strength：</div>
+                            <ul class="g_option">
+                                <li v-for="(item,index) in colorPowers" @click="selColorPower(item)" v-text="item.text"
+                                    :class="{'g_li_active':item.checked}"></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="mesg_g">
+                            <div class="g_label">Light：</div>
+
+                            <ul class="g_option">
+                                <li v-for="(item,index) in colorLights" @click="selColorLight(item)" v-text="item.text"
+                                    :class="{'g_li_active':item.checked}"></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="mesg_g">
+                            <div class="g_label">Packing：</div>
+                            <ul class="g_option">
+                                <li v-for="(item,index) in packageWays" @click="selPackageWays(item)" v-text="item.text"
+                                    :class="{'g_li_active':item.checked}"></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="mesg_j">
+                            <div class="j_label">Purchase quantity：</div>
+                            <div class="j_num_block">
+                                <div class="j_num_reduce" @click="changeGoodsNum(-1)">-</div>
+                                <div class="j_num_box"><input type="text" v-model="goods.goods_num"/></div>
+                                <div class="j_num_add" @click="changeGoodsNum(1)">+</div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="mesg_k">
+                            <div class="add_cart_btn"v-show="carShow" @click="saveInCart">Add to cart</div>
+                            <div class="buy_btn" v-show="buyShow" @click="buyAtOnce">Purchase immediately</div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="third_left_other">
+                	 <div class="third_left_three">
+                	 	<div class="third_left_tit">
+                	 		<div class="two_til fl link_one" style="color: #317ee7;">Application scheme</div>
+	                    	<div class="two_til_sp fl">|</div>
+	                    	<div class="two_til fl link_two">Test Report</div>
+                	 	</div>
+	                    <div class="wj" style="display: block;">
+	                        <div class="wj_item">
+	                            <div class="wj_icon" :style="'backgroundImage:url('+goods.product_picture+')'"></div>
+	                            <div class="wj_xx">
+	                                <div class="wj_nm">Application scheme.jpg</div>
+	                            </div>
+	                            <div class="xz_btn">
+									<a :href="goods.application_scheme" download="Application scheme" v-if="goods.application_scheme!=null && goods.application_scheme!=''">download</a>
+									<a style="color: rgb(177, 172, 172)" v-else>download</a>
+								</div>
+	                            <div class="celar"></div>
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="wj_list" style="display: none;">
+	                        <div class="wj_item">
+	                            <div class="wj_icon" style="background-image: url(imgs/goos/wd.png);"></div>
+	                            <div class="wj_xx">
+	                                <div class="wj_nm">Colorimeter data.txt</div>
+	                                <!-- <div class="wj_size">11.0MB</div>-->
+	                            </div>
+	                            <div class="xz_btn">
+									<a :href="goods.detect_colourimeter" download="Colorimeter data" v-if="goods.detect_colourimeter!=null && goods.detect_colourimeter!=''">download</a>
+									<a style="color: rgb(177, 172, 172);" v-else>download</a>
+								</div>
+	                            <div class="celar"></div>
+	                        </div>
+	                        <div class="wj_item">
+	                            <div class="wj_icon" style="background-image: url(imgs/goos/jcbg.png);"></div>
+	                            <div class="wj_xx">
+	                                <div class="wj_nm">UV data.jpg</div>
+	                                <!--<div class="wj_size">11.0MB</div>-->
+	                            </div>
+	                            <div class="xz_btn">
+									<a :href="goods.detect_uv" download="UV data" v-if="goods.detect_uv!=null && goods.detect_uv!=''">download</a>
+									<a style="color: rgb(177, 172, 172);" v-else>download</a>
+								</div>
+	                            <div class="celar"></div>
+	                        </div>
+	                        <div class="wj_item">
+	                            <div class="wj_icon" style="background-image: url(imgs/goos/jcbg.png);"></div>
+	                            <div class="wj_xx">
+	                                <div class="wj_nm">Test Report.docx</div>
+	                                <!--<div class="wj_size">11.0MB</div>-->
+	                            </div>
+	                            <div class="xz_btn">
+									<a :href="goods.detect_goods" download=" comprehensive report" v-if="goods.detect_goods!=null && goods.detect_goods!=''">download</a>
+									<a style="color: rgb(177, 172, 172);" v-else>download</a>
+	                            </div>
+	                            <div class="celar"></div>
+	
+	                        </div>
+	                        <div class="wj_item">
+	                            <div class="wj_icon" style="background-image: url(imgs/goos/jcbg.png);"></div>
+	                            <div class="wj_xx">
+	                                <div class="wj_nm">Detection video.mp4</div>
+	                                <!--<div class="wj_size">11.0MB</div>-->
+	                            </div>
+	                            <div class="xz_btn">
+									<a :href="goods.detect_video" download="Detection video" v-if="goods.detect_video!=null && goods.detect_video!=''">download</a>
+									<a style="color: rgb(177, 172, 172);" v-else>download</a>
+	                            </div>
+	                            <div class="celar"></div>
+	                        </div>
+	                        <div class="wj_item">
+	                            <div class="wj_icon" style="background-image: url(imgs/goos/jcbg.png);"></div>
+	                            <div class="wj_xx">
+	                                <div class="wj_nm">Sample picture.png</div>
+	                                <!--<div class="wj_size">11.0MB</div>-->
+	                            </div>
+	                            <div class="xz_btn">
+									<a :href="goods.detect_sample_imgs"  download="Sample picture" v-if="goods.detect_sample_imgs!=null && goods.detect_sample_imgs!=''">download</a>
+									<a style="color: rgb(177, 172, 172);" v-else>download</a>
+	                            </div>
+	                            <div class="celar"></div>
+	                        </div>
+	                        <div class="wj_item">
+	                            <div class="wj_icon" style="background-image: url(imgs/goos/jcbg.png);"></div>
+	                            <div class="wj_xx">
+	                                <div class="wj_nm">Pictures of big goods.png</div>
+	                                <!--<div class="wj_size">11.0MB</div>-->
+	                            </div>
+	                            <div class="xz_btn">
+									<a :href="goods.detect_bulk_imgs" download="Pictures of big goods" v-if="goods.detect_bulk_imgs!=null && goods.detect_bulk_imgs!=''">download</a>
+									<a style="color: rgb(177, 172, 172);" v-else>download</a>
+								</div>
+	                            <div class="celar"></div>
+	                        </div>
+	                    </div>
+	
+	                </div>
+	                   
+	                <div class="third_left_four">
+	                    <div class="two_til">Production state</div>
+	                    <div class="four_pic_list">
+	                        <div class="four_item">
+	                            <img src="" alt=""/>
+	                        </div>
+	                        <div class="four_item">
+	                            <div class="vedio_area">
+	                                <video width="215" height="143" id="video">
+	                                    <source :src="goods.production_state" type="video/ogg"></source>
+	                                </video>
+	                                <div class="play_di"></div>
+	                                <div class="play_btn"></div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="third_left_five">
+	                    <div class="two_til">Commodity details</div>
+	                    <div class="tal">
+	                    	<div class="tal_l">
+		                        <div class="tal_row">English name：<span v-text="goods.goods_name">ι-角叉菜聚糖</span></div>
+		                        <div class="tal_row">C.I.NO Number：<span v-text="goods.cino">525-79-1</span></div>
+		                        <div class="tal_row">purity：<span v-text="goods.goods_purity">99%</span></div>
+		                        <div class="tal_row">molecular weight：<span v-text="goods.molecular_weight">215.2</span> </div>
+		                        <div class="tal_row">Precise quality：<span v-text="goods.precise_quality">753.206</span></div>
+		                    </div>
+		                    <div class="tal_r">   
+		                        <div class="tal_row">Chinese name：<span v-text="goods.goods_name_en">ι-角叉菜聚糖</span></div>
+	                            <div class="tal_row">CAS Number：<span v-text="goods.cas">525-79-1</span></div>
+	                            <div class="tal_row">Specifications：
+	                                <span v-text="goods.specification">100kg/bottle</span>
+	                            </div>
+	                            <div class="tal_row">PSA：
+	                                <span v-text="goods.pas">79.6300</span>
+	                            </div>
+		                    </div>
+		                    <div class="clear"></div>
+	                    </div>
+	                </div>
+	                <div class="third_last">
+	                	<div class="third_last_l">
+		                    <div class="two_til">Quality parameters</div>
+		                    <div class="tal">
+		                        <div class="tal_l">
+		                            <div class="tal_row">Strength (color force)：<span v-text="goods.color_power"></span></div>
+		                            <div class="tal_row">Appearance：<span v-text="goods.quality_aspect"></span></div>
+		                            <div class="tal_row">No matter：<span v-text="goods.quality_insoluble"></span></div>
+		                            <div class="tal_row">Chloride content：<span v-text="goods.quality_clContent"></span></div>
+		                            <div class="tal_row">conductivity：<span v-text="goods.quality_conductivity"></span></div>
+		                            <div class="tal_row">Solid content：<span v-text="goods.quality_solidContent"></span></div>
+
+									<div class="tal_row">Light：<span v-text="goods.color_light"></span></div>
+									<div class="tal_row">Water content： <span v-text="goods.quality_moisture"></span> </div>
+									<div class="tal_row">solubility：<span v-text="goods.quality_solubility"></span></div>
+									<div class="tal_row">Salinity： <span v-text="goods.quality_salinity"></span> </div>
+									<div class="tal_row">Michler's ketone:<span v-text="goods.quality_michlerKetone"></span></div>
+		                        </div>
+		                        <!--<div class="tal_r">
+		                            <div class="tal_row">Light：<span v-text="goods.color_light"></span></div>
+		                            <div class="tal_row">Water content： <span v-text="goods.quality_moisture"></span> </div>
+		                            <div class="tal_row">solubility：<span v-text="goods.quality_solubility"></span></div>
+		                            <div class="tal_row">Salinity： <span v-text="goods.quality_salinity"></span> </div>
+		                            <div class="tal_row">Michler's ketone:<span v-text="goods.quality_michlerKetone"></sapn></div>
+		                        </div>-->
+		                        <div class="clear"></div>
+		                    </div>
+		                </div>
+		                <div class="third_last_r">
+		                    <div class="two_til">Heavy metal content</div>
+		                    <div class="tal">
+		                        <div class="tal_l">
+		                            <div class="tal_row">copper ion：<span v-text="goods.metal_cu"></span></div>
+		                            <div class="tal_row">Zinc ion：<span v-text="goods.metal_zn"></span></div>
+		                            <div class="tal_row">Nickel ion：<span v-text="goods.metal_ni"></span></div>
+		                            <div class="tal_row">Antimony ion：<span v-text="goods.metal_sb"></span></div>
+		                            <div class="tal_row">Cadmium ion：<span v-text="goods.metal_cd"></span></div>
+
+									<div class="tal_row">Lead ion：<span v-text="goods.metal_pb"></span></div>
+									<div class="tal_row">Tin ion： <span v-text="goods.metal_sn"></span> </div>
+									<div class="tal_row">Cobalt ion：<span v-text="goods.metal_co"></span></div>
+									<div class="tal_row">Mercury ion： <span v-text="goods.metal_hg"></span> </div>
+									<div class="tal_row">Bismuth ion： <span v-text="goods.metal_bi"></span> </div>
+		                        </div>
+		                        <!--<div class="tal_r">
+		                            <div class="tal_row">Lead ion：<span v-text="goods.metal_pb"></span></div>
+		                            <div class="tal_row">Tin ion： <span v-text="goods.metal_sn"></span> </div>
+		                            <div class="tal_row">Cobalt ion：<span v-text="goods.metal_co"></span></div>
+		                            <div class="tal_row">Mercury ion： <span v-text="goods.metal_hg"></span> </div>
+		                            <div class="tal_row">Bismuth ion： <span v-text="goods.metal_bi"></span> </div>
+		                        </div>-->
+								<div class="clear"></div>
+		                            
+		                    </div>
+		                </div>
+	                	<div class="clear"></div>
+	                </div>
+                </div>
+            </div>
+            <div class="third_right">
+            	<div class="con_info_til">Company Information</div>
+                <div class="good_shop">
+                    <div class="good_shop_pic">
+                        <div class="good_shop_pic_sub" :style="'backgroundImage:url('+shop.com_logo+')'"></div>
+                    </div>
+                    <div class="good_shop_mesg">
+                        <div class="mesg1">{{shop.com_name}}</div>
+                        <div class="shop_enter_btn" @click="linkToShop">
+                            Go into the shop
+                        </div>
+                    </div>
+                </div>
+                <div class="customer">
+                    <div class="customer_top">
+                        <p>Please feel free to send US your questions about our company orour products.</p>
+                        <img class="kefu" src="imgs/kefu.png"/>
+                    </div>
+
+                    <div class="customer_cent">
+                        <div class="cent_phone">0086-0574-89210089</div>
+                        <div class="cent_mail">service@harlanchina.com</div>
+                    </div>
+                    <button><a href="new_file1_e.html">Ask HarLan</a></button>
+                    <button><a href="new_file1_e.html">FAQ</a></button>
+                </div>
+               <!-- <div class="right_hot_gd">
+                	<div class="hot_til">Hot Product</div>
+                	<div class="hot_gd_list">
+                		<div class="hot_gd_item">
+                			<div class="hot_gd_pic" style="background-image: url();"></div>
+                			<div class="hot_gd_mesg">
+                				<div class="hot_gd_nm">Diallyl BisphenolA</div>
+                				<p class="hot_gd_cs">purity: <span>98%</span></p>
+                				<p class="hot_gd_cs">spec: <span>500kg</span></p>
+                				<div class="hot_gd_pri">
+                					US$:320
+                				</div>
+                			</div>
+                		</div>
+                		<div class="hot_gd_item">
+                			<div class="hot_gd_pic" style="background-image: url();"></div>
+                			<div class="hot_gd_mesg">
+                				<div class="hot_gd_nm">Diallyl BisphenolA</div>
+                				<p class="hot_gd_cs">purity: <span>98%</span></p>
+                				<p class="hot_gd_cs">spec: <span>500kg</span></p>
+                				<div class="hot_gd_pri">
+                					US$:320
+                				</div>
+                			</div>
+                		</div>
+                		<div class="hot_gd_item">
+                			<div class="hot_gd_pic" style="background-image: url();"></div>
+                			<div class="hot_gd_mesg">
+                				<div class="hot_gd_nm">Diallyl BisphenolA</div>
+                				<p class="hot_gd_cs">purity: <span>98%</span></p>
+                				<p class="hot_gd_cs">spec: <span>500kg</span></p>
+                				<div class="hot_gd_pri">
+                					US$:320
+                				</div>
+                			</div>
+                		</div>
+                		<div class="hot_gd_item">
+                			<div class="hot_gd_pic" style="background-image: url();"></div>
+                			<div class="hot_gd_mesg">
+                				<div class="hot_gd_nm">Diallyl BisphenolA</div>
+                				<p class="hot_gd_cs">purity: <span>98%</span></p>
+                				<p class="hot_gd_cs">spec: <span>500kg</span></p>
+                				<div class="hot_gd_pri">
+                					US$:320
+                				</div>
+                			</div>
+                		</div>
+                	</div>
+                </div>-->
+            </div>
+            <div class="clear"></div>
+        </div>
+    	<div id="mask" class="mask"></div>
+	    <div id="opacity" class="opacity">
+	        <img id="img" src="imgs/cha.png"/>
+	        <div class="opacity_title">
+	            Inquiries
+	        </div>
+	        <ul class="opacity_cont">
+	            <li><p>Name</p><input type="text" v-model="enquiry.com_name"></li>
+	            <li><p>Address</p><input type="text" v-model="enquiry.com_addr"></li>
+	            <li class="Code">
+	                <div class="d1"><p>Contacts</p><input type="text" v-model="enquiry.com_contacts"/></div>
+	                <div><p>Mobile phone</p><input type="text" v-model="enquiry.com_number"/></div>
+	            </li>
+	            <li><p>Mailbox</p><input type="text" v-model="enquiry.com_mailbox"></li>
+	            <li><p>Note</p><textarea v-model="enquiry.postscript"></textarea></li>
+	            <a @click="submitEnquiry">submit</a>
+	        </ul>
+	    </div>
+	
+		<div class="result" id="outdiv" style="display: none;"> </div>
+		<div class="indiv" style="display: none;"> </div>
+	 	<!--提示登录弹框  --- start-->
+		<div class="third_box_item" v-show="logBoxShow" style="display: none;">
+		    <div class="third_top">Account login <a @click="logBoxShow=false"> <img src="imgs/guanbi1.png"/></a></div>
+		    <div class="third_cent">
+					<span class="third_cent_span">
+						Password login
+					</span>
+		        <div class="third_cent_itam">
+		            <span><img src="imgs/lianxiren.png"/></span>
+		            <input type="text" v-model="logBoxUser.user_phone"/>
+		        </div>
+		        <div class="third_cent_itam">
+		            <span><img src="imgs/miam.png"/></span>
+		            <input type="password" v-model="logBoxUser.user_password"/>
+		        </div>
+		        <div class="third_fot_btn" @click="login">sign in</div>
+		        <a href="register_en.html">Free registration</a><a href="forget_pwd2.html">Forget the
+		        password</a>
+		    </div>
+		</div>
+		<!--提示登录弹框  --- limit-->
+		<div class="foot_bottom">
+			<div class="foot_sub">
+				<div class="download">
+					<div class="load_txt">download :</div>
+					<div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+					<div class="load_pic_b"><a href="hualang.apk"></a></div>
+				</div>
+				<div class="a_txt">
+					<a href="new_explain1_e.html">Contact Us</a>
+					<span>&nbsp;|&nbsp;</span>
+					<!--<a href="new_file1_e.html">Contact Customer Service</a>
+                    <span>&nbsp;|&nbsp;</span>-->
+					<a href="new_explain2_e.html">Business Cooperation</a>
+					<span>&nbsp;|&nbsp;</span>
+					<!--<a href="new_explain8_e.html">Merchant help</a>
+                    <span>&nbsp;|&nbsp;</span>-->
+					<!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+					<span>&nbsp;|&nbsp;</span> -->
+					<a href="new_explain4_e.html">Product Library</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain5_e.html">Friendly Link</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain6_e.html">Privacy Policy</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain7_e.html">Legal Statement</a>
+				</div>
+				<div class="foot_line"></div>
+				<!-- <div class="a_txt_b">
+					Browse Alphabetically:
+					<a href="new_explain8_e.html">Onetouch</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain9_e.html">Showroom </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain10_e.html">Country Search </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain11_e.html">Suppliers</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain12_e.html">Wholesaler </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain13_e.html">Affiliate</a>
+				</div>
+				<div class="a_txt_b">
+					Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+					Enforcement
+					Compliance Guide
+				</div> -->
+				<div class="a_txt_b">
+					copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+				</div>
+			</div>
+		</div>
+
+    </div>
+
+    
+
+
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<script src="lib/base64.js"></script>
+<script src="lib/common.js"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<!--引入城市插件-->
+<script src="js/city/citydata.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/city/cityPicker-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<!--引入swiperjs-->
+<script src="js/swiper/swiper-3.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/g_goods_detail.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/g_goods_detail.js"></script>
+<script type="text/javascript">
+	$(".link_one").click(function(){
+		$('.two_til').css("color","#000")
+		$(this).css("color","#317ee7");
+		$(".wj_list").hide();
+		$(".wj").show();	
+	})
+	$(".link_two").click(function(){
+		$('.two_til').css("color","#000")
+		$(this).css("color","#317ee7");
+		$(".wj").hide();
+		$(".wj_list").show();	
+	})
+</script>
+</body>
+</html>

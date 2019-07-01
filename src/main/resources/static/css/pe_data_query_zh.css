@@ -1,0 +1,58 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #f2f3f7;
+}
+.entire{
+	width: 100%;
+}
+
+
+/*-------------------左侧列表结束--------------------------*/
+.my_xc{
+    width: 100%;
+    margin-left: 14px;
+    padding: 0 116px;
+}
+/*-------------------右侧开始--------------------------*/
+.query{
+	width: 506px;
+	height: 50px;
+	margin: 150px auto;
+}
+.query input{
+    width: 390px;
+    height: 50px;
+    background-color: #FFFFFF;
+    float: left;
+    border: none;
+    outline: none;
+    border: 1px solid #dbdbdb;
+    padding: 10px;
+}
+.query span{
+	display: inline-block;
+	width: 116px;
+	height: 50px;
+	background-color: #399bff;
+	text-align: center;
+	line-height: 50px;
+	float: left;
+	color: #FFFFFF;
+    cursor: pointer;
+}
+.text_title{
+	text-align: center;
+	color: #4D4D4D;
+	font-size: 18px;
+	letter-spacing:5px;
+}
+.text p{
+    margin-top: 24px;
+    color: #cbcbcb;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: justify;
+    word-wrap: break-word;
+}

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.axej.harlan.goods.dao.TarEnquiryDao">
+
+    <insert id="save" parameterType="com.axej.harlan.goods.bean.TarEnquiryBean" useGeneratedKeys="true">
+        insert into serv_enquiry(
+       goods_id,
+       buyer_id,
+       com_name,
+       com_addr,
+       com_contacts,
+       com_number,
+       com_mailbox,
+       postscript,
+       tar_status,
+       zh_pos,
+       create_time,
+       enquiry_file
+        )values (
+        #{goods_id},
+        #{buyer_id},
+        #{com_name},
+        #{com_addr},
+        #{com_contacts},
+        #{com_number},
+        #{com_mailbox},
+        #{postscript},
+        #{tar_status},
+        #{zh_pos},
+        #{create_time},
+        #{enquiry_file}
+        )
+    </insert>
+
+    <delete id="delete">
+        delete from serv_enquiry where en_id = #{en_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.goods.bean.TarEnquiryBean">
+        update serv_enquiry
+        <set>
+            <if test="goods_id!=null and goods_id!=0">goods_id=#{goods_id},</if>
+            <if test="buyer_id!=null and buyer_id!=0">buyer_id=#{buyer_id},</if>
+            <if test="com_name!=null and com_name.trim()!=''">com_name=#{com_name},</if>
+            <if test="com_addr!=null and com_addr.trim()!=''">com_addr=#{com_addr},</if>
+            <if test="com_contacts!=null and com_contacts.trim()!=''">com_contacts=#{com_contacts},</if>
+            <if test="com_number!=null and com_number.trim()!=''">com_number=#{com_number},</if>
+            <if test="com_mailbox!=null and com_mailbox.trim()!=''">com_mailbox=#{com_mailbox},</if>
+            <if test="postscript!=null and postscript.trim()!=''">postscript=#{postscript},</if>
+            <if test="tar_status!=null and tar_status.trim()!=''">tar_status=#{tar_status},</if>
+            <if test="enquiry_file!=null and enquiry_file!=''">enquiry_file=#{enquiry_file}</if>
+        </set>
+        where en_id = #{en_id}
+    </update>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.goods.bean.TarEnquiryBean">
+        select * from view_tar_enquiry
+        <where>
+            <if test="buyer_id!=0 and buyer_id!=null">buyer_id = #{buyer_id}</if>
+            <if test="user_id!=0 and user_id!=null">and user_id=#{user_id}</if>
+            <if test="tar_status!=null and tar_status.trim()!=''">and tar_status=#{tar_status}</if>
+            <if test="beginTime!=null and limitTime!=null">and create_time between #{beginTime} and #{limitTime}</if>
+            <if test="zh_pos!=null and zh_pos.trim()!=''">and zh_pos = #{zh_pos}</if>
+        </where>
+        order by create_time desc
+        <if test="offset!=null and limit!=null">
+            limit #{offset},#{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(*) from view_tar_enquiry
+        <where>
+            <if test="buyer_id!=0 and buyer_id!=null">buyer_id = #{buyer_id}</if>
+            <if test="user_id!=0 and user_id!=null">and user_id=#{user_id}</if>
+            <if test="tar_status!=null and tar_status.trim()!=''">and tar_status=#{tar_status}</if>
+            <if test="beginTime!=null and limitTime!=null">and create_time between #{beginTime} and #{limitTime}</if>
+            <if test="zh_pos!=null and zh_pos.trim()!=''">and zh_pos = #{zh_pos}</if>
+        </where>
+    </select>
+
+    <select id="queryObject" parameterType="int" resultType="com.axej.harlan.goods.bean.TarEnquiryBean">
+        select * from serv_enquiry where en_id = #{serv_enquiry}
+    </select>
+
+    <select id="queryZhList" parameterType="map" resultType="com.axej.harlan.goods.bean.TarEnquiryBean">
+        select * from serv_enquiry
+        <where>
+            <if test="buyer_id!=0 and buyer_id!=null">buyer_id = #{buyer_id}</if>
+            <if test="tar_status!=null and tar_status.trim()!=''">and tar_status=#{tar_status}</if>
+            <if test="beginTime!=null and limitTime!=null">and create_time between #{beginTime} and #{limitTime}</if>
+            <if test="zh_pos!=null and zh_pos.trim()!=''">and zh_pos = #{zh_pos}</if>
+            and zh_pos is not null
+        </where>
+        order by create_time desc
+        <if test="offset!=null and limit!=null">
+            limit #{offset},#{limit}
+        </if>
+    </select>
+
+    <select id="queryZhTotal" parameterType="map" resultType="int">
+        select count(*) from serv_enquiry
+        <where>
+            <if test="buyer_id!=0 and buyer_id!=null">buyer_id = #{buyer_id}</if>
+            <if test="tar_status!=null and tar_status.trim()!=''">and tar_status=#{tar_status}</if>
+            <if test="beginTime!=null and limitTime!=null">and create_time between #{beginTime} and #{limitTime}</if>
+            <if test="zh_pos!=null and zh_pos.trim()!=''">and zh_pos = #{zh_pos}</if>
+            and zh_pos is not null
+        </where>
+    </select>
+<!--后台三方询盘查询-->
+    <select id="back_queryList" parameterType="map" resultType="com.axej.harlan.goods.bean.TarEnquiryBean">
+        SELECT a.*,b.goods_name FROM serv_enquiry a LEFT JOIN info_goods b on a.goods_id=b.goods_id
+        <where>
+            <if test="buyer_id!=0 and buyer_id!=null">buyer_id = #{buyer_id}</if>
+            <if test="user_id!=0 and user_id!=null">and user_id=#{user_id}</if>
+            <if test="tar_status!=null and tar_status.trim()!=''">and tar_status=#{tar_status}</if>
+            <if test="beginTime!=null and limitTime!=null">and create_time between #{beginTime} and #{limitTime}</if>
+            <if test="zh_pos!=null and zh_pos.trim()!=''">and zh_pos = #{zh_pos}</if>
+        </where>
+        order by create_time desc
+        <if test="offset!=null and limit!=null">
+            limit #{offset},#{limit}
+        </if>
+    </select>
+    <select id="back_queryTotal" parameterType="map" resultType="int">
+        select count(*) from serv_enquiry a LEFT JOIN info_goods b on a.goods_id=b.goods_id
+        <where>
+            <if test="buyer_id!=0 and buyer_id!=null">buyer_id = #{buyer_id}</if>
+            <if test="user_id!=0 and user_id!=null">and user_id=#{user_id}</if>
+            <if test="tar_status!=null and tar_status.trim()!=''">and tar_status=#{tar_status}</if>
+            <if test="beginTime!=null and limitTime!=null">and create_time between #{beginTime} and #{limitTime}</if>
+            <if test="zh_pos!=null and zh_pos.trim()!=''">and zh_pos = #{zh_pos}</if>
+        </where>
+    </select>
+</mapper>

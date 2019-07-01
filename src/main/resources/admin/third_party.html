@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>商品管理-第三方商品</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+	<link rel="stylesheet" href="src/css/a_admin_manage.css">
+	<style type="text/css">
+		.layui-form-label {
+			padding: 9px 3px;
+			min-width: 56px;
+		}
+
+		.layui-table-cell {
+			height: inherit;
+		}
+
+		.txt_div {
+			width: 100%;
+			height: 81px;
+			white-space: normal;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		.img_area {
+			width: 60px;
+			height: 60px;
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+			border-radius: 50%;
+			border: 1px solid red;
+			margin: 0 auto;
+		}
+	</style>
+	<link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div class="layui-tab layui-tab-brief layui-form" lay-filter="docDemoTabBrief">
+	<ul class="layui-tab-title">
+		<li class="layui-this">待发货</li>
+		<li>待收货</li>
+		<li>已完成</li>
+		<li>已驳回</li>
+	</ul>
+	<div class="layui-tab-content">
+		<div class="layui-tab-item layui-show">
+			<!--筛选条件开始-->
+			<div class="layui-form-item">
+				<!--<div class="layui-inline">
+                    <label class="layui-form-label">商品编号：</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="goods_id" lay-verify="goods_id" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <button class="layui-btn" lay-submit lay-filter="search">搜索</button>-->
+				<!--<div class="layui-inline">
+                    <label class="layui-form-label">商品名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="goods_name" lay-verify="goods_name" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <button class="layui-btn" lay-submit lay-filter="search">搜索</button>-->
+
+				<!--<div class="layui-inline">
+                    <label class="layui-form-label">时间段：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="dt_a" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <button class="layui-btn" lay-submit="" lay-filter="demo1">搜素</button>-->
+			</div>
+			<!--筛选条件结束-->
+			<table class="layui-table" lay-filter="test" id="test"></table>
+		</div>
+	</div>
+</div>
+<!--商品名称模板-->
+<script type="text/html" id="goodimg">
+	<div class="img_area" style="background-image:url(/{{d.product_picture}})"></div>
+</script>
+<!--表格工具条模板一-->
+<script type="text/html" id="barDemo">
+	<!--<a class="layui-btn layui-btn-mini" lay-event="upload">上传</a>
+	<a class="layui-btn layui-btn-mini" lay-event="shut">关闭</a>-->
+
+	{{#  if(d.payment_opt == 'chain' && d.chain_state == 0){ }}
+	<a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="check">审核</a>
+	{{#  }else if(d.payment_opt == 'chain' && d.chain_state == 1){ }}
+	<a class="layui-btn layui-btn-mini" href="{{d.upload}}" download="video">下载</a>
+	{{#  } }}
+</script>
+<script src="./plugins/layui/layui.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', "element", "table", "laytpl" , 'upload'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            layedit = layui.layedit,
+            element = layui.element,
+            laydate = layui.laydate;
+
+        $ = layui.$;
+        var table = layui.table;
+        var upload = layui.upload;
+
+        $(function () {
+            var localStorage = window.localStorage;
+            var criteria = {
+                "goods_type":"others",
+                "status":"2",
+            };
+            initTable(criteria)
+        });
+
+        function initTable(criteria) {
+            tableIns = table.render({
+                elem: '#test',
+                url: '/order/dim',
+                height: 'full-160',
+                where: criteria,
+                cols: [[
+                    //{type:'checkbox'}
+                    {field: 'order_id', title: '订单编号', sort: true},
+                    {field: 'place_time', title: '下单时间'},
+                    {field: 'goods_name', title: '产品名称'},
+                    {field: 'product_picture', title: '产品图', templet: '#goodimg'},
+                    {field: 'buy_name', title: '收货人名称'},
+                    {field: 'buy_phone', title: '收货人联系方式'},
+                    {field: 'buy_site', title: '收货人地址'},
+                    {field: 'sell_name', title: '供应商店铺'},
+                    {field: 'sell_phone', title: '供应商联系方式'},
+                    {field: 'sell_site', title: '供应商地址'},
+                    {field: 'goods_price', title: '单价'},
+                    {field: 'goods_num', title: '数量'},
+					{field: 'payment_opt', title: '付款方式'},
+                    /*{field: 'goods_price'*'goods_num', title: '总价'},*/
+					{
+						field: '', title: '总价', templet: function (d) {
+							return d.goods_price * d.goods_num
+						}
+					},
+                    {field: 'optate', title: '操作', toolbar: '#barDemo'}
+                ]],
+                page: true
+            });
+        }
+
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if (layEvent === 'upload') {
+                window.location.href = "super_upload.html?order_id="+data.order_id;
+            }
+            if(layEvent == 'shut'){
+                layer.confirm('确认关闭', function(index){
+                    $.ajax({
+                        url:'/order/superState',
+                        type:"post",
+                        data:{
+                            order_id:data.order_id,
+                            super_state:"1"
+                        },
+                        dataType:"json",
+                        success : function (r) {
+                            if(r.code == 0){
+                                alert("关闭成功!");
+                                window.location.href = "super_order_a.html";
+                            }else {
+                                alert("关闭失败!");
+                            }
+                        }
+                    })
+                });
+            }
+
+			//审核供应链金融
+			if(layEvent == 'check'){
+				if(data.payment_opt == 'chain'){
+					window.location.href = "third_chain.html?order_id="+data.order_id;
+				}
+			}
+        });
+
+        element.on('tab(docDemoTabBrief)', function (data) {
+            console.log(data.index); //得到当前Tab的所在下标
+            if (data.index == 0) {
+                var criteria = {
+                    "goods_type":"others",
+                    "status":"2"
+                };
+                initTable(criteria);
+            }else if (data.index == 1) {
+                var criteria = {
+                    "goods_type":"others",
+                    "status":"3"
+                };
+                initTable(criteria);
+            } else if (data.index == 2) {
+                var criteria = {
+                    "goods_type":"others",
+                    "status":"4"
+                };
+                initTable(criteria);
+            }else if (data.index == 3) {
+				var criteria = {
+					"goods_type":"others",
+					"chain_state":"-1"
+				};
+				initTable(criteria);
+			}
+        });
+
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.CmsUserDao">
+    
+    <sql id="criteria">
+        <where>
+            <if test="minTime!=null and maxTime!=null">
+                create_time between #{minTime} and #{maxTime}
+            </if>
+            <if test="status!=null">
+                and status = #{status}
+            </if>
+            <if test="nickname!=null and nickname.trim()!=''">
+                and nickname = #{nickname}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="save" parameterType="com.axej.harlan.cms.bean.CmsUser" useGeneratedKeys="true">
+        <selectKey keyProperty="user_id" order="AFTER" resultType="int">
+            select  LAST_INSERT_ID()
+        </selectKey>
+		insert into cms_user (
+	        nickname,
+	        principal,
+	        credentials,
+	        status,
+	        create_time,
+	        remark
+		)
+		values
+		(
+		   #{nickname},
+		   #{principal},
+		   #{credentials},
+		   #{status},
+		   #{create_time},
+		   #{remark}
+		)
+	</insert>
+
+    <delete id="delete" parameterType="int">
+        delete from cms_user where user_id = #{user_id};
+        delete from cms_user_role where user_id = #{user_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.cms.bean.CmsUser">
+        update cms_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="nickname!=null and nickname.trim()!=''">nickname=#{nickname},</if>
+            <if test="principal!=null and principal.trim()!=''">principal=#{principal},</if>
+            <if test="credentials!=null and credentials.trim()!=''">credentials=#{credentials},</if>
+            <if test="status!=null and status.trim()!=''">status=#{status},</if>
+            <if test="create_time!=null and create_time.trim()!=''">create_time=#{create_time}</if>
+            <if test="remark!=null">remark=#{remark}</if>
+        </trim>
+        where user_id = #{user_id}
+    </update>
+
+    <select id="queryObject" resultType="com.axej.harlan.cms.bean.CmsUser">
+        select * from cms_user
+        <where>
+            <if test="user_id!=null and user_id!=0">
+                user_id = #{user_id}
+            </if>
+            <if test="principal!=null and principal.trim()!=''">
+                and principal = #{principal}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.cms.bean.CmsUser">
+        select * from cms_user
+        <include refid="criteria"></include>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from cms_user
+        <include refid="criteria"></include>
+    </select>
+
+    <select id="getName" parameterType="string" resultType="com.axej.harlan.cms.bean.CmsUser">
+        SELECT * FROM cms_user WHERE principal = #{principal}
+    </select>
+
+</mapper>

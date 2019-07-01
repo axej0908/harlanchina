@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>化浪管理后台</title>
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="./src/css/app.css" media="all">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div id="rrapp" class="layui-layout layui-layout-admin kit-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">化浪后台</div>
+        <div class="layui-logo kit-logo-mobile">H</div>
+        <ul class="layui-nav layui-layout-right kit-nav">
+            <li class="layui-nav-item"><a href="backLogin.html"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a></li>
+            <!--<li class="layui-nav-item"><a class="layui-btn" lay-event="esc"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a></li>-->
+        </ul>
+    </div>
+    <div class="layui-side layui-bg-black kit-side">
+        <div class="layui-side-scroll">
+            <div class="kit-side-fold"><i class="fa fa-navicon" aria-hidden="true"></i></div>
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="kitNavbar" kit-navbar>
+                <!--<li class="layui-nav-item">
+                    <a class="" href="javascript:;"><span>权限管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" kit-target data-options="{url:'a_add_admin.html',icon:'&#xe6c6;',title:'添加管理员角色',id:'1'}">
+                                <span>添加管理员角色</span></a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="a_admin_manage.html" data-icon="fa-user" data-title="后台用户管理" kit-target data-id='2'><span>后台用户管理</span></a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span> 用户管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'b_user_cgs.html',icon:'&#xe658;',title:'采购商',id:'3'}"><span>采购商</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'b_user_ghs.html',icon:'&#xe658;',title:'供货商',id:'4'}"><span> 供货商</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'b_user_register_check.html',icon:'&#xe658;',title:'注册用户审核',id:'5'}"><span>注册用户审核</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'b_user_openshop_check.html',icon:'&#xe658;',title:'开店申请审核',id:'6'}"><span>开店申请审核</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span> 广告位管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'c_adv_mesg.html',icon:'&#xe658;',title:'广告信息',id:'7'}"><span>广告信息</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span> 订单管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'d_order_cg.html',icon:'&#xe658;',title:'采购订单',id:'8'}"><span>采购订单</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'d_order_gh.html',icon:'&#xe658;',title:'供货订单',id:'9'}"><span>供货订单</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'d_order_gh.html',icon:'&#xe658;',title:'自营商品订单',id:'10'}"><span>自营商品订单</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span> 免费找货</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'e_free_find_a.html',icon:'&#xe658;',title:'待受理',id:'11'}"><span>待受理</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'e_free_find_b.html',icon:'&#xe658;',title:'找货中',id:'12'}"><span>找货中</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'e_free_find_c.html',icon:'&#xe658;',title:'已处理',id:'13'}"><span>已处理</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>平台检测/检测人员</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'f_jc_pt.html',icon:'&#xe658;',title:'平台检测',id:'14'}"><span>平台检测</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'f_jc_dd.html',icon:'&#xe658;',title:'订单检测',id:'15'}"><span>订单检测</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>供应金融</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'g_jr_a.html',icon:'&#xe658;',title:'待审核申请',id:'16'}"><span>待审核申请</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'g_jr_b.html',icon:'&#xe658;',title:'已通过的账户',id:'17'}"><span>已通过的账户</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'g_jr_c.html',icon:'&#xe658;',title:'交易记录',id:'18'}"><span>交易记录</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>商品管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'h_goods_a.html',icon:'&#xe658;',title:'自营商城商品',id:'19'}"><span>自营商城商品</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'h_goods_b.html',icon:'&#xe658;',title:'第三方商品',id:'20'}"><span>第三方商品</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>新闻管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'i_manage_news.html',icon:'&#xe658;',title:'新闻信息',id:'21'}"><span>新闻信息</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>实单竞价管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'j_sdjj_a.html',icon:'&#xe658;',title:'待处理',id:'22'}"><span>待处理</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'j_sdjj_b.html',icon:'&#xe658;',title:'已通过',id:'23'}"><span>已通过</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'j_sdjj_c.html',icon:'&#xe658;',title:'已驳回',id:'24'}"><span>已驳回</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>实单采购管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'k_sdcg_a.html',icon:'&#xe658;',title:'待处理',id:'25'}"><span>待处理</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'k_sdcg_b.html',icon:'&#xe658;',title:'已通过',id:'26'}"><span>已通过</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'k_sdcg_c.html',icon:'&#xe658;',title:'已驳回',id:'27'}"><span>已驳回</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>以货易货管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'l_yh_a.html',icon:'&#xe658;',title:'待处理',id:'28'}"><span>待处理</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'l_yh_b.html',icon:'&#xe658;',title:'已通过',id:'29'}"><span>已通过</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'l_yh_c.html',icon:'&#xe658;',title:'已驳回',id:'30'}"><span>已驳回</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>监理模块</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'m_jl.html',icon:'&#xe658;',title:'待处理',id:'31'}"><span>订单编号</span></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>系统统计</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'n_number_count.html',icon:'&#xe658;',title:'待处理',id:'32'}"><span>数量统计</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'navbar.html',icon:'&#xe658;',title:'已通过',id:'33'}"><span>注册用户</span></a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>检测订单</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'check_order_a.html',icon:'&#xe658;',title:'待处理',id:'32'}"><span>待检测订单</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'check_order_b.html',icon:'&#xe658;',title:'已通过',id:'33'}"><span>已检测订单</span></a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>监理订单</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'super_order_a.html',icon:'&#xe658;',title:'待处理',id:'32'}"><span>待监理订单</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'super_order_b.html',icon:'&#xe658;',title:'已通过',id:'33'}"><span>已监理订单</span></a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span>订单管理</span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" kit-target data-options="{url:'dealer_order.html',icon:'&#xe658;',title:'待处理',id:'32'}"><span>自营商订单</span></a></dd>
+                        <dd><a href="javascript:;" kit-target data-options="{url:'third_party.html',icon:'&#xe658;',title:'已通过',id:'33'}"><span>已监理订单</span></a></dd>
+                    </dl>
+                </li>
+                &lt;!&ndash;一级菜单&ndash;&gt;
+                <li class="layui-nav-item">
+                    <a href="javascript:;" data-options="{url:'chemicalEngineering.html',icon:'&#xe658;',title:'化工词典',id:'34'}" data-name="form" kit-target><span>化工词典</span></a>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="layui-body" id="container">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">主体内容加载中,请稍等...</div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        2017 &copy;
+        <a href="http://kit.zhengjinfan.cn/">kit.zhengjinfan.cn/</a> MIT license
+
+    </div>
+</div>
+<!--<script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1264021086'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1264021086%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>-->
+<script src="./plugins/layui/layui.js"></script>
+<script src="./plugins/vue.min.js"></script>
+<script>
+    var message;
+    layui.config({
+        base: 'src/js/'
+    }).use(['app', 'message', 'element', 'table'], function () {
+        var app = layui.app,
+            $ = layui.jquery,
+            element = layui.element;
+        var table = layui.table;
+
+        //step2:spread sec menus of click event
+        element.on('nav(demo)', function (elem) {
+            alert(elem);
+        });
+
+        /*var vm = new Vue({
+            el: "#rrapp",
+            data: {
+                menus: []
+            },
+            mounted: function () {
+                this.$nextTick(function () {
+                    vm.preloadMenus();
+                })
+            },
+            methods: {
+                preloadMenus: function () {
+                    $.ajax({
+                        url: '/cmsMenu/recursion',
+                        type: 'post',
+                        dataType: 'json',
+                        success: function (r) {
+                            vm.menus = r.data;
+                            element.init();
+                            element.render('nav', 'nav');
+                        }
+                    });
+                }
+            }
+        });*/
+
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            //获得当前行 tr 的DOM对象
+            var tr = obj.tr;
+
+            if(layEvent === 'esc'){
+                layer.confirm('是否注销', function (index) {
+                    logout();
+                });
+            }
+
+        });
+
+
+        function logout() {
+            $.ajax({
+                url: '/cmsUser/logout',
+                data: {},
+                type: "post",
+                dataType: "json",
+                success : function (r) {
+                    if(r.code == 0){
+                        window.open("backLogin.html", "_self");
+                    }
+                }
+            })
+        }
+
+        /*window.logout = function(){
+            $.ajax({
+                url: '/cmsUser/logout',
+                data: {},
+                type: "post",
+                dataType: "json",
+                success : function (r) {
+                    window.open("backLogin.html", "_self");
+                }
+            })
+        }*/
+
+
+        //将message设置为全局以便子页面调用
+        message = layui.message;
+        //主入口
+        app.set({
+            type: 'iframe'
+        }).init();
+    });
+
+    layui.use(['layer', 'jquery' , 'form'], function () {
+        var layer = layui.layer,
+            $ = layui.jquery;
+
+        //清理左侧菜单缓存
+        var index = layer.load(2, {
+            shade: [0.3, '#333']
+        });
+
+        $.ajax({
+            url:"/cmsUser/currentUser",
+            type:"post",
+            dataType:"json",
+            success : function (r) {
+                if(r.code != 0){
+                    window.location.href = "backLogin.html";
+                }
+            }
+        });
+        return false;
+
+    });
+</script>
+</body>
+
+</html>

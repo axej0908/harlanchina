@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.harlaneye.dao.LoadingSupervisionDao">
+
+    <insert id="insertSupervision">
+
+        insert  into harlan_eye_supervision (
+         supervision_id,
+         user_id,
+         apply_date,
+         company_name_zh,
+         company_name_en,
+         company_addr_zh,
+         company_addr_en,
+         payerinfo_company,
+         payerinfo_other,
+         contact_person,
+         contact_telephone,
+         contact_fax,
+         contact_email,
+         commodity,
+         quantity,
+         vessel,
+         packing,
+         size,
+         load_port,
+         destination,
+         inspection_location,
+         required_inspection_date,
+         is_lc,
+         sampling_at_warehouse,
+         sampling_at_plant,
+         sampling_at_quayside,
+         sampling_at_100,
+         sampling_at_random,
+         weighing_at_warehouse,
+         weighing_at_plant,
+         weighing_at_quayside,
+         weighing_at_100,
+         weighing_at_random,
+         weighing_at_supervision,
+         weighing_at_initial,
+         weighing_at_intermidiate,
+         cargo_at_warehouse,
+         cargo_at_plant,
+         cargo_at_quayside,
+         cargo_at_visual,
+         cargo_at_packing,
+         cargo_at_check,
+         porthanding_loading,
+         porthanding_discharging,
+         porthanding_hold,
+         containe_stuffing,
+         containe_seal,
+         containe_unloading,
+         tally_at_container,
+         tally_at_loading,
+         other_requirements,
+         analysis_chemical,
+         analysis_physical,
+         analysis_other,
+         invoice_type,
+         invoice_chinese,
+         invoice_english,
+         invoice_title,
+         dispatch_via,
+         delivery_addr,
+         inspection_fee,
+         analysis_fee,
+         paper_fee,
+         added_fee,
+         others_fee,
+         travelling_fee,
+         englishreport_fee,
+         total_fee,
+         commission_filepath,
+         invoice_filepath,
+         report_filepath,
+         status
+        ) values (
+         #{supervision_id},
+         #{user_id},
+         #{apply_date},
+         #{company_name_zh},
+         #{company_name_en},
+         #{company_addr_zh},
+         #{company_addr_en},
+         #{payerinfo_company},
+         #{payerinfo_other},
+         #{contact_person},
+         #{contact_telephone},
+         #{contact_fax},
+         #{contact_email},
+         #{commodity},
+         #{quantity},
+         #{vessel},
+         #{packing},
+         #{size},
+         #{load_port},
+         #{destination},
+         #{inspection_location},
+         #{required_inspection_date},
+         #{is_lc},
+         #{sampling_at_warehouse},
+         #{sampling_at_plant},
+         #{sampling_at_quayside},
+         #{sampling_at_100},
+         #{sampling_at_random},
+         #{weighing_at_warehouse},
+         #{weighing_at_plant},
+         #{weighing_at_quayside},
+         #{weighing_at_100},
+         #{weighing_at_random},
+         #{weighing_at_supervision},
+         #{weighing_at_initial},
+         #{weighing_at_intermidiate},
+         #{cargo_at_warehouse},
+         #{cargo_at_plant},
+         #{cargo_at_quayside},
+         #{cargo_at_visual},
+         #{cargo_at_packing},
+         #{cargo_at_check},
+         #{porthanding_loading},
+         #{porthanding_discharging},
+         #{porthanding_hold},
+         #{containe_stuffing},
+         #{containe_seal},
+         #{containe_unloading},
+         #{tally_at_container},
+         #{tally_at_loading},
+         #{other_requirements},
+         #{analysis_chemical},
+         #{analysis_physical},
+         #{analysis_other},
+         #{invoice_type},
+         #{invoice_chinese},
+         #{invoice_english},
+         #{invoice_title},
+         #{dispatch_via},
+         #{delivery_addr},
+         #{inspection_fee},
+         #{analysis_fee},
+         #{paper_fee},
+         #{added_fee},
+         #{others_fee},
+         #{travelling_fee},
+         #{englishreport_fee},
+         #{total_fee},
+         #{commission_filepath},
+         #{invoice_filepath},
+         #{report_filepath},
+         #{status}
+        )
+
+    </insert>
+
+
+    <select id="getSupervisionByUserAndStatus" resultType="com.axej.harlan.harlaneye.bean.LoadingSupervisionBean">
+        select  * from harlan_eye_supervision where user_id=#{user_id} and status=#{supervision_status}
+    </select>
+
+
+    <select id="getSupervisionAllUserAndStatus" resultType="com.axej.harlan.harlaneye.bean.LoadingSupervisionBean">
+        select  * from harlan_eye_supervision where user_id=#{user_id}
+    </select>
+
+
+    <select id="getSupervisionByStatus" resultType="com.axej.harlan.harlaneye.bean.LoadingSupervisionBean">
+        select  * from harlan_eye_supervision where status=#{supervision_status}
+    </select>
+
+
+    <select id="getSupervisionById" resultType="com.axej.harlan.harlaneye.bean.LoadingSupervisionBean">
+        select  * from harlan_eye_supervision where supervision_id=#{supervision_id}
+    </select>
+
+
+    <select id="getSupervisionByAllStatus" resultType="com.axej.harlan.harlaneye.bean.LoadingSupervisionBean">
+        select  * from harlan_eye_supervision
+    </select>
+
+
+    <update id="updateSupervisionStatusById">
+
+      update harlan_eye_supervision set status=#{supervision_status} where supervision_id=#{supervision_id}
+    </update>
+
+    <update id="updateSupervisionPrice">
+        update harlan_eye_supervision set
+        inspection_fee=#{inspection_fee},
+        analysis_fee=#{analysis_fee},
+        paper_fee=#{paper_fee},
+        added_fee=#{added_fee},
+        others_fee=#{others_fee},
+        travelling_fee=#{travelling_fee},
+        englishreport_fee=#{englishreport_fee},
+        total_fee=#{total_fee}
+        where supervision_id=#{supervision_id}
+
+    </update>
+
+
+    <update id="uploadCommission">
+
+        update harlan_eye_supervision set commission_filepath =#{commission_filepath} where supervision_id=#{supervision_id}
+
+    </update>
+
+    <update id="uploadInvoice">
+
+         update harlan_eye_supervision set invoice_filepath =#{invoice_filepath} where supervision_id=#{supervision_id}
+
+    </update>
+
+    <update id="uploadReport">
+
+         update harlan_eye_supervision set report_filepath =#{report_filepath} where supervision_id=#{supervision_id}
+
+    </update>
+
+</mapper>

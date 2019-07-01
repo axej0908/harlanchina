@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.harlaneye.dao.FactoryAuditDao">
+
+    <insert id="insertFactoryAudit" parameterType="com.axej.harlan.harlaneye.bean.FactoryAuditBean">
+          insert into harlan_eye_factory(
+      factory_id,
+      user_id,
+      apply_date,
+      company_name,
+      company_addr,
+      contact_person,
+      position,
+      email,
+      fax,
+      invoice_report,
+      invoice_title,
+      invoice_chinese,
+      invoice_english,
+      dispatch_via,
+      delivery_addr,
+      promanagement_fee,
+      supplier_fee,
+      englishreport_fee,
+      others_fee,
+      travelling_fee,
+      total_fee,
+      commission_filepath,
+      invoice_filepath,
+      report_filepath,
+      status
+        )values(
+        #{factory_id},
+      #{user_id},
+      #{apply_date},
+      #{company_name},
+      #{company_addr},
+      #{contact_person},
+      #{position},
+      #{email},
+      #{fax},
+      #{invoice_report},
+      #{invoice_title},
+      #{invoice_chinese},
+      #{invoice_english},
+      #{dispatch_via},
+      #{delivery_addr},
+      #{promanagement_fee},
+      #{supplier_fee},
+      #{englishreport_fee},
+      #{others_fee},
+      #{travelling_fee},
+      #{total_fee},
+      #{commission_filepath},
+      #{invoice_filepath},
+      #{report_filepath},
+      #{status}
+        )
+    </insert>
+
+
+    <select id="getFactoryAuditUserAll" resultType="com.axej.harlan.harlaneye.bean.FactoryAuditBean">
+
+      select * from harlan_eye_factory where user_id=#{user_id}
+
+    </select>
+
+  <select id="getFactoryAuditByUserStatus" resultType="com.axej.harlan.harlaneye.bean.FactoryAuditBean">
+
+      select * from harlan_eye_factory where user_id=#{user_id} and status=#{factoryAudit_status}
+
+    </select>
+
+  <select id="getFactoryAuditById" resultType="com.axej.harlan.harlaneye.bean.FactoryAuditBean">
+
+      select * from harlan_eye_factory where factory_id=#{factoryAudit_id}
+
+    </select>
+
+  <update id="updateFactoryAuditPrice">
+
+    update harlan_eye_factory set
+    promanagement_fee=#{promanagement_fee},
+    supplier_fee=#{supplier_fee},
+    englishreport_fee=#{englishreport_fee},
+    others_fee=#{others_fee},
+    travelling_fee=#{travelling_fee},
+    total_fee=#{total_fee}
+
+    where factory_id=#{factoryAudit_id}
+
+  </update>
+  
+  
+  <update id="updateFactoryAuditStatus">
+
+    update  harlan_eye_factory set status =#{factoryAudit_status} where factory_id=#{factoryAudit_id}
+  </update>
+
+  <update id="uploadCommission">
+
+        update harlan_eye_factory set commission_filepath =#{commission_filepath} where factory_id=#{factoryAudit_id}
+
+    </update>
+
+  <update id="uploadInvoice">
+
+         update harlan_eye_factory set invoice_filepath =#{invoice_filepath} where factory_id=#{factoryAudit_id}
+
+    </update>
+
+  <update id="uploadReport">
+
+         update harlan_eye_factory set report_filepath =#{report_filepath} where factory_id=#{factoryAudit_id}
+
+    </update>
+  
+  <select id="getTestingByStatus" resultType="com.axej.harlan.harlaneye.bean.FactoryAuditBean">
+
+    select * from harlan_eye_factory where status=#{factoryAudit_status}
+
+  </select>
+
+  <select id="getTestingByAllStatus" resultType="com.axej.harlan.harlaneye.bean.FactoryAuditBean">
+
+    select * from harlan_eye_factory
+
+  </select>
+
+</mapper>

@@ -1,0 +1,56 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.crumb{
+    width: 1000px;
+    height: 24px;
+    line-height: 24px;
+    margin: 10px auto 0 auto;
+    font-size: 14px;
+    color: #323232;
+}
+.a_active{
+	color: #317ee7;
+}
+/*-------------------------------------third------------------------------------*/
+.third{
+    width: 1000px;
+    margin: 10px auto 36px auto;
+}
+.third_left_seven{
+	width:1000px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	border: 1px solid #E6E6E6;
+}
+.two_til{
+	width: 100%;
+    height: 24px;
+    line-height: 24px;
+    padding-left: 46px;
+    font-size: 18px;
+    color: #333;
+}
+.wj_list{
+	width: 100%;
+	margin-top: 30px;
+}
+.wj{
+	width: 100%;
+	height: 101px;
+	margin-top: 42px;
+}
+.wj_pic{
+	margin:0 auto;
+	width: 600px;
+	height: 500px;
+	/*background-color: #000;*/
+	background-size: 100% 100%;
+}

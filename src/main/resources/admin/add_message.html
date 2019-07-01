@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="edge" />
+		<meta name="renderer" content="webkit">
+		<title>添加管理员</title>
+		<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all" />
+		<style type="text/css">
+			.crum_prt{
+				padding-top: 10px;
+				padding-left: 5px;
+			}
+			.layui-form {
+				padding-top: 100px;
+				width: 800px;
+				margin: 0 auto; 
+			}
+			.layui-form-item{
+				margin-top: 30px;
+			}
+			.layui-text {
+				line-height: 40px;
+			}
+			.layui-txt-area{
+				width: 600px;
+				resize: none;
+			}
+			.layui-textarea {
+			    resize: none;
+			}
+			.layui-form-item .layui-input-inline{
+				width: 600px;
+			}
+			.layui-btn{
+				width: 600px;
+				height: 40px;
+			}
+		</style>
+	    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+	<body>
+		<form class="layui-form" action="">
+				 <div class="layui-form-item layui-form-text">
+				    <label class="layui-form-label">标题：</label>
+				    <div class="layui-input-inline">
+				        <input type="text" class="layui-input" name="title">
+				    </div>
+				 </div>
+				 <div class="layui-form-item layui-form-text">
+				    <label class="layui-form-label">正文：</label>
+				    <div class="layui-input-block layui-txt-area">
+				        <textarea placeholder="请输入内容" class="layui-textarea" name="content"></textarea>
+				    </div>
+			  	</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+				</div>
+			</div>
+		</form>
+		<script src="./plugins/layui/layui.js"></script>
+		<script type="text/javascript">
+			layui.use(['form', 'jquery' , 'element'], function() {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+				var form = layui.form;
+                	$ = layui.jquery;
+
+                form.on('submit(demo1)', function (data) {
+                    $.ajax({
+                        url:'/message/save',
+                        type:"post",
+                        data:data.field,
+                        dataType:"json",
+                        success : function (r) {
+                            if(r.code == 0){
+								layer.open({
+									content: '添加成功!'
+								});
+                                window.location.href = "add_message.html";
+                            }else {
+								layer.open({
+									content: '添加失败!'
+								});
+							}
+                        }
+                    });
+                    return false;
+                });
+				
+			})
+		</script>
+	</body>
+
+</html>

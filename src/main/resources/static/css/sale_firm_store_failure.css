@@ -1,0 +1,107 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #f2f3f7;
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.my_info{
+	width: 100%;
+    padding: 18px;
+    padding-right: 18px;
+    background-color: #fff;
+    padding-top: 16px;
+    padding-bottom: 36px;
+}
+.pe_til{
+	width: 100%;
+	height: 55px;
+	border-bottom: 1px solid #DBDBDB;
+	font-size: 14px;
+	color: #333333;
+	line-height: 54px;
+	padding-left: 15px;
+	position: relative;
+}
+.store_process{
+	display: table;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.process_li{
+	display: inline-block;
+	margin-left: 18px;
+}
+.process_order{
+	width: 16px;
+	height: 16px;
+	float: left;
+	border-radius: 50%;
+	font-size: 12px;
+	color: #fff;
+	background-color: #b3b4b4;
+	text-align: center;
+	line-height: 16px;
+	float: left;
+}
+.process_txt{
+	font-size: 12px;
+	color: #b3b4b4;
+	float: left;
+	padding-left: 10px;
+	height: 16px;
+	line-height: 16px;
+}
+.process_current .process_order{
+	background-color: #9ec6ff;
+}
+.process_current .process_txt{
+	color: #9ec6ff;
+}
+.submit_state{
+	width: 100%;
+	padding-top: 118px;
+}
+.wait_bg{
+	width: 436px;
+	height: 142px;
+	background-position: center;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-image: url(../imgs/store_faliure.png);
+	margin: 0 auto;
+}
+.tip_a,.tip_b{
+	width: 100%;
+	text-align: center;
+	line-height: 20px;
+	font-size: 12px;
+}
+.tip_a{
+	margin-top: 10px;
+	color: #4e4e4e;
+}
+.tip_b{
+	color: #b3b4b4;
+}
+.btn{
+	margin: 168px auto 0 auto;
+	width: 200px;
+	height: 40px;
+	text-align: center;
+	line-height: 36px;
+	color: #317ee7;
+	border: 2px solid #317ee7;
+	border-radius: 6px;
+	cursor: pointer;
+}
+.btn a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}

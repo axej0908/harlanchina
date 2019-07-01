@@ -1,0 +1,308 @@
+html,body{
+	width: 100%;
+	
+}
+.entire{
+
+	width: 100%;
+}
+
+/*-------------------顶部搜索样式开始--------------------------*/
+.first{
+	width: 100%;
+	height: 224px;
+	padding-top: 68px;
+}
+.first_sub{
+	width: 1143px;
+	height: 100%;
+	margin: 0 auto;
+}
+.logo{
+	width: 175px;
+	height: 73px;
+	margin-top: 12px;
+	background: url(../imgs/logo_hualang3.png) no-repeat center;
+	background-size: contain;
+	float: left;
+}
+.search_area{
+	width: 651px;
+	height: 114px;
+	float: left;
+	margin-left: 126px;
+}
+.search_box_mn{
+	width: 100%;
+	height: 38px;
+}
+.search_box_mn li{
+	width: 78px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	float: left;
+	color: #067ebd;
+	font-size: 14px;
+	cursor: default;
+}
+.search_box_mn .search_li_active{
+	background-color: #317ee7;
+	color: #fff;
+}
+.search_box{
+	width: 100%;
+	height: 46px;
+}
+.input_box{
+	width: 594px;
+	height: 100%;
+	float: left;
+	border: 2px solid #317ee7;
+}
+.input_box input{
+    display: block;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding-left: 12px;
+}
+.search_btn{
+	width: 57px;
+	height: 100%;
+	background: url(../imgs/search_icon.png) no-repeat center;
+	background-size: 24px 24px;
+	background-color: #317ee7;
+	float: right;
+	cursor: pointer;
+}
+.search_history{
+	margin-top: 14px;
+	font-size: 14px;
+	line-height: 22px;
+	height: 22px;
+}
+.search_history a{
+	color: #666666;
+}
+.shop_cart{
+    width: 150px;
+    height: 47px;
+    background: url(../imgs/icon_shop_cart.png) no-repeat;
+    background-size: 42px 33px;
+    background-position: 26px center;
+    background-color: #f2f4f7;
+    padding-left: 74px;
+    line-height: 47px;
+    margin-top: 38px;
+    margin-left: 33px;
+    font-size: 14px;
+    color: #022133;
+    border-radius: 5px;
+}
+
+/*-------------------顶部搜索样式结束--------------------------*/
+/*-------------------------------------second------------------------------------------*/
+
+/*-------------------菜单导航样式开始--------------------------*/
+.second{
+	width: 100%;
+    height: 42px;
+    border-bottom: 3px solid #808080;
+}
+.second_mn{
+	width: 848px;
+	height: 40px;
+	margin: 0 auto;
+}
+.second_mn li{
+	width: 106px;
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 40px;
+	
+}
+.second_mn li a{
+    font-size: 16px;
+    color: #333333;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.second_mn .li_active{
+	background-color: #317ee7;
+}
+.second_mn .li_active a{
+	color: #fff;
+}
+/*-------------------菜单导航样式结束--------------------------*/
+/*------------------------------------------third-----------------------------------------------*/
+.third{
+	width: 100%;
+}
+.third_sub{
+	width: 1200px;
+	padding-top: 32px;
+	margin: 0 auto;
+}
+.third_til{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 41px;
+	font-size: 18px;
+	color: #066da7;
+}
+.check_block{
+	width: 1150px;
+	margin: 18px auto 36px auto;
+}
+.check_a,.check_b,.check_c{
+	width: 100%;
+}
+.check_til{
+	width: 1150px;
+	height: 50px;
+	padding-left: 15px;
+	line-height: 50px;
+	background-color: #fafafa;
+	font-size: 18px;
+	color: #333333;
+	border: 1px solid #e4e4e4;
+}
+.check_mesg{
+	width: 100%;
+	padding-bottom: 31px;
+	border: 1px solid #e4e4e4;
+	border-top: 1px solid transparent;
+}
+.check_mesg_b{
+	width: 100%;
+	padding-bottom: 31px;
+	border: 1px solid #E4E4E4;
+	border-top: 1px solid transparent;
+}
+.check_mesg_c{
+	width: 100%;
+	height: 148px;
+	border: 1px solid #E4E4E4;
+	border-top: 1px solid transparent;
+}
+.check_item{
+	width: 100%;
+	height: 32px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-top: 31px;
+}
+.check_item_b{
+	width: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-top: 31px;
+}
+.input_lal{
+	width: 100px;
+	height: 100%;
+	line-height: 32px;
+	font-size: 16px;
+	color: #808080;
+	float: left;
+}
+.input_div{
+	width: 268px;
+	height: 100%;
+	margin-left: 10px;
+	float: left;
+	border: 1px solid #E4E4E4;
+}
+.input_div input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.check_type{
+	float: left;
+	width: 896px;
+	margin-top: -30px;
+}
+.type_li{
+	float: left;
+	margin-left: 10px;
+	width: 102px;
+	margin-left: 10px;
+	margin-top: 34px;
+	font-size: 14px;
+	color: #808080;
+}
+/*改变单选框按钮的样式*/
+.type_li label{
+	width:16px;
+	height:16px;
+	display:inline-block;
+	cursor:pointer;
+	position: relative;
+	top: 4px;
+	}
+.type_li label input[type="checkbox"],.type_li label span{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.type_li label input[type="checkbox"]{
+	appearance: none; 
+	-webkit-appearance: none;
+	outline: none;
+	z-index: 1;
+	background: transparent;
+    opacity: 0;
+}
+
+.type_li label input[type="checkbox"] + span{
+	display:inline-block;background:url(../imgs/radio_sel_no.png) no-repeat;
+	 background-position:center;
+	 background-size: contain;
+ }
+.type_li label input[type="checkbox"]:checked + span{
+	background-position:center;
+	background:url(../imgs/radio_sel_yes.png)  no-repeat;
+	background-size: 15px 15px;
+}
+.check_price{
+	width: 100%;
+	margin-top: 32px;
+	padding-left: 10px;
+	height: 30px;
+	line-height: 30px;
+}
+.check_price label{
+	font-size: 16px;
+	color: #808080;
+}
+.check_price span{
+	font-size: 20px;
+	color: #df6f6f;
+	font-weight: bold;
+}
+.btn{
+	width: 340px;
+	height: 48px;
+	background-color: #118ec4;
+	font-size: 18px;
+	color: #fff;
+	line-height: 48px;
+	text-align: center;
+	margin: 42px auto 0 auto;
+	border-radius: 5px;
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.order.dao.SupervisionDao">
+    <resultMap id="SupervisionBean" type="com.axej.harlan.order.bean.SupervisionBean">
+        <id property="supv_id" column="supv_id"></id>
+        <result property="supv_name" column="supv_name"></result>
+        <result property="log_number" column="log_number"></result>
+        <collection property="logisticsBeans" ofType="com.axej.harlan.order.bean.LogisticsBean">
+            <id property="os_id" column="os_id"></id>
+            <result property="os_time" column="os_time"></result>
+            <result property="os_content" column="os_content"></result>
+            <result property="os_files" column="os_files"></result>
+            <result property="supv_id" column="supv_id"></result>
+        </collection>
+    </resultMap>
+
+    <insert id="save" parameterType="com.axej.harlan.order.bean.SupervisionBean">
+        <selectKey keyProperty="supv_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into serv_supv (
+        supv_name,
+        log_number
+        )
+        values
+        (
+        #{supv_name},
+        #{log_number}
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.axej.harlan.order.bean.SupervisionBean">
+        delete from serv_supv
+        <where>
+            <if test="supv_id!=null">supv_id = #{supv_id}</if>
+        </where>
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.order.bean.SupervisionBean">
+        update serv_supv
+        <set>
+            <if test="supv_name!=null and supv_name.trim()!=''">supv_name=#{supv_name},</if>
+            <if test="log_number!=null and log_number.trim()!=''">log_number=#{log_number}</if>
+        </set>
+        where supv_id = #{supv_id}
+    </update>
+
+    <select id="queryObject" parameterType="com.axej.harlan.order.bean.SupervisionBean"
+            resultMap="SupervisionBean">
+        select * from serv_supv os left join serv_logistics ol on os.supv_id = ol.supv_id
+        <where>
+            <if test="supv_id!=null">
+                os.supv_id = #{supv_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.order.bean.SupervisionBean">
+        select * from serv_supv
+        <where>
+            <if test="supv_name!=null and supv_name.trim()!=''">
+                supv_name = #{supv_name}
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from serv_supv
+        <where>
+            <if test="supv_name!=null and supv_name.trim()!=''">
+                supv_name = #{supv_name}
+            </if>
+        </where>
+    </select>
+
+</mapper>

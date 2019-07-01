@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Help Center | Harlan</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/swiper/swiper-3.4.2.min.css"/>
+     <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" href="css/new_file3.css">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+  	<style type="text/css">
+    	.con_mid h6{
+    		font-size: 30px;
+    		color: #333333;
+    		font-weight: 600;
+    		text-align: center;
+    		margin-top: 40px;
+    		margin-bottom: 20px;
+    	}
+    	.con_mid p{
+    		font-size: 22px;
+    		color: #585858;
+    	}
+    	.con_mid img{
+    		display: block;
+    		width: 100%;
+    		height: auto;
+    		margin-top: 20px;
+    		margin-bottom: 20px;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="entire" id="rrapp">
+    	 <!--顶部区域开始-->
+		<div class="header">
+			<div class="header_sub">
+				<ul class="header_fl">
+					<li><a href="index.html">home page</a></li>
+					<!--<li><a href="new_explain16_c.html">Cooperation and service</a></li>-->
+					<li><a href="goods_employed_self.html">Self-support</a></li>
+					<li><a href="goods_employed_third.html">ThirdPart-support</a></li>
+					<li style="color:#ff792d;"><a href="find_goods_list.html">Inquiry Platform </a></li>
+				</ul>
+				<ul class="header_fr">
+					<!--登录之后显示-->
+					<li v-if="user!=null" class="out_area"><a href="pbm_order_seller1.html">My harlan</a> <a @click="logout">Sign out</a></li>
+					<!--登录之前显示-->
+					<li v-if="user==null" class="no_land"><a href="login_en.html">Sign in</a> | <a href="register_en.html">register</a></li>
+					<li><a href="new_explain17_c.html">Help center</a></li>
+					<!--<li class="lang_li">
+						<span>Language</span>
+						<div class="span_sj"></div>
+						<div class="lang_mn" style="display: none;">
+							<div class="lang_item">English</div>
+							<div class="lang_item">Español</div>
+							<div class="lang_item">한국어 </div>
+							<div class="lang_item">日本語</div>
+							<div class="lang_item">中文</div>
+						</div>
+					</li>-->
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+	    <!------------------顶部区域结束-------------->
+        <!--搜索区域开始-->
+		<div class="search_area">
+			<div class="search_area_sub">
+				<div class="search_logo"><a href="index.html"></a></div>
+				<div class="search_btn_list">
+					<!-- <a href="shop_cart_en.html" class="cart_btn" v-show="carShow">My cart <span>{{gross}}</span></a> -->
+				</div>
+				<div class="search_div">
+					<div class="search_fl">
+						<div class="search_whitch">Supplier</div>
+						<ul class="search_ul" style="display: none;">
+							<li @click="searchType='product'">Product</li>
+							<li @click="searchType='supplier'">Supplier</li>
+							<li @click="searchType='cas'">CAS</li>
+						</ul>
+						<div class="search_input_div">
+							<input type="text" v-model="searchParam"/>
+						</div>
+					</div>
+					<div class="search_btn" @click="redirectSel">Search</div>
+				</div>
+			</div>
+		</div>
+        <!--------------搜索区域结束-------------->
+		<div class="banner_box">
+			<img src="imgs/tianjiaimg/lansebanner.jpg">
+		</div>  
+		<div class="con_mid" id="digests">
+			<!--<div class="TJ_bibaoti">
+				<div class="TJ_bibaoti1"></div>
+				<h1 class="TJ_bibaoti2">How to register an account</h1>
+				<div class="TJ_bibaoti1"></div>
+			</div>
+			<p class="p_tip">
+				Visit the website <a href="http://harlanchina.com/index.html">http://harlanchina.com/index.html</a> and click on the top right side “register”
+			</p>
+			<div class="TJ_file3_a">
+				Purchaser registration
+			</div>
+			<div class="TJ_file3_b">
+				1.	Enter the page of “mobile registration”, fill in the mobile phone number , verification code and password.
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_1.png" alt="">
+			</div>
+			<div class="TJ_file3_b">
+				2.	Click “Purchase goods” and then click “register”
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_2.png" alt="">
+			</div>
+			<div class="TJ_file3_b">
+				3.	Registered successfully.
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_3.png" alt="">
+			</div>
+			<div class="TJ_file3_a">
+				Supplier registration
+			</div>
+			<div class="TJ_file3_b">
+				1.	Enter the page of “mobile registration”, fill in the mobile phone number , verification code and password.
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_4.png" alt="">
+			</div>
+			<div class="TJ_file3_b">
+				2.	Choose “Personal supply” or “Company supply”，complete personal information or company information, submit information to finish registration.
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_5.png" alt="">
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_6.png" alt="">
+			</div>
+			<div class="TJ_file3_b">
+				3.  Registered successfully
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_7.png" alt="">
+			</div>-->
+          	<!--<h6>1. Account Setting</h6>
+          	<p style="text-align:center;">1.1 Register / create your account</p>
+          	<p style="text-align:center;">1.2 login / sign in</p>
+          	<p style="text-align:center;">1.3 change password</p>
+          	<h6>2. Purchase problem</h6>
+          	<p style="text-align:center;">2.1 Spot purchasing</p>
+          	<p style="text-align:center;">2.2 payment</p>
+          	<p style="text-align:center;">2.3 delivery</p>
+          	<p style="text-align:center;">2.4 After-sales service rules</p>
+          	<h6>3.Supply chain service</h6>
+          	<p style="text-align:center;">3.1  service type</p>
+          	<p style="text-align:center;">3.2 service introduce</p>
+          	<h6>4. Contact us</h6>
+          	<h6 style="margin-top: 50px;">1.1 Register</h6>
+			<p>The guiding page of Harlan platform website has the sign in/register:</p>
+			<img src="imgs/help_img/1.png"/>
+			<p>1.If you are a purchaser, please check "Purchase goods", enter your phone number, fill in the verification code, edit the password, and click "register" to log in.</p>
+			<img src="imgs/help_img/2.png"/>
+			<p>2. If you are a supplier, please check "Store supply" to log in;</p>
+			<img src="imgs/help_img/3.png"/>
+			<p>If you are an individual supplier, check "Personal supply", fill in your personal information and log in:</p>
+			<img src="imgs/help_img/4.png"/>
+			<p>If you are a enterprise supplier, check the "Company supply", fill in the enterprise information and log in:</p>
+			<img src="imgs/help_img/5.png"/>
+			<p>Successfully registered.</p>
+			<p>3.If you are a Chinese supplier, you can register the Chinese supplier account in the guide page of the website</p>
+			<img src="imgs/help_img/6.png"/>
+			<img src="imgs/help_img/7.png"/>
+			<p>Click here to register for free</p>
+			<img src="imgs/help_img/8.png"/>
+			<p>Enter your phone number and fill in the verification code, edit the password, and click register to log in</p>
+			<img src="imgs/help_img/9.png"/>
+			<h6>1.2 login</h6>
+			<p>Click "login", enter phone number/user name/email, and then enter the password, select login now</p>
+			<img src="imgs/help_img/10.png"/>
+			<p>Purchaser account management interface：</p>
+			<img src="imgs/help_img/11.png"/>
+			<img src="imgs/help_img/12.png"/>
+			<p>Supplier account management interface：</p>
+			<img src="imgs/help_img/13.png"/>
+			<img src="imgs/help_img/14.png"/>
+			<h6>1.3 Change password</h6>
+			<p>1.Click" Forget Password? "when log in；</p>
+			<img src="imgs/help_img/15.png"/>
+			<p>2.Enter the phone number, click"Transmit verification"；</p>
+			<img src="imgs/help_img/16.png"/>
+			<p>3.Enter a new password (the password is composed of 6-20 letters, characters and Numbers).</p>
+			<img src="imgs/help_img/17.png"/>
+			<h6>2.1 Spot purchasing</h6>
+			<p>Method 1：Search directly for the product name or CAS number;</p>
+			<img src="imgs/help_img/18.png"/>
+			<p>Method 2: directly click “Self-support” and select the product you want to buy in the self-operated mall:</p>
+			<img src="imgs/help_img/19.png"/>
+			<p>Method 3: directly click “ThirdPart-support” and select the product you want to buy at the third-party mall:</p>
+			<img src="imgs/help_img/20.png"/>
+			<h6>2.2 Payment：</h6>
+			
+			<img src="imgs/help_img/21.png"/>
+			<p>Harlan offline support offline transfer, payment guarantee function. When your company does not support online payment. You can use the "company transfer" method to transfer money offline.</p>
+			<h6>2.3 Delivery</h6>
+			<p>There are two main methods for reagent products:</p>
+			<p> 1. Direct delivery by suppliers;</p>
+			<p> 2. Harlan’s self-operated logistics or third-party logistics;</p>
+			<p>If there are special requirements, they can be indicated in the contract.</p>
+			<img src="imgs/help_img/22.png"/>
+			<p>There are three delivery methods for bulk products:</p>
+			<p> 1. Direct delivery by suppliers;</p>
+			<p> 2. Logistics and delivery;</p>
+			<p> 3. Customer self-service.</p>
+			<p>If there are special requirements, they can be indicated in the contract.</p>
+			<p>Detailed logistics information can be found in my order, choose to check the logistics;</p>
+			<h6>2.4 After-sales service rules</h6>
+			<p>First, statements and handling</p>
+			<p>Buyers and sellers on the trading performance of the process of trade disputes, both parties shall be settled by negotiation, if both parties cannot negotiate or negotiations fail to reach an agreement, one party or both parties may apply for submitting harlan mall mediate processing, the harlan mall has the right to according to the rules to decide whether to accept the complaints related disputes. Harlan for the decision to accept the dispute, the mall will be decided according to the rules of relevant facts, both sides have the duty to provide for their claims related facts, the harlan mall has the right to undertake independent judgment according to have collected data, and make the final processing result. At the same time, if deciding there are irregularities, will be punished according to the rules.</p>
+			<p>Given the harlan mall non-professional dispute settlement body, for the identification of evidence ability and the handling of disputes ability is limited, does not guarantee that dispute processing results accord with the expectations of buyers and sellers, also not held responsible for any dispute processing results. Such as harlan mall after intervention mediation, buyers and sellers are still unable to an agreement on the controversy, the buyer and the seller should use the way such as litigation or arbitration to settle.</p>
+			<p>Buyers and sellers in the harlan mall online exchanges over trade, by the harlan mall, in accordance with these rules for processing. But the two sides is created through the mall offline payment exchange, buyers and sellers to settle on its own.</p>
+			<p>Second, the definition of</p>
+			<p>1, online transactions: refers to the buyers and sellers on the harlanmall by including but not limited to, online payment, online credit guarantees, bank remittance, payment by installment of online payment transactions.</p>
+			<p>2, complaints: refers to the harlanin the mall on a trade dispute processing demands of users.</p>
+			<p>3, be complaints: refers to the complaint about theharlans of mall user complaints.</p>
+			<p>4, trade dispute processing: refers to the buyers and sellers in the trading performance of the process of trade disputes, because the two sides failed to negotiate or fail to reach an agreement, one or both harlanmall mediate processing application submission.</p>
+			<p>Third, to accept the conditions</p>
+			<p>1, complaints party shall provide true and valid proof of identity, contact way;</p>
+			<p>2, have specific complaints;</p>
+			<p>3, have specific complaints request, facts and reasons;</p>
+			<p>4, provide necessary and accurate, detailed facts and evidence;</p>
+			<p>5, produce trading for online trading;</p>
+			<p>6, otherharlan mall that requires conditions.</p>
+			<p>Fourth, during the acceptance</p>
+			<p>In the online order form to confirm the delivery of orders to trading success or from the date of 2 days.</p>
+			<p>Fifth, accept the scope</p>
+			<p>Accepts the scope of the controversy: commodity, seller behavior problems, buyer behavior problems and other special problems, such as specific as follows:</p>
+			<p>1, goods problem: buyer itself exists describe discrepancy of the goods they buy, damage and other issues;</p>
+			<p>2, the seller behavior questions: sellers violation of trade rules or conventions;</p>
+			<p>3, buyer behavior questions: buyer violation of trade rules or conventions;</p>
+			<p>4, and other special problems: other harlan mall think need to accept the special problems, such as harlan mall relevant industry has special provisions, the industry independence standards shall prevail.</p>
+			<p>Six, buying and selling transaction information</p>
+			<p>1, shipping, receiving, return related issues</p>
+			<p>(1) the delivery</p>
+			<p>1) the buyers order, have an obligation to provide effective shipping address to the seller, ensure oneself or the authorized agent may sign for it, otherwise the resulting losses shall be borne by the buyer;</p>
+			<p>2) the seller shall have the duty when released commodity information indicating whether the specified logistics, freight payment and other information, or whether after buyer order specified problems such as logistics, freight payment with approval of the buyer or the resulting losses shall be borne by the seller.</p>
+			<p>3) the buyer for the delivery time, delivery time, packing, etc have special requirements, should confirm with the seller before placing orders, or after place the order with approval of the seller or rejection or claim after return, the corresponding risk shall be borne by the buyers.</p>
+			<p>4) have agreed delivery time or the arrival of the goods, are for the seller reason, buyer refused, the seller should contact our logistics recall goods in time, otherwise the resulting losses shall be borne by the seller.</p>
+			
+			<p>(3) the return of the goods</p>
+			<p>1) after the return of the agreement between both parties, the seller shall have the duty to provide to the buyer's shipping address effectively, ensure oneself or the authorized agent may sign for it, otherwise the resulting losses shall be borne by the seller.</p>
+			<p>2) after the return of the agreement between both parties, the buyer shall within 7 days to send out goods, within the time limit the seller shall have the right to refuse to continue to return, except otherwise agreed by both sides.</p>
+			<p>3) itself have no problem in goods, trade both sides agreement to return the case, the buyer shall ensure that the return goods not affect the second sale, the seller or the buyer must bear all the responsibilities.</p>
+			<p>4) both parties should be clear at the back (in) an agreement that the freight of the bears, if disputes caused by contract is unknown, harlan mall will be subject to liabilities for determining the freight. Package mail transaction, if only because the buyer subjective reason to return, buyers need to bear the sellers of shipping and return of the freight, except otherwise agreed by both parties.</p>
+			<p>2, custom goods related matters needing attention</p>
+			<p> (1) in view of the custom class commodity trading, the buyer should be in before order to clinch a deal with the seller for custom interact to confirm the sample of the goods or goods details, otherwise the resulting losses shall be borne by the buyers.</p>
+			<p> (2) if the buyer claim custom goods do not agree with the samples, or details do not tally with the convention, are required to submit their differences of relevant facts material, otherwise the buyer shall bear the adverse consequences.</p>
+			<p> (3) the sample is damaged or lost caused by buyers reason not to confirm the consistency between the samples and customization commodity, corresponding responsibility shall be borne by the buyers.</p>
+			<p>3, price concessions, and gifts</p>
+			<p> (1) in view of the existence of price concessions, any party shall not be based on the transaction of some or all of the return of the late happen, claiming the goods before at preferential prices relevant expenses, except otherwise agreed by both sides.</p>
+			<p> (2) for the seller is not labeled with the sales page or in front of the order to clinch a deal not to inform the buyer about the purchased goods with gifts, buyers may not claim objection to gift, no matter whether the eventual buyer received gifts.</p>
+			<p> (3) the seller shall be on the sales page prominently marked gift value, or may not be in the case of a subsequent return gift and damage, claim damages to the buyer.</p>
+			<p>4, and other considerations</p>
+			<p> (1) the seller have after-sales problem of responsibility for sales of goods, buyers must consciously abide by the after-sales service commitment, and abide by the rules of harlan mall and the relevant laws and regulations.</p>
+			<p> (2) the buyer shall not be part of the commodity description or with quality problems on the grounds that claim a refund or a refund of all commodities (replacement) of goods, such as on the product feature is really necessary to return or all except otherwise agreed by both parties.</p>
+			<p> (3) the goods from the seller by the national administrative judicial organs (including but not limited to the customs, the administration for industry and commerce, the people's court, etc.), detained, seized after the buyers to provide the relevant documents, the seller shall bear corresponding responsibility.</p>
+			<p>Seven, dispute processing processes</p>
+			<p>1. Confirm receipt</p>
+			<p> (1) a refund application</p>
+			<p> (2) and the seller agree</p>
+			<p> (3) if cannot agree to apply for the involvement of the service, the buyer and the seller submit credentials to harlanmall.</p>
+			<p>2. Has confirmed receiving</p>
+			<p> (1) initiated after application</p>
+			<p> (2) and the seller agree</p>
+			<p> (3) if cannot agree to apply for the involvement of the service, the buyer and the seller submit credentials to harlanmall.</p>
+			<p>Eight, bylaw</p>
+			<p>1. This rule interpretation naturalized harlanmall.</p>
+			<p>2. Harlan mall has a right to revision from time to time rules and public notice, the revised rules in public or published content specified date.</p>
+			<h6>3.1 Service type</h6>
+          	<p>1. Supply chain financial services</p>
+          	<p>2. Free supervision service</p>
+          	<p>3. Application test service</p>
+          	<p>4. Return and exchange service</p>
+          	<p>5. Credit investigation service</p>
+			<h6>3.2 Service Introduce</h6>
+          	<p>1. Supply chain financial services. Harlan provides financial support for approved purchasers. Approved enterprises can apply for the platform supply chain financing service for the benefit of capital utilization. The platform will provide agency procurement or extension of payment days services according to the needs of enterprises.</p>
+          	<p>Supply chain finance includes two modes: trade chain financing and trade credit granting.</p>
+          	<p>1.1 Trade chain financing: comprehensively reduce the financial pressure of suppliers, and realize the increase of capital utilization benefits. The platform provides trade chain financing services for suppliers according to the supply and marketing contracts signed by suppliers and foreign buyers, and realizes the early recovery of funds for goods.</p>
+          	<p>1.2 Trade credit granting: based on the actual trade situation of suppliers, suppliers apply for credit financing services from the platform according to the signed supply and marketing contracts to ensure timely procurement, production and supply of raw materials.</p>
+          	<p>2. Harlan platform provides free supervision services. For all orders generated on Harlan platform, Harlan offline supervision team will provide free whole-process tracking and control product quality and shipping service after the order is generated, until the products enter the customs smoothly. At the same time, we will upload the photos or videos in the supervision process to the platform client, so that the customer can always master the status of orders and products online.</p>
+          	<p>3. Application test service. Harlan platform built its own quality control center offline, and the application test service adopted international advanced standard equipment and instruments to simulate the product use scene, process and craft, and the test data were all computer data. Harlan also accepts customized services from users and tests according to the methods and requirements provided by users within 24 hours. The purpose of Harlan test is: no matter which subdivision field you are in, we will give you the real and accurate product effect in a short time.</p>
+          	<p>4. Return/exchange: Harlan promises that will provide unconditional return and exchange service for all products ordered on Harlan platform, no matter self-operated or agent. Remarks: 1. Buyer shall receive the goods within 30 days; 2. The goods should be consistent with the contract name.</p>
+          	<p>5. Credit investigation service, Harlan platform provides enterprise credit report, including the comprehensive and accurate qualification and credit status certificate of enterprises, provides important decision-making participation for various credit transactions, and reduces unnecessary credit risks and losses. After accepting the client's consignment, Harlan platform will collect, classify and analyze the credit information of relevant enterprises or individuals according to the entrusted matters and purposes. The credit investigation service provided by Harlan platform enhances the transparency of credit information and can comprehensively and timely grasp the risk status of customers, suppliers and cooperative enterprises. Provide information and evaluation support for business transactions and credit management decisions.</p>
+			
+			<h6>4.Contact Us</h6>
+			<p>Telephone: +0086-0574-89210089 (8:30-17:30)</p>
+			<p>Email address: service@harlanchina.com</p>
+			<p>Address: Room 1201-1202 Building No.1 Tsinghua High-tech Park 119 Zi Cheng Road Pan Huo Street Yin Zhou District Ningbo China</p>
+			<p>Contact customer service</p>
+			<p>Customer service tel: +0086-0574-89210089 (8:30-17:30)</p>-->
+			
+		</div>
+		<!--底部区域开始-->
+		<div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">download :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain1_e.html">Contact Us</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_file1_e.html">Contact Customer Service</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <a href="new_explain2_e.html">Business Cooperation</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_explain8_e.html">Merchant help</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+                <span>&nbsp;|&nbsp;</span> -->
+                <a href="new_explain4_e.html">Product Library</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain5_e.html">Friendly Link</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain6_e.html">Privacy Policy</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain7_e.html">Legal Statement</a>
+            </div>
+            <div class="foot_line"></div>
+           <!--  <div class="a_txt_b">
+                Browse Alphabetically:
+                <a href="new_explain8_e.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain9_e.html">Showroom </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain10_e.html">Country Search </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain11_e.html">Suppliers</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain12_e.html">Wholesaler </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain13_e.html">Affiliate</a>
+            </div>
+            <div class="a_txt_b">
+                Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+                Enforcement
+                Compliance Guide
+            </div> -->
+            <div class="a_txt_b">
+                copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+            </div>
+        </div>
+    </div>
+    	<!--底部区域结束-->
+    </div>
+</body>
+<script type="text/javascript" src="js/jQuery/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<!--<script src="../static/lib/common.js" type="text/javascript" charset="utf-8"></script>-->
+<script src="lib/base64.js"></script>
+<script src="lib/common.js"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/new_explain17_c.js"></script>
+</html>

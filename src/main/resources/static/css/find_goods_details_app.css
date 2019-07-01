@@ -1,0 +1,100 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	
+}
+.entire{
+	width: 100%;
+}
+.search_div {
+    margin-right: 0;
+}
+.crumb{
+    width: 18.75rem;
+    height: .6rem;
+    line-height: .6rem;
+    margin: .25rem auto 0 auto;
+    font-size: .35rem;
+    color: #323232;
+}
+.a_active{
+	color: #317ee7;
+}
+
+/*------------------------second-------------------------------------------*/
+
+.second_sub{
+	width: 18.75rem;
+	margin: 0 auto;
+}
+.tab_mn{
+	width: 100%;
+	height: 1rem;
+	margin-top: .55rem;
+	color: #323232;
+}
+.tab_mn_item{
+	width: 45.8%;
+	height: 1rem;
+    transform: skew(-60deg);
+    -ms-transform: skew(-60deg);
+    -webkit-transform: skew(-60deg);
+    -o-transform: skew(-60deg);
+    -moz-transform: skew(-60deg);
+    background-color: #e5e5e5;
+    float: left;
+    font-size: .35rem;
+	cursor: pointer;
+}
+.tab_mn_item:nth-child(1){
+    margin-left: .8rem;
+}
+.tab_mn_item:nth-child(2){
+    margin-left: .45rem;
+}
+.tab_mn_sub{
+	width: 100%;
+	height: 100%;
+	  transform: skew(60deg);
+    -ms-transform: skew(60deg);
+    -webkit-transform: skew(60deg);
+    -o-transform: skew(60deg);
+    -moz-transform: skew(60deg);
+    text-align: center;
+    line-height: 1rem;
+}
+.tab_mn_active{
+	background-color: #4285df;
+	 color: #fff;
+}
+.second_two{
+	width: 100%;
+	margin-top: .6rem;
+	background-color: #f7f7f7;
+    margin-bottom: .75rem;
+}
+.two_til{
+    width: 100%;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    padding-left: .5rem;
+    font-size: .45rem;
+    color: #333333;
+    border-bottom: 0.03rem solid #dbdbdb
+}
+.tal{
+    width: 100%;
+    font-size: .4rem;
+    margin-top: .675rem;
+    border-bottom: 0.03rem solid #dbdbdb;
+    padding: 0 .5rem 0.25rem .5rem;
+}
+.tal_row_item{
+	width: 50%;
+	height: .75rem;
+	line-height: .75rem;
+	font-size: .3rem;
+	color: #333333;
+	float: left;
+	padding: 0 .3rem;
+}

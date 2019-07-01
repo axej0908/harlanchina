@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.msg.dao.MessageDao">
+
+	<insert id="save" parameterType="com.axej.harlan.msg.bean.MessageBean" >
+		<selectKey keyProperty="mess_id" order="AFTER" resultType="java.lang.Integer">
+			select LAST_INSERT_ID()
+		</selectKey>
+		insert into info_message
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="mess_type != null">
+				mess_type,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+			<if test="create_time != null">
+				create_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="mess_type != null">
+				#{mess_type},
+			</if>
+			<if test="title != null">
+				#{title},
+			</if>
+			<if test="content != null">
+				#{content},
+			</if>
+			<if test="create_time != null">
+				#{create_time},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="update" parameterType="com.axej.harlan.msg.bean.MessageBean">
+		update info_message
+		<set>
+			<if test="mess_type!=null and mess_type!=''">mess_type=#{mess_type},</if>
+			<if test="title!=null and title!=''">title=#{title},</if>
+			<if test="content!=null and content!=''">content=#{content},</if>
+			<if test="create_time!= null and create_time!=''">create_time=#{create_time}</if>
+		</set>
+		<where>
+			<if test="mess_id != 0">
+				mess_id = #{mess_id}
+			</if>
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="com.axej.harlan.msg.bean.MessageBean">
+		delete from info_message
+		<where>
+			<if test="mess_id != 0">
+				mess_id = #{mess_id}
+			</if>
+		</where>
+	</delete>
+
+	<sql id="query_conditions">
+		<if test="user_id != null and user_id != 0">
+			um.user_id = #{user_id}
+		</if>
+		<if test="mess_type != null and mess_type != ''">
+			and im.mess_type = #{mess_type}
+		</if>
+		<if test="status != null and status != ''">
+			and um.status = #{status}
+		</if>
+		<if test="title != null and title != ''">
+			and im.title like concat(concat('%',#{title}),'%')
+		</if>
+	</sql>
+
+	<select id="queryList" parameterType="map" resultType="com.axej.harlan.msg.bean.MessageBean">
+		select
+			um.user_id,
+			um.status,
+			im.mess_id,
+			im.mess_type,
+			im.title,
+			im.content,
+			im.create_time
+		from
+			info_message im
+		inner join sys_user_mess um on im.mess_id = um.mess_id
+		<where>
+			<include refid="query_conditions"></include>
+		</where>
+		order by im.create_time desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" parameterType="map" resultType="int">
+		select
+			count(1)
+		from
+			info_message im
+		inner join sys_user_mess um on im.mess_id = um.mess_id
+		<where>
+			<include refid="query_conditions"></include>
+		</where>
+	</select>
+	
+	<select id="queryByAll" parameterType="map" resultType="com.axej.harlan.msg.bean.MessageBean">
+		select * from info_message
+		order by create_time desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryByTotal" parameterType="map" resultType="int">
+		select count(1) from info_message
+	</select>
+
+	<select id="queryUnreadNumber" parameterType="map" resultType="int">
+		select
+			count(1)
+		from
+			info_message im
+		inner join sys_user_mess um on im.mess_id = um.mess_id
+		<where>
+			<include refid="query_conditions"></include>
+		</where>
+	</select>
+
+</mapper>

@@ -1,0 +1,20 @@
+.entire{
+	padding: 10px;
+}
+.layui-btn {
+    height: 28px;
+    line-height: 28px;
+}
+.layui-form-pane .layui-form-label {
+    margin-left: 10px;
+}
+.layui-form-pane{
+	padding-top: 15px;
+}
+.layui-table-cell {
+    text-align: center;
+}
+
+table {
+    table-layout: fixed;
+}

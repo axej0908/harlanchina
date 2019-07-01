@@ -1,0 +1,204 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+/*-------------------顶部搜索样式开始--------------------------*/
+.first{
+	width: 100%;
+	height: 224px;
+	padding-top: 68px;
+}
+.first_sub{
+	width: 1143px;
+	height: 100%;
+	margin: 0 auto;
+}
+.logo{
+	width: 175px;
+	height: 73px;
+	margin-top: 12px;
+	background: url(../imgs/logo_hualang3.png) no-repeat center;
+	background-size: contain;
+	float: left;
+}
+.search_area{
+	width: 651px;
+	height: 114px;
+	float: left;
+	margin-left: 126px;
+}
+.search_box_mn{
+	width: 100%;
+	height: 38px;
+}
+.search_box_mn li{
+	width: 78px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	float: left;
+	color: #067ebd;
+	font-size: 14px;
+	cursor: default;
+}
+.search_box_mn .search_li_active{
+	background-color: #317ee7;
+	color: #fff;
+}
+.search_box{
+	width: 100%;
+	height: 46px;
+}
+.input_box{
+	width: 594px;
+	height: 100%;
+	float: left;
+	border: 2px solid #317ee7;
+}
+.input_box input{
+    display: block;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding-left: 12px;
+}
+.search_btn{
+	width: 57px;
+	height: 100%;
+	background: url(../imgs/search_icon.png) no-repeat center;
+	background-size: 24px 24px;
+	background-color: #317ee7;
+	float: right;
+	cursor: pointer;
+}
+.search_history{
+	margin-top: 14px;
+	font-size: 14px;
+	line-height: 22px;
+	height: 22px;
+}
+.search_history a{
+	color: #666666;
+}
+.shop_cart{
+    width: 150px;
+    height: 47px;
+    background: url(../imgs/icon_shop_cart.png) no-repeat;
+    background-size: 42px 33px;
+    background-position: 26px center;
+    background-color: #f2f4f7;
+    padding-left: 74px;
+    line-height: 47px;
+    margin-top: 38px;
+    margin-left: 33px;
+    font-size: 14px;
+    color: #022133;
+    border-radius: 5px;
+}
+
+/*-------------------顶部搜索样式结束--------------------------*/
+/*-------------------------------------second------------------------------------------*/
+
+/*-------------------菜单导航样式开始--------------------------*/
+.second{
+	width: 100%;
+    height: 42px;
+    border-bottom: 3px solid #808080;
+}
+.second_mn{
+	width: 848px;
+	height: 40px;
+	margin: 0 auto;
+}
+.second_mn li{
+	width: 106px;
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 40px;
+	
+}
+.second_mn li a{
+    font-size: 16px;
+    color: #333333;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.second_mn .li_active{
+	background-color: #317ee7;
+}
+.second_mn .li_active a{
+	color: #fff;
+}
+/*-------------------菜单导航样式结束--------------------------*/
+/*------------------------------------------third-----------------------------------------------*/
+.third{
+	width: 100%;
+}
+.third_sub{
+	width: 1200px;
+	padding-top: 32px;
+	margin: 0 auto;
+}
+.third_til{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 30px;
+}
+.til_tip{
+	color: #ff9c00;
+}
+.til_txt{
+	color: #323232;
+}
+.new_conten{
+	width: 100%;
+	font-size: 16px;
+	color: #585858;
+	padding-top: 11px;
+}
+.new_conten p{
+	margin-top: 32px;
+	text-indent: 2em;
+	text-align: justify;
+	line-height: 24px;
+}
+.new_xx{
+	margin-top: 24px;
+	width: 100%;
+	height: 80px;
+	border-top: 1px solid #E6E6E6;
+	padding-top: 28px;
+}
+.new_xx>div{
+	float: right;
+	font-size: 16px;
+	color: #c1c1c1;
+	height: 24px;
+	line-height: 24px;
+}
+.new_eye{
+	background: url(../imgs/goos/eye.png) no-repeat;
+	background-size: 25px 12px;
+	background-position: left center; 
+	padding-left: 28px;
+	
+}
+.new_dt{
+	margin-right: 23px;
+}
+.new_tm{
+	margin-right: 64px;
+}

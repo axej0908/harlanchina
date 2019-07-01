@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.UserStatisticsDao">
+
+    <!--<select id="queryUserStatistics" parameterType="map" resultType="com.axej.harlan.cms.bean.CmsStatisticsBean">
+        select
+            substr(register_time, 1, 10) AS xAxis,
+            count(1) AS yAxis
+        from
+            sys_user
+        <where>
+            biz_type like CONCAT(CONCAT('%',#{biz_type}),'%')
+            and register_time between #{start} and #{end}
+        </where>
+        group by xAxis
+    </select>-->
+
+    <select id="queryUserStatistics" parameterType="map" resultType="com.axej.harlan.cms.bean.CmsStatisticsBean">
+        select
+            count(1) AS yAxis
+        from
+            sys_user
+        <where>
+            <if test="biz_type != null">
+                biz_type like concat(concat('%',#{biz_type}),'%')
+            </if>
+            <if test="register_time != null">
+                and register_time like concat(concat('%',#{register_time}),'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="querySumStatistics" parameterType="map" resultType="com.axej.harlan.cms.bean.CmsStatisticsBean">
+        select
+            ifnull(sum(ifnull(goods_price * goods_num, 0)),0) as yAxis
+        from
+            order_biz
+        <where>
+            `status` in('2','3','4')
+            <if test="place_time != null">
+                and place_time like concat(concat('%',#{pay_time}),'%')
+            </if>
+        </where>
+    </select>
+</mapper>

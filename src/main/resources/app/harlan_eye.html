@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+	<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+		<meta content="telephone=no" name="format-detection" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/f_service.css"/>
+		<script type="text/javascript" src="js/common.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div class="entire" id="rrapp">
+			<div class="head"></div>
+			<div class="fs_top">
+				<div class="fs_head">Apply for Harlan Eye</div>
+				<div class="fs_txt">The eye of Har Lan will become the eye of buyers to help buyers find the most reliable supplier and the most guaranteed quality. We ensure the service effect and present the most accurate and true data to the purchaser. Suppliers don’t have to inspect the factory or examine the goods in the early stage, they also don’t have to worry about the risk of cargo transport links. The service will greatly reduce business risk, procurement cost and shorten the procurement cycle, makes purchasing more fast, safe and guaranteed.</div>
+			</div>
+			<div class="fs_line">————<span>Fill in the application</span>————</div>
+			
+			<div class="fs_box">
+				<div class="fs_nav">
+					<ul>
+						<li class="fs_li fs_li_active" @click="popUp('har3')">Factory   Inspection</li>
+						<li class="fs_li" @click="popUp('har2')">Order   Supervision</li>
+						<li class="fs_li" @click="popUp('har1')">Application-orientedDetection</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="fs_cont" v-show="har1">
+					<div class="fs_row"><lable><span class="fs_tit">Name/ Company name</span><input class="fs_input" type="text" placeholder="Please enter your name or company name" v-model="fiveSer.com_name" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Address</span><input class="fs_input" type="text" placeholder="Please enter your contact address" v-model="fiveSer.com_addr" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Fixed telephone</span><input class="fs_input" type="text" placeholder="Please enter your fixed phone" v-model="fiveSer.contact" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Mobile phone</span><input class="fs_input" type="text" placeholder="Please enter your mobile phone" v-model="fiveSer.contact_phone" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Mail box</span><input class="fs_input" type="text" placeholder="Please enter your mailbox number" v-model="fiveSer.mailbox" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Remarks</span> <textarea class="fs_textarea" rows="4" placeholder="Please enter your other needs..." v-model="fiveSer.postscript"></textarea> </lable><div class="clear"></div></div>
+					<div class="clear"></div>
+				</div>
+				<div class="fs_cont" v-show="har2">
+					<div class="fs_row"><lable><span class="fs_tit">Name/ Company name</span><input class="fs_input" type="text" placeholder="Please enter your name or company name" v-model="fiveSer.com_name" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Address</span><input class="fs_input" type="text" placeholder="Please enter your contact address" v-model="fiveSer.com_addr" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Fixed telephone</span><input class="fs_input" type="text" placeholder="Please enter your fixed phone" v-model="fiveSer.contact" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Mobile phone</span><input class="fs_input" type="text" placeholder="Please enter your mobile phone" v-model="fiveSer.contact_phone" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Mail box</span><input class="fs_input" type="text" placeholder="Please enter your mailbox number" v-model="fiveSer.mailbox" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Remarks</span> <textarea class="fs_textarea" rows="4" placeholder="Please enter your other needs..." v-model="fiveSer.postscript"></textarea> </lable><div class="clear"></div></div>
+					<div class="clear"></div>
+				</div>
+				<div class="fs_cont" v-show="har3">
+					<div class="fs_row"><lable><span class="fs_tit">Name/ Company name</span><input class="fs_input" type="text" placeholder="Please enter your name or company name" v-model="fiveSer.com_name" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Address</span><input class="fs_input" type="text" placeholder="Please enter your contact address" v-model="fiveSer.com_addr" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Fixed telephone</span><input class="fs_input" type="text" placeholder="Please enter your fixed phone" v-model="fiveSer.contact" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Mobile phone</span><input class="fs_input" type="text" placeholder="Please enter your mobile phone" v-model="fiveSer.contact_phone" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Mail box</span><input class="fs_input" type="text" placeholder="Please enter your mailbox number" v-model="fiveSer.mailbox" /></lable><div class="clear"></div></div>
+					<div class="fs_row"><lable><span class="fs_tit fs_active">Remarks</span> <textarea class="fs_textarea" rows="4" placeholder="Please enter your other needs..." v-model="fiveSer.postscript"></textarea> </lable><div class="clear"></div></div>
+					<div class="clear"></div>
+				</div>
+				<div class="fs_btn" @click="applySer">submit</div>
+			</div>
+		</div>
+		<script src="js/jQuery/jquery-1.11.2.js"></script>
+		<script src="js/jQuery/jQueryURL.js"></script>
+		<script src="js/vue/vue.min.js"></script>
+		<script src="lib/harlan_eye.js"></script>
+
+		<script type="text/javascript">
+			$(".fs_nav").on("click","li",function(){
+				$(this).addClass("fs_li_active").siblings().removeClass("fs_li_active");
+				/*$(".fs_cont").hide().eq($(this).index()).show();*/
+			})
+		</script>
+	</body>
+</html>

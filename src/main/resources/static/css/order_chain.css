@@ -1,0 +1,110 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #f2f3f7;
+	
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.opacity2{
+	width: 712px;
+    background-color: #FFFFFF;
+    z-index: 99;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+.opacity_title2{
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    font-family: "microsoft yahei";
+    /*background-color: #5e99f3;*/
+    color: #559de0;
+    text-align: center;
+	font-weight: 550;
+	margin-top: 30px;
+}
+.opacity_title3{
+	height: 50px;
+    font-size: 14px;
+}
+.opacity_title3_1{
+	width: 15%;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+	margin-left: 5%;
+	border-radius: 25px;
+	color: #559de0;
+	text-align: center;
+	float: left;
+}
+.opacity_title3_2{
+	width: 80%;
+	height: 20px;
+	margin-top: 25px;
+	color: #fff;
+	text-align: center;
+	float: left;
+	padding-right: 50px;
+}
+.opacity_cont2 {
+    margin: 0 auto;
+    width: 620px;
+    text-align: right;
+    font-size: 14px;
+    color: #757a7b;
+}
+.opacity_cont2 li {
+    margin-top: 16px;
+    font-family: "microsoft yahei";
+}
+.opacity_cont2 input {
+    width: 450px;
+    height: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #d2d2d2;
+    outline: none;
+}
+.opacity_submit{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #559de0;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 18px;
+    margin:  22px 170px 40px 170px;
+    cursor: pointer;
+}
+.bitian{
+	color: red;
+}
+ .upload-box {
+ 	display: inline-block;
+    position: relative;
+    width: 450px;
+    height: 35px;
+    margin: 0 auto;
+}
+.fake-uploadbtn {
+    display: inline-block;
+    position: absolute;
+    left: 180px;
+    top: 0;
+    width: 134px;
+    line-height: 35px;
+    background-color: #559de0;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 14px;
+}

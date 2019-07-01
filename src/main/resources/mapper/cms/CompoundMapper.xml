@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.CompoundDao">
+
+    <insert id="save" parameterType="com.axej.harlan.cms.bean.CompoundBean" useGeneratedKeys="true">
+        insert into info_compound (
+        cpd_type,
+        cpd_time,
+        cpd_name_en,
+        cpd_name_zh,
+        cpd_picture,
+        cpd_alias_en,
+        cpd_alias_zh,
+        cas,
+        precise_quality,
+        molecular_formula,
+        logp,
+        molecular_weight,
+        psa,
+        reference_price,
+        cpd_intro,
+        basic_data,
+        property,
+        safety_data,
+        produce_use,
+        sds_zh,
+        sds_en,
+        msds,
+        custom_data,
+        atlas,
+        toxicity,
+        operator,
+        goods_id
+        )
+        values
+        (
+        #{cpd_type},
+        #{cpd_time},
+        #{cpd_name_en},
+        #{cpd_name_zh},
+        #{cpd_picture},
+        #{cpd_alias_en},
+        #{cpd_alias_zh},
+        #{cas},
+        #{precise_quality},
+        #{molecular_formula},
+        #{logp},
+        #{molecular_weight},
+        #{psa},
+        #{reference_price},
+        #{cpd_intro},
+        #{basic_data},
+        #{property},
+        #{safety_data},
+        #{produce_use},
+        #{sds_zh},
+        #{sds_en},
+        #{msds},
+        #{custom_data},
+        #{atlas},
+        #{toxicity},
+        #{operator},
+        #{goods_id}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.axej.harlan.cms.bean.CompoundBean">
+        update info_compound
+        <trim prefix="set" suffixOverrides=",">
+            <if test="cpd_type!=null">cpd_type = #{cpd_type},</if>
+            <if test="cpd_time!=null">cpd_time = #{cpd_time},</if>
+            <if test="cpd_name_en!=null">cpd_name_en = #{cpd_name_en},</if>
+            <if test="cpd_name_zh!=null">cpd_name_zh = #{cpd_name_zh},</if>
+            <if test="cpd_picture!=null">cpd_picture = #{cpd_picture},</if>
+            <if test="cpd_alias_en!=null">cpd_alias_en = #{cpd_alias_en},</if>
+            <if test="cpd_alias_zh!=null">cpd_alias_zh = #{cpd_alias_zh},</if>
+            <if test="cas!=null">cas = #{cas},</if>
+            <if test="precise_quality!=null">precise_quality = #{precise_quality},</if>
+            <if test="molecular_formula!=null">molecular_formula = #{molecular_formula},</if>
+            <if test="logp!=null">logp = #{logp},</if>
+            <if test="molecular_weight!=null">molecular_weight = #{molecular_weight},</if>
+            <if test="psa!=null">psa = #{psa},</if>
+            <if test="reference_price!=null">reference_price = #{reference_price},</if>
+            <if test="cpd_intro!=null">cpd_intro = #{cpd_intro},</if>
+            <if test="basic_data!=null">basic_data = #{basic_data},</if>
+            <if test="property!=null">property = #{property},</if>
+            <if test="safety_data!=null">safety_data = #{safety_data},</if>
+            <if test="produce_use!=null">produce_use = #{produce_use},</if>
+            <if test="sds_zh!=null">sds_zh = #{sds_zh},</if>
+            <if test="sds_en!=null">sds_en = #{sds_en},</if>
+            <if test="msds!=null">msds = #{msds},</if>
+            <if test="custom_data!=null">custom_data = #{custom_data},</if>
+            <if test="atlas!=null">atlas = #{atlas},</if>
+            <if test="toxicity!=null">toxicity = #{toxicity}</if>
+        </trim>
+        where cpd_id = #{cpd_id}
+    </update>
+    
+    <delete id="delete" parameterType="int">
+        delete from info_compound where cpd_id = #{cpd_id}
+    </delete>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.cms.bean.CompoundBean">
+        select
+            ic.*,
+            ig.one_type,
+            ig.two_type
+        from
+            info_compound ic
+        inner join info_goods ig on ic.goods_id = ig.goods_id
+        order by cpd_time desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(1) from info_compound
+    </select>
+
+    <select id="queryObject" parameterType="com.axej.harlan.cms.bean.CompoundBean" resultType="com.axej.harlan.cms.bean.CompoundBean">
+        select * from info_compound
+        <where>
+            <if test="cpd_id != 0">
+                cpd_id = #{cpd_id}
+            </if>
+            <if test="goods_id != 0">
+                and goods_id = #{goods_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="gather" resultType="com.axej.harlan.cms.bean.CompoundBean">
+        select * from info_compound
+    </select>
+</mapper>

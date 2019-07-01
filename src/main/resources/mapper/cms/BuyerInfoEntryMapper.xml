@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.BuyerInfoEntryDao">
+
+    <sql id="criteria">
+        <where>
+            <if test="goods_name!=null and goods_name.trim()!=''">
+                goods_name like concat(concat('%',#{goods_name}),'%')
+            </if>
+        </where>
+    </sql>
+
+    <insert id="saveBatch" useGeneratedKeys="true">
+        insert into poi_info_buyer(
+        region,
+        buyer_name,
+        credit_rate,
+        leader,
+        address,
+        contact,
+        landline,
+        fax,
+        mailbox,
+        goods_name,
+        goods_num,
+        destination
+        )
+        values
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            (
+            #{item.region},
+            #{item.buyer_name},
+            #{item.credit_rate},
+            #{item.leader},
+            #{item.address},
+            #{item.contact},
+            #{item.landline},
+            #{item.fax},
+            #{item.mailbox},
+            #{item.goods_name},
+            #{item.goods_num},
+            #{item.destination}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="save" parameterType="com.axej.harlan.cms.bean.BuyerInfoEntry" useGeneratedKeys="true">
+        insert into poi_info_buyer (
+            region,
+            buyer_name,
+            credit_rate,
+            leader,
+            address,
+            contact,
+            landline,
+            fax,
+            mailbox,
+            goods_name,
+            goods_num,
+            destination
+        )
+        values
+        (
+        #{region},
+        #{buyer_name},
+        #{credit_rate},
+        #{leader},
+        #{address},
+        #{contact},
+        #{landline},
+        #{fax},
+        #{mailbox},
+        #{goods_name},
+        #{goods_num},
+        #{destination}
+        )
+    </insert>
+
+    <delete id="delete">
+        delete from poi_info_buyer where poi_id = #{poi_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.cms.bean.BuyerInfoEntry">
+        update poi_info_buyer
+        <trim prefix="set" suffixOverrides=",">
+            <if test="region!=null and region.trim()!=''">region = #{region},</if>
+            <if test="buyer_name!=null and buyer_name.trim()!=''">buyer_name = #{buyer_name},</if>
+            <if test="credit_rate!=null and credit_rate.trim()!=''">credit_rate = #{credit_rate},</if>
+            <if test="leader!=null and leader.trim()!=''">leader = #{leader},</if>
+            <if test="address!=null and address.trim()!=''">address = #{address},</if>
+            <if test="contact!=null and contact.trim()!=''">contact = #{contact},</if>
+            <if test="landline!=null and landline.trim()!=''">landline = #{landline},</if>
+            <if test="fax!=null and fax.trim()!=''">fax = #{fax},</if>
+            <if test="mailbox!=null and mailbox.trim()!=''">mailbox = #{mailbox},</if>
+            <if test="goods_name!=null and goods_name.trim()!=''">goods_name = #{goods_name},</if>
+            <if test="goods_num!=null and goods_num!=0">goods_num = #{goods_num},</if>
+            <if test="destination!=null and destination.trim()!=''">destination = #{destination}</if>
+        </trim>
+        where poi_id = #{poi_id}
+    </update>
+
+    <select id="queryObject" resultType="com.axej.harlan.cms.bean.BuyerInfoEntry">
+        select * from poi_info_buyer
+        <where>
+            <if test="poi_id!=null and poi_id!=0">
+                poi_id = #{poi_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.cms.bean.BuyerInfoEntry">
+        select * from poi_info_buyer
+        <include refid="criteria"></include>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from poi_info_buyer
+        <include refid="criteria"></include>
+    </select>
+
+</mapper>

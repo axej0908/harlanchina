@@ -1,0 +1,180 @@
+[v-cloak] {
+	display: none;
+}
+html,body{
+	width: 100%;
+	/*height: 100%;*/
+    /*position: relative;*/
+	
+}
+.entire{
+	width: 100%;
+}
+
+/*--------------------------------first-----------------------------------------------*/
+
+.first{
+	width: 100%;
+	height: 860px;
+	background: url(../imgs/vip_bj.png) no-repeat;
+}
+.first_title{
+	width: 900px;
+	height: 400px;
+	margin: 0 auto;
+	text-align: center;
+	color: #FFFFFF;
+	
+}
+.first_title span{
+	display: inline-block;
+	margin-top: 128px;
+	font-size: 40px;
+}
+.first_title p{
+	margin-top: 70px;
+	font-size: 14px;
+}
+.first_item{
+	margin: 0 auto;
+	width: 1084px;
+	height: 340px;
+	padding-right: 120px;
+	background: url(../imgs/vip_bg.png) no-repeat;
+}
+
+.u1 li{
+	margin-top: 20px;
+	width: 177px;
+	height: 216px;
+	background: url(../imgs/vip_bg_item.png);
+	float: right;
+	margin-right: 62px;
+	text-align: center;
+	
+}
+
+.u1 span{
+	display: inline-block;	
+	margin-top: 40px;
+	color: #ff7200;
+	font-size: 30px;
+
+}
+.u1 em{
+	font-family: "microsoft yahei";
+	font-size: 40px;
+}
+.u1 p{
+	margin-top: 10px;
+	font-size: 14px;
+	color: #999999;
+}
+.u1 a{
+	display: inline-block;
+	margin-top: 40px;
+	width: 130px;
+	height: 36px;
+	line-height: 36px;
+	border-radius: 50px;
+	background-color: #ff7200;
+	color: #FFFFFF;
+	cursor:pointer;
+}
+.mask{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	outline: 0;
+	-webkit-overflow-scrolling: touch;
+	background-color: rgb(0, 0, 0);
+	filter: alpha(opacity=60);
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 2;
+}
+.opacity{
+	width: 600px;
+	height: 730px;
+	background-color: #FFFFFF;
+	z-index: 3;
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	margin-left: -300px;
+}
+.opacity img{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+}
+
+.opacity_title{
+	height: 106px;
+	line-height: 130px;
+	padding-left: 80px;
+	font-size: 18px;
+	font-family: "microsoft yahei";
+	border-bottom: 1px solid #e6e6e6;
+}
+.opacity_title span{
+	margin-left: 60px;
+	color: #FF9C00;
+	font-size: 30px;
+}
+.opacity_title em{
+	font-size: 40px;
+}
+.opacity_cont {
+	padding: 18px 120px 0 58px;
+}
+.p{
+	display: inline-block;
+	width: 100%;
+	height: 30px;
+	padding-left: 100px;
+	line-height: 30px;
+	color: red;
+}
+.opacity_cont li{
+	margin-top: 20px;
+	height: 50px;
+	line-height: 50px;
+	font-family: "microsoft yahei";
+}
+
+
+.opacity_cont input{
+	width: 320px;
+	height: 100%;
+	border: 1px solid #e6e6e6;
+	float: right;
+}
+.Code input{
+	width: 200px;
+
+}
+.Code span{
+	width: 120px;
+	height: 50px;
+	background-color: #40404e;
+	float: right;
+	color: #FFFFFF;
+	text-align: center;
+	cursor:pointer;
+}
+.opacity a{
+	display: inline-block;
+	width: 200px;
+	height: 50px;
+	background-color: #FF7200;
+	border-radius: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 18px;
+	margin: 60px 200px;
+}

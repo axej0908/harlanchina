@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>公司供货商-上传图片</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pe_common.css"/>
+    <link rel="stylesheet" href="css/sale_firm_pic.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+
+<div class="entire" id="lava">
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="new_explain16_c.html">合作与服务</a></li>
+                <li><a href="goods_employed_self.html">自营商城</a></li>
+                <li><a href="goods_employed_third.html">第三方商城</a></li>
+				<li style="color:#ff792d;"><a href="find_goods_list.html">系统询盘 </a></li>
+            </ul>
+            <ul class="header_fr">
+                <!--登录之后显示-->
+                <li v-if="user!=null" class="out_area"><a href="pbm_order_seller1.html">我的化浪</a> <a @click="logout">退出</a></li>
+                <!--登录之前显示-->
+                <li v-if="user==null" class="no_land" style="display:inline-block;"><a href="login_en.html">登录</a> | <a href="register_en.html">注册</a></li>
+                <li><a href="new_explain17_c.html">帮助中心</a></li>
+                <!--<li class="lang_li">
+                    <span>Language</span>
+                    <div class="span_sj"></div>
+                    <div class="lang_mn" style="display: none;">
+                        <div class="lang_item">English</div>
+                        <div class="lang_item">Español</div>
+                        <div class="lang_item">한국어 </div>
+                        <div class="lang_item">日本語</div>
+                        <div class="lang_item">中文</div>
+                    </div>
+                </li>-->
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!------------------顶部区域结束-------------->
+    <div class="pe_one_top">
+        <div class="first_sub">
+            <div class="logo_zh"></div>
+            <ul class="mn_list">
+                <li><a href="pbm_order_seller1.html">首页</a><span class="line_slide"></span></li>
+                <li class="mn_active"><a href="sale_person_info1.html">我的信息</a><span class="line_slide"></span></li>
+            </ul>
+            <div class="pe_top_btn">
+                <!--<a href="f_free_find.html" class="inquire_btn">免费找货</a>-->
+                
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="pe_con">
+        <div class="pe_con_sub">
+            <div class="pe_con_mn">
+                <ul class="pe_con_mn_list">
+                    <li><a href="sale_firm_info1.html">基本资料</a></li>
+                    <li><a href="sale_firm_tel1.html">修改手机号</a></li>
+                    <li><a @click="lnkShopInfoUtils">店铺信息</a></li>
+                    <li class="current_bg"><a href="sale_firm_pic1.html">公司照片</a></li>
+                </ul>
+                <div class="mn_bg"></div>
+            </div>
+            <div class="pe_con_right">
+                <div class="my_info">
+                    <div class="pe_til">公司照片</div>
+                    <div class="photo_area">
+                        <div class="photo_til">公司环境照片</div>
+                        <div class="pic_add">
+                            <ul class="pic_ul">
+                                <li class="pic_li" v-for="office in offices" :style="'backgroundImage:url('+office.environment_src+')'">
+                                    <span class="image-remove" @click="removeImage(office.env_id)">+</span>
+                                </li>
+                                <div class="pic_btn"><input id="office" type="file" name="file" @change="uploadImg($event)"/></div>
+                            </ul>
+
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="photo_area">
+                        <div class="photo_til">公司生产照片</div>
+                        <div class="pic_add">
+                            <ul class="pic_ul">
+                                <li class="pic_li" v-for="produce in produces" :style="'backgroundImage:url('+produce.environment_src+')'">
+                                    <span class="image-remove" @click="removeImage(produce.env_id)">+</span>
+                                </li>
+                                <div class="pic_btn"><input id="produce" type="file" name="file" @change="uploadImg($event)"/></div>
+                            </ul>
+
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">下载 :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain14_c.html">联系我们</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain15_c.html">联系客服</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain16_c.html">合作招商</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain17_c.html">商家帮助</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain18_c.html">手机化浪</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain19_c.html">产品库</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain20_c.html">友情链接</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain21_c.html">隐私政策</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain22_c.html">法律声明</a>
+            </div>
+            <div class="foot_line"></div>
+            <div class="a_txt_b">
+                按字母顺序浏览 ：
+                <a href="new_explain23_c.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain24_c.html">陈列室 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain25_c.html">国家搜索 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain26_c.html">供应商</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain27_c.html">批发商 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain28_c.html">加盟 产品列表政策 - 知识产权保护</a>
+            </div>
+            <div class="a_txt_b">
+                产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+            </div>
+            <div class="a_txt_b">
+                @2017-2018 化浪（浙江）科技有限公司.版权所有.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript"></script>
+<script src="plugins/ajaxfileupload.js"></script>
+<script src="js/placehoder.js" type="text/javascript"></script>
+<script src="js/sale_firm_pic.js" type="text/javascript"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/sale_person_pic1.js"></script>
+</body>
+</html>

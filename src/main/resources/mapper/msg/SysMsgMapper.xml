@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.axej.harlan.msg.dao.SysMsgDao">
+    <insert id="save" parameterType="com.axej.harlan.msg.bean.SysMsgBean">
+        <selectKey keyProperty="msg_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into msg_sys(
+        msg_content,
+        msg_time,
+        msg_publisher,
+        domestic
+        )
+        values
+        (
+        #{msg_content},
+        #{msg_time},
+        #{msg_publisher},
+        #{domestic}
+        )
+    </insert>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.msg.bean.SysMsgBean">
+        select * from msg_sys
+        <where>
+            <if test="msg_publisher != null">
+                msg_publisher = #{msg_publisher}
+            </if>
+            <if test="domestic!=null and domestic.trim()!=''">
+                and domestic=#{domestic}
+            </if>
+        </where>
+        order by msg_time desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(*) from msg_sys
+        <where>
+            <if test="msg_publisher != null and msg_publisher.trim()!=''">
+                msg_publisher = #{msg_publisher}
+            </if>
+            <if test="domestic!=null and domestic.trim()!=''">
+                and domestic=#{domestic}
+            </if>
+        </where>
+    </select>
+
+    <delete id="delete">
+        delete from msg_sys where msg_id = #{msg_id}
+    </delete>
+</mapper>

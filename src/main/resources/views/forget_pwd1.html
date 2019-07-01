@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>忘记密码页</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/forget_pwd.css"/>
+    <link rel="stylesheet" type="text/css" href="css/forget_pwd.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<div class="entire" id="rrapp">
+    <div class="logo">
+        <div class="logo_sub">
+            <div class="logo_bg" onclick="location.href='index.html'"></div>
+            <div class="page_tip">找回密码</div>
+            <div class="tel"><span class="sp1">服务热线：</span><span class="sp2">+86 0574-89210089</span><span class="sp3">(工作日9:00-18:00)</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="land_area">
+        <div class="land_area_sub step1" v-show="step1Show">
+            <p class="til">输入账号</p>
+            <div class="u_name">
+                <input type="text" v-model="user.user_phone" placeholder="请输入已验证手机号"/>
+            </div>
+            <div class="u_pwd">
+                <div class="pwd_box">
+                    <input type="text" v-model="txtMsgCodeIn" placeholder="请输入验证码"/>
+                </div>
+                <div class="code_pic" @click="sendMobileCode">发送验证码</div>
+            </div>
+            <div class="land_btn" @click="renderVisible">下一步</div>
+        </div>
+        <div class="land_area_sub step2" v-show="!step1Show">
+            <p class="til">输入新密码</p>
+            <div class="u_name">
+                <input type="password" v-model="user.user_password" autocomplete="new-password"
+                       placeholder="请设置您的新密码，密码由6-20位字母、字符或数字组成"/>
+            </div>
+            <div class="u_pwd">
+                <div class="pwd_box">
+                    <input type="password" v-model="confirmPwd" placeholder="再次确认密码"/>
+                </div>
+            </div>
+            <div class="land_btn" @click="resetPws1">重置密码</div>
+        </div>
+    </div>
+ <div class="foot_bottom">
+    <div class="foot_sub">
+        <div class="download">
+            <div class="load_txt">下载 :</div>
+            <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+            <div class="load_pic_b"><a href="hualang.apk"></a></div>
+        </div>
+        <div class="a_txt">
+            <a href="new_explain14_c.html">联系我们</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain15_c.html">联系客服</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain16_c.html">合作招商</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain17_c.html">商家帮助</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain18_c.html">手机化浪</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="search.html">产品库</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain20_c.html">友情链接</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain21_c.html">隐私政策</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain22_c.html">法律声明</a>
+        </div>
+        <div class="foot_line"></div>
+        <div class="a_txt_b">
+            按字母顺序浏览 ：
+            <a href="new_explain17_c.html">Onetouch</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain17_c.html">陈列室 </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain17_c.html">国家搜索 </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="master.html">供应商</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="master.html">批发商 </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain16_c.html">加盟 产品列表政策 - 知识产权保护</a>
+        </div>
+        <div class="a_txt_b">
+            产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+        </div>
+        <div class="a_txt_b">
+            copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+        </div>
+    </div>
+</div>
+</div>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/forget_pwd.js"></script>
+</body>
+</html>

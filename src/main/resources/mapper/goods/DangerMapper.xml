@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.axej.harlan.goods.dao.DangerDao">
+
+    <insert id="save" parameterType="com.axej.harlan.goods.bean.DangerBean">
+        <selectKey keyProperty="danger_id" order="AFTER" resultType="int">
+            select  LAST_INSERT_ID()
+        </selectKey>
+        insert into info_danger
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="nations != null">
+                nations,
+            </if>
+            <if test="danger_name != null" >
+                danger_name,
+            </if>
+            <if test="alias != null">
+                alias,
+            </if>
+            <if test="cas != null">
+                cas,
+            </if>
+            <if test="belongs_directory != null">
+                belongs_directory,
+            </if>
+            <if test="risk_category != null">
+                risk_category,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="nations != null">
+                #{nations},
+            </if>
+            <if test="danger_name != null" >
+                #{danger_name},
+            </if>
+            <if test="alias != null">
+                #{alias},
+            </if>
+            <if test="cas != null">
+                #{cas},
+            </if>
+            <if test="belongs_directory != null">
+                #{belongs_directory},
+            </if>
+            <if test="risk_category != null">
+                #{risk_category},
+            </if>
+        </trim>
+    </insert>
+    
+    <delete id="delete">
+        delete from info_danger where danger_id = #{danger_id}
+    </delete>
+    
+    <select id="queryExist" parameterType="com.axej.harlan.goods.bean.DangerBean" resultType="int">
+        select count(1) from info_danger
+        <where>
+            <if test="nations!=null and nations.trim()!=''">
+                nations = #{nations}
+            </if>
+            <if test="cas!=null and cas.trim()!=''">
+                and cas = #{cas}
+            </if>
+        </where>
+    </select>
+    
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.goods.bean.DangerBean">
+        select * from info_danger
+        <where>
+            <if test="danger_name!=null and danger_name.trim()!=''">
+                danger_name = #{danger_name}
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from info_danger
+        <where>
+            <if test="danger_name!=null and danger_name.trim()!=''">
+                danger_name = #{danger_name}
+            </if>
+        </where>
+    </select>
+    
+    
+    <select id="queryEntire" resultType="com.axej.harlan.goods.bean.DangerBean">
+        select * from info_danger
+    </select>
+</mapper>

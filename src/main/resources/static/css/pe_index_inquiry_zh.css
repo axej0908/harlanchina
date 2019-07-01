@@ -1,0 +1,120 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #f2f3f7;	
+	
+}
+.entire{
+	width: 100%;
+}
+
+
+/*-------------------左侧列表结束--------------------------*/
+.my_xp{
+	width: 100%;
+	height: 830px;
+	padding: 20px;
+}
+/*-------------------右侧开始--------------------------*/
+.second_two_top{
+	width: 830px;
+	height: 63px;
+	border-bottom: 1px solid #01a0ed;
+	line-height: 63px;
+	padding-left: 14px;
+	background-color: #f7f7f7;
+	color: #333333;
+}
+.ol_tit {
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    background-color: #f2f3f7;
+	
+}
+.ol_tit div{
+    float: left;
+    font-size: 12px;
+    text-align: center;
+    color: #313d53;
+    font-weight: bold;
+}
+.cont_a{
+	width: 42.4%;
+}
+.cont_b{
+	width: 20.1%;
+}
+.cont_c{
+	width: 19.5%;
+}
+.cont_d{
+	width: 17.8%;
+}
+.row_list{
+	width: 100%;
+	margin-top: 20px;
+}
+.row {
+	width: 100%;
+}
+.row_tit{
+     width: 100%;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 18px;
+    font-size: 12px;
+    background-color: #f2f3f7;
+}
+.row_tit a{
+	color: #ff730e;;
+	cursor: pointer;
+}
+.s_ri {
+	float: right;
+}
+.row_cont_list{
+	width: 100%;
+}
+.row_cont{
+    width: 100%;
+    height: 76px;
+    display: table;
+    border: 1px solid #dbdbdb;
+}
+.row_cont div{
+	/*float: left;*/
+	font-size: 12px;
+    height: 100%;
+    padding: 10px;
+    vertical-align: middle;
+    display: table-cell;
+}
+.row_cont div:not(:last-child){
+	border-right: 1px solid #DBDBDB;
+}
+.row_cont div p{
+	line-height: 22px;
+	color: #6e6e6e;
+	word-wrap:break-word; 
+	word-break:normal; 
+}
+.cont_d div{
+    width: 123px;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #0696dc;
+}
+.cont_d span{
+	display: block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #ff730e;
+    margin: 0 auto;
+}

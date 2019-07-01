@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.harlaneye.dao.TestingDao">
+
+
+    <select id="get" resultType="com.axej.harlan.harlaneye.bean.TestingBean">
+        select * from harlan_eye_testing
+        where testing_id=#{testingId}
+    </select>
+    
+    <update id="update">
+        update harlan_eye_testing set status=#{testing_status} where testing_id=#{testing_id}
+    </update>
+    
+    <insert id="insert" parameterType="com.axej.harlan.harlaneye.bean.TestingBean">
+
+    insert into harlan_eye_testing(
+    testing_id,
+    user_id,
+    apply_date,
+    company_name_zh,
+    Company_name_en,
+    company_addr_zh,
+    company_addr_en,
+    contact_person,
+    contact_telephone,
+    contact_email,
+    contact_fax,
+    invoice_type,
+    invoice_title,
+    chinese_report,
+    english_report,
+    dispatch_type,
+    delivery_addr,
+    sample_name,
+    sample_quantity,
+    sample_package,
+    sample_condition,
+    sample_no,
+    testing_items,
+    testing_standart,
+    testing_period,
+    testing_prep_fee,
+    sample_prep_fee,
+    subcontracted_fee,
+    express_fee,
+    english_report_fee,
+    others_fee,
+    vat_fee,
+    total_fee,
+    sample_express_addr,
+    status
+    )values(
+    #{testing_id},
+    #{user_id},
+    #{apply_date},
+    #{company_name_zh},
+    #{Company_name_en},
+    #{company_addr_zh},
+    #{company_addr_en},
+    #{contact_person},
+    #{contact_telephone},
+    #{contact_email},
+    #{contact_fax},
+    #{invoice_type},
+    #{invoice_title},
+    #{chinese_report},
+    #{english_report},
+    #{dispatch_type},
+    #{delivery_addr},
+    #{sample_name},
+    #{sample_quantity},
+    #{sample_package},
+    #{sample_condition},
+    #{sample_no},
+    #{testing_items},
+    #{testing_standart},
+    #{testing_period},
+    #{testing_prep_fee},
+    #{sample_prep_fee},
+    #{subcontracted_fee},
+    #{express_fee},
+    #{english_report_fee},
+    #{others_fee},
+    #{vat_fee},
+    #{total_fee},
+    #{sample_express_addr},
+    #{status}
+    )
+    </insert>
+
+    <select id="getTestingByUserAndStatus" resultType="com.axej.harlan.harlaneye.bean.TestingBean">
+
+        select * from harlan_eye_testing where user_id=#{user_id} and status=#{testing_status}
+
+    </select>
+
+    <select id="getTestingByUser" resultType="com.axej.harlan.harlaneye.bean.TestingBean">
+        select * from harlan_eye_testing where user_id=#{user_id}
+
+    </select>
+
+    <update id="updateTestingPrice">
+
+        update harlan_eye_testing set
+         testing_prep_fee=#{testing_prep_fee},
+         sample_prep_fee=#{sample_prep_fee},
+         subcontracted_fee=#{subcontracted_fee},
+         express_fee=#{express_fee},
+         english_report_fee=#{english_report_fee},
+         others_fee=#{others_fee},
+         vat_fee=#{vat_fee},
+         total_fee=#{total_fee},
+         sample_express_addr=#{sample_express_addr}
+
+         where testing_id=#{testing_id}
+
+    </update>
+
+
+    <update id="uploadCommission">
+
+        update harlan_eye_testing set commission_filepath =#{commission_filepath} where testing_id=#{testing_id}
+
+    </update>
+
+    <update id="uploadInvoice">
+
+         update harlan_eye_testing set invoice_filepath =#{invoice_filepath} where testing_id=#{testing_id}
+
+    </update>
+
+    <update id="uploadReport">
+
+         update harlan_eye_testing set report_filepath =#{report_filepath} where testing_id=#{testing_id}
+
+    </update>
+    
+    <select id="getTestingByStatus" resultType="com.axej.harlan.harlaneye.bean.TestingBean">
+    select * from harlan_eye_testing where status=#{testing_status}
+
+    </select>
+
+    <select id="getTestingByAllStatus" resultType="com.axej.harlan.harlaneye.bean.TestingBean">
+    select * from harlan_eye_testing
+
+    </select>
+
+</mapper>

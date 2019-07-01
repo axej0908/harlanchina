@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /register*
+Disallow: /lib/  
+Disallow: /js/
+Disallow: /imgs/
+Disallow: /css/
+Disallow: /*.css
+Disallow: /land.html

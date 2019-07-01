@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.ApkVersionDao">
+
+    <insert id="save" parameterType="com.axej.harlan.cms.bean.ApkVersionBean" useGeneratedKeys="true">
+        insert into apk_version (
+        apk_id,
+        apk_num,
+        is_coercion,
+        apk_url,
+        apk_time
+        )
+        values
+        (
+        #{apk_id},
+        #{apk_num},
+        #{is_coercion},
+        #{apk_url},
+        #{apk_time}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.axej.harlan.cms.bean.ApkVersionBean">
+        update apk_version
+        <trim prefix="set" suffixOverrides=",">
+            <if test="apk_num!=null">apk_num = #{apk_num},</if>
+            <if test="is_coercion!=null">is_coercion = #{is_coercion},</if>
+            <if test="apk_url!=null">apk_url = #{apk_url},</if>
+            <if test="apk_time!=null">apk_time = #{apk_time}</if>
+        </trim>
+        where apk_id = #{apk_id}
+    </update>
+
+    <select id="get" resultType="com.axej.harlan.cms.bean.ApkVersionBean">
+        select * from apk_version
+    </select>
+
+</mapper>

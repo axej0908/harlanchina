@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<style type="text/css">
+    .layui-layedit{
+        margin-left:60px;
+    }
+    .box .layui-form-label{
+        width: 200px;
+        padding-left: 60px;
+        text-align: left;
+    }
+</style>
+<body>
+
+<form class="layui-form" action="" lay-filter="formTest" style="width: 800px; margin-left: 50px; margin-top: 20px;">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">中文名称:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="cpd_name_zh" id="cpd_name_zh" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <input type="tel" name="cpd_id" id="cpd_id" style="display: none">
+        <div class="layui-inline">
+            <label class="layui-form-label">中文别称:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="cpd_alias_zh" id="cpd_alias_zh" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">英文名称:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="cpd_name_en" id="cpd_name_en" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">英文别称:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="cpd_alias_en" id="cpd_alias_en" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">CAS:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="cas" id="cas" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">精确质量:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="precise_quality" id="precise_quality" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">分子式:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="molecular_formula" id="molecular_formula" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">logP:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="logp" id="logp" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">分子量:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="molecular_weight" id="molecular_weight" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">PSA:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="psa" id="psa" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">价格:</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="reference_price" id="reference_price" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-upload">
+            <button type="button" class="layui-btn" id="test1">上传图片</button>
+            <input name="cpd_picture" id="cpd_picture" style="display: none">
+            <div class="layui-upload-list">
+                <img class="layui-upload-img" id="image">
+                <p id="demoText"></p>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <label class="layui-form-label">化合物简介:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="cpd_intro" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">物化性质:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="property" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">基本信息:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="basic_data" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">安全信息:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="safety_data" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">生产方法及用途:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="produce_use" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">MSDS:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="msds" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">SDS英文:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="sds_en" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">SDS中文:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="sds_zh" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">海关数据:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="custom_data" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">图谱:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="atlas" style="display: block; margin-left:60px; "></textarea>
+        </div>
+
+        <label class="layui-form-label">毒性:</label>
+        <div class="layui-form-item">
+            <textarea class="layui-textarea" id="toxicity" style="display: block; margin-left:60px; "></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item" style="margin-top: 20px;">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+<!--<div class="site-demo-button" style="margin-top: 20px;">
+    <button class="layui-btn site-demo-layedit" data-type="content">获取编辑器内容</button>
+    <button class="layui-btn site-demo-layedit" data-type="text">获取编辑器纯文本内容</button>
+    <button class="layui-btn site-demo-layedit" data-type="selection">获取编辑器选中内容</button>
+</div>-->
+<script src="./plugins/layui/layui.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="plugins/jquery/jQueryURL.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', 'upload'], function(){
+        var form = layui.form,
+            $ = layui.jquery,
+            upload = layui.upload;
+        layedit = layui.layedit;
+
+
+        $(function () {
+            var cpd_id = getQueryString("cpd_id");
+            initTable(cpd_id)
+        });
+
+        //编辑器外部操作
+        var active = {
+            content: function(){
+                alert(layedit.getContent(index)); //获取编辑器内容
+            }
+            ,text: function(){
+                alert(layedit.getText(index)); //获取编辑器纯文本内容
+            }
+            ,selection: function(){
+                alert(layedit.getSelection(index));
+            }
+        };
+
+
+        $('.site-demo-layedit').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //自定义工具栏
+        layedit.build('LAY_demo2', {
+            tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
+            ,height: 100
+        })
+
+        //图片上传
+        upload.render({
+            elem: '#test1',
+            url: '/file/upload',
+            done: function (r) {
+                if (r.code == 0) {
+                    $("#cpd_picture").val(r.data);
+                    layer.msg("success");
+                }
+            }
+        });
+
+        layedit.set({
+            uploadImage: {
+                url: '/cmsNews/upload',
+                type: 'post'
+            }
+        });
+
+        var editIndex0 = layedit.build('cpd_intro', {
+            height: 400
+        });
+
+        var editIndex1 = layedit.build('basic_data', {
+            height: 400
+        });
+
+        var editIndex2 = layedit.build('safety_data', {
+            height: 400
+        });
+
+        var editIndex3 = layedit.build('produce_use', {
+            height: 400
+        });
+
+        var editIndex4 = layedit.build('msds', {
+            height: 400
+        });
+
+        var editIndex5 = layedit.build('sds_en', {
+            height: 400
+        });
+
+        var editIndex6 = layedit.build('sds_zh', {
+            height: 400
+        });
+
+        var editIndex7 = layedit.build('custom_data', {
+            height: 400
+        });
+
+        var editIndex8 = layedit.build('atlas', {
+            height: 400
+        });
+
+        var editIndex9 = layedit.build('toxicity', {
+            height: 400
+        });
+
+        var editIndex10 = layedit.build('property', {
+            height: 400
+        });
+
+        form.on('submit(demo1)', function (data) {
+            //化合物简介
+            data.field.cpd_intro = layedit.getContent(editIndex0);
+            //基本信息
+            data.field.basic_data = layedit.getContent(editIndex1);
+            //安全信息
+            data.field.safety_data = layedit.getContent(editIndex2);
+            //生产方法及用途
+            data.field.produce_use = layedit.getContent(editIndex3);
+            //msds
+            data.field.msds = layedit.getContent(editIndex4);
+            //sds英文
+            data.field.sds_en = layedit.getContent(editIndex5);
+            //sds中文
+            data.field.sds_zh = layedit.getContent(editIndex6);
+            //海关数据
+            data.field.custom_data = layedit.getContent(editIndex7);
+            //图谱
+            data.field.atlas = layedit.getContent(editIndex8);
+            //毒性
+            data.field.toxicity = layedit.getContent(editIndex9);
+            //物化性质
+            data.field.property = layedit.getContent(editIndex10);
+
+            $.ajax({
+                url: '/compound/edit',
+                type: 'post',
+                data: data.field,
+                dataType: 'json',
+                success: function (r) {
+                    if (r.code == 0) {
+                        alert("success");
+                        window.open("sys_list_cpd.html" , "_self");
+                    }else {
+                        alert("fail");
+                    }
+                }
+            });
+            return false;
+        });
+
+        function initTable(cpd_id) {
+            $.ajax({
+                url:'/compound/detail',
+                type:"post",
+                data:{
+                    cpd_id: cpd_id
+                },
+                dataType:"json",
+                success : function (r) {
+                    if(r.code == 0){
+                        $("#cpd_id").val(r.data.cpd_id);
+                        //中文名称
+                        $("#cpd_name_zh").val(r.data.cpd_name_zh);
+                        //中文别名
+                        $("#cpd_alias_zh").val(r.data.cpd_alias_zh);
+                        //英文名称
+                        $("#cpd_name_en").val(r.data.cpd_name_en);
+                        //英文别名
+                        $("#cpd_alias_en").val(r.data.cpd_alias_en);
+                        //cas
+                        $("#cas").val(r.data.cas);
+                        //精确质量
+                        $("#precise_quality").val(r.data.precise_quality);
+                        //分子式
+                        $("#molecular_formula").val(r.data.molecular_formula);
+                        //logp
+                        $("#logp").val(r.data.logp);
+                        //分子量
+                        $("#molecular_weight").val(r.data.molecular_weight);
+                        //psa
+                        $("#psa").val(r.data.psa);
+                        //价格
+                        $("#reference_price").val(r.data.reference_price);
+                        //化合物简介
+                        layedit.setContent(editIndex0,r.data.cpd_intro);
+                        //基本信息
+                        layedit.setContent(editIndex1,r.data.basic_data);
+                        //安全信息
+                        layedit.setContent(editIndex2,r.data.safety_data);
+                        //生产方法及用途
+                        layedit.setContent(editIndex3,r.data.produce_use);
+                        //MSDS
+                        layedit.setContent(editIndex4,r.data.msds);
+                        //SDS英文
+                        layedit.setContent(editIndex5,r.data.sds_en);
+                        //SDS中文
+                        layedit.setContent(editIndex6,r.data.sds_zh);
+                        //海关数据
+                        layedit.setContent(editIndex7,r.data.custom_data);
+                        //图谱
+                        layedit.setContent(editIndex8,r.data.atlas);
+                        //毒性
+                        layedit.setContent(editIndex9,r.data.toxicity);
+                        //物化性质
+                        layedit.setContent(editIndex10,r.data.property);
+                    }
+                }
+            })
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Sign In | Harlan</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+		<link rel="stylesheet" type="text/css" href="css/land2.css"/>
+	    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+	</head>
+	<body>
+		<div class="entire" id="rrapp">
+			<div class="logo">
+				<div class="logo_sub">
+					<div class="logo_bg"><a href="index.html"></a></div>
+					<div class="tel"><span class="sp1">Service Hotline:</span><span class="sp2">+86 0574-89210089</span><span class="sp3">(workday9:00-18:00)</span></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="land_area">
+				<div class="form_prt">
+					<div class="land_area_sub">
+						<p class="til">Welcome to Log on</p>
+						<div class="u_name">
+							<label> </label>
+							<input id="userName" type="text" placeholder="user name/phone number/email" v-model="user.user_phone"/>
+						</div>
+						<div class="u_pwd">
+							<label></label>
+							<input id="password" type="password" placeholder="Enter your password" v-model="user.user_password"/>
+						</div>
+						<p class="a_link" style="text-align:right"><a href="register_en.html">Free Registration</a><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="forget_pwd2.html"> Forget Password？</a></p>
+						<div class="land_btn" id="login_btn" @click="login">Login</div>
+						<p class="a_index"><a href="index.html">Return to the Home Page</a></p>
+					</div>
+				</div>
+				
+			</div>
+			<div class="foot_bottom">
+				<div class="foot_sub">
+					<div class="download">
+						<div class="load_txt">download :</div>
+						<div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+						<div class="load_pic_b"><a href="hualang.apk"></a></div>
+					</div>
+					<div class="a_txt">
+						<a href="new_explain1_e.html">Contact Us</a>
+						<span>&nbsp;|&nbsp;</span>
+						<!--<a href="new_file1_e.html">Contact Customer Service</a>
+                        <span>&nbsp;|&nbsp;</span>-->
+						<a href="new_explain2_e.html">Business Cooperation</a>
+						<span>&nbsp;|&nbsp;</span>
+						<!--<a href="new_explain8_e.html">Merchant help</a>
+                        <span>&nbsp;|&nbsp;</span>-->
+						<!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+						<span>&nbsp;|&nbsp;</span> -->
+						<a href="new_explain4_e.html">Product Library</a>
+						<span>&nbsp;|&nbsp;</span>
+						<a href="new_explain5_e.html">Friendly Link</a>
+						<span>&nbsp;|&nbsp;</span>
+						<a href="new_explain6_e.html">Privacy Policy</a>
+						<span>&nbsp;|&nbsp;</span>
+						<a href="new_explain7_e.html">Legal Statement</a>
+					</div>
+					<div class="foot_line"></div>
+					<!-- <div class="a_txt_b">
+						Browse Alphabetically:
+						<a href="new_explain8_e.html">Onetouch</a>
+						<span>&nbsp;|&nbsp;</span>
+						<a href="new_explain9_e.html">Showroom </a>
+						<span>&nbsp;|&nbsp;</span>
+						<a href="new_explain10_e.html">Country Search </a>
+						<span>&nbsp;|&nbsp;</span>
+						<a href="new_explain11_e.html">Suppliers</a>
+						<span>&nbsp;|&nbsp;</span>
+						<a href="new_explain12_e.html">Wholesaler </a>
+						<span>&nbsp;|&nbsp;</span>
+						<a href="new_explain13_e.html">Affiliate</a>
+					</div>
+					<div class="a_txt_b">
+						Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+						Enforcement
+						Compliance Guide
+					</div> -->
+					<div class="a_txt_b">
+						copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+					</div>
+				</div>
+			</div>
+		</div>
+        <script src="lib/base64.js"></script>
+        <script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/top_bottom.js"></script> 
+		<script src="plugins/vue/vue.min.js"></script>
+		<script src="lib/login_en.js"></script>
+	</body>
+</html>

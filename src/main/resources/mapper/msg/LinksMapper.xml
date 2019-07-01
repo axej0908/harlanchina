@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.msg.dao.LinksDao">
+
+	<insert id="save" parameterType="com.axej.harlan.msg.bean.LinksBean">
+		insert into sys_links(
+			links_type,
+			links_name,
+			links_site,
+			create_time
+		)values(
+			#{links_type},
+			#{links_name},
+			#{links_site},
+			#{create_time}
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.axej.harlan.msg.bean.LinksBean">
+		update sys_links
+		<set>
+			<if test="links_type!=null and links_type!=''">links_type=#{links_type},</if>
+			<if test="links_name!=null and links_name!=''">links_name=#{links_name},</if>
+			<if test="links_site!=null and links_site!=''">links_site=#{links_site},</if>
+			<if test="create_time!= null and create_time!=''">create_time=#{create_time}</if>
+		</set>
+		where links_id = #{links_id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from sys_links where links_id = #{links_id}
+	</delete>
+
+	<select id="queryList" parameterType="map" resultType="com.axej.harlan.msg.bean.LinksBean">
+		select * from sys_links
+		<where>
+			<if test="links_type!=null and links_type!=''">
+				links_type = #{links_type}
+			</if>
+		</where>
+		order by create_time desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="queryTotal" parameterType="map" resultType="int">
+		select count(1) from sys_links
+		<where>
+			<if test="links_type!=null and links_type!=''">
+				links_type = #{links_type}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryObject" parameterType="int" resultType="com.axej.harlan.msg.bean.LinksBean">
+		select * from sys_links where links_id = #{links_id}
+	</select>
+	
+</mapper>

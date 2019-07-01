@@ -1,0 +1,157 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #f2f3f7;
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.my_info{
+	width: 100%;
+    padding: 18px;
+    padding-right: 18px;
+    background-color: #fff;
+    padding-top: 16px;
+    padding-bottom: 36px;
+}
+.pe_til{
+	width: 100%;
+	height: 55px;
+	border-bottom: 1px solid #DBDBDB;
+	font-size: 14px;
+	color: #333333;
+	line-height: 54px;
+	padding-left: 15px;
+}
+.info_area{
+	width: 100%;
+}
+.info_item{
+	margin-top: 18px;
+}
+.info_label{
+	width: 180px;
+	font-size: 14px;
+	color: #323232;
+	height: 32px;
+	line-height: 32px;
+	float: left;
+	text-align: right;
+}
+
+.info_txt{
+	width: 270px;
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+	color: #333;
+	float: left;
+	margin-left: 10px;
+}
+.info_box{
+	width: 270px;
+	height: 32px;
+	border: 1px solid #DBDBDB;
+	float: left;
+	margin-left: 10px;
+}
+.info_box input,.code_input input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+	color: #333;
+}
+.code_area{
+	width: 270px;
+	height: 32px;
+	float: left;
+	margin-left: 10px;
+}
+.code_input{
+	width: 166px;
+	height: 100%;
+	float: left;
+	border: 1px solid #DBDBDB;
+}
+.code_btn{
+	width: 104px;
+	height: 32px;
+	float: left;
+	background-color: #7b7b7b;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	line-height: 32px;
+	cursor: pointer;
+}
+.error_tip{
+	min-width: 280px;
+	height: 24px;
+	margin-left: 190px;
+	background: url(../imgs/error_bg.png) no-repeat;
+	background-position: left center;
+	background-size: 18px 18px;
+	padding-left: 20px;
+	font-size: 12px;
+	color: #fb5651;
+	line-height: 24px;
+	margin-top: 5px;
+}
+.btn_area{
+	width: 100%;
+	height: 40px;
+	margin-top: 28px;
+}
+.btn,.btn_finish{
+	width: 270px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	margin-left: 190px;
+	cursor: pointer;
+	float: left;
+}
+.btn{
+	background-color: #bfbfbf;
+}
+.btn_finish{
+	background-color: #29a5fc;
+}
+.qx{
+	float: left;
+	font-size: 14px;
+	color: #0a64c9;
+	line-height: 40px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.line{
+	width: 100%;
+	height: 1px;
+	background-color: #DBDBDB;
+}
+.txt_ex{
+	width: 578px;
+	margin-left: 15px;
+	margin-top: 20px;
+}
+.txt_ex p{
+	font-size: 12px;
+	color: #a4a3a3;
+	word-wrap: break-word;
+	line-height: 24px;
+}
+.tel_num,.txt_ex p span{
+	color: #fb5651;
+    font-size: 12px;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>HarLan | Better Applying Chemistry</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+		<link rel="stylesheet" href="css/pe_data_c.css" />
+	    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+	</head>
+	<body>
+	<div id="rrapp">
+		<!--顶部区域开始-->
+		 <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+				<li><a href="/">Harlan Mall</a></li>
+				<li><a href="index.html">Home</a></li>
+                <li><a href="guide_zh.html">中国供应商入口</a></li>
+                <!--<li><a href="shop_cart_en.html">My shopping cart ></a></li>-->
+				<li class="red_bg"><a href="goods_employed_self.html">Self-support</a></li>
+				<li class="red_bg"><a href="goods_employed_third.html">ThirdPart-support</a></li>
+				<li class="red_bg" style="color:#ff792d;"><a href="find_goods_list.html"><strong>Inquiry Platform</strong> </a></li>
+            </ul>
+            <ul class="header_fr">
+                <li v-if="user!=null" @click="logout">Sign out</li>
+                <li v-if="user!=null"><a href="pe_index_b.html">My harlan</a></li>
+                <li v-if="user==null"><a href="login_en.html">Sign in</a> <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span> <a href="register_en.html">Register</a>
+                </li>
+                <li><a href="new_explain8_e.html">Help Center</a></li>
+                
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+		<!------------------顶部区域结束-------------->
+		<div class="entire">
+			<div class="first">
+				<div class="first_sub">
+					<a href="index.html"><div class="logo"></div></a>
+					<ul class="mn_list">
+						<li><a href="pe_index_b.html">Home page</a></li>
+						<li class="mn_active"><a href="pe_data_a.html">My information</a></li>
+						
+					</ul>
+					
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="second">
+				<div class="second_sub">
+					<div class="second_mn">
+						<ul class="second_mn_list">
+							<li><a href="pe_data_a.html">Essential information</a></li>
+							<li><a href="pe_data_b.html">Real name authentication</a></li>
+							<li class="current_bg"><a href="pe_data_c.html">Account security</a></li>
+							<li><a href="pe_data_d.html">Address management</a></li>
+						</ul>
+						<div class="mn_bg"></div>
+					</div>
+					<div class="second_two">
+						<div class="zh_dj">
+							<div class="dj_a">Your account security level is：</div>
+							<div class="pro">
+								<div class="pro_sub"></div>
+							</div>
+							<div class="dj_txt">low</div>
+						</div>
+						<div class="zh_sz">
+							<div class="zhsz_til">Account security</div>
+							<div class="xg_item">
+								<div class="xg_icon xg_icon_a"></div>
+								<div class="zh_xx">
+									<div class="zh_nm">Login password</div>
+									<div class="sz_tip">It is suggested that you change the password regularly to protect the security of your account。</div>
+								</div>
+								<div class="xg_a_link"><a href="pe_data_c_a.html">modify</a></div>
+								<div class="zh_sta sta_finish">Verified</div>
+								
+							</div>
+							<div class="xg_item">
+								<div class="xg_icon xg_icon_b"></div>
+								<div class="zh_xx">
+									<div class="zh_nm">Mobile phone verification</div>
+									<div class="sz_tip">After verification, the cell phone number can be used to log in, retrieve the password, and so on。</div>
+								</div>
+								<div class="xg_a_link"><a href="pe_data_c_b.html">modify</a></div>
+								<div class="zh_sta sta_finish">Verified</div>
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<div class="foot_bottom">
+			<div class="foot_sub">
+				<div class="download">
+					<div class="load_txt">download :</div>
+					<div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+					<div class="load_pic_b"><a href="hualang.apk"></a></div>
+				</div>
+				<div class="a_txt">
+					<a href="new_explain1_e.html">Contact Us</a>
+					<span>&nbsp;|&nbsp;</span>
+					<!--<a href="new_file1_e.html">Contact Customer Service</a>
+                    <span>&nbsp;|&nbsp;</span>-->
+					<a href="new_explain2_e.html">Business Cooperation</a>
+					<span>&nbsp;|&nbsp;</span>
+					<!--<a href="new_explain8_e.html">Merchant help</a>
+                    <span>&nbsp;|&nbsp;</span>-->
+					<!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+					<span>&nbsp;|&nbsp;</span> -->
+					<a href="new_explain4_e.html">Product Library</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain5_e.html">Friendly Link</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain6_e.html">Privacy Policy</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain7_e.html">Legal Statement</a>
+				</div>
+				<div class="foot_line"></div>
+				<!-- <div class="a_txt_b">
+					Browse Alphabetically:
+					<a href="new_explain8_e.html">Onetouch</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain9_e.html">Showroom </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain10_e.html">Country Search </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain11_e.html">Suppliers</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain12_e.html">Wholesaler </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain13_e.html">Affiliate</a>
+				</div>
+				<div class="a_txt_b">
+					Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+					Enforcement
+					Compliance Guide
+				</div> -->
+				<div class="a_txt_b">
+					copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+				</div>
+			</div>
+		</div>
+</div>
+<script type="text/javascript" src="js/jQuery/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+		<script src=" ../js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src=" ../js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+		<script src=" ../js/pe_data_c.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../plugins/vue/vue.min.js"></script>
+		<script src="../lib/pe_data_c.js"></script>
+	</body>
+</html>

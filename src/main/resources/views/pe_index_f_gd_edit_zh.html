@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" href="css/pe_index_f_gd_edit.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<div class="entire" id="rrapp">
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="new_explain16_c.html">合作与服务</a></li>
+                <li><a href="shop_cart_en.html">我的购物车 </a></li>
+            </ul>
+            <ul class="header_fr">
+                <li><a href="login_zh.html">退出</a></li>
+                <li><a href="pe_index_zh.html">我的化浪</a></li>
+                <li><a href="new_explain17_c.html">帮助中心</a></li>
+
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!------------------顶部区域结束-------------->
+    <div class="first">
+        <div class="first_sub">
+            <a href="index.html">
+                <div class="logo"></div>
+            </a>
+            <ul class="mn_list">
+                <li class="mn_active"><a href="pe_index_zh.html">首页</a></li>
+                <li><a href="pe_data_a_zh.html">我的资料</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="second">
+        <div class="second_sub">
+            <div class="second_mn">
+                <ul class="second_mn_list">
+                    <li><a href="pe_index_b_zh.html">我的订单</a></li>
+                    <li class="current_bg"><a href="pe_index_f_zh.html">我的商品</a></li>
+                    <li><a href="pe_index_vip.html">我的会员</a></li>
+                    <li><a href="pe_data_query_zh.html">采购数据查询</a></li>
+                    <li><a href="pe_index_supply_zh.html">申请供应链金融</a></li>
+                    <li><a href="pe_index_supply_zh.html">申请交易补贴</a></li>
+                    <li><a href="pe_index_supply_zh.html">申请报关商检</a></li>
+                    <li><a href="pe_index_supply_zh.html">申请知识产权分析</a></li>
+                    <li><a href="pe_data_query_zh.html">采购商征信查询</a></li>
+                    <li><a href="pe_index_inquiry_zh.html">谁对我询盘</a></li>
+                </ul>
+                <div class="mn_bg"></div>
+            </div>
+            <div class="second_two">
+                <div class="tab_div">
+                    商品编辑
+                </div>
+                <div class="con_list">
+                    <div class="con">
+                        <div class="good_item_panel">
+                            <div class="panel_a">
+                                <div class="panel_nam">
+                                    <div class="nam_txt">基本信息</div>
+                                </div>
+                                <div class="a_cs">
+                                    <div class="a_panel_one">
+                                        <div class="a_one_label">英文名称：</div>
+                                        <div class="a_one_input">
+                                            <input type="text" v-model="goods.goods_name"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_one">
+                                        <div class="a_one_label">中文名称：</div>
+                                        <div class="a_one_input">
+                                            <input type="text" v-model="goods.goods_name_en"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">商品分类：</div>
+                                        <div class="a_two_input">
+                                            <select class="gd_typesel_a" v-model="goods.one_type">
+                                                <option v-for="item in oneTypeMenus" :value="item.text"
+                                                        :selected="{'selected':item.checked}">
+                                                    {{item.text}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="a_two_input">
+                                            <select class="gd_typesel_b" v-model="goods.two_type">
+                                                <option v-for="item in selection" :value="item.text"
+                                                        :selected="{'selected':item.checked}">
+                                                    {{item.text}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_one">
+                                        <div class="a_one_label">CINO：</div>
+                                        <div class="a_one_input">
+                                            <input type="text" v-model="goods.cino"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_one">
+                                        <div class="a_one_label">CAS：</div>
+                                        <div class="a_one_input">
+                                            <input type="text" v-model="goods.cas"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_one">
+                                        <div class="a_one_label">分子量：</div>
+                                        <div class="a_one_input">
+                                            <input type="text" v-model="goods.molecular_weight"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_one">
+                                        <div class="a_one_label">PSA：</div>
+                                        <div class="a_one_input">
+                                            <input type="text" v-model="goods.pas"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_one">
+                                        <div class="a_one_label">精确质量：</div>
+                                        <div class="a_one_input">
+                                            <input type="text" v-model="goods.precise_quality"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_one">
+                                        <div class="a_one_label">货物规格：</div>
+                                        <div class="a_one_input">
+                                            <input type="text" v-model="goods.specification"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">货物纯度：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.goods_purity"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">货期：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.goods_deliver"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_four">
+                                        <div class="a_one_label">数量：</div>
+                                        <div class="a_three_input">
+                                            <input type="text" v-model="goods.goods_num"/>
+                                        </div>
+                                        <select class="dw" name="" id="">
+                                            <option value="">吨</option>
+                                            <option value="">克</option>
+                                        </select>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_four">
+                                        <div class="a_one_label">最低价格：</div>
+                                        <div class="a_three_input">
+                                            <input type="text" v-model="goods.current_price"/>
+                                        </div>
+                                        <div class="dw">
+                                            元
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_one_label">市场价格：</div>
+                                        <div class="a_three_input">
+                                            <input type="text" v-model="goods.market_price"/>
+                                        </div>
+                                        <div class="dw">
+                                            元
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_five">
+                                        <div class="a_one_label">付款要求：</div>
+                                        <div class="a_five_input">
+                                            <div class="sel_option">
+                                                <input type="radio" value="unionpay" v-model="goods.payment_opt"/>
+                                                <label>银联</label>
+                                            </div>
+                                            <div class="sel_option">
+                                                <input type="radio" value="alipay" v-model="goods.payment_opt"/>
+                                                <label>支付宝</label>
+                                            </div>
+                                            <div class="sel_option">
+                                                <input type="radio" value="wechat" v-model="goods.payment_opt"/>
+                                                <label>微信</label>
+                                            </div>
+                                            <div class="sel_option">
+                                                <input type="radio" value="offline" v-model="goods.payment_opt"/>
+                                                <label>线下支付</label>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">运输方式：</div>
+                                        <div class="a_two_input">
+                                            <select v-model="goods.transport_opt">
+                                                <option v-for="item in transport_opts" :value="item.text">
+                                                    {{item.text}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">使用说明：</div>
+                                        <div class="b_one_input_b">
+                                            <span>上传文件</span>
+                                            <input type="file" name="file" id="application_scheme"
+                                                   onchange="upload_goods(this)" accept="image/*"/>
+                                        </div>
+                                        <div class="file_url_b"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="b_cs_two">
+                                        <div class="a_one_label">产品图片：</div>
+                                        <div class="b_two_input">
+                                            <span>上传图片</span>
+                                            <input type="file" name="file" id="product_picture"
+                                                   onchange="upload_goods(this)" accept="image/*"/>
+                                        </div>
+                                        <div class="file_url"></div>
+                                    </div>
+                                    <div class="b_cs_one">
+                                        <div class="a_one_label">生产状态：</div>
+                                        <div class="b_one_input">
+                                            <span>上传文件</span>
+                                            <input type="file" name="file" id="production_state"
+                                                   onchange="upload_goods(this)" accept="image/*"/>
+                                        </div>
+                                        <div class="file_url"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="panel_e">
+                                <div class="panel_nam">
+                                    <div class="nam_txt">规格参数</div>
+                                </div>
+                                <div class="e_cs">
+                                    <div class="e_cs_a">
+                                        <div class="e_label">强度(色力)：</div>
+                                        <ul class="e_cs_list">
+                                            <li v-for="(item,index) in colorPowers"><input type="text"
+                                                                                           v-model="colorPowers[index]">
+                                            </li>
+                                        </ul>
+                                        <div class="e_cs_add" @click="addColorPower">+添加</div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="e_cs_a">
+                                        <div class="e_label">色光：</div>
+                                        <ul class="e_cs_list">
+                                            <li v-for="(item,index) in colorLights"><input type="text"
+                                                                                           v-model="colorLights[index]">
+                                            </li>
+                                        </ul>
+                                        <div class="e_cs_add" @click="addColorLight">+添加</div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="e_cs_a">
+                                        <div class="e_label">包装：</div>
+                                        <ul class="e_cs_list">
+                                            <li v-for="(item,index) in packageWays"><input type="text"
+                                                                                           v-model="packageWays[index]">
+                                            </li>
+                                        </ul>
+                                        <div class="e_cs_add" @click="addPackageWays">+添加</div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel_b">
+                                <div class="panel_nam">
+                                    <div class="nam_txt">品质报告</div>
+                                </div>
+                                <div class="b_cs">
+                                    <div class="b_cs_one">
+                                        <div class="b_one_label">上传检测报告：</div>
+                                        <div class="b_one_input">
+                                            <span>上传文件</span>
+                                            <input type="file" name="file" id="detect_report"
+                                                   onchange="upload_report(this)" accept="image/*"/>
+                                        </div>
+                                        <div class="file_url"></div>
+                                    </div>
+                                    <div class="b_cs_one">
+                                        <div class="b_one_label">上传检测视频：</div>
+                                        <div class="b_one_input">
+                                            <span>上传文件</span>
+                                            <input type="file" name="file" id="detect_video"
+                                                   onchange="upload_report(this)" accept="video/*"/>
+                                        </div>
+                                        <div class="file_url"></div>
+                                    </div>
+                                    <div class="b_cs_one">
+                                        <div class="b_one_label">UV数据报告：</div>
+                                        <div class="b_one_input">
+                                            <span>上传文件</span>
+                                            <input type="file" name="file" id="detect_uv" onchange="upload_report(this)"
+                                                   accept="image/*"/>
+                                        </div>
+                                        <div class="file_url"></div>
+                                    </div>
+                                    <div class="b_cs_one">
+                                        <div class="b_one_label">测色数据报告：</div>
+                                        <div class="b_one_input">
+                                            <span>上传文件</span>
+                                            <input type="file" name="file" id="detect_colourimeter"
+                                                   onchange="upload_report(this)" accept="image/*"/>
+                                        </div>
+                                        <div class="file_url"></div>
+                                    </div>
+                                    <div class="b_cs_two">
+                                        <div class="b_one_label">样品图片：</div>
+                                        <div class="b_two_input">
+                                            <span>上传图片</span>
+                                            <input type="file" name="file" id="detect_sample_imgs"
+                                                   onchange="upload_report(this)" accept="image/*"/>
+                                        </div>
+                                        <div class="file_url"></div>
+                                    </div>
+                                    <div class="b_cs_two">
+                                        <div class="b_one_label">大货图片：</div>
+                                        <div class="b_two_input">
+                                            <span>上传图片</span>
+                                            <input type="file" name="file" id="detect_bulk_imgs"
+                                                   onchange="upload_report(this)" accept="image/*"/>
+                                        </div>
+                                        <div class="file_url"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel_c">
+                                <div class="panel_nam">
+                                    <div class="nam_txt">品质参数</div>
+                                </div>
+                                <div class="c_cs">
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">外观要求：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.quality_aspect"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">水分：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.quality_moisture"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">不溶物要求：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.quality_insoluble"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">溶解度：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.quality_solubility"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">氯离子含量：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.quality_clContent"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">盐分：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.quality_salinity"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">电导率要求：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.quality_conductivity"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">米氏酮：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.quality_michlerKetone"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">固含量要求：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.quality_solidContent"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="panel_d">
+                                <div class="panel_nam">
+                                    <div class="nam_txt">金属含量</div>
+                                </div>
+                                <div class="d_cs">
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">铜离子：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_cu"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">铅离子：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_pb"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">锌离子：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_zn"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">锡离子：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_sn"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">镍离子：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_ni"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">钴离子：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_co"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">锑离子：：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_sb"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">汞离子：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_hg"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="a_panel_two">
+                                        <div class="a_one_label">镉离子：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_cd"/>
+                                        </div>
+                                    </div>
+                                    <div class="a_panel_three">
+                                        <div class="a_three_label">铋离子：</div>
+                                        <div class="a_two_input">
+                                            <input type="text" v-model="goods.metal_bi"/>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="btn_list">
+                                <div class="all_btn_a" @click="updateGoods">确认修改</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">下载 :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain14_c.html">联系我们</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain15_c.html">联系客服</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain16_c.html">合作招商</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain17_c.html">商家帮助</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain18_c.html">手机化浪</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="search.html">产品库</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain20_c.html">友情链接</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain21_c.html">隐私政策</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain22_c.html">法律声明</a>
+            </div>
+            <div class="foot_line"></div>
+            <div class="a_txt_b">
+                按字母顺序浏览 ：
+                <a href="new_explain17_c.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain17_c.html">陈列室 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain17_c.html">国家搜索 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="master.html">供应商</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="master.html">批发商 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain16_c.html">加盟 产品列表政策 - 知识产权保护</a>
+            </div>
+            <div class="a_txt_b">
+                产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+            </div>
+            <div class="a_txt_b">
+                copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/base64.js"></script>
+<script src="lib/common.js"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<!--时间插件-->
+<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+<script src="js/pe_index_f.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/pe_index_f_gd_edit_zh.js"></script>
+</body>
+</html>

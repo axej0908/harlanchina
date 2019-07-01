@@ -1,0 +1,211 @@
+html,body{
+	min-width: 1300px;
+}
+/*-------------------顶部样式开始------------------------*/
+.top{
+    width: 100%;
+    height: 40px;
+    background-color: #444444;
+    font-size: 12px;
+    color: #fff;
+}
+.top_sub{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+}
+.top_sub div{
+	height: 100%;
+	line-height: 40px;
+}
+.app_link{
+	margin-left: 26px;
+}
+.land_u{
+	margin-right: 70px;
+	color: #fff;
+	padding-top: 12px;
+}
+.land_u .u_name{
+	display: block;
+    float: left;
+    line-height: 16px;
+    height: 16px;
+}
+.land_u .quit{
+	display: block;
+    width: 40px;
+    height: 16px;
+    border: 1px solid;
+    line-height: 16px;
+    text-align: center;
+    float: left;
+    margin-left: 10px;
+}
+.enter_div{
+	margin-right: 70px;
+}
+.flag_coun{
+	padding-left: 30px;
+	/*background-image: url(../imgs/flag_en.png);*/
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 21px 13px;
+	cursor: pointer;
+}
+.my_person{
+	float: right;
+	margin-right: 35px;
+}
+/*-------------------顶部样式结束------------------------*/
+/*--------------------------------底部样式--------------------*/
+.contact{
+    width: 100%;
+    height: 410px;
+    background-color: #3e3e45;
+}
+.contact_sub{
+	width: 1200px;
+	height: 263px;
+	padding-top: 78px;
+	margin: 0 auto;
+}
+.contact_1,.contact_2,.contact_3,.contact_4,.contact_5{
+	float: left;
+}
+.contact_6,.contact_7{
+	float: right;
+}
+.contact_7{
+	margin-right: 45px;
+}
+.contact_1{
+	margin-left: 113px;
+}
+.space_foot{
+	width: 1px;
+	height: 143px;
+	background-color: #fff;
+	float: left;
+	margin: 0 30px;
+}
+.contact_2{
+	margin-left: 100px;
+}
+.contact_2,.contact_3,.contact_4,.contact_5{
+	/*margin-left: 60px;*/
+}
+.logo_small{
+	width:184px;
+	height: 80px;
+	background: url(../imgs/logo_foot.png) no-repeat center;
+	background-size: contain;
+}
+.tel{
+	margin-top: 3px;
+	font-size: 22px;
+	color: #fff;
+	font-weight: bold;
+	height: 48px;
+	line-height: 48px;
+}
+.tel_ex{
+	margin-top: 9px;
+	font-size: 14px;
+	color: #999;
+	text-align: center;
+}
+.cntact_p1{
+	font-size: 14px;
+	color: #fff;
+	height: 31px;
+}
+.contact_p2{
+	font-size: 14px;
+	height: 42px;
+	line-height: 42px;
+}
+.contact_p2 a{
+	color: #a1a1a4;
+}
+.code_pic{
+	margin-top: 14px;
+	width: 133px;
+	height: 133px;
+	background: no-repeat center;
+	background-size: contain;
+	float: left;
+}
+.code_pic_tip{
+	text-align: center;
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+}
+.foot{
+	width: 100%;
+	height: 60px;
+	background-color: #d9d9d9;
+	font-size: 16px;
+	color: #666;
+	line-height: 60px;
+	text-align: center;
+}
+.a_link_p{
+    font-size: 14px;
+    color:rgba(255,255,255,0.4);
+    width: 1200px;
+    height: 24px;
+    line-height: 24px;
+    margin: 20px auto;
+    text-align: center;
+}
+.contact_three{
+	width: 882px;
+	height: 50px;
+	margin: 0 auto;
+}
+.contact_three_l{
+	width: 388px;
+	text-align: center;
+	font-size: 12px;
+	color:rgba(255,255,255,0.3);
+	margin-left: 82px;
+	float: left;
+}
+.contact_three_l p{
+	width: 100%;
+	height: 24px;
+	line-height: 24px;
+}
+.rz_div{
+	float: left;
+	height: 100%;
+	margin-left: 30px;
+}
+.rz_pic{
+	width: 35px;
+	height: 35px;
+	background: no-repeat center;
+	background-size: 100% 100%;
+	float: left;
+	margin-top: 7px;
+}
+.rz_txt{
+    height: 100%;
+	float: left;
+	margin-left: 10px;
+	padding-top: 2px;
+}
+.rz_pa{
+	
+	font-size: 16px;
+	color: #fff;
+}
+.rz_pb{
+	font-size: 12px;
+	color:rgba(255,255,255,0.3);
+	margin-top: 2px;
+}

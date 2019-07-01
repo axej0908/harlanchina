@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>商品管理-第三方商品</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css">
+    <style type="text/css">
+        .layui-form-label {
+            padding: 9px 3px;
+            min-width: 56px;
+        }
+
+        .layui-table-cell {
+            height: inherit;
+        }
+
+        .txt_div {
+            width: 100%;
+            height: 81px;
+            white-space: normal;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .img_area {
+            width: 60px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+        .layui-top .add{
+            width: 150px;
+            height: 34px;
+            background-color: #ffa42d;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div class="layui-top">
+    <button class="layui-btn add" onclick="x_admin_show('添加消息','add_message.html')" style="border-radius: 4px;float: right;"><i class="layui-icon"></i>添加</button>
+    <div class="clear"></div>
+</div>
+<div class="layui-tab layui-tab-brief layui-form" lay-filter="docDemoTabBrief">
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <table class="layui-table" lay-filter="test" id="test"></table>
+        </div>
+    </div>
+</div>
+<!--表格工具条模板一-->
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-mini" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+</script>
+<script src="./plugins/layui/layui.js"></script>
+<!-- 序号 -->
+<script type="text/html" id="indexTpl">
+    {{d.LAY_TABLE_INDEX+1}}
+</script>
+<script type="text/javascript" src="src/js/xadmin.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', "element", "table", "laytpl", "jquery"], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            layedit = layui.layedit,
+            laydate = layui.laydate;
+        $ = layui.jquery;
+        var table = layui.table;
+
+        $(function () {
+            var localStorage = window.localStorage;
+            initTable()
+        });
+
+        function initTable() {
+            tableIns = table.render({
+                elem: '#test',
+                url: '/message/queryByAll',
+                height: 'full-160',
+                cols: [[
+                    //{type:'checkbox'}
+                    {templet: '#indexTpl', title: 'ID'},
+                    {field: 'title', title: '标题', width: "300"},
+                    {field: 'content', title: '正文', width: "500"},
+                    {field: 'optate', title: '操作', width: "500", toolbar: '#barDemo'}
+                ]],
+                page: true, limit: 10
+            });
+        }
+
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if(layEvent == 'del'){
+                layer.confirm('确认删除', function(index){
+                    $.ajax({
+                        url: '/message/del',
+                        type: "post",
+                        data:{
+                            mess_id: data.mess_id
+                        },
+                        dataType:"json",
+                        success : function (r) {
+                            if(r.code == 0){
+                                layer.open({
+                                    content: '删除成功!'
+                                });
+                                window.location.href = "list_message.html";
+                            }else {
+                                layer.open({
+                                    content: '删除失败!'
+                                });
+                            }
+                        }
+                    })
+                });
+            }
+        });
+    });
+</script>
+</body>
+
+</html>

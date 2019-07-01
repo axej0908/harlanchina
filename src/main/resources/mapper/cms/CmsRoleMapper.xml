@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.cms.dao.CmsRoleDao">
+
+    <resultMap id="RoleMenuMap" type="com.axej.harlan.cms.bean.CmsRole">
+        <id property="role_id" column="role_id"></id>
+        <result property="role_name" column="role_name"></result>
+        <collection property="cmsMenus" ofType="com.axej.harlan.cms.bean.CmsMenu">
+            <id property="menu_id" column="menu_id"></id>
+            <result property="title" column="title"></result>
+            <result property="url" column="url"></result>
+            <result property="type" column="type"></result>
+            <result property="pub_id" column="pub_id"></result>
+            <result property="icon" column="icon"></result>
+        </collection>
+    </resultMap>
+    
+    
+    <insert id="save" parameterType="com.axej.harlan.cms.bean.CmsRole">
+        <selectKey keyProperty="role_id" order="AFTER" resultType="int">
+            select  LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO cms_role
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="role_name != null" >
+                role_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="role_name != null" >
+                #{role_name},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="getName" parameterType="string" resultType="com.axej.harlan.cms.bean.CmsRole">
+        SELECT * FROM cms_role WHERE role_name = #{role_name}
+    </select>
+
+    <select id="list" resultType="com.axej.harlan.cms.bean.CmsRole">
+        SELECT * FROM cms_role
+    </select>
+    
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.cms.bean.CmsRole">
+        select * from cms_role
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    
+    <select id="queryTotal" resultType="int">
+        select count(1) from cms_role
+    </select>
+    
+    <select id="queryMenuObject" parameterType="map" resultMap="RoleMenuMap">
+        select
+            cm.*,
+            cr.*
+        from
+            cms_role cr
+        left join cms_role_menu crm on cr.role_id = crm.role_id
+        inner join cms_menu cm on crm.menu_id = cm.menu_id
+        <where>
+            <if test="role_id!=null and role_id!=0">
+                cr.role_id = #{role_id}
+            </if>
+        </where>
+    </select>
+</mapper>

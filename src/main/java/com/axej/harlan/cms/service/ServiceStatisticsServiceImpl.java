@@ -1,0 +1,66 @@
+package com.axej.harlan.cms.service;
+
+import com.axej.harlan.cms.bean.CmsStatisticsBean;
+import com.axej.harlan.cms.dao.ServiceStatisticsDao;
+import com.axej.harlan.common.utils.DataTimeUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+@Service
+@Transactional
+public class ServiceStatisticsServiceImpl implements ServiceStatisticsService{
+
+    @Autowired
+    private ServiceStatisticsDao serviceStatisticsDao;
+
+    @Override
+    public List<CmsStatisticsBean> queryServiceStatistics(Map<String, Object> map) {
+        List<CmsStatisticsBean> cmsStatisticsBeans = new ArrayList<>();
+
+        Date start = null;
+        Date end = null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //默认加载
+        if(map.get("query").toString().equals("default")){
+            //结束时间
+            end = DataTimeUtils.beforeDate("current");
+            //开始时间
+            start = DataTimeUtils.beforeDate("previous");
+        }
+        //条件加载
+        if(map.get("query").toString().equals("effective")){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                //开始时间
+                start = sdf.parse(map.get("start").toString());
+                //结束时间
+                end = sdf.parse(map.get("end").toString());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //获取时间段中的所有时间
+        List<Date> dates = DataTimeUtils.getDatesBetweenTwoDate(start , end);
+        if(dates.size() > 0){
+            //循环遍历出所有时间
+            for(int i = 0; i < dates.size(); i++){
+                //请求参数
+                map.put("create_time", dateFormat.format(dates.get(i)));
+                CmsStatisticsBean cmsStatisticsBean = serviceStatisticsDao.queryServiceStatistics(map);
+                cmsStatisticsBean.setxAxis(dateFormat.format(dates.get(i)));
+                cmsStatisticsBeans.add(cmsStatisticsBean);
+            }
+        }
+        return cmsStatisticsBeans;
+    }
+}

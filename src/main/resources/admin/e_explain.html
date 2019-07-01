@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>商品管理-第三方商品</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css">
+    <style type="text/css">
+        .layui-form-label {
+            padding: 9px 3px;
+            min-width: 56px;
+        }
+
+        .layui-table-cell {
+            height: inherit;
+        }
+
+        .txt_div {
+            width: 100%;
+            height: 81px;
+            white-space: normal;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .img_area {
+            width: 60px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div class="layui-tab layui-tab-brief layui-form" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">新闻信息</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <table class="layui-table" lay-filter="test" id="test"></table>
+        </div>
+    </div>
+</div>
+<!--商品名称模板-->
+<script type="text/html" id="goodimg">
+    <div class="img_area" style="background-image:url(/{{d.product_picture}})"></div>
+</script>
+<!--表格工具条模板一-->
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="edit">编辑</a>
+</script>
+<script src="./plugins/layui/layui.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', "element", "table", "laytpl"], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            layedit = layui.layedit,
+            laydate = layui.laydate;
+        $ = layui.$;
+        var table = layui.table;
+        var element = layui.element;
+
+        $(function () {
+            initTable()
+        });
+
+
+
+        /**
+         * 1.render table
+         */
+        function initTable(criteria) {
+            tableIns = table.render({
+                elem: '#test',
+                url: '/explain/queryList',
+                height: 'full-160',
+                where: criteria,
+                cols: [[
+                    //{type:'checkbox'}
+                    {type: 'numbers', title: '序号'},
+                    {field: 'theme', title: '主题'},
+                    {field: 'digests', title: '文汇'},
+                    {field: 'optate', title: '操作', toolbar: '#barDemo'}
+                ]],
+                page: true, limit: 10
+            });
+        }
+
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            //获得当前行 tr 的DOM对象
+            var tr = obj.tr;
+
+            //查看详情
+            if(layEvent === 'edit'){ //开始找货
+                window.open("a_explain.html?explain_id="+data.explain_id, "_self");
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

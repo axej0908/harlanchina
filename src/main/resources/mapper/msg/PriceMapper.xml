@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.axej.harlan.msg.dao.PriceDao">
+    <insert id="save" parameterType="com.axej.harlan.msg.bean.PriceBean">
+        <selectKey keyProperty="price_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into info_price(
+        goods_name,
+        goods_price,
+        price_unit,
+        currency_kinds
+        )
+        values
+        (
+        #{goods_name},
+        #{goods_price},
+        #{price_unit},
+        #{currency_kinds}
+        )
+    </insert>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.msg.bean.PriceBean">
+        select * from info_price
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(*) from info_price
+    </select>
+
+    <update id="update" parameterType="com.axej.harlan.msg.bean.PriceBean">
+        update info_price
+        <set>
+            <if test="goods_name!=null and goods_name!=''">goods_name=#{goods_name},</if>
+            <if test="goods_price!=null and goods_price!=''">goods_price=#{goods_price},</if>
+            <if test="price_unit!=null and price_unit!=''">price_unit=#{price_unit},</if>
+            <if test="currency_kinds!=null and currency_kinds!=''">currency_kinds=#{currency_kinds}</if>
+        </set>
+        where price_id = #{price_id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from info_price where price_id = #{price_id}
+    </delete>
+
+    <select id="queryObject" parameterType="com.axej.harlan.msg.bean.PriceBean" resultType="com.axej.harlan.msg.bean.PriceBean">
+        select * from info_price where price_id = #{price_id}
+    </select>
+</mapper>

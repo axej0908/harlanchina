@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>商品管理-自营商品</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css">
+    <style type="text/css">
+        .layui-form-label {
+            padding: 9px 3px;
+            min-width: 96px;
+        }
+
+        .layui-upload {
+            float: left;
+            margin-left: 32px;
+        }
+
+        .layui-upload-img {
+            width: 92px;
+            height: 92px;
+            margin: 0 10px 10px 0;
+        }
+
+        .layui-table-cell {
+            height: inherit;
+        }
+
+        .txt_div {
+            width: 100%;
+            height: 81px;
+            white-space: normal;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .img_area {
+            width: 60px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+
+        .layui-text {
+            line-height: 38px;
+        }
+
+        .select_mini {
+            width: 71px;
+            float: left;
+            margin-left: -11px;
+        }
+        /*输入框列表样式*/
+        .input_contain{
+            float: left;
+            margin-left: 10px;
+            width: 500px;
+            margin-top: -10px;
+            min-height: 44px;
+        }
+        .layui-input-sm-inline{
+            width: 90px;
+            margin-right: 10px;
+            float: left;
+            margin-top: 10px;
+        }
+        .layui-btn-area{
+            float: left;
+        }
+        /*输入框列表样式结束*/
+    </style>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div class="layui-tab layui-tab-brief layui-form" lay-filter="docDemoTabBrief">
+
+    <div class="layui-tab-content" style="">
+        <div class="layui-tab-item layui-show">
+            <form class="layui-form" id="sear">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">商品名称：</label>
+                        <div class="layui-input-inline">
+                            <select name="complex_name" lay-verify="required" lay-search=""></select>
+                        </div>
+                    </div>
+                </div>
+                <input id="synthetic_id" name="synthetic_id" style="display: none;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品图片：</label>
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="uploadC2">上传图片</button>
+                        <!--hidden form -->
+                        <input id="complex_img" name="complex_img" style="display: none;">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="demo1">
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item" style="margin-top: 20px;">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table class="layui-table" lay-filter="test" id="test"></table>
+    </div>
+</div>
+<!--商品名称模板-->
+<script type="text/html" id="goodimg">
+    <div class="img_area" style="background-image:url(/{{d.complex_img}})"></div>
+</script>
+
+<!--表格工具条模板一-->
+<script type="text/html" id="barDemo">
+    <!--<a class="layui-btn layui-btn-mini" lay-event="alter">编辑</a>-->
+    <a class="layui-btn layui-btn-mini" lay-event="del">删除</a>
+</script>
+<script src="./plugins/layui/layui.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="plugins/jquery/jQueryURL.js"></script>
+<script>
+    var form, $;
+    layui.use(['form', 'layedit', 'laydate', "element", "table", "upload", "jquery", "layer"], function () {
+        form = layui.form;
+        $ = layui.jquery;
+        var layer = parent.layer === undefined ? layui.layer : parent.layer;
+        var layer = layui.layer,
+            laydate = layui.laydate,
+            table = layui.table,
+            element = layui.element,
+            upload = layui.upload;
+
+        $(function () {
+            var synthetic_id = getQueryString("synthetic_id");
+            $("#synthetic_id").val(synthetic_id);
+
+            $.ajax({
+                url:'/compound/gather',
+                async:false,
+                type:"post",
+                data:{},
+                dataType:"json",
+                success : function (r) {
+                    if(r.code == 0){
+                        var arr = r.data;
+                        var gather = initCateStr(arr);
+                        $('select[name=complex_name]').html(gather);
+                        form.render();
+                    }
+                }
+            })
+            initTable(synthetic_id);
+        });
+
+        /**
+         * 赋值下拉框
+         */
+        function initCateStr(arr) {
+            var strVal = '<option>请选择</option>';
+            if (typeof arr == "undefined") {
+                return strVal;
+            } else {
+                for (var i = 0; i < arr.length; i++) {
+                    //step2.1初始化下拉菜单
+                    strVal += '<option value="' + arr[i].cpd_name_en + '">' + arr[i].cpd_name_en + '</option>';
+                }
+            }
+            return strVal;
+        }
+
+        //10.2 产品图片 文件上传
+        upload.render({
+            elem: '#uploadC2',
+            url: '/file/upload',
+            done: function (r) {
+                if (r.code == 0) {
+                    layer.msg("success");
+                    $("#complex_img").val(r.data);
+                }
+            }
+        });
+
+        function initTable(synthetic_id) {
+            tableIns = table.render({
+                elem: '#test',
+                url:'/complex/list',
+                where: {
+                    synthetic_id:synthetic_id
+                },
+                cols: [[
+                    {type: 'numbers', title: '序号'},
+                    {field:'complex_name', title: '商品品名称'},
+                    {field:'complex_img',  title: '商品图' , templet: '#goodimg'},
+                    {field:'optate',  title: '操作' , toolbar: '#barDemo'}
+                ]],
+                page: true, limit: 10
+            });
+        }
+        form.on('submit(demo1)', function (data) {
+            $.ajax({
+                url: '/complex/save',
+                type: 'post',
+                data: data.field,
+                dataType: 'json',
+                success: function (r) {
+                    if (r.code == 0) {
+                        alert("success");
+                        window.open("sys_complex.html?synthetic_id="+data.field.synthetic_id , "_self");
+                    }else {
+                        alert("failde");
+                    }
+                }
+            });
+            return false;
+        });
+
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            //获得当前行 tr 的DOM对象
+            var tr = obj.tr;
+
+            //删除
+            if(layEvent === 'del'){
+                //向服务端发送编辑指令
+                layer.confirm('确认删除', function (index) {
+                    layer.close(index);
+                    $.ajax({
+                        url:'/complex/del',
+                        type:"post",
+                        data:{
+                            complex_id:data.complex_id
+                        },
+                        dataType:"json",
+                        success : function (r) {
+                            if(r.code == 0){
+                                layer.open({
+                                    content: '删除成功!'
+                                });
+                                window.open("sys_complex.html?synthetic_id="+data.synthetic_id , "_self");
+                            }else {
+                                layer.open({
+                                    content: '删除失败!'
+                                });
+                            }
+                        }
+                    })
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

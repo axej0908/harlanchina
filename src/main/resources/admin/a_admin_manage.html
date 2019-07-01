@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>table模块快速使用</title>
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="src/css/a_admin_manage.css" media="all">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+<body>
+<div class="entire">
+    <a type="button" class="layui-btn layui-btn-small" href="a_pwd_add.html">添加管理员</a>
+    <table class="layui-table" lay-filter="test" id="test"></table>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-mini" lay-event="edit">重置</a>
+        <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+        <!-- 这里同样支持 laytpl 语法，如： -->
+        <!--{{#  if(d.auth > 2){ }}
+          <a class="layui-btn layui-btn-mini" lay-event="check">审核</a>
+        {{#  } }}-->
+    </script>
+</div>
+<!--弹出层内容-->
+<!--<form class="layui-form layui-form-pane" id="alert_con" action="">
+  <div class="layui-form-item">
+    <label class="layui-form-label">用户名</label>
+    <div class="layui-input-inline">
+      <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">角色名称</label>
+    <div class="layui-input-inline">
+      <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <button class="layui-btn" lay-submit="" lay-filter="demo2">确定</button>
+  </div>
+</form>-->
+
+
+<script src="./plugins/layui/layui.js"></script>
+<script>
+
+    layui.use('table', function () {
+        var table = layui.table,
+            $ = layui.$;
+
+        /**
+         * 3.watch and operate tr obj
+         */
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            var tr = obj.tr;
+            if (data.user_id == null) {
+                layer.msg("unknown error");
+                return;
+            }
+            if (layEvent === 'del') {
+                layer.confirm('确认删除该管理员账户？', function (index) {
+                    obj.del();
+                    layer.close(index);
+                    //delete obj
+                    delByUserId(data.user_id);
+                });
+            } else if (layEvent === 'edit') {
+                //do something
+                layer.open({
+                    type: 1,
+                    title: "", //不显示标题栏
+//			        ,closeBtn: true
+                    area: 'auto;',
+                    shade: 0.8,
+                    id: 'LAY_layuipro', //设定一个id，防止重复弹出
+                    btn: ['确定'],
+                    yes: function (index, layero) {
+                        alert("你点击了弹出层的确定")
+                    }
+                    ,
+                    btnAlign: 'c'
+                    ,
+                    moveType: 0 //拖拽模式，0或者1
+                    ,
+                    content: '<form class="layui-form layui-form-pane" id="alert_con" action=""> <div class="layui-form-item"> <label class="layui-form-label">用户名</label> <div class="layui-input-inline"> <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"> </div> </div> <div class="layui-form-item"> <label class="layui-form-label">角色名称</label> <div class="layui-input-inline"> <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"> </div> </div>  </form>'
+                    ,
+                    success: function (layero) {
+                        //layero为content参数字符串dom对象
+                        console.log(layero)
+                        //确定按钮
+                        var btn = layero.find('.layui-layer-btn');
+
+                    }
+                });
+                //同步更新缓存对应的值
+                obj.update({
+                    "id": "10000",
+                    "username": "0000",
+                    "role": "0000",
+                    "createtime": "0000"
+                });
+            }
+        });
+
+
+        /**
+         * 2.just function of delete
+         */
+        function delByUserId(user_id) {
+            $.ajax({
+                url: '/cmsUser/delete',
+                type: 'post',
+                data: {user_id: user_id},
+                dataType: 'json',
+                success: function (r) {
+                    if (r.code == 0) {
+                        layer.msg("success");
+                    } else {
+                        layer.msg("failure");
+                    }
+                }
+            })
+        }
+
+        /**
+         * 1.preload render table
+         */
+        table.render({
+            elem: '#test'
+            , url: '/cmsUser/pager'
+            , height: 'full-80'
+            , cols: [[
+                //{type:'checkbox'}//是否开启复选框
+                {field: 'user_id', minWidth: 80, title: '编号', sort: true}
+                , {field: 'nickname', minWidth: 80, title: '用户名'}
+                , {field: 'principal', minWidth: 80, title: '账号'}
+                , {field: 'create_time', minWidth: 80, title: '创建时间', sort: true}
+                , {title: '操作', width: "320", toolbar: '#barDemo'}
+            ]]
+            , page: true
+        });
+
+    });
+</script>
+</body>
+
+</html>

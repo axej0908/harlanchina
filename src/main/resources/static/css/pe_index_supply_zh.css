@@ -1,0 +1,142 @@
+html,body{
+	width: 100%;
+	height: 100%;
+    position: relative;
+	background-color: #f2f3f7;	
+	
+}
+.entire{
+	width: 100%;
+}
+.my_fw{
+	width: 100%;
+    padding: 20px 18px;
+}
+.ol_tit {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #f2f3f7;
+}
+.ol_tit div{
+	float: left;
+	font-size: 12px;
+	text-align: center;
+    color: #313d53;
+    font-weight: bold;
+}
+.cont_a{
+	width: 28%;
+}
+.cont_b{
+	width: 26%;
+}
+.cont_c{
+	width: 22%;
+}
+.cont_c a{
+	display: block;
+	width: 100px;
+	height: 20px;
+	background: #389bff url("../imgs/download.png") no-repeat;
+	background-size: 20px 20px;
+	background-position: 70px 0;
+	line-height: 20px;
+	padding-left: 18px;
+	color: #fff;
+	border-radius: 6px;
+	margin-top: 10px;
+}
+.cont_d{
+	width: 14%;
+}
+.cont_e{
+	width: 10%;
+}
+.cont_e a{
+	padding: 2px 5px;
+	background: #00c0ef;
+	color: #fff;
+	margin: 10px auto;
+	display: block;
+	text-align: center;
+}
+.cont_e a{
+	/* padding: 2px 5px; */
+	background: #00c0ef;
+	color: #fff;
+	margin: 10px auto;
+	display: block;
+	width: 68px;
+	height:  26px;
+	text-align: center;
+	line-height:  22px;
+}
+.logo_box{
+	float: left;
+	/* margin-left: 10px; */
+	width: 68px;
+	height: 22px;
+	line-height:  16px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+	/* border: 1px solid #c9c9c9; */
+	position: relative;
+	/*background-color: #dcac6c;*/
+	background-color: #00c0ef;
+}
+.logo_box input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	position:  absolute;
+	top: 0;
+	left: 0;
+}
+.logo_box p{
+	/* position: absolute; */
+	/* top: 5px; */
+	text-align:  center;
+	line-height:  16px;
+	color: #fff;
+}
+.txt_upload{
+	float: left;
+	margin-left: 10px;
+}
+.row {
+	width: 100%;
+	border: 1px solid #cccccc;
+	border-top: none;
+}
+.row_cont{
+	width: 100%;
+	height: 106px;
+    display: table;
+    border-top: 1px solid #DBDBDB;
+}
+.row_cont div{
+	height: 100%;
+	float: left;
+	padding: 12px;
+	font-size: 12px;
+}
+.row_cont div:not(:last-child){
+	border-right: 1px solid #DBDBDB;
+}
+.row_cont div p{
+	line-height: 22px;
+	color: #6e6e6e;
+	word-wrap:break-word;
+	word-break:normal;
+}
+.row_cont .cont_d p{
+	text-align: center;
+}
+.row_cont .cont_d p:first-child{
+	color: #ff7519;
+}
+
+

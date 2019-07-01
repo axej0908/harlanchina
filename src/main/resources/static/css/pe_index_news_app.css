@@ -1,0 +1,50 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+/*--------------------------------second-----------------------------------------------*/
+
+.second{
+	margin: 0 auto;
+	width: 100%;
+}
+.second_title{
+	margin: 0 auto;
+	padding-top: 20px;
+	width: 92%;
+	height: auto;
+	border-bottom: 1px #ddd dashed;
+	text-align: center;	
+}
+.second_title_top{
+	font-size: 18px;
+}
+.second_title_cent{
+	margin-top: 15px;
+	color: #929292;
+}
+.second_title_cent span{
+	margin-right: 20px;
+}
+.second_title_cent a{
+	color: #007AFF;
+}
+.second_title_cent p{
+	margin-top: 20px;
+}
+.second_cont{
+	margin: 0 auto;
+	padding-top: 20px;
+	width: 92%;
+	height: auto;
+	padding-bottom: 20px;
+}
+.entire img{
+	width: 100%;
+}

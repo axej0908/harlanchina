@@ -1,0 +1,341 @@
+﻿html,body{
+	width: 100%;
+	height: 100%;
+	
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	background-color: #f2f3f7;
+}
+/*-------------------------------------second------------------------------------------*/
+
+/*------------------------------------------third-----------------------------------------------*/
+.third{
+	width: 100%;
+	margin-bottom: 36px;
+}
+.company{
+	width: 100%;
+	height: 143px;
+	background: url(../imgs/datail2_top.png) no-repeat center;
+	background-size: cover;
+
+}
+.company_sub{
+	padding-top: 20px;
+	width: 1000px;
+	height: 100%;
+	margin: 0 auto;
+    padding-left: 18px;
+    padding-right: 12px;
+}
+.company_pic{
+	width: 167px;
+	height: 101px;
+	background: no-repeat center;
+	background-size: 100% 100%;
+	float: left;
+	margin-right: 14px;
+}
+.company_mesg{
+	overflow: hidden;
+	height: 110px;
+}
+.company_name{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 24px;
+	color: #10438f;
+}
+.grade{
+	width: 100%;
+	margin-top: 8px;
+	height: 26px;
+}
+.grade_txt{
+	display: table;
+	height: 26px;
+	line-height: 26px;
+	background: url(../imgs/con_lev_bg.png) no-repeat;
+	background-position: left center;
+	background-size: 20px 20px;
+	font-size: 12px;
+	color: #050505;
+	padding-left: 30px;
+	padding-right: 12px;
+	background-color: #fff;
+	border-radius: 13px;
+	float: left;
+}
+.grade_badge{
+	width: 16px;
+	height: 26px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 16px 15px;
+	background-image: url(../imgs/level_badge.png);
+	float: left;
+	margin-left: 10px;
+	
+}
+.company_goods{
+	width: 100%;
+	font-size: 14px;
+	color: #585858;
+	margin-top: 16px;
+}
+.company_goods span{
+	color: #ff4a12;
+}
+.company_op{
+    width: 100%;
+    height: 24px;
+    margin-top: 8px;
+}
+.op_tel{
+	height: 24px;
+	line-height: 24px;
+	font-size: 16px;
+	color: #585858;
+	float: left;
+}
+.tab_block{
+	width: 100%;
+}
+.tab_mn{
+	float: right;
+	height: 24px;
+}
+.mn_list{
+	height: 100%;
+	position: relative;
+}
+.mn_list li{
+	width: 135px;
+	height: 100%;
+	margin-left: 26px;
+	line-height: 22px;
+	font-size: 14px;
+	color: #ff7519;
+	float: left;
+	overflow: hidden;
+	background-color: #fff;
+	border: 1px solid #ff7519;
+	text-align: center;
+	cursor: pointer;
+}
+.mn_list .mn_current{
+	color: #fff;
+	background-color: #ff7519;
+}
+.tab_content{
+	padding-top: 40px;
+	padding-bottom: 60px;
+}
+.con{
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 26px;
+    padding-bottom: 38px;
+    background-color: #fff;
+    min-height: 600px;
+}
+/*----------------公司产品--------------------*/
+.cp{
+	width: 100%;
+	padding-top: 22px;
+}
+.type{
+	width: 100%;
+	height: 28px;
+}
+.type_lab{
+	height: 100%;
+	line-height: 28px;
+	font-size: 16px;
+	color: #323232;
+	float: left;
+}
+.type_list{
+	margin-left: 20px;
+	width: 1100px;
+	float: left;
+	height: 100%;
+}
+.type_list li{
+	text-align: center;
+	padding-left: 17px;
+	padding-right: 17px;
+	height: 28px;
+	line-height: 28px;
+	float: left;
+	font-size: 16px;
+	color: #323232;
+	cursor: pointer;
+}
+.type_list .li_active{
+	border: 1px solid #ff4a12;
+	color: #ff4a12;
+}
+.type_list li:not(:first-child){
+	margin-left: 22px;
+}
+.goods_list{
+	width: 100%;
+	min-height: 500px;
+	padding: 20px;
+	padding-right: 89px;
+}
+.good_item{
+	position: relative;
+	width: 100%;
+	height: 140px;
+	border-bottom: 1px solid #e6e6e6;
+	padding-top: 20px;
+	padding-left: 27px;
+	padding-bottom: 20px;
+}
+.gd_pic{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #e6e6e6;
+	background: no-repeat center;
+	background-size: 100% 100%;
+	float: left;
+	cursor: pointer;
+	margin-right: 20px;
+}
+.gd_mesg{
+	overflow: hidden;
+}
+.gd_nm{
+	width: 1000px;
+    height: 24px;
+    line-height: 24px;
+	font-size: 16px;
+	color: #585858;
+	cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.gd_nomal{
+	width: 100%;
+	height: 24px;
+	line-height: 24px;
+	font-size: 14px;
+	color: #a3a3a3;
+	margin-top: 11px;
+}
+.gd_nomal div{
+    float: left;
+    max-width: 232px;
+    height: 100%;
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.gd_nomal div:not(:first-child){
+	margin-left: 26px;
+}
+.pri_area{
+	width: 100%;
+	height: 38px;
+}
+.pr_n{
+	font-size: 20px;
+	color: #fb5651;
+	float: left;
+	height: 36px;
+	line-height: 36px;
+}
+.btn_a{
+	width: 126px;
+	height: 36px;
+	float: right;
+	line-height: 36px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	background-color: #ff7519;
+	cursor: pointer;
+}
+/*----------------公司档案--------------------*/
+.da{
+	width: 100%;
+	padding-top: 17px;
+}
+.da_item{
+	width: 100%;
+	margin-top: 17px;
+}
+.lbl{
+	width: 226px;
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+	color: #b0b0b0;
+	text-align: right;
+	float: left;
+}
+.item_txt{
+	float: left;
+	width: 731px;
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+	color: #3c3c3c;
+	text-align: left;
+	margin-left: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.item_pic{
+    width: 146px;
+    height: 172px;
+    background: no-repeat center;
+    background-size: 100% 100%;
+    float: left;
+    margin-left: 35px;
+}
+/*-------公司相册区域样式---------------*/
+.ph{
+	width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.ph_area{
+	width: 100%;
+}
+.ph_til{
+    margin-top: 25px;
+    width: 100%;
+    height: 30px;
+    font-size: 18px;
+    color: #323232;
+    border-left: 4px solid #ff7519;
+    padding-left: 12px;
+    line-height: 30px;
+}
+.ph_list{
+	width:100%;
+}
+.li_pic{
+   width: 291px;
+    height: 173px;
+    background: no-repeat center;
+    background-size: 100% 100%;
+    float: left;
+    margin-top: 18px;
+}
+.li_pic:not(:nth-child(3n+1)){
+	margin-left: 10px;
+}

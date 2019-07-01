@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>支付页面</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" href="css/zf.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<div class="entire" id="rrapp">
+    <div class="logo">
+        <div class="logo_sub">
+            <div class="logo_bg"></div>
+            <div class="page_tip">我的收银台</div>
+            <div class="tel"><a href="index.html">返回首页</a></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="con">
+        <ul class="tb_mn">
+            <li class="mn_active">个人网银支付</li>
+            <li>企业网银支付</li>
+        </ul>
+        <div class="tb_con">
+            <div class="con_item" style="display: block;">
+                <div class="zf_sel">
+                    <div class="zf_item">
+                        <label for=""><input type="radio" name="sel_option_1" checked="checked"/><span></span></label>&nbsp;&nbsp;
+                        <div class="zf_fs zfb">支付宝</div>
+                        <div class="tj_blue">推荐</div>
+                        <div class="zf_pti">支付&nbsp;<span>{{needPay}}</span>&nbsp;元</div>
+                    </div>
+                    <div class="zf_item">
+                        <label for=""><input type="radio" name="sel_option_1"/><span></span></label>&nbsp;&nbsp;
+                        <div class="zf_fs wx">微信</div>
+                        <div class="tj">推荐</div>
+                    </div>
+                    <div class="zf_item">
+                        <label for=""><input type="radio" name="sel_option_1"/><span></span></label>&nbsp;&nbsp;
+                        <div class="zf_fs zgyh">中国农业银行</div>
+                        <div class="kh_xx">
+                            <span class="cxkzh">**7575</span>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span class="cxklx">储蓄卡&nbsp;|&nbsp;快捷</span>
+                        </div>
+                        <div class="tj">推荐</div>
+                    </div>
+                </div>
+                <div class="other_fk_btn">
+                    <div class="other_fk_btn_a">其他付款方式</div>
+                    <div class="other_fk_btn_b">添加快捷/网银付款</div>
+                </div>
+                <div class="finish_tip">安全设置检测成功！无需短信校验。</div>
+                <div class="zfb_mm">
+                    <p class="zfmm_p">支付宝支付密码：</p>
+                    <div class="zfmm_shuru">
+                        <div class="mm_div">
+                            <input type="password" maxlength="1" onchange="this.value=this.value.substring(0, 1)"
+                                   onkeydown="this.value=this.value.substring(0, 1)"
+                                   onkeyup="this.value=this.value.substring(0, 1)"/>
+                        </div>
+                        <div class="mm_div">
+                            <input type="password" maxlength="1" onchange="this.value=this.value.substring(0, 1)"
+                                   onkeydown="this.value=this.value.substring(0, 1)"
+                                   onkeyup="this.value=this.value.substring(0, 1)"/>
+                        </div>
+                        <div class="mm_div">
+                            <input type="password" maxlength="1" onchange="this.value=this.value.substring(0, 1)"
+                                   onkeydown="this.value=this.value.substring(0, 1)"
+                                   onkeyup="this.value=this.value.substring(0, 1)"/>
+                        </div>
+                        <div class="mm_div">
+                            <input type="password" maxlength="1" onchange="this.value=this.value.substring(0, 1)"
+                                   onkeydown="this.value=this.value.substring(0, 1)"
+                                   onkeyup="this.value=this.value.substring(0, 1)"/>
+                        </div>
+                        <div class="mm_div">
+                            <input type="password" maxlength="1" onchange="this.value=this.value.substring(0, 1)"
+                                   onkeydown="this.value=this.value.substring(0, 1)"
+                                   onkeyup="this.value=this.value.substring(0, 1)"/>
+                        </div>
+                        <div class="mm_div">
+                            <input type="password" maxlength="1" onchange="this.value=this.value.substring(0, 1)"
+                                   onkeydown="this.value=this.value.substring(0, 1)"
+                                   onkeyup="this.value=this.value.substring(0, 1)"/>
+                        </div>
+                    </div>
+                    <div class="fget_pwd">
+                        <a href="#">忘记密码？</a>
+                    </div>
+                    <div class="clear"></div>
+                    <p class="pwd_atten">请输入6位数字支付密码</p>
+                    <div class="zf_btn" @click="payForVip">确认支付</div>
+                </div>
+            </div>
+            <div class="con_item" style="display: none;">
+                <div class="yh_sel">
+                    <div class="yh_item">
+                        <label for=""><input type="radio" name="sel_option_2" checked="checked"/><span></span></label>&nbsp;&nbsp;
+                        <div class="yh_pic" style="background-image: url(imgs/zgnyyh_tb.png);"></div>
+                    </div>
+                    <div class="yh_item">
+                        <label for=""><input type="radio" name="sel_option_2" checked="checked"/><span></span></label>&nbsp;&nbsp;
+                        <div class="yh_pic" style="background-image: url(imgs/zgjsyh_tb.png);"></div>
+                    </div>
+                    <div class="yh_item">
+                        <label for=""><input type="radio" name="sel_option_2" checked="checked"/><span></span></label>&nbsp;&nbsp;
+                        <div class="yh_pic" style="background-image: url(imgs/bfyh_tb.png);"></div>
+                    </div>
+
+                    <div class="yh_item">
+                        <label for=""><input type="radio" name="sel_option_2" checked="checked"/><span></span></label>&nbsp;&nbsp;
+                        <div class="yh_pic" style="background-image: url(imgs/zggsyh_tb.png);"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ljzf_btn">立即支付</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="a_contact">
+        <a href="#">关于我们</a>
+        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a href="#">商务合作</a>
+        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a href="#">法律声明</a>
+        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a href="#">隐私策略</a>
+        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a href="#">联系我们</a>
+        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a href="#">招聘中心</a>
+        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a href="#">服务条款</a>
+    </div>
+    <div class="foot_b">
+        copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+    </div>
+</div>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/zf.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/common.js"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/zf.js"></script>
+</body>
+</html>

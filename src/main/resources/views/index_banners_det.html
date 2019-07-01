@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/swiper/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index_ads_detail.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+
+<body>
+<div id="rrapp">
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="/">Harlan Mall</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide_zh.html">中国供应商入口</a></li>
+                <!--<li><a href="shop_cart_en.html">My shopping cart ></a></li>-->
+                <li class="red_bg"><a href="goods_employed_self.html">Self-support</a></li>
+                <li class="red_bg"><a href="goods_employed_third.html">ThirdPart-support</a></li>
+				<li class="red_bg" style="color:#ff792d;"><a href="find_goods_list.html"><strong>Inquiry Platform</strong> </a></li>
+            </ul>
+            <ul class="header_fr">
+                <li v-if="user!=null">
+                    <a href="pe_index_b.html">My harlan</a>
+                </li>
+                <li v-if="user==null">
+                    <a href="login_en.html">Sign in</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                    <a href="register_en.html">Register</a>
+                </li>
+                <li><a href="new_explain8_e.html">Help Center</a></li>
+                <!--<li class="lang_li">
+                    <span>Language</span>
+                    <div class="span_sj"></div>
+                    <div class="lang_mn" style="display: none;">
+                        <div class="lang_item"><a href="#">简体中文</a></div>
+                        <div class="lang_item"><a href="#">繁體中文</a></div>
+                        <div class="lang_item"><a href="#">English</a></div>
+                        <div class="lang_item"><a href="#">한국어 </a></div>
+                        <div class="lang_item"><a href="#">日本語</a></div>
+                    </div>
+                </li>-->
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!------------------顶部区域结束-------------->
+    <div class="entire">
+        <!--搜索区域开始-->
+        <div class="search_area">
+            <div class="search_area_sub">
+                <div class="search_logo"><a href="index.html"></a></div>
+                <div class="search_btn_list">
+                     <a href="shop_cart_en.html" class="cart_btn" v-show="carShow">My cart <span>{{gross}}</span></a>
+                </div>
+                <div class="search_div">
+                    <div class="search_fl">
+                        <div class="search_whitch">Supplier</div>
+                        <ul class="search_ul" style="display: none;">
+                            <li @click="searchType='product'">Product</li>
+                            <li @click="searchType='supplier'">Supplier</li>
+                            <li @click="searchType='cas'">CAS</li>
+                        </ul>
+                        <div class="search_input_div">
+                            <input type="text" v-model="searchParam"/>
+                        </div>
+                    </div>
+                    <div class="search_btn" @click="redirectSel">Search</div>
+                </div>
+            </div>
+        </div>
+        <!--------------搜索区域结束-------------->
+        <!--ueditor-->
+        <div id="container" v-html="banner.ue_content"></div>
+    </div>
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">download :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain1_e.html">Contact Us</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_file1_e.html">Contact Customer Service</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <a href="new_explain2_e.html">Business Cooperation</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_explain8_e.html">Merchant help</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+                <span>&nbsp;|&nbsp;</span> -->
+                <a href="new_explain4_e.html">Product Library</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain5_e.html">Friendly Link</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain6_e.html">Privacy Policy</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain7_e.html">Legal Statement</a>
+            </div>
+            <div class="foot_line"></div>
+           <!--  <div class="a_txt_b">
+                Browse Alphabetically:
+                <a href="new_explain8_e.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain9_e.html">Showroom </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain10_e.html">Country Search </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain11_e.html">Suppliers</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain12_e.html">Wholesaler </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain13_e.html">Affiliate</a>
+            </div>
+            <div class="a_txt_b">
+                Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+                Enforcement
+                Compliance Guide
+            </div> -->
+            <div class="a_txt_b">
+                copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script type="text/javascript" src="js/jQuery/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<script src="lib/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/index_banners_det.js"></script>
+</html>

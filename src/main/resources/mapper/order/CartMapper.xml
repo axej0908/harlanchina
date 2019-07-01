@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.order.dao.CartDao">
+
+    <!--query my carts with shop name-->
+    <resultMap id="MyCartsMap" type="com.axej.harlan.goods.bean.ShopBean">
+        <id property="shop_id" column="shop_id"></id>
+        <result property="shop_name" column="shop_name"></result>
+        <result property="com_name" column="com_name"></result>
+        <result property="com_logo" column="com_logo"></result>
+        <result property="user_id" column="user_id1"></result>
+
+        <collection property="cartBeans" ofType="com.axej.harlan.order.bean.CartBean">
+            <id property="cart_id" column="cart_id"></id>
+            <id property="user_id" column="user_id"></id>
+            <id property="goods_id" column="goods_id"></id>
+            <id property="goods_num" column="goods_num"></id>
+            <id property="goods_name" column="goods_name"></id>
+            <id property="goods_price" column="goods_price"></id>
+            <id property="color_light" column="color_light"></id>
+            <id property="color_power" column="color_power"></id>
+            <id property="deliver_addr" column="deliver_addr"></id>
+            <id property="create_time" column="create_time"></id>
+            <id property="product_picture" column="product_picture"></id>
+            <id property="checked" column="checked"></id>
+            <id property="package_opt" column="package_opt"></id>
+        </collection>
+    </resultMap>
+
+    <delete id="deleteBatch">
+        delete from biz_cart where cart_id in
+        <foreach collection="array" item="cart_id" open="(" close=")" separator=",">
+            #{cart_id}
+        </foreach>
+    </delete>
+
+    <!--1.select carts-->
+    <select id="queryMyCartList" parameterType="map" resultMap="MyCartsMap">
+        select * from view_shop_cart where user_id = #{user_id}
+        order by create_time desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryMyCartTotal" parameterType="map" resultType="int">
+        select count(1) from view_shop_cart where user_id = #{user_id}
+    </select>
+
+    <insert id="save" parameterType="com.axej.harlan.order.bean.CartBean">
+        <selectKey keyProperty="cart_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into biz_cart (
+        user_id,
+        goods_id,
+        goods_num,
+        goods_name,
+        goods_price,
+        color_light,
+        color_power,
+        deliver_addr,
+        create_time,
+        package_opt
+        )
+        values
+        (
+        #{user_id},
+        #{goods_id},
+        #{goods_num},
+        #{goods_name},
+        #{goods_price},
+        #{color_light},
+        #{color_power},
+        #{deliver_addr},
+        #{create_time},
+        #{package_opt}
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.axej.harlan.order.bean.CartBean">
+        delete from biz_cart
+        <where>
+            <if test="cart_id!=null and cart_id!=0">cart_id = #{cart_id}</if>
+        </where>
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.order.bean.CartBean">
+        update biz_cart
+        <set>
+            <if test="user_id!=null and user_id!=0">user_id=#{user_id},</if>
+            <if test="goods_id!=null and goods_id!=0">goods_id=#{goods_id},</if>
+            <if test="goods_num!=null and goods_num!=0">goods_num=#{goods_num},</if>
+            <if test="goods_name!=null and goods_name.trim()!=''">goods_name=#{goods_name},</if>
+            <if test="goods_price!=null and goods_price!=0">goods_price=#{goods_price},</if>
+            <if test="color_light!=null and color_light.trim()!=''">color_light=#{color_light},</if>
+            <if test="color_power!=null and color_power.trim()!=''">color_power=#{color_power},</if>
+            <if test="deliver_addr!=null and deliver_addr.trim()!=''">deliver_addr=#{deliver_addr},</if>
+            <if test="package_opt!=null and package_opt.trim()!=''">package_opt=#{package_opt}</if>
+        </set>
+        where cart_id = #{cart_id}
+    </update>
+
+    <select id="queryObject" parameterType="com.axej.harlan.order.bean.CartBean"
+            resultType="com.axej.harlan.order.bean.CartBean">
+        select * from biz_cart
+        <where>
+            <if test="cart_id!=null and cart_id!=0">
+                cart_id = #{cart_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.order.bean.CartBean">
+        select * from biz_cart
+        <where>
+            <if test="user_id!=null and user_id!=0">
+                user_id = #{user_id}
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from biz_cart
+        <where>
+            <if test="user_id!=null and user_id!=0">
+                user_id = #{user_id}
+            </if>
+        </where>
+    </select>
+
+</mapper>

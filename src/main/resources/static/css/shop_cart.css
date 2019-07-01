@@ -1,0 +1,473 @@
+﻿html,body{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+	
+}
+.entire{
+	width: 100%;
+	background-color: #FFFFFF;
+}
+.search_div {
+    margin-right: 0px;
+}
+/*-------------------------------------second------------------------------------------*/
+.second{
+	margin-top: 20px;
+	width: 100%;
+}
+.second_sub{
+	width: 1200px;
+	margin: 0 auto;
+}
+.cart_head{
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+    font-size: 18px;
+    color: #333333;
+}
+.cart_head_fl{
+	float: left;
+}
+.cart_head_fr{
+	float: right;
+}
+.car_tal{
+	width: 100%;
+    margin-bottom: 58px;
+}
+.tal_header{
+	width: 100%;
+	height: 46px;
+	border-top: 2px solid #efefef;
+}
+.tal_header div{
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	font-size: 14px;
+	color: #838383;
+	float: left;
+}
+.div3,.div4,.div5,.div6,.div7{
+	border-left: 1px solid #fff;
+}
+.div1{
+	width: 92px;
+}
+
+.div2{
+	width:454px;
+}
+.div3{
+	width:162px;
+}
+.div4{
+	width: 150px;
+}
+.div5{
+	width:162px;
+}
+.div6{
+	width:142px;
+}
+.div7{
+	width:124px;
+}
+/*---------checkbox样式-----------------*/
+.ch label{
+	width:14px;
+	height:14px;
+	display:inline-block;
+	cursor:pointer;
+	position: relative;
+	top: 2px;
+}
+.ch label input[type="checkbox"],.ch label span{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.ch label input[type="checkbox"]{
+	appearance: none; 
+	-webkit-appearance: none;
+	outline: none;
+	z-index: 1;
+	background: transparent;
+	opacity: 0;
+}
+
+.ch label input[type="checkbox"] + span{
+	display:inline-block;background:url(../imgs/cart_checkbox_n.png) no-repeat;
+	 background-position:center;
+	 background-size: 14px 14px;
+ }
+.ch label input[type="checkbox"]:checked + span{
+	background-position:center;
+	background:url(../imgs/cart_checkbox_y.png)  no-repeat;
+	background-size: 14px 14px;
+}
+.sj_xx{
+	height: 32px;
+	float: left;
+    line-height: 32px;
+}
+.zybq{
+	width: 138px;
+	height: 32px;
+	float: left;
+	margin-left: 16px;
+}
+.zysj{
+	width: 18px;
+	height: 32px;
+	float: left;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-right: 18px solid #fbb01f;
+}
+.zyjx{
+	width: 120px;
+	height: 32px;
+	float: left;
+	background-color: #fbb01f;
+	font-size: 12px;
+	color: #fff;
+	line-height: 32px;
+	text-align: center;
+}
+.supplier_list{
+	width:100%
+}
+.supplier{
+	width: 100%;
+}
+.shang{
+	width: 100%;
+	height: 64px;
+	padding-top: 20px;
+	line-height: 54px;
+    padding-left: 6px;
+    font-size: 14px;
+    color: #838383;
+}
+.goods_list{
+	width: 100%;
+	border-bottom: 1px solid #cdcdcd;
+}
+.good_item{
+	width: 100%;
+	height: 140px;
+	background-color: #fafafa;
+	border-left: 1px solid #cdcdcd;
+	border-right: 1px solid #cdcdcd;
+	border-top: 1px solid #cdcdcd;
+}
+.good_item>div{
+	float: left;
+}
+.item_div1{
+	width: 64px;
+	padding-top: 62px;
+	padding-left: 30px;
+}
+.item_div2{
+	width:442px;
+}
+.item_pic{
+	width: 97px;
+	height: 98px;
+	margin-top: 21px;
+	border: 1px solid #e7e7e7;
+	background: no-repeat center;
+	background-size: 100% 100%;
+	float: left;
+	
+}
+.item_intro{
+    float: left;
+    padding-top: 16px;
+    line-height: 18px;
+    text-align: justify;
+    margin-top: 21px;
+    width: 188px;
+    height: 98px;
+    font-size: 14px;
+    color: #333333;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+    margin-left: 10px;
+}
+.item_color{
+	margin-top: 21px;
+	padding-top: 16px;
+	width: 135px;
+	height: 98px;
+	float: left;
+	font-size: 14px;
+	color: #999;
+	margin-left: 10px;
+	line-height: 18px;
+	 word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+}
+.item_div3{
+    width: 162px;
+    height: 98px;
+    padding-top: 16px;
+    margin-top: 21px;
+    margin-left: 32px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    line-height: 18px;
+    padding-left: 10px;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+}
+.item_div4{
+	width: 161px;
+	height: 98px;
+	padding-top: 16px;
+	margin-top: 21px;
+	font-size: 14px;
+	color: #929292;
+	line-height: 18px;
+	text-align: center;
+}
+.item_div5{
+	width:162px;
+	height: 100%;
+	padding-left: 23px;
+	padding-top: 37px;
+	 word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+    font-weight: bold;
+    color: #ef2f2e;
+	
+}
+.num_cut,.num_add,.num{
+	height: 26px;
+	border: 1px solid #b7b7b7;
+	text-align: center;
+	line-height: 26px; 
+    display: inline-block;
+	font-size: 14px;
+	color: #333;
+}
+.num_cut,.num_add{
+	width: 26px;
+	text-align: center;
+	cursor: pointer;
+}
+.num_add{
+	margin-left: 6px;
+}
+.num{
+	width: 59px;
+	margin-left: 6px;
+}
+.num input{
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 14px;
+	color: #333;
+	border: none;
+	outline: none;
+}
+.item_div6{
+	width:160px;
+	height: 98px;
+	padding-top: 16px;
+	margin-top: 21px;
+	font-size: 14px;
+	color: #ff3d3d;
+	line-height: 18px;
+	text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 10px;
+}
+
+.item_div6 p{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #5a5a5a;
+    line-height: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-style: italic;
+}
+.item_div6 p:nth-child(1){
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #ff751a;
+    line-height: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.item_div6 p:nth-child(2){
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #317ee7;
+    line-height: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.bottom_op{
+	width: 100%;
+	height: 52px;
+	background-color: #e5e5e5;
+	margin-top: 20px;
+	color: #000;
+}
+.bottom_op>div{
+	height: 100%;
+	padding-left: 6px;
+	line-height: 52px;
+	font-size: 14px;
+}
+.op_div1{
+	width: 88px;
+	float: left;
+	cursor: pointer;
+}
+.op_div4{
+	color: #ff3d3d;
+	text-decoration: underline;
+}
+.op_div2,.op_div3,.op_div4,.op_div5{
+	float: left;
+	margin-left: 21px;
+	cursor: pointer;
+}
+.count_btn,.count_num,.cout_price{
+	float: right;
+}
+.count_num,.cout_price{
+	float: right;
+	margin-right: 50px;
+}
+.count_num span,.cout_price span{
+	font-size: 20px;
+	color: #ff3d3d;
+	font-weight: bold;
+}
+.count_btn{
+	width: 168px;
+    height: 100%;
+    background-color: #ff751a;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    float: right;
+    cursor: pointer;
+}
+.bottom_op>.count_btn {
+    font-size: 18px;
+}
+.count_btn_active{
+	background-color: #ff3d3d;
+	color: #fff;
+}
+/*------------------------------------------------third---------------------------------*/
+.third{
+	width: 100%;
+	height: 370px;
+	margin-top: 34px;
+}
+.third_sub{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+}
+.third_til{
+	width: 100%;
+	height: 50px;
+	font-size: 30px;
+	color: #0d4fb1;
+	border-bottom: 2px solid #e6e6e6;
+}
+.third_til_li{
+	width: 160px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 20px;
+	color: #ff3d3d;
+	border-bottom: 2px solid #ff3d3d;
+}
+.ul_list{
+	width: 100%;
+	height: 291px;
+	margin-top: 21px;
+}
+.ul_list li{
+	width: 226px;
+	height: 100%;
+	float: left;
+	border: 1px solid #ededed;
+}
+.ul_list li:not(:first-child){
+	margin-left: 17px;
+}
+.li_item_pic{
+	width: 100%;
+	height: 218px;
+	background: no-repeat center;
+	background-size: 100% 100%;
+	border-bottom: 1px solid #ededed;
+}
+.li_item_txt{
+	width: 100%;
+	height: 72px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+.price{
+	width: 100%;
+	height: 24px;
+	line-height: 24px;
+	font-size: 14px;
+	color: #fe6263;
+	padding-left: 14px;
+	padding-right: 14px;
+}
+.nam{
+	width: 100%;
+	height: 24px;
+	line-height: 24px;
+	font-size: 14px;
+	color: #000;
+	padding-left: 14px;
+	padding-right: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+}

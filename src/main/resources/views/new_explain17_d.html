@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css"/>
+     <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" href="css/new_file3.css">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <style type="text/css">
+    	.con_mid h6{
+    		font-size: 30px;
+    		color: #333333;
+    		font-weight: 600;
+    		text-align: center;
+    		margin-top: 20px;
+    		margin-bottom: 20px;
+    	}
+    	.con_mid p{
+    		font-size: 22px;
+    		color: #585858;
+    	}
+    	.con_mid img{
+    		display: block;
+    		width: 100%;
+    		height: auto;
+    		margin-top: 20px;
+    		margin-bottom: 20px;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="entire" id="rrapp">
+    	 <!--顶部区域开始-->
+		<div class="header">
+			<div class="header_sub">
+				<ul class="header_fl">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="new_explain16_c.html">合作与服务</a></li>
+					<li><a href="goods_employed_self.html">自营商城</a></li>
+					<li><a href="goods_employed_third.html">第三方商城</a></li>
+					<li style="color:#FFCC66;"><a href="find_goods_list.html">系统询盘 </a></li>
+				</ul>
+				<ul class="header_fr">
+					<!--登录之后显示-->
+					<li v-if="user!=null" class="out_area"><a href="pbm_order_seller1.html">我的化浪</a> <a @click="logout">退出</a></li>
+					<!--登录之前显示-->
+					<li v-if="user==null" class="no_land"><a href="login_zh.html">登录</a> | <a href="register_zh.html">注册</a></li>
+					<li><a href="new_explain17_c.html">帮助中心</a></li>
+					<!--<li class="lang_li">
+						<span>Language</span>
+						<div class="span_sj"></div>
+						<div class="lang_mn" style="display: none;">
+							<div class="lang_item">English</div>
+							<div class="lang_item">Español</div>
+							<div class="lang_item">한국어 </div>
+							<div class="lang_item">日本語</div>
+							<div class="lang_item">中文</div>
+						</div>
+					</li>-->
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+	    <!------------------顶部区域结束-------------->
+        <!--搜索区域开始-->
+		<div class="search_area">
+			<div class="search_area_sub">
+				<div class="search_logo"><a href="index.html"></a></div>
+				<div class="search_btn_list">
+					<!-- <a href="shop_cart_en.html" class="cart_btn" v-show="carShow">My cart <span>{{gross}}</span></a> -->
+				</div>
+				<div class="search_div">
+					<div class="search_fl">
+						<div class="search_whitch">Supplier</div>
+						<ul class="search_ul" style="display: none;">
+							<li @click="searchType='product'">Product</li>
+							<li @click="searchType='supplier'">Supplier</li>
+							<li @click="searchType='cas'">CAS</li>
+						</ul>
+						<div class="search_input_div">
+							<input type="text" v-model="searchParam"/>
+						</div>
+					</div>
+					<div class="search_btn" @click="redirectSel">Search</div>
+				</div>
+			</div>
+		</div>
+        <!--------------搜索区域结束-------------->
+		<div class="banner_box">
+			<img src="imgs/tianjiaimg/lansebanner.jpg">
+		</div>  
+		<div class="con_mid" id="digests">
+			<!--<div class="TJ_bibaoti">
+				<div class="TJ_bibaoti1"></div>
+				<h1 class="TJ_bibaoti2">How to register an account</h1>
+				<div class="TJ_bibaoti1"></div>
+			</div>
+			<p class="p_tip">
+				Visit the website <a href="http://harlanchina.com/index.html">http://harlanchina.com/index.html</a> and click on the top right side “register”
+			</p>
+			<div class="TJ_file3_a">
+				Purchaser registration
+			</div>
+			<div class="TJ_file3_b">
+				1.	Enter the page of “mobile registration”, fill in the mobile phone number , verification code and password.
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_1.png" alt="">
+			</div>
+			<div class="TJ_file3_b">
+				2.	Click “Purchase goods” and then click “register”
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_2.png" alt="">
+			</div>
+			<div class="TJ_file3_b">
+				3.	Registered successfully.
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_3.png" alt="">
+			</div>
+			<div class="TJ_file3_a">
+				Supplier registration
+			</div>
+			<div class="TJ_file3_b">
+				1.	Enter the page of “mobile registration”, fill in the mobile phone number , verification code and password.
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_4.png" alt="">
+			</div>
+			<div class="TJ_file3_b">
+				2.	Choose “Personal supply” or “Company supply”，complete personal information or company information, submit information to finish registration.
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_5.png" alt="">
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_6.png" alt="">
+			</div>
+			<div class="TJ_file3_b">
+				3.  Registered successfully
+			</div>
+			<div class="img_box">
+				<img src="imgs/help_img/jt_7.png" alt="">
+			</div>-->
+			<h6>1.1用户注册</h6>
+			<p>化浪平台网站的引导页面有登录/注册：</p>
+			<img src="imgs/help_img/1.png"/>
+			<p>1、若您是以采购者身份注册，请勾选“Purchase goods”，输入您本人的手机号并填写验证码，编辑密码，点击注册之后就可以登录；</p>
+			<img src="imgs/help_img/2.png"/>
+			<p>2、若您是以供货商身份注册，请勾选“我是供货商”进行注册;</p>
+			<img src="imgs/help_img/3.png"/>
+			<p>若您是个人供应商就勾选个人供应商填写个人信息并注册：</p>
+			<img src="imgs/help_img/4.png"/>
+			<p>若您是企业供应商就勾选企业供应商填写企业信息并注册：</p>
+			<img src="imgs/help_img/5.png"/>
+			<p>3、注册成功。</p>
+			<p>若您是中国供应商，则可在网站引导页进行注册中国供应商账号：</p>
+			<img src="imgs/help_img/6.png"/>
+			<img src="imgs/help_img/7.png"/>
+			<p>1、点击免费注册进行注册：</p>
+			<img src="imgs/help_img/8.png"/>
+			<p>2、输入您本人的手机号并填写验证码，编辑密码，点击注册之后就可以登录；</p>
+			<img src="imgs/help_img/9.png"/>
+			<h6>1.2用户登录</h6>
+			<p>选择登录，输入手机号/用户名/邮箱、再输入密码，选择立即登录；</p>
+			<img src="imgs/help_img/10.png"/>
+			<p>采购商账户管理界面：</p>
+			<img src="imgs/help_img/11.png"/>
+			<img src="imgs/help_img/12.png"/>
+			<p>供应商账号管理界面：</p>
+			<img src="imgs/help_img/13.png"/>
+			<img src="imgs/help_img/14.png"/>
+			<h6>1.3修改密码</h6>
+			<p>1、登录账号时选择忘记密码；</p>
+			<img src="imgs/help_img/15.png"/>
+			<p>2、选择输入手机号，发送验证码：</p>
+			<img src="imgs/help_img/16.png"/>
+			<p>3、输入新密码（密码由6-20位字母、字符、数字组成）。</p>
+			<img src="imgs/help_img/17.png"/>
+			<h6>2.1现货采购</h6>
+			<p>方法一：直接搜索产品名或者CAS号：</p>
+			<img src="imgs/help_img/18.png"/>
+			<p>方法二：直接点击Self-support，在自营商城选择您想要购买的产品：</p>
+			<img src="imgs/help_img/19.png"/>
+			<p>方法三：直接点击ThirdPart-support，在第三方商城选择您想要购买的产品：</p>
+			<img src="imgs/help_img/20.png"/>
+			<h6>2.2付款</h6>
+			<p>在提交订单后，自动跳入支付页面，可以选择支付宝、微信、线下支付、供应链金融这四种支付方式：</p>
+			<img src="imgs/help_img/21.png"/>
+			<p>化浪线下支持线下转账，支付担保功能。当您所在的公司不支持在线支付功能时。您可以使用“公司转账”的方式进行线下转账。</p>
+			<h6>2.3送货</h6>
+			<p>试剂类产品主要是两种方式：</p>
+			<p>1、供应商直发；</p>
+			<p>2、化浪自营物流或第三方物流；</p>
+			<p>如果有特殊的要求，可以在合同中注明。</p>
+			<img src="imgs/help_img/22.png"/>
+			<p>大货类产品有三种发货方式：</p>
+			<p>1、供应商直发；</p>
+			<p>2、物流送货；</p>
+			<p>3、客户自提。</p>
+			<p>如果有特殊的要求，可以在合同中注明。</p>
+			<p>详细物流信息可以在我的订单中，选择查看物流；</p>
+			<h6>2.4售货服务规则</h6>
+			<p>一、申明及处理方式</p>
+			<p>买卖双方在交易履行过程中产生交易争议，双方应自行协商解决，若双方无法协商或协商不能达成一致意见，一方或双方可申请提交化浪商城进行调解处理，化浪商城有权根据本规则决定是否受理相关争议投诉。对于决定受理的争议，化浪商城将根据本规则对相关事实进行认定，双方均有义务针对自己主张提供相关事实依据，化浪商城有权根据已搜集到的资料进行独立判断，并作出最终处理结果。同时，若认定某方存在违规行为，将按本规则进行处罚。</p>
+			<p>鉴于化浪商城非专业争议解决机构，对证据的鉴别能力及对纠纷的处理能力有限，不保证争议处理结果符合买卖双方的期望，亦不对争议处理结果承担任何责任。如化浪商城介入调解后，买卖双方仍无法就相关争议达成一致意见的，买卖双方应采用诉讼或仲裁等方式解决争议。</p>
+			<p>买卖双方在化浪商城进行在线交易所产生的贸易争议，由化浪商城根据本规则进行处理。但双方是通过非商城线下支付交易所产生的争议，买卖双方自行解决争议。</p>
+			<p>二、定义</p>
+			<p>1、在线交易：指买卖双方在化浪商城上通过包括但不限于在线支付、在线信用担保金、银行汇款、分期付款等在线支付方式所进行的交易。</p>
+			<p>2、投诉方：指在化浪商城上发起交易争议处理诉求的用户。</p>
+			<p>3、被投诉方：指投诉方投诉的化浪商城用户。</p>
+			<p>4、交易争议处理：指买卖双方在交易履行过程中产生交易争议，因双方无法自行协商或协商不能达成一致，一方或双方申请提交化浪商城进行调解处理。</p>
+			<p>三、受理条件</p>
+			<p>1、投诉方须提供真实、有效的身份证明、联系方式；</p>
+			<p>2、有具体明确的被投诉方；</p>
+			<p>3、有具体明确的投诉请求、事实和理由；</p>
+			<p>4、提供必要、准确、详实的事实依据和证明材料；</p>
+			<p>5、产生交易为在线交易；</p>
+			<p>6、其他化浪商城认为需要具备的条件。</p>
+			<p>四、受理期间</p>
+			<p>在线上订单形成之日起至订单交易成功或确认收货2天内。</p>
+			<p>五、受理范围</p>
+			<p>受理的争议范围：商品问题、卖家行为类问题、买家行为类问题、其他特殊问题等，具体如下：</p>
+			<p>1、商品问题：买家所购买之商品本身存在描述不符、破损等问题；</p>
+			<p>2、卖家行为类问题：卖家违反交易规则或约定的行为问题；</p>
+			<p>3、买家行为类问题：买家违反交易规则或约定的行为问题；</p>
+			<p>4、其他特殊问题：其他化浪商城认为需要受理的特殊问题，如化浪商城相关行业有特殊规定，以行业的独立标准为准。</p>
+			<p>六、买卖家交易须知</p>
+			<p>1、发货、收货、退货相关问题</p>
+			<p>（1）发货</p>
+			<p>1）买家下单时，有义务向卖家提供有效的收货地址，保证本人或相关授权代收人可签收，否则因此导致的损失由买家承担；</p>
+			<p>2）卖家有义务在发布商品信息时明确注明是否指定物流、运费支付方式等信息，或在买家下单后就是否指定物流、运费支付方式等问题取得买家同意，否则因此导致的损失由卖家承担。</p>
+			<p>3）买家对发货时限、到货时限、包装方式等有特殊要求，应在下单前与卖家确认，或在下单后取得卖家同意，否则之后拒收或主张退货，相应风险由买家自行承担。</p>
+			<p>4）已约定发货或到货时间，因卖家原因超期，买家拒收后，卖家应自行联系物流及时召回商品，否则因此导致的损失由卖家自行承担。</p>
+			<p>（2）收货</p>
+			<p>买家签收货物前，应就能够即时验收的表面一致问题，包括但不限于是否存在破损、变形、少/错件等情况进行判断，并有权在出现上述情形时拒签商品；一旦签收，则不得以货物存在即时验收范围内的瑕疵或缺陷为由主张退款、退（换）货，但买家能够提供有效相反证据或交易双方另有约定的除外。</p>
+			<p>（3）退货</p>
+			<p>1）交易双方达成退货协议后，卖家有义务向买家提供有效的收货地址，保证本人或相关授权代收人可签收，否则因此导致的损失由卖家承担。</p>
+			<p>2）交易双方达成退货协议后，买家应在7天内将商品寄出，逾期卖家有权拒绝继续退货，双方另有约定的除外。</p>
+			<p>3）在商品本身无问题，交易双方协议退货的情况下，买家须保证所退商品不影响卖家的二次销售，否则买家需承担全部责任。</p>
+			<p>4）交易双方在退（换）货时应明确约定运费的承担方，若因约定不明导致纠纷，化浪商城将根据责任判定运费的承担方。包邮的交易，如仅因买家主观原因退货，买家需承担卖家发货运费和退货运费，但交易双方另有约定的除外。</p>
+			<p>2、定制类商品相关注意事项</p>
+			<p>（1）针对定制类商品交易，买家应在订单成交前与卖家就定制商品的样品或商品细节进行交互确认，否则因此导致的损失由买家自行承担。</p>
+			<p>（2）若买家主张定制商品与样品不一致，或细节与约定不符，须提交存在差异的相关事实材料，否则买家应承担不利后果。</p>
+			<p>（3）因买家原因导致样品毁损或丢失而无法对样品与定制商品间的一致性进行确认的，相应责任由买家自行承担。</p>
+			<p>3、价格优惠及赠品问题</p>
+			<p>（1）针对存在价格优惠的，任意方不得基于交易后期发生部分或全部退货的情况，主张按照优惠前的货物价格计算相关费用，但双方另有约定的除外。</p>
+			<p>（2）针对卖家未在销售页面进行标注或在订单成交前未告知买家其所购货物附送赠品的，买家不得就赠品主张异议，无论最终买家是否收到赠品。</p>
+			<p>（3）卖家须在销售页面显著位置标注赠品价值，否则不得在后续发生赠品退回且损坏的情况下，向买家主张损失赔偿。</p>
+			<p>4、其他注意事项</p>
+			<p>（1）卖家对销售的商品负有承担售后问题的责任，须自觉遵守对买家做出的售后服务承诺，并遵守化浪商城的规则及相关法律、法规的规定。</p>
+			<p>（2）买家不得以部分商品存在描述不符或质量问题为由，主张全部商品的退款或退（换）货，如根据商品特性确需全部退货或交易双方另有约定的除外。</p>
+			<p>（3）卖家发出的商品被国家行政司法机关（包括但不限于海关、工商行政管理局、人民法院等）扣押、查封，在买家提供相关证明材料后，卖家应承担相应责任。</p>
+			<p>七、争议处理流程</p>
+			<p>1.未确认收货</p>
+			<p>（1）发起退款申请</p>
+			<p>（2）与卖家协商一致</p>
+			<p>（3）如无法协商一致申请客服介入，买卖双方提交凭证给化浪商城。</p>
+			<p>2.已确认收货</p>
+			<p>（1）发起售后申请</p>
+			<p>（2）与卖家协商一致</p>
+			<p>（3）如无法协商一致申请客服介入，买卖双方提交凭证给化浪商城。</p>
+			<p>八、附则</p>
+			<p>1.本规则解释权归化浪商城所有。</p>
+			<p>2.化浪商城有权不时修订本规则并公示，修订后的规则于公示日或公示内容指定日生效。</p>
+			<h6>3.1检索词</h6>
+			<h6>3.2收藏词条</h6>
+			<h6>4.1服务介绍</h6>
+			<p>1、供应链金融服务。化浪为通过审核的采购商提供金融支持，通过审核的企业出于资金利用的利益有效化，可申请平台供应链融资服务。平台则会依据企业需求，为其提供代理采购或是延长账期的服务。</p>
+			<p>供应链金融包含贸易链融资、贸易授信两种模式。</p>
+			<p>1.1 贸易链融资：全面降低供应商资金压力，实现资金利用利益增大化，平台依据供应商与外国买家签订的供销合同，针对单笔或多笔合同为供应商提供贸易链融资服务，实现提前回收资金货款。</p>
+			<p>1.2 贸易授信：以供应商实际贸易情况为背景，供应商依据已签订的供销合同向平台申请授信融资服务，确保供应商进行及时的原料采购、生产和供应。</p>
+			<p>2、化浪平台提供免费监理服务。凡是在化浪平台生成的订单，化浪线下监理团队会在订单生成后，免费提供全过程跟踪控制产品的品质与装运服务，直至产品顺利进入海关。同时我们会将监理过程中的照片或视频上传至平台客户端，让客户时时在线掌握订单与产品的状态。</p>
+			<p>3、应用测试服务。化浪平台线下自建品控中心，应用测试服务采用了国际先进标准设备仪器，模拟产品使用场景、流程、工艺，测试数据全部为计算机数据。化浪亦接受用户的定制服务，按照用户提供的方法、要求进行测试，24小时内完成。化浪测试的宗旨是：无论您处于哪个细分领域，我们都会在短时间内给您真实、准确的产品使用效果。</p>
+			<p>4、退货/换货：化浪承诺，凡是在化浪平台订购的产品，无论自营还是代理，化浪都将提供无条件退换货服务。备注：1、采购商收到货物30天内；2、货品实物要与签约品名一致。</p>
+			<p>5、征信调查服务，化浪平台提供企业信用报告，包括企业全面、准确的资质及信用状况的证明，为各类信用交易提供重要的决策参与，减少不必要的信用风险和损失。化浪平台接受客户委托后，将按照委托的事项与目的对相关的企业或个人的信用信息进行征集、分类、分析等工作。化浪平台提供的征信调查服务增强了信用信息透明度，能全面及时掌握客户、供应商、合作企业的风险状况；为企业商务交易和信用管理决策提供信息和评估支持。</p>
+			<h6>4.2服务类型</h6>
+			<p>1、供应链金融服务</p>
+			<p>2、免费监理服务</p>
+			<p>3、应用测试服务</p>
+			<p>4、退换货服务</p>
+			<p>5、征信调查服务服务</p>
+			<h6>5.1联系客服</h6>
+			<p>Telephone: +0086-0574-89210089 (8:30-17:30)</p>
+			<p>Email address: service@harlanchina.com</p>
+			<p>Address: Room 1201-1202 Building No.1 Tsinghua High-tech Park 119 Zi Cheng Road Pan Huo Street Yin Zhou District Ningbo China</p>
+			<p>Contact customer service</p>
+			<p>Customer service tel: +0086-0574-89210089 (8:30-17:30)</p>
+			<h6>5.2商务合作</h6>
+			<p>想要你的产品更多的曝光吗？想得到线上线下全方位推广的服务吗？想在化浪平台帮你进行品牌宣传吗？想精准展现你的产品吗？</p>
+			<p>化浪，全球精细化工领头人！各种供应链服务一步到位，让你的生意更轻松！Harlan聚焦四大服务，全方位实时推送产品最新资讯。</p>
+			<p>站内排名：</p>
+			<p>1、搜索列表置顶位：个性展示图片置顶</p>
+			<p>2、搜索列表黄金展位：黄金展位，让搜索靠前</p>
+			<p>3、置顶图片广告，让精准的客户主动找上您</p>
+			<p>渠道推广：</p>
+			<p>1、Harlan培训推广 ：一线行业资讯，拓展你的商机</p>
+			<p>2、产品站外推广：SEM SEO 同步百度谷歌bing竞价排名海内外全覆盖</p>
+			<p>3、Harlan线下展会推广：借势营销，人脉拓展</p>
+			<p>品牌推广：</p>
+			<p>1、首页焦点展位：首页聚焦，品牌塑造</p>
+			<p>2、首页钻石展位：首页展示，位置醒目</p>
+			<p>基础推广：</p>
+			<p>1、实地深度认证：买卖更安心，搜索更靠前</p>
+			<p>2、上传产品：海量产品放大曝光，实力塑造</p>
+			<p>3、线上商城店铺：线上交易轻松便捷，安全可靠</p>
+		</div>
+		<!--底部区域开始-->
+		<div class="foot_bottom">
+			<div class="foot_sub">
+				<div class="download">
+					<div class="load_txt">下载 :</div>
+					<div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+					<div class="load_pic_b"><a href="hualang.apk"></a></div>
+				</div>
+				<div class="a_txt">
+					<a href="new_explain14_c.html">联系我们</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain15_c.html">联系客服</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain16_c.html">合作招商</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain17_c.html">商家帮助</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain18_c.html">手机化浪</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain19_c.html">产品库</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain20_c.html">友情链接</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain21_c.html">隐私政策</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain22_c.html">法律声明</a>
+				</div>
+				<div class="foot_line"></div>
+				<div class="a_txt_b">
+					按字母顺序浏览 ：
+					<a href="new_explain23_c.html">Onetouch</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain24_c.html">陈列室 </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain25_c.html">国家搜索 </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain26_c.html">供应商</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain27_c.html">批发商 </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain28_c.html">加盟 产品列表政策 - 知识产权保护</a>
+				</div>
+				<div class="a_txt_b">
+					产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+				</div>
+				<div class="a_txt_b">
+					@2017-2018 化浪（浙江）科技有限公司.版权所有.
+				</div>
+			</div>
+		</div>
+    	<!--底部区域结束-->
+    </div>
+</body>
+<script type="text/javascript" src="js/jQuery/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<!--<script src="../static/lib/common.js" type="text/javascript" charset="utf-8"></script>-->
+<script src="lib/base64.js"></script>
+<script src="lib/common.js"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/new_explain17_c.js"></script>
+</html>

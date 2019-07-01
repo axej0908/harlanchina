@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pe_index_vip2.css"/>
+    <link rel="stylesheet" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+<div class="entire" id="rrapp" v-cloak>
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="new_explain16_c.html">合作与服务</a></li>
+                <li><a href="shop_cart_en.html">我的购物车 ></a></li>
+            </ul>
+            <ul class="header_fr">
+                <li><a href="login_zh.html">登录</a> <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span> <a
+                        href="register_zh.html">注册</a></li>
+                <li><a href="new_explain17_c.html">帮助中心</a></li>
+                
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!------------------顶部区域结束-------------->
+
+    <div class="first">
+        <div class="first_title">
+            <span>开通会员 立享尊贵特权</span>
+            <p>
+                消费会员拿商品经济的视角去解读，顾名思义是某一类志趣相同、取向一致的消费人群，被商家归类梳理，并冠以俱乐部、精英族、小众群体的你谓，投其所好研发产品、完善服务。这是市场经济充分竞争的产物，应个性化需求而衍生的市场供给不断细分、再细分。也是一些商家采用会员制的方式，</p>
+        </div>
+        <div class="first_item">
+            <ul id="u1" class="u1">
+                <li>
+                    <span>￥<em>2000</em></span>
+                    <p>企业缴费</p>
+                    <a @click="showAll('com')">前去申请</a>
+                </li>
+                <li>
+                    <span>￥<em>2000</em></span>
+                    <p>个人缴费</p>
+                    <a @click="showAll('per')">前去申请</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="mask" class="mask" v-show="formShow"></div>
+    <div id="d1" v-show="formShow">
+        <div id="opacity_a" class="opacity">
+            <img class="img" src="imgs/guanbi.png" @click="closeAll"/>
+            <div class="opacity_title" v-if="comMask">
+                <t>企业类型:</t>
+                <span>￥<em>2000</em></span>
+            </div>
+
+            <div class="opacity_title" v-if="perMask">
+                <t>个人类型:</t>
+                <span>￥<em>2000</em></span>
+            </div>
+
+            <ul class="opacity_cont">
+                <li>手机号： <input type="text" v-model="user.user_phone"></li>
+                <p class="p">{{tipMsg}}</p>
+                <li class="Code">验证码：<span @click="sendMobileCode">发送验证码</span><input type="text" v-model="user.user_code"/></li>
+                <div v-if="comMask">
+                    <li>公司名称：<input type="text" v-model="user.company_name"></li>
+                    <li>公司地址：<input type="text" v-model="user.company_address"></li>
+                    <li>公司电话：<input type="text" v-model="user.company_landline"></li>
+                </div>
+
+                <div v-if="perMask">
+                    <li>姓名：<input type="text" v-text="user.user_name"></li>
+                    <li>地址：<input type="text" v-text="user.user_area"></li>
+                    <li>邮箱：<input type="text" v-text="user.user_email"></li>
+                </div>
+            </ul>
+            <a @click="register">前去付款</a>
+        </div>
+    </div>
+<div class="foot_bottom">
+    <div class="foot_sub">
+        <div class="download">
+            <div class="load_txt">下载 :</div>
+            <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+            <div class="load_pic_b"><a href="hualang.apk"></a></div>
+        </div>
+        <div class="a_txt">
+            <a href="new_explain14_c.html">联系我们</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain15_c.html">联系客服</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain16_c.html">合作招商</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain17_c.html">商家帮助</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain18_c.html">手机化浪</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="search.html">产品库</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain20_c.html">友情链接</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain21_c.html">隐私政策</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain22_c.html">法律声明</a>
+        </div>
+        <div class="foot_line"></div>
+        <div class="a_txt_b">
+            按字母顺序浏览 ：
+            <a href="new_explain17_c.html">Onetouch</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain17_c.html">陈列室 </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain17_c.html">国家搜索 </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="master.html">供应商</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="master.html">批发商 </a>
+            <span>&nbsp;|&nbsp;</span>
+            <a href="new_explain16_c.html">加盟 产品列表政策 - 知识产权保护</a>
+        </div>
+        <div class="a_txt_b">
+            产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+        </div>
+        <div class="a_txt_b">
+            copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="js/jQuery/jquery-1.11.2.js"></script>
+<script src="js/top_bottom.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/pe_index_vip2.js"></script>
+</body>
+</html>

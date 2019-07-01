@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+	<meta content="telephone=no" name="format-detection" />
+    <title>ThirdPart Support | Harlan</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/harlan_eye_app.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <script src="js/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="entire" id="lava">
+	    <!--搜索区域结束-->
+		<div class="third_sub">
+          	<div class="hide"></div>
+			<div class="lct">
+				Inspection inquiry form 检验咨询表
+			</div>
+		    <form method="post" id="imgform">
+				<div class="check_block">
+					<div class="check_a">
+						<div class="check_til"><hr />客户信息<span class="til_sub">CLEINT INFORMATION</span></div>
+						<div class="check_mesg">
+							<div class="dptx">
+								<div class="dptx_a">公司名称<span>*</span></div>
+								<input type="text" name="thirdCheckCorp" v-model="order.company_name_zh"/>
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">Company Name</div>
+								<input type="text" name="thirdCheckCorpEn" v-model="order.company_name_en" />
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">公司地址/邮编<span>*</span></div>
+								<input type="text" name="thirdCheckAddr" v-model="order.company_addr_zh"/>
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">Add./PC</div>
+								<input type="text" name="thirdCheckAddrEn" v-model="order.company_addr_en"/>
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">联系人 Contact Person<span>*</span></div>
+								<input type="text" name="thirdCheckContact" v-model="order.contact_person"/>							
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">电话 Tel.<span>*</span></div>
+								<input type="text" name="thirdCheckContactTel" v-model="order.contact_telephone"/>
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">电子邮箱 E-mail Address<span>*</span></div>
+								<input type="text" name="thirdCheckEmail" v-model="order.contact_email"/>							
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">传真 Fax<span>*</span></div>
+								<input type="text" name="thirdCheckFax" v-model="order.contact_fax"/>
+							</div>
+						</div>
+					</div>
+					<div class="check_b">
+						<div class="check_til"><hr />发票和报告要求<span class="til_sub">INVOICE AND REPORT REQUIREMENT</span></div>
+						<div class="fpxz">
+							<div class="fpxz_a"><input disabled="" type="radio" id="sex1" value="1" v-model="order.invoice_type"/><label for="sex1">专票 Speciai VAT</label></div>
+							<div class="fpxz_a"><input disabled type="radio"  id="sex2" value="2" v-model="order.invoice_type"/><label for="sex2">普票 Non Speciai VAT</label></div>
+							<div class="fpxz_a"><input disabled type="radio" id="sex3" value="3" v-model="order.invoice_type" /><label for="sex3">电子发票  Electronic invoice</label></div>
+						</div>
+						<div class="fptt">
+							<div class="fptt_a">发票抬头 Invoice title:<span>*</span></div>
+							<input type="text" name="thirdCheckInvoiceDes" v-model="order.invoice_title"/>
+						</div>
+						<div class="fpxz">
+							<div class="fpxz_b" style="line-height: 1.5rem;"><input disabled type="checkbox" name="reportType" id="sexs1" value="0"  v-model="order.chinese_report" /><label for="sexs1">中文报告  Chinese</label></div>
+							<div class="fpxz_b" style="margin-top: -.1rem; line-height: normal;"><input disabled type="checkbox" name="reportType" id="sexs2" value="1" v-model="order.english_report"/><label for="sexs2">英文报告 English<br />（英文报告需加收￥200元/English report charged RMB 200）</label></div>
+						</div>
+					</div>
+					<div class="check_c">
+						<div class="check_til"><hr />发送方式<span class="til_sub">Dispatch via</span></div>
+						<div class="fpxz">
+							<div class="fpxz_a"><input disabled type="radio"  id="sexd1" value="1" v-model="order.dispatch_type"/><label for="sexd1">快递  Via Express</label></div>
+							<div class="fpxz_a"><input disabled type="radio"  id="sexd2" value="2" v-model="order.dispatch_type"/><label for="sexd2">自取  Self Pick Up</label></div>
+							<div class="fpxz_a"><input disabled type="radio"  id="sexd3" value="3" v-model="order.dispatch_type" /><label for="sexd3">邮件  Via Email</label></div>
+						</div>
+						<div class="yjdz">
+							<div class="yjdz_a">邮寄地址  delivery address</div>
+							<input type="text" name="thirdCheckMailaddr" v-model="order.delivery_addr"/>
+						</div>
+					</div>
+					<div class="check_d">
+						<div class="check_til"><hr />检测要求<span class="til_sub">TESTING REQUIREMENT</span></div>
+						<div class="dptx">
+							<div class="dptx_a">样品名称 Sample Name<span>*</span></div>
+							<input type="text" name="thirdCheckGname" v-model="order.sample_name"/>						
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">样品数量 Sample Quantity<span>*</span></div>
+							<input type="text" name="thirdCheckGquantity" v-model="order.sample_quantity"/>
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">样品包装 Sample Package<span>*</span></div>
+							<input type="text" name="thirdCheckGpack" v-model="order.sample_package"/>						
+						</div>
+						<div class="dptx">
+							<div class="dptx_a">样品状态 Sample Condition<span>*</span></div>
+							<input type="text" name="thirdCheckGstatus" v-model="order.sample_condition"/>
+						</div>
+						<ul class="ypsj">
+							<li>
+								<div class="ypsj_top">样品编号 Sample No.<span>*</span></div>
+								<textarea name="thirdCheckGnumber" rows="" cols="" class="ypsj_bottom" v-model="order.sample_no"></textarea>
+							</li>
+							<li>
+								<div class="ypsj_top">检测项目及规格 Testing Items / Specification<span>*</span></div>
+								<textarea name="thirdCheckGitems" rows="" cols="" class="ypsj_bottom" v-model="order.testing_items"></textarea>
+							</li>
+							<li>
+								<div class="ypsj_top">依据标准 Testing Standard<span>*</span></div>
+								<textarea name="thirdCheckGstandard" rows="" cols="" class="ypsj_bottom" v-model="order.testing_standart"></textarea>
+							</li>
+						</ul>
+						<div class="jcrq">
+							其他Others：1.检测周期（从开始检测算起）TAT(From the date the starting test)：
+							<input type="text" name="thirdCheckCycle" v-model="order.testing_period"/>
+							工作日 Work Days
+						</div>
+						<div class="bjsm">
+							&#12288;本报价自报出日起1个月内有效。Quotation valid for one month from the quotation date.<br />
+							&#12288;根据公司规定，样品检测后保存1个月，到期后，我司有权自行处理样品。如有特殊留样或返样要求，请在以上备注中说明。<br />
+							&#12288;Per our policy, samples will be saved for one months after testing, expired samples will be disposed by us without <br />
+							&#12288;further notice to client. If there is any special request, please indicate in the remarks
+						</div>
+					</div>
+					
+					<div class="check_a">
+						<div class="check_til" style="background-color: #ffbb33;"><hr />价格信息<span class="til_sub">PRICE INFORMATION</span></div>
+						<div class="check_mesg">
+							<div class="dptx">
+								<div class="dptx_a">检测费 Sample Prep.Fee</div>
+								<input type="text" name="thirdCheckContact" v-model="order.testing_prep_fee"/>							
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">制样费 Sample Prep.Fee</div>
+								<input type="text" name="thirdCheckContactTel" v-model="order.sample_prep_fee"/>
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">分包费 Subcontracted Fee</div>
+								<input type="text" name="thirdCheckEmail" v-model="order.subcontracted_fee"/>							
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">快递费 Express Fee</div>
+								<input type="text" name="thirdCheckFax" v-model="order.express_fee"/>
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">英文报告费 English Report Fee</div>
+								<input type="text" name="thirdCheckContact" v-model="order.english_report_fee"/>							
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">其它收费Others</div>
+								<input type="text" name="thirdCheckContactTel" v-model="order.others_fee"/>
+							</div>
+							<div class="dptx">
+								<div class="dptx_a">增值税     VAT</div>
+								<input type="text" name="thirdCheckEmail" v-model="order.vat_fee"/>							
+							</div>
+							<div class="dptx">
+								<div class="dptx_a" style="color: #ff1e10;">费用总计 Total Amount</div>
+								<input style="color: #ff1e10;" type="text" name="thirdCheckFax" v-model="order.total_fee"/>
+							</div>
+						</div>
+					</div>
+					<div class="check_a">
+						<div class="check_til" style="background-color: #ffbb33;"><hr />检测地址<span class="til_sub">INSPECTION ADDRESS</span></div>
+						<div class="check_mesg">
+							<div class="dptx">
+								<div class="dptx_a">样品邮寄地址</div>
+								<select name="" disabled>
+									<option value="实验室1">实验室1</option>
+									<option value="实验室1">实验室1</option>
+									<option value="实验室1">实验室1</option>
+									<option value="实验室1">实验室1</option>
+								</select>
+							</div>
+						</div>
+						<div class="bjsm">
+							&#12288;本委托书受我司《通用服务条款》的约束，测试结果只对来样负责，其结果使用所产生的直接或间接损失与本实验室无关。 <br />
+							&#12288;The agreement controled by company <General Condition >.
+							&#12288;our report only reflects the findings of the submitted sample ,and we are not responsible to take any direct or indirect loss generated by circulating this report . 
+						</div>
+						<div class="jcrq">
+							<div class="jcrq_a">委托人签名/日期： Principal Signature/Date</div>
+							<input type="text" style="width: 50%;"/>						
+						</div>
+						<div class="jcrq">
+							<div class="jcrq_a">办理人员签名/日期： Kara Man transactor Signature/Date</div>
+							<input type="text" style="width: 50%;"/>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+	<script src="plugins/jquery.pagination.js"></script>
+	<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/goods_employed_third.js" type="text/javascript" charset="utf-8"></script>
+	<script src="plugins/vue/vue.min.js"></script>
+	<script src="lib/common.js"></script>
+	
+	<script type="text/javascript">
+		var orderType=1;
+		$(document).ready(function(){
+			$('#imgform input').attr("readonly", "readonly");
+      		$('#imgform textarea').attr("readonly", "readonly");
+     		//$(".fpxz input").attr("disabled","disabled");			
+		})
+	</script>
+  <script src="lib/goods_employed_third.js"></script>
+</html>

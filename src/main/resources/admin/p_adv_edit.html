@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>广告添加货修改</title>
+    <link rel="stylesheet" href="plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css" media="all"/>
+    <link rel="stylesheet" href="src/css/a_admin_manage.css" media="all"/>
+    <style type="text/css">
+        .crum_prt {
+            padding-top: 10px;
+            padding-left: 5px;
+        }
+
+        .layui-form {
+            padding-top: 10px;
+        }
+
+        .layui-form-label {
+            width: 169px;
+        }
+
+        .layui-text {
+            line-height: 40px;
+        }
+
+        .layui-upload-img {
+            width: 92px;
+            height: 92px;
+            margin: 0 10px 10px 0;
+        }
+
+        .txt_edi_prt {
+            margin-top: 13px;
+            width: 600px;
+            height: 522px;
+            float: left;
+        }
+
+        .txt_edit {
+            width: 100%;
+            height: 352px;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div class="crum_prt">
+			<span class="layui-breadcrumb">
+			  <a href="p_adv_index.html">首页广告图片</a>
+			  <a href="p_adv_edit.html">修改</a>
+			</span>
+</div>
+<form class="layui-form">
+    <div class="layui-inline">
+        <label class="layui-form-label">图片：</label>
+        <div class="layui-upload layui-input-inline">
+            <button type="button" class="layui-btn" id="test1">上传图片</button>
+            <div class="layui-upload-list">
+                <input id="title" name="title" style="display: none">
+                <img class="layui-upload-img" id="demo1">
+                <p id="demoText"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <!--<label class="layui-form-label">内容：</label>
+        <div class="txt_edi_prt">
+            <div class="txt_edit" id="my_edit"></div>
+            <input id="content" name="content" style="display: none;">
+        </div>-->
+
+        <label class="layui-form-label" style="float:left">内容:</label>
+        <div class="layui-form-item" style="clear:none;width: 600px;height: 522px; float: left;">
+            <textarea class="layui-textarea" id="rich_text0" style="display: block; margin-left:60px; "></textarea>
+            <input id="content" name="content" style="display: none;">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">位置：</label>
+        <div class="layui-input-inline">
+            <select id="expoPos" name="expo_pos" lay-filter="aihao">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+    </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button lay-submit class="layui-btn" lay-filter="*">提交</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="plugins/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="plugins/ueditor/ueditor.all.js"></script>
+<script src="./plugins/layui/layui.js"></script>
+<script src="src/js/common.js"></script>
+<script type="text/javascript">
+
+    layui.use(['form', 'element', 'jquery', 'upload', 'layer', 'layedit'], function () {
+        var element = layui.element,
+            form = layui.form,
+            $ = layui.jquery,
+            upload = layui.upload,
+            layer = layui.layer,
+            layedit = layui.layedit;
+        //preparation:bean
+        var expoObj = {};
+        /*var ue = null;*/
+        var editIndex = null;
+        var expo_id = null;
+        //init
+        $(function () {
+            //ue editor
+            /*ue = UE.getEditor('my_edit', {
+                autoHeightEnabled: false,
+                autoFloatEnabled: true
+            });
+            UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+            UE.Editor.prototype.getActionUrl = function (action) {
+                if (action == 'uploadimage' || action == 'uploadscrawl') {
+                    //!*************return actual operation of file upload********
+                    return '/file/ueUpload';
+                } else {
+                    return this._bkGetActionUrl.call(this, action);
+                }
+            };*/
+
+            editIndex = layedit.build('rich_text0', {
+                height: 400
+            });
+
+            expo_id = getQueryString("expo_id");
+            if (expo_id == "noExistThisParam") {
+                alert("error");
+                return;
+            } else {
+                //preload this obj
+                $.ajax({
+                    url: "/expo/detail",
+                    data: {expo_id: expo_id},
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (r) {
+                        if (r.code == 0) {
+                            expoObj = r.data;
+                            //step1:img src
+                            $('#demo1').attr('src', expoObj.title);
+                            //step2:
+                            /*ue.ready(function () {
+                                ue.setContent(expoObj.content);
+                            });*/
+                            layedit.setContent(editIndex,expoObj.content);
+                            //step3:position
+                            $('#expoPos').val(expoObj.expo_pos);
+                            form.render('select');
+                        } else {
+                            alert("error");
+                        }
+                    }
+                })
+            }
+        });
+
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1',
+            url: '/file/upload',
+            before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            },
+            done: function (r) {
+                if (r.code == 0) {
+                    $('#title').val('../' + r.data);
+                } else {
+                    return layer.msg('上传失败');
+                }
+            },
+            error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+
+        /**
+         * 3.submit
+         */
+        form.on('submit(*)', function (data) {
+            expoObj = {
+                expo_id: expo_id,
+                title: data.field.title,
+                expo_pos: data.field.expo_pos,
+                content: layedit.getContent(editIndex)
+            };
+            console.log(JSON.stringify(expoObj));
+            $.ajax({
+                url: "/expo/update",
+                data: expoObj,
+                type: 'post',
+                dataType: 'json',
+                success: function (r) {
+                    if (r.code == 0) {
+                        alert("success");
+                        window.location.href = "p_adv_index.html";
+                    } else {
+                        alert("failure");
+                    }
+                }
+            });
+            return false;
+        })
+    });
+</script>
+</body>
+
+</html>

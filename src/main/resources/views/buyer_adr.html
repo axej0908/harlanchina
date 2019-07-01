@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pe_common.css"/>
+    <link rel="stylesheet" href="css/buyer_adr.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+
+<div class="entire" id="lava">
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="/">Harlan Mall</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide_zh.html">中国供应商入口</a></li>
+                <!--<li><a href="new_explain16_c.html">Cooperation and service</a></li>-->
+                <li><a href="goods_employed_self.html">Self-support</a></li>
+                <li><a href="goods_employed_third.html">ThirdPart-support</a></li>
+				<li style="color:#ff792d;"><a href="find_goods_list.html"><strong>Inquiry Platform</strong></a></li>
+            </ul>
+            <ul class="header_fr">
+                <!--登录之后显示-->
+                <li class="out_area" v-if="user!=null"><a href="order_buyer.html">My harlan</a> <a @click="logout">Sign out</a></li>
+                <!--登录之前显示-->
+                <li class="no_land" style="display:inline-block;" v-if="user==null"><a href="login_en.html">Sign in</a> | <a
+                        href="register_en.html">Register</a></li>
+                <li><a href="new_explain17_c.html">Help Center</a></li>
+                <!--<li class="lang_li">
+                    <span>Language</span>
+                    <div class="span_sj"></div>
+                    <div class="lang_mn" style="display: none;">
+                        <div class="lang_item">English</div>
+                        <div class="lang_item">Español</div>
+                        <div class="lang_item">한국어</div>
+                        <div class="lang_item">日本語</div>
+                        <div class="lang_item">中文</div>
+                    </div>
+                </li>-->
+
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!------------------顶部区域结束-------------->
+    <div class="pe_one_top">
+        <div class="first_sub">
+            <div class="logo">
+            	<a href="index.html"></a>
+            </div>
+            <ul class="mn_list">
+                <li><a href="order_buyer.html">Home Page</a><span class="line_slide"></span></li>
+                <li class="mn_active"><a href="buyer_info.html">My Information</a><span class="line_slide"></span></li>
+            </ul>
+            <div class="pe_top_btn">
+                <!-- <a href="shop_cart_en.html" class="cart_btn" v-show="carShow">My cart <span>{{gross}}</span></a>
+                <a href="shop_cart_en.html" class="cart_btn" v-show="carShow">My cart </a> -->
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="pe_con">
+        <div class="pe_con_sub">
+            <div class="pe_con_mn">
+                <ul class="pe_con_mn_list">
+                    <li><a href="buyer_info.html">Essential information</a></li>
+                    <li><a href="buyer_tel.html">Cell-phone number</a></li>
+                    <li class="current_bg"><a href="buyer_adr.html">Address management</a></li>
+                </ul>
+                <div class="mn_bg"></div>
+            </div>
+            <div class="pe_con_right">
+                <div class="my_info">
+                    <div class="pe_til">Address management</div>
+                    <div class="dzgl">
+                        <div class="item_a">
+                            <div class="input_label">Consignee：</div>
+                            <div class="input_box">
+                                <input type="text" v-model="addr.consignee"/>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="item_a">
+                            <div class="input_label">address：</div>
+                            <div class="input_box">
+                                <input type="text" v-model="addr.detail"/>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="item_a">
+                            <div class="input_label">phone number：</div>
+                            <div class="input_box">
+                                <input type="text" v-model="addr.mobile"/>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="item_a">
+                            <div class="input_label">Fixed telephone：</div>
+                            <div class="input_box">
+                                <input type="text" v-model="addr.landline"/>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="mrdz">
+                            <div class="label_prt">
+                                <label><input type="checkbox" v-model="addr.is_default"/><span></span></label>&nbsp;
+                            </div>
+                            <div class="input_txt">Default address</div>
+                        </div>
+                        <div class="btn_area">
+                            <div class="add_btn" @click="saveOrUpdate">Save address</div>
+                            <div class="qx_btn" @click="addr=null">cancel</div>
+                        </div>
+                    </div>
+                    <table class="adr_tal">
+                        <colgroup>
+                            <col class="td_a">
+                            <col class="td_b">
+                            <col class="td_c">
+                            <col class="td_d">
+                            <col class="td_e">
+                            <col class="td_f">
+                        </colgroup>
+                        <thead>
+                        <tr class="tal_head">
+                            <th>Consignee</th>
+                            <th>Detailed address</th>
+                            <th>Cell-phone number</th>
+                            <th>operation</th>
+                            <th>IsDefault</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr class="tal_row" v-for="item in addrs">
+                            <td>{{item.consignee}}</td>
+                            <td>{{item.detail}}</td>
+                            <td>{{item.mobile}}</td>
+                            <td class="op_sp">
+                                <span @click="detail(item)">modify</span>
+                                <span>&nbsp;&nbsp;</span>
+                                <span @click="del(item)">delete</span>
+                            </td>
+                            <td>
+                                <div class="mr">{{item.is_default}}</div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">download :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain1_e.html">Contact Us</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_file1_e.html">Contact Customer Service</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <a href="new_explain2_e.html">Business Cooperation</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_explain8_e.html">Merchant help</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+                <span>&nbsp;|&nbsp;</span> -->
+                <a href="new_explain4_e.html">Product Library</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain5_e.html">Friendly Link</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain6_e.html">Privacy Policy</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain7_e.html">Legal Statement</a>
+            </div>
+            <div class="foot_line"></div>
+           <!--  <div class="a_txt_b">
+                Browse Alphabetically:
+                <a href="new_explain8_e.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain9_e.html">Showroom </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain10_e.html">Country Search </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain11_e.html">Suppliers</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain12_e.html">Wholesaler </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain13_e.html">Affiliate</a>
+            </div>
+            <div class="a_txt_b">
+                Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+                Enforcement
+                Compliance Guide
+            </div> -->
+            <div class="a_txt_b">
+                copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript"></script>
+<script src="js/placehoder.js" type="text/javascript"></script>
+<script src="js/buyer_adr.js" type="text/javascript"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/buyer_adr.js"></script>
+</body>
+</html>

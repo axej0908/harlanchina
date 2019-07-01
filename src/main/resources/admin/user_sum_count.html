@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>用户成交数量</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all" />
+	<link rel="stylesheet" href="src/css/a_admin_manage.css" media="all" />
+	<style type="text/css">
+		html,body{
+			width: 100%;
+			height: 100%;
+			overflow-x: hidden;
+			position: relative;
+		}
+		.layui-form {
+			padding-top: 10px;
+			position: relative;
+		}
+
+		.entire{
+			width: 100%;
+			position: absolute;
+			top: 80px;
+			bottom: 0;
+			left: 0;
+		}
+		#main{
+			width: 100%;
+			height: 100%;
+
+		}
+	</style>
+</head>
+<body>
+<form class="layui-form" action="">
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">开始时间</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input" id="start_time" >
+			</div>
+
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">结束时间</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input" id="end_time" >
+			</div>
+
+		</div>
+
+		<div class="layui-btn layui-btn-sm layui-btn-nomal" id="tj_btn">确定</div>
+l
+	</div>
+
+</form>
+<div class="entire">
+	<div id="main"></div>
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/echarts/echarts.common.min.js"></script>
+<script>
+    var start = "";
+    var end = "";
+    layui.use(['form', 'layer', 'table', 'laydate'], function() {
+        var form = layui.form;
+        var laydate = layui.laydate;
+        var table = layui.table;
+        //开始时间
+        var start_time,
+            //结束时间
+            end_time;
+        //开始日期
+        laydate.render({
+            elem: '#start_time',
+            done: function(value, date){
+                console.log(value); //得到日期生成的值，如：2017-08-18
+                start_time = new Date(value)
+				start = value;
+            }
+        });
+        //结束日期
+        laydate.render({
+            elem: '#end_time',
+            done: function(value, date){
+                console.log(value); //得到日期生成的值，如：2017-08-18
+                end_time = new Date(value);
+                end = value;
+            }
+        });
+        //3.搜索
+        $("#tj_btn").on("click",function () {
+            if(start == "" || start == null){
+                layer.msg('开始时间不能为空!', {
+                    time: 3000, //30s后自动关闭
+                    btn: ['知道了']
+                });
+                return;
+            }
+            if(end == "" || end == null){
+                layer.msg('结束时间不能为空!', {
+                    time: 3000, //30s后自动关闭
+                    btn: ['知道了']
+                });
+                return;
+            }
+            if(start > end){
+                layer.msg('开始日期不能大于结束日期，请重新选择', {
+                    time: 3000, //320s后自动关闭
+                    btn: ['知道了']
+                });
+                return;
+            }
+            query("effective");
+        });
+
+        query("default");
+
+    })
+    function query(val) {
+        //成交量（实际用来盛放y轴坐标值）
+        var sums = [];
+        //x轴坐标值
+        var names = [];
+
+        $.ajax({
+            url: '/userStatistics/querySumStatistics',
+            data:{
+                "jsonStr": JSON.stringify({
+                    query: val,
+                    start: start,
+                    end: end
+                })
+            },
+            type: "post",
+            dataType: "json",
+            success : function (r) {
+
+                var counts = r.data;
+
+                for(var i = 0; i < counts.length; i++){
+                    names.push(counts[i].xAxis);
+				}
+
+				for(var i = 0; i < counts.length; i++){
+                    sums.push(counts[i].yAxis);
+				}
+
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('main'));
+                // 指定图表的配置项和数据
+                var option = {
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross',
+                            label: {
+                                backgroundColor: '#6a7985'
+                            }
+                        }
+                    },
+                    legend: {
+                        data:['成交量'],
+                    },
+
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+//		            type : 'time',
+                            name:"时间",
+                            boundaryGap : false,
+                            data : names
+
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            name:"数量",
+                            type : 'value'
+                        }
+                    ],
+                    dataZoom: [{
+                        startValue: '2014-06-01'
+                    }, {
+                        type: 'inside'
+                    }],
+                    series : [
+                        {
+                            name:'成交量',
+                            type:'line',
+                            stack: '总量1',
+                            data:sums
+                        },
+                        /*{
+                            name:'新采购商注册数',
+                            type:'line',
+                            stack: '总量2',
+                            data:[150, 232, 201, 154, 190, 330, 410]
+                        },
+                        {
+                            name:'新开店数量',
+                            type:'line',
+                            stack: '总量3',
+                            data:[150, 232, 201, 154, 190, 330, 410]
+                        }*/
+
+                    ]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            }
+        })
+	}
+
+</script>
+
+</body>
+</html>

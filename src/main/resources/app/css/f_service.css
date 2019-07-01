@@ -1,0 +1,119 @@
+html,body{
+	width: 100%;
+	height: 100%;
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	position: relative;
+}
+/*———————————————————————————————————————————————————————————————————————————————————————————————————————————————*/
+.fs_top{
+	width: 100%;
+	height: 12.3rem;
+	background: url(../imgs/f_service.png);
+	background-size: 100% 100%;
+	padding: 0 1.25rem;
+}
+.fs_head{
+	width: 100%;
+	height: 3rem;
+	line-height: 3rem;
+	text-align: center;
+	color: #ffffff;
+	font-size: 0.65rem;
+}
+.fs_txt{
+	font-size: 0.5rem;
+	font-family: '苹方';
+	color: #FFFFFF;
+}
+.fs_line{
+	width: 100%;
+	height: 3.45rem;
+	line-height: 3.45rem;
+	text-align: center;
+	font-size: 0.75rem;
+	color: #cccccc;
+}
+.fs_line span{
+	margin: 0 0.5rem;
+	color: #5eaef9;
+}
+.fs_nav{
+	margin-top: 0.3rem;
+	padding-left: 0.35rem;
+	padding-right: 0.35rem;
+	border-bottom: 1px solid #5eaef9;
+}
+.fs_li{
+	width: 5.5rem;
+	font-size: 0.65rem;
+	color: #000000;
+	float: left;
+	text-align: center;
+	font-family: '苹方';
+	font-weight: bold;
+	margin-left: 0.5rem;
+}
+.fs_li:first-child{
+	margin-left: 0rem;
+}
+.fs_li_active{
+	background-color: #5eaef9;
+	color: #FFFFFF;
+}
+.fs_cont{
+	padding: 0.8rem 1rem 0 1rem;
+}
+.fs_row{
+	margin-top: 0.5rem;
+}
+lable{
+	margin-top: 0.5rem;
+	width: 100%;
+	height: 1.75rem;
+}
+.fs_tit{
+	width: 4.6rem;
+	height: 1.75rem;
+	font-size: 0.6rem;
+	color: #585858;
+	float: left;
+}
+.fs_active{
+	line-height: 1.75rem;
+}
+.fs_input{
+	width: 12rem;
+	height: 1.75rem;
+	float: right;
+	border: none;
+	border: 1px solid #d9d9d9;
+	outline: none;
+	padding-left: 0.5rem;
+	font-size: 0.5rem;
+}
+.fs_textarea{
+	width: 12rem;
+	float: right;
+	border: 1px solid #d9d9d9;
+	outline: none;
+	padding-left: 0.5rem;
+	padding-top: 0.5rem;
+	font-size: 0.5rem;
+}
+.fs_btn{
+	width: 8.75rem;
+	height: 1.8rem;
+	line-height: 1.8rem;
+	color: #fefefe;
+	text-align: center;
+	font-family: '苹方';
+	font-size: 0.75rem;
+	background-color: #0791e6;
+	border-radius: 0.9rem;
+	margin: 1rem auto;
+	
+}

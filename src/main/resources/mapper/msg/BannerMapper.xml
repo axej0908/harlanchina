@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.axej.harlan.msg.dao.BannerDao">
+    <insert id="save" parameterType="com.axej.harlan.msg.bean.BannerBean">
+        <selectKey keyProperty="banner_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into info_banner(
+        banner_path,
+        banner_order,
+        create_time,
+        ue_content
+        )
+        values
+        (
+        #{banner_path},
+        #{banner_order},
+        #{create_time},
+        #{ue_content}
+        )
+    </insert>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.msg.bean.BannerBean">
+        select * from info_banner
+        order by create_time,banner_order desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(*) from info_banner
+    </select>
+
+    <update id="update" parameterType="com.axej.harlan.msg.bean.BannerBean">
+        update info_banner
+        <set>
+            <if test="banner_path!=null and banner_path.trim()!=''">banner_path = #{banner_path},</if>
+            <if test="banner_order!=null and banner_order.trim()!=''">banner_order = #{banner_order},</if>
+            <if test="ue_content!=null and ue_content.trim()!=''">ue_content = #{ue_content}</if>
+        </set>
+        where banner_id = #{banner_id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from info_banner where banner_id = #{banner_id}
+    </delete>
+
+    <select id="queryObject" parameterType="com.axej.harlan.msg.bean.BannerBean" resultType="com.axej.harlan.msg.bean.BannerBean">
+        select * from info_banner where banner_id = #{banner_id}
+    </select>
+</mapper>

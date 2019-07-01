@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+	    <meta charset="UTF-8"/>
+	    <meta name="renderer" content="webkit">
+	    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	    <title>中国供应商入口-化浪商城</title>
+	    <meta name="description" content="">
+	    <meta name="keywords" content="">
+	    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+		<link rel="stylesheet" type="text/css" href="css/guide_zh.css">
+	    <link rel="icon" type="image/x-icon" href="imgs/title_logo.ico">
+	</head>
+	<body>
+	
+	<div class="entire" id="rrapp">
+		<!--顶部区域开始-->
+		<div class="header">
+		    <div class="header_sub">
+		        <ul class="header_fl">
+		            <li><a href="index.html">首页</a></li>
+		            <li><a href="new_explain16_c.html">合作与服务</a></li>
+		            <li><a href="shop_cart_en.html">我的购物车 ></a></li>
+		        </ul>
+				<ul class="header_fr">
+					<!--登录之后显示-->
+					<li class="out_area" v-if="user!=null"><a href="pbm_order_seller1.html">我的化浪</a> <a @click="logout">退出</a></li>
+					<!--登录之前显示-->
+					<li class="no_land" v-if="user==null"><a href="login_zh.html">登录</a> | <a href="register_zh.html">注册</a></li>
+					<li><a href="new_explain17_c.html">帮助中心</a></li>
+					<!--<li class="lang_li">
+						<span>Language</span>
+						<div class="span_sj"></div>
+						<div class="lang_mn" style="display: none;">
+							<div class="lang_item">English</div>
+							<div class="lang_item">Español</div>
+							<div class="lang_item">한국어 </div>
+							<div class="lang_item">日本語</div>
+							<div class="lang_item">中文</div>
+						</div>
+					</li>-->
+				</ul>
+		        <div class="clear"></div>
+		    </div>
+		</div>
+
+		<!--第一部分 开始-->
+		<div class="one">
+			<div class="box one_box">
+				<div class="one_a">
+					<div class="one_cent">
+						<div class="one_tit">全球采购商数据</div>
+						<div class="one_txt">
+							轻松获取近30个国家的采购商数据，助力国际市场开拓。
+						</div>
+						<div class="one_btn"><a href="pe_data_query_zh.html?type=data">查看详情>></a></div>
+					</div>
+					<div class="one_cent" style="display: none;">
+						<div class="one_tit">精准分析</div>
+						<div class="one_txt">
+							依托海量采购商及海关数据，完整展示行业现状、趋势，助力供应商精准定位目标市场，制定产品的全球营销战略。
+						</div>
+					</div>
+					<div class="one_cent" style="display: none;">
+						<div class="one_tit">全球海量询盘</div>
+						<div class="one_txt">
+							实时获取来自全球的精准询盘信息。
+						</div>
+						<div class="one_btn"><a href="worldwide_inquiries_zh.html?type=inquiry">查看详情>></a></div>
+					</div>
+					<div class="one_cent" style="display: none;">
+						<div class="one_tit">开拓方案</div>
+						<div class="one_txt">
+							化浪拥有专业的技术及团队，为您定制专业的出口策略及解决方案。
+						</div>
+					</div>
+					<div class="one_cent" style="display: none;">
+						<div class="one_tit">资信调查</div>
+						<div class="one_txt">
+							根据您的需求，对国际买家进行资信调查和风险评估，为您提供专业客观的企业信用报告。
+						</div>
+						<div class="one_btn"><a href="pe_data_query_zh.html?type=credit">查看详情>></a></div>
+					</div>
+					<div class="one_cent" style="display: none;">
+						<div class="one_tit">出口保险</div>
+						<div class="one_txt">
+							为您的出口业务保驾护航，降低您在出口业务中的商业风险，使您可以更加灵活的参与国际竞争。
+						</div>
+					</div>
+					
+				</div>
+				<div class="one_b">
+					<ul class="one_nav">
+						<li class="one_li li_active" style="margin-left: 0.52%;">
+							<p class="one_b_a">全球采购商数据</p>
+						</li>
+						<li class="one_li">
+							<p class="one_b_a">精准分析</p>
+						</li>
+						<li class="one_li">
+							<p class="one_b_a">全球海量询盘</p>
+						</li>
+						<li class="one_li">
+							<p class="one_b_a">开拓方案</p>
+						</li>
+						<li class="one_li">
+							<p class="one_b_a">资信查询</p>
+						</li>
+						<li class="one_li">
+							<p class="one_b_a">出口保险</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		<!--第一部分 结束-->
+		<!--第二部分 开始-->
+		<div class="two">
+			<div class="two_a">
+				<div class="two_b">
+					<div class="two_c">
+						<p>供应链管理</p>
+						<p></p>
+						<p>供应链服务</p>
+						<p>出口退税</p>
+					</div>
+					<div class="two_d">
+						<p>化浪为通过资质审核的用户提供授信融资的供应链服务，为您的贸易提供资金杠杆。</p>
+					</div>
+					<div class="two_e">
+						<p>化浪为通过化浪平台出口的客户提供退税垫付服务，提升您的资金利用率。</p>
+					</div>
+				</div>
+				<div class="two_btn"><a href="#" @click="before">点击进入</a></div>
+			</div>
+		</div>
+		<!--第二部分 结束-->
+
+		<!--第四部分-->
+		<div class="four">
+			<div class="four_a">
+				<div class="four_b">
+					<p>报关、商检、退税</p>
+					<p></p>
+				</div>
+				<div class="four_c">
+					<div class="four_d">
+						<div class="four_g">报关</div>
+						<div class="four_h">化浪为您提供进口报关和出口报关的服务。化浪丰富的化工品、化学原料的报关报检经验，能为客户提供口岸的快速商检、申报、通关作业，节省码头费用，提升您的报关效率，降低您的报关成本。</div>
+					</div>
+					<div class="four_e">
+						<div class="four_g">商检</div>
+						<div class="four_h">化浪提供的商检服务，确保能够配合质监部门快速进行商检工作，专人负责，缩短您的商检时间；实时汇报，使您随时了解商检的动态信息，实现高透明化的流程实时跟踪。</div>
+					</div>
+					<div class="four_f">
+						<div class="four_g">退税</div>
+						<div class="four_h">化浪协助您合规办理退税，平台代办正常退税，无需支付出口服务费，产生的其它费用如报关费、物流费等则实报实销。</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--第四部分 结束-->
+
+		<!--第五部分-->
+		<div class="five">
+			<div class="five_a">
+				<div class="five_b">
+					<p>知识产权战略</p>
+					<p></p>
+					<p>掌握产品的技术现状与趋势，设计知识产权保护方案。</p>
+					<p>查看详情>></p>
+				</div>
+			</div>
+		</div>
+		<!--第六部分-->
+		<div class="sex">
+			<div class="sex_a">
+				<p>带你去展会</p>
+				<p></p>
+				<p>化浪带您参加全球各大化工行业展会！</p>
+				<ul class="sex_b">
+					<li>
+						<a href="http://www.cphi-china.cn">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji1.jpg) no-repeat;"></div>
+							<div class="sex_d">CPhI China</div>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.api-china.com.cn">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji2.jpg) no-repeat;"></div>
+							<div class="sex_d">API china</div>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.interphex.com">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji3.jpg) no-repeat;"></div>
+							<div class="sex_d">Interphex</div>
+						</a>
+					</li>
+					<li>
+						<a href="https://chemspecindia.com">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji4.jpg) no-repeat;"></div>
+							<div class="sex_d">ChemSpecIndia</div>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.me-spec.org">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji5.jpg) no-repeat;"></div>
+							<div class="sex_d">ME-SPEC</div>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.feiplastic.com">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji6.jpg) no-repeat;"></div>
+							<div class="sex_d">FEIPLASTIC</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 透明遮罩 -->
+    	<div class="mask"></div>
+		<!--<div class="opacity1"><img class="img" src="imgs/cha.png">
+	        <div class="opacity_title"></div>
+	        <div class="opacity_box">
+	            <ul class="opacity_cont">
+	                <li><p>名称/公司名称</p><input type="text" placeholder="Please enter your name or company name" v-model="fiveSer.com_name"></li>
+	                <li><p>地址</p><input type="text" placeholder="Please enter your contact address" v-model="fiveSer.com_addr"></li>
+	                <li class="Code"><div class="d1"><p>联系人</p><input type="text" placeholder="Please enter the seat number" v-model="fiveSer.contact"></div>
+	                    <div><p>移动电话</p><input type="text" placeholder="Please enter a personal contact phone" v-model="fiveSer.contact_phone"></div></li>
+	                <li><p>邮箱</p><input type="text" placeholder="Please enter your mailbox" v-model="fiveSer.mailbox"></li>
+	                <li><p>注：</p><textarea placeholder="Please enter your personal needs..." v-model="fiveSer.postscript"></textarea></li>
+	                <a @click="applySer(1)">提交</a>
+	            </ul>
+	        </div>
+	    </div>-->
+	  <!--  新改弹窗-->
+	    <div class="opacity2"><img class="img" src="imgs/cha1.png">
+	    	<div class="opacity_title2">填写申请资料</div>
+	    	<div class="opacity_title3">
+	    		<div class="opacity_title3_1">联系人信息</div>
+	    		<div class="opacity_title3_2"><hr style= "border:1px dashed #d2d2d2" /></div>
+	    	</div>
+	    	<div class="opacity_box">
+	    		<ul class="opacity_cont2">
+	    			<li><span>联系人姓名</span><input type="text" v-model="supply.contacts_name" required="required" /><span class="bitian">*</span></li>
+	    			<li><span>联系人电话</span><input type="text" v-model="supply.contacts_phone" required="required" /><span class="bitian">*</span></li>
+	    			<li><span>身份证号</span><input type="text" v-model="supply.id_number" /><span class="bitian">*</span></li>
+	    			<li><span>户籍</span><input type="text" v-model="supply.household_register" /><span class="bitian">*</span></li>
+	    			<li><span>现住地</span><input type="text" v-model="supply.current_residence" /><span class="bitian">*</span></li>
+	    		</ul>
+	    	</div>
+	    	<div class="opacity_title3">
+	    		<div class="opacity_title3_1">公司信息</div>
+	    		<div class="opacity_title3_2"><hr style= "border:1px dashed #d2d2d2" /></div>
+	    	</div>
+	    	<div class="opacity_box">
+	    		<ul class="opacity_cont2">
+	    			<li><span>公司名称</span><input type="text" v-model="supply.company_name" /><span class="bitian">*</span></li>
+	    			<li><span>公司地址</span><input type="text" v-model="supply.company_site" /><span class="bitian">*</span></li>
+	    			<li><span>公司座机</span><input type="text" v-model="supply.company_phone" /><span class="bitian">*</span></li>
+	    			<li style="position: relative;">
+	    				<span>审计报告</span>
+			            <input class="original-upload" style="opacity: 0; width: 440px;" type="file" name="file" id="audit_reports" @change="uploadImg($event)"/>
+			            <a href="javascript:;" class="fake-uploadbtn">上传文件</a>
+	    				<span class="bitian">*</span>
+	    			</li>
+	    			<li style="position: relative;">
+	    				<span>财务报表</span>
+			            <input class="original-upload" style="opacity: 0; width: 440px;" type="file" name="file" id="financial_statement" @change="uploadImg($event)"/>
+			            <a href="javascript:;" class="fake-uploadbtn">上传文件</a>
+	    				<span class="bitian">*</span>
+	    			</li>
+	    			<li><span>申请额度</span><input type="text" v-model="supply.apply_amount" /><span class="bitian">*</span></li>
+	    			<a class="opacity_submit" @click="submitApplica">提交申请</a>
+	    		</ul>
+	    	</div>
+	    </div>
+<!--   	 新改弹窗-->
+		<div class="foot_bottom">
+			<div class="foot_sub">
+				<div class="download">
+					<div class="load_txt">下载 :</div>
+					<div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+					<div class="load_pic_b"><a href="hualang.apk"></a></div>
+				</div>
+				<div class="a_txt">
+					<a href="new_explain14_c.html">联系我们</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain15_c.html">联系客服</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain16_c.html">合作招商</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain17_c.html">商家帮助</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain18_c.html">手机化浪</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain19_c.html">产品库</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain20_c.html">友情链接</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain21_c.html">隐私政策</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain22_c.html">法律声明</a>
+				</div>
+				<div class="foot_line"></div>
+				<div class="a_txt_b">
+					按字母顺序浏览 ：
+					<a href="new_explain23_c.html">Onetouch</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain24_c.html">陈列室 </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain25_c.html">国家搜索 </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain26_c.html">供应商</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain27_c.html">批发商 </a>
+					<span>&nbsp;|&nbsp;</span>
+					<a href="new_explain28_c.html">加盟 产品列表政策 - 知识产权保护</a>
+				</div>
+				<div class="a_txt_b">
+					产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+				</div>
+				<div class="a_txt_b">
+					@2017-2018 化浪（浙江）科技有限公司.版权所有.
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="js/jQuery/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="js/swiper/swiper-3.4.2.min.js"></script>
+	<script type="text/javascript" src="js/top_bottom.js"></script>
+	<script type="text/javascript" src="js/guide_zh.js"></script>
+	<script src="plugins/vue/vue.min.js"></script>
+	<script src="plugins/ajaxfileupload.js"></script>
+	<script src="lib/guide_zh.js"></script>
+</body>
+</html>

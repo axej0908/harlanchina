@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.alert_black{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0,0,0,0.4);
+			margin: auto;
+		}
+		.wl{
+			margin: 200px auto;
+			width: 600px;
+			height: 300px;
+			padding-top: 20px;
+			padding-left: 20px;
+			background-color: #FFFFFF;
+			position: relative;
+		}
+		.alert_close{
+			width: 16px;
+			height: 16px;
+			background: url(imgs/alert_close.png) no-repeat;
+			background-size: 100% 100%;
+			position: absolute;
+			top: 16px;
+			right: 26px;
+			cursor: pointer;
+		}
+		.wl_tit{
+			line-height: 30px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.wl_item{
+			margin-top: 20px;
+			width: 100%;
+			height: 30px;
+			line-height: 30px;
+		}
+		.wl_item input{
+			width: 60%;
+			height: 100%;
+		}
+		.wl_btn{
+			margin: 50px auto;
+			width: 200px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			border-radius: 10px;			
+			color: #FFFFFF;
+			background-color: #ff9b00;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+	
+		<!--弹框蒙版-->
+	    <div class="alert_black"></div>
+	    <!--弹框蒙版结束-->
+	    
+		<!--物流弹窗-->
+		<div class="wl">
+			<div class="alert_close"></div>
+			<div class="wl_tit">物流详情</div>
+			<div class="wl_box">
+				<div class="wl_item">
+					<span>物流公司:</span>
+					<input type="text" />
+				</div>
+				
+				<div class="wl_item">
+					<span>物流单号:</span>
+					<input type="text" />
+				</div>
+			</div>
+			<div class="wl_btn">提交</div>
+		</div>
+		<!--物流弹框结束-->
+	</body>
+</html>

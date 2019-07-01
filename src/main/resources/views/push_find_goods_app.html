@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HarLan | Better Applying Chemistry</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/f_free_find_app.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+	<div class="entire" id="rrapp">
+		<div class="third">
+            <div class="check_a">
+                <div class="check_til">Order information</div>
+                <div class="check_mesg">
+                    <div class="check_item_a">
+                        <div class="input_lal"><span>*</span>Product Name:</div>
+                        <div class="input_div_a"><input type="text" v-model="goods.goods_name"/></div>
+                    </div>
+
+                    <!--新加-->
+                    <div class="check_item">
+                        <div class="input_lal"><span>*</span>Delivery:</div>
+                        <div class="dw">
+                            <select id="deliver_units" v-model="goods.deliver_units">
+                                <option value="year">year</option>
+                                <option value="month">month</option>
+                                <option value="week">week</option>
+                                <option value="day">day</option>
+                            </select>
+                        </div>
+                        <div class="input_div_d"><input type="text" v-model="goods.goods_deliver"/></div>
+                    </div>
+                    <!--End 新加-->
+                    <div class="check_item wz_le">
+                        <div class="input_lal"><span>*</span>Quantity:</div>
+                        <div class="dw">
+                            <select id="num_units" v-model="goods.num_units">
+                                <option value="kg">kg</option>
+                                <option value="g">g</option>
+                            </select>
+                        </div>
+                        <div class="input_div_c"><input type="text" v-model="goods.goods_num"/></div>
+                    </div>
+                    <div class="clear"></div>
+
+                    <div class="check_item">
+                        <div class="input_lal"><span>*</span>Packing:</div>
+                        <div class="input_div wz_four">
+                            <select class="dw_sel" id="goods_package_spec" v-model="goods.package_opt">
+                                <option value="water apron">water apron</option>
+                                <option value="metal bucket">metal bucket</option>
+                                <option value="woven bag">woven bag</option>
+                                <option value="carton">carton</option>
+                                <option value="plastic case">plastic case</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal"><span>*</span>Purity:</div>
+                        <div class="input_div wz_one"><input type="text" v-model="goods.goods_purity"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal"><span>*</span>Price:</div>
+                        <div class="dw">
+                            <select id="price_units" v-model="goods.price_units">
+                                <option value="rmb">rmb</option>
+                                <option value="dollar">dollar</option>
+                            </select>
+                        </div>
+                        <div class="input_div_b"><input type="text" v-model="goods.current_price"/></div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal"><span>*</span>Transportation:</div>
+                        <div class="input_div wz_two">
+                            <select class="dw_sel" id="transport_way_spec" v-model="goods.transport_opt">
+                                <option value="automobile transport">automobile transport</option>
+                                <option value="sea transportation">sea transportation</option>
+                                <option value="water transport">water transport</option>
+                                <option value="railway transportation">railway transportation</option>
+                                <option value="air transportation">air transportation</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!--<div class="check_item_b">
+                        <div class="input_lal"><span>*</span>payment request:</div>
+                        <ul class="check_type">
+                            <li class="type_li">
+                                <label><input type="radio" name="" v-model="goods.payment_opt"
+                                              value="offline"/><span></span></label>&nbsp;&nbsp;
+                            </li>
+                        </ul>
+                        <div class="wz_three"><span>*</span>offline payments</div>
+                        <div class="clear"></div>
+                    </div>-->
+                </div>
+            </div>
+            <div class="check_b">
+                <div class="check_til">Quality parameters</div>
+                <div class="check_mesg_b">
+                    <div class="check_item">
+                        <div class="input_lal">Strength:</div>
+                        <div class="input_div wz_five"><input type="text" v-model="goods.color_power"/></div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">Light:</div>
+                        <div class="input_div wz_six"><input type="text" v-model="goods.color_light"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal">Appearance:</div>
+                        <div class="input_div wz_seven"><input type="text" v-model="goods.quality_aspect"/></div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">Water content:</div>
+                        <div class="input_div wz_eight"><input type="text" v-model="goods.quality_moisture"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal">No matter:</div>
+                        <div class="input_div wz_nine"><input type="text" v-model="goods.quality_insoluble"/></div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">solubility:</div>
+                        <div class="input_div wz_ten"><input type="text" v-model="goods.quality_solubility"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal">Chloride content:</div>
+                        <div class="input_div wz_eleven"><input type="text" v-model="goods.quality_clContent"/>
+                        </div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">Salinity:</div>
+                        <div class="input_div wz_twelve"><input type="text" v-model="goods.quality_salinity"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal">conductivity:</div>
+                        <div class="input_div wz_thirteen"><input type="text" v-model="goods.quality_conductivity"/>
+                        </div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">Michler's ketone:</div>
+                        <div class="input_div wz_fourteen"><input type="text"
+                                                                  v-model="goods.quality_michlerKetone"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal">Solid content:</div>
+                        <div class="input_div wz_fifteen"><input type="text" v-model="goods.quality_solidContent"/>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+            <div class="check_c">
+                <div class="check_til">Heavy metal content:</div>
+                <div class="check_mesg_b">
+                    <div class="check_item">
+                        <div class="input_lal">Copper ions:</div>
+                        <div class="input_div wz_sixteen"><input type="text" v-model="goods.metal_cu"/></div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">Lead ions:</div>
+                        <div class="input_div wz_seventeen"><input type="text" v-model="goods.metal_pb"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal">Zinc ions:</div>
+                        <div class="input_div wz_eighteen"><input type="text" v-model="goods.metal_zn"/></div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">Tin ion:</div>
+                        <div class="input_div wz_nineteen"><input type="text" v-model="goods.metal_sn"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal">Cadmium ions:</div>
+                        <div class="input_div wz_twenty"><input type="text" v-model="goods.metal_cd"/></div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">Antimony ions:</div>
+                        <div class="input_div wz_twentyone"><input type="text" v-model="goods.metal_sb"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal">Nickel ions:</div>
+                        <div class="input_div wz_twentytwo"><input type="text" v-model="goods.metal_ni"/></div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">Cobalt ions:</div>
+                        <div class="input_div wz_twentythree"><input type="text" v-model="goods.metal_co"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="check_item">
+                        <div class="input_lal">Mercury ions:</div>
+                        <div class="input_div wz_twentyfour"><input type="text" v-model="goods.metal_hg"/></div>
+                    </div>
+                    <div class="check_item wz_le">
+                        <div class="input_lal">Bismuth ions:</div>
+                        <div class="input_div wz_twentyfive"><input type="text" v-model="goods.metal_bi"/></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="btn_area">
+                    <div class="btn" @click="enquiry">Issued for the goods</div>
+                </div>
+            </div>
+           
+            <div class="clear"></div>
+    	</div>
+
+	</div>
+<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<script src="js/placehoder.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/push_find_goods_app.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugins/ajaxfileupload.js"></script>
+<script src="plugins/jquery.pagination.js"></script>
+</body>
+</html>

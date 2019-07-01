@@ -1,0 +1,378 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.crumb{
+    width: 1000px;
+    height: 24px;
+    line-height: 24px;
+    margin: 10px auto 0 auto;
+    font-size: 14px;
+    color: #323232;
+}
+.a_active{
+	color: #317ee7;
+}
+/*-------------------------------------third------------------------------------*/
+.order_content{
+	width: 1000px;
+	margin: 20px auto 50px auto;
+}
+.tab_content{
+	width: 100%;
+}
+.tab_item{
+	width: 234px;
+	height: 42px;
+	transform: skew(-30deg);
+	-ms-transform: skew(-30deg);	/* IE 9 */
+	-webkit-transform: skew(-30deg);	/* Safari and Chrome */
+	-o-transform: skew(-30deg);	/* Opera */
+	-moz-transform: skew(-30deg);
+	float: left;
+	margin-left: 10px;
+	background-color: #e5e5e5;
+	font-size: 14px;
+	color: #323232;
+	cursor: pointer;
+}
+.tab_sub{
+	width: 100%;
+	height: 100%;
+	transform: skew(30deg);
+	-ms-transform: skew(30deg);	/* IE 9 */
+	-webkit-transform: skew(30deg);	/* Safari and Chrome */
+	-o-transform: skew(30deg);	/* Opera */
+	-moz-transform: skew(30deg);
+	padding-left: 21px;
+	padding-right: 21px;
+	text-align: center;
+	line-height: 42px;
+}
+.tab_active{
+	background-color: #4285df;
+	color: #fff;
+}
+.data_ul{
+	width: 100%;
+	height: 46px;
+}
+.data_li{
+	width: 234px;
+	height: 100%;
+	float: left;
+	font-size: 12px;
+	color: #a0a0a0;
+	text-align: center;
+	line-height: 46px;
+	opacity: 0;
+}
+.dt_show{
+	opacity: 1;
+}
+.wl_til{
+	width: 100%;
+	height: 40px;
+	background-color: #f3f3f3;
+	font-size: 16px;
+	color: #4285df;
+	line-height: 40px;
+	padding-left: 40px;
+	
+}
+.jlxx{
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 16px;
+    padding-bottom: 57px;
+    padding-left: 44px;
+    padding-right: 128px;
+    border: 1px solid #dbdbdb;
+    border-top: none;
+}
+.xx_sub{
+	width: 100%;
+}
+.day,.week{
+	float: left;
+}
+.day{
+	min-width: 80px;
+	margin-left: 16px;
+	font-size: 12px;
+	color: #323232;
+	height: 24px;
+	line-height: 24px;
+}
+.week{
+	margin-left: 10px;
+	min-width: 100px;
+	font-size: 12px;
+	color: #323232;
+	height: 24px;
+	line-height: 24px;
+}
+.xx_time{
+	font-size: 12px;
+	color: #323232;
+	margin-left: 10px;
+	/*overflow: hidden;*/
+	float: left;
+	width: 607px;
+}
+.xx_time li{
+	position: relative;
+	width: 100%;
+}
+.xx_time li span{
+	display: block;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background-color: #a7a7a7;
+	position: absolute;
+	left: -220px;
+	top: 8px;
+	
+}
+.xx_time li .line{
+	display: block;
+	width: 1px;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #a7a7a7;
+	position: absolute;
+	left: -217px;
+	top:15px;
+	bottom: 0;
+
+	
+}
+.xx_sub:last-child .xx_time li:last-child .line{
+	display: none;
+}
+.time{
+	float: left;
+	line-height: 24px;
+	margin-right: 10px;
+}
+.wl_txt{
+	overflow: hidden;
+	line-height: 24px;
+    word-wrap: break-word;
+}
+.other_info{
+	width: 1000px;
+	margin: 30px auto;
+}
+.other_til{
+	width: 100%;
+	height: 40px;
+	line-height: 58px;
+	font-size: 16px;
+	color: #303030;
+	font-weight: bold;
+}
+.other_til_sub{
+	width: 197px;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #99c0f5;
+	border-bottom: none;
+	text-align: center;
+    position: relative;
+    top: 1px;
+    background-color: #fff;
+}
+.other_content{
+	width: 100%;
+	padding-bottom: 38px;
+	border: 1px solid #99c0f5;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.con_item{
+	width: 100%;
+	height: 54px;
+	border-bottom: 1px solid #DBDBDB;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.con_label{
+	height: 100%;
+	line-height: 53px;
+	font-size: 14px;
+	color: #434343;
+	float: left;
+	margin-right: 24px;
+	font-weight: bold;
+}
+.con_txt{
+	overflow: hidden;
+	height: 100%;
+	line-height: 53px;
+	font-size: 12px;
+	color: #727272;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.pro_tal{
+	width: 100%;
+}
+table{
+	table-layout: fixed;
+	border: 1px solid #DBDBDB;
+}
+.td_a{
+	width: 21%;
+}
+.td_b{
+	width: 15%;
+}
+.td_c{
+	width: 11%;
+}
+.td_d{
+	width: 11.3%;
+}
+.td_e{
+	width: 13.8%;
+}
+.td_f{
+	width: 9.6%;
+}
+.td_g{
+	width: 14.3%;
+}
+thead{
+	width: 100%;
+	height: 36px;
+	background-color: #e8f4ff;
+	font-size: 12px;
+	color: #585858;
+}
+th,td{
+	height: 100%;
+	vertical-align: middle;
+	text-align: center;
+}
+td{
+	padding: 15px;
+}
+.gd{
+	width: 100%;
+	height: 62px;
+}
+.gd_pic{
+	width: 62px;
+	height: 62px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+	float: left;
+	margin-right: 10px;
+}
+.gd_nm{
+	overflow: hidden;
+	margin-right: 8px;
+	height: 100%;
+	font-size:12px;
+	color: #929292;
+	line-height: 20px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 3;
+}
+td:not(:last-child){
+	border-right: 1px solid #DBDBDB;
+}
+td p{
+	width: 100%;
+	line-height: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size:12px;
+	color: #929292;
+	line-height: 20px;
+}
+.txt{
+	font-size: 12px;
+	color: #323232;
+}
+.pri{
+	font-size: 16px;
+	color: #ff3d3d;
+	font-weight: bold;
+}
+.freight_p{
+	width: 100%;
+	height: 24px;
+	line-height: 24px;
+	text-align: right;
+	font-size: 14px;
+	color: #989898;
+	margin: 10px auto;
+}
+
+.extra_block{
+	width: 100%;
+	min-height: 110px;
+	/*border: 1px solid #f58b0f;*/
+	background-color: #fff7eb;
+	padding: 13px 24px;
+	position: relative;
+}
+.extra_sj{
+	width: 24px;
+	height: 20px;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	border-bottom: 20px solid #fff7eb;
+	position: absolute;
+	top: -20px;
+}
+.extra_txt{
+	width: 100%;
+	font-size: 14px;
+	color: #000000;
+	line-height: 20px;
+}
+.btn_area{
+	width: 100%;
+	height: 32px;
+	margin-top: 10px;
+	
+}
+.btn_tip{
+	float: left;
+	font-size: 14px;
+	color: #000;
+	line-height: 32px;
+}
+.btn{
+	float: left;
+	width: 113px;
+	height: 32px;
+	background-color: #ff4200;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	line-height: 32px;
+	margin-left: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.btn a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}

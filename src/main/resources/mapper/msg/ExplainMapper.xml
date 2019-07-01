@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.msg.dao.ExplainDao">
+
+	<insert id="save" parameterType="com.axej.harlan.msg.bean.ExplainBean" >
+		<selectKey keyProperty="explain_id" order="AFTER" resultType="java.lang.Integer">
+			select LAST_INSERT_ID()
+		</selectKey>
+		insert into info_explain
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="sorts != null">
+				sorts,
+			</if>
+			<if test="digests != null">
+				digests,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="sorts != null">
+				#{sorts},
+			</if>
+			<if test="digests != null">
+				#{digests},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="update" parameterType="com.axej.harlan.msg.bean.ExplainBean">
+		update info_explain
+		<set>
+			<if test="sorts!=null and sorts!=''">sorts=#{sorts},</if>
+			<if test="digests!=null and digests!=''">digests=#{digests}</if>
+		</set>
+		<where>
+			<if test="explain_id != 0">
+				explain_id = #{explain_id}
+			</if>
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="com.axej.harlan.msg.bean.ExplainBean">
+		delete from info_explain
+		<where>
+			<if test="explain_id != 0">
+				explain_id = #{explain_id}
+			</if>
+		</where>
+	</delete>
+	
+	<select id="queryObject" parameterType="int" resultType="com.axej.harlan.msg.bean.ExplainBean">
+		select * from info_explain
+		<where>
+			<if test="explain_id != 0">
+				explain_id = #{explain_id}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryList" parameterType="map" resultType="com.axej.harlan.msg.bean.ExplainBean">
+		select * from info_explain
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	<select id="queryTotal" parameterType="map" resultType="int">
+		select count(1) from info_explain
+	</select>
+
+</mapper>

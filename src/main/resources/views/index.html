@@ -1,0 +1,545 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Chemical trading | Chemical information | chemical suppliers | Harlan</title>
+    <meta name="description" content="Harlan mall is an ideal trading platform for domestic and foreign chemical companies. It is a chemical mall that gathers information on the supply and purchase of a large number of chemical products, including chemical reagents and other product information">
+    <meta name="keywords" content="Chemical trading,Chemical information,chemical suppliers,Harlan">
+    <meta name="google-site-verification" content="b6XJEGs0zxv3o6A8FtlvJ0BkDZ30fnm36n_M4u8ODHs" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/swiper/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+  	<link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <!--<script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?edc60ec0c78a621c50a9cf7f85221ea5";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?321aec27ac1b646cd72a1034fd1fb07b";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>-->
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?edc60ec0c78a621c50a9cf7f85221ea5";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+
+    </script>
+  
+  
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <!--<div class="adv_top_out" v-if="advertiseShow">
+        <a :href="'index_ads_detail.html?expo_id='+advertise1.expo_id" class="adv_top_sub"
+           :style="'backgroundImage:url('+advertise1.title+')'"></a>
+        <img id="top_cha" src="imgs/index/top_cha.png" @click="advertiseShow=false">
+    </div>-->
+    <!--顶部区域开始-->
+    <div class="header">
+        <div class="header_sub">
+            <ul class="header_fl">
+                <li><a href="/">Harlan Mall</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide_zh.html">中国供应商入口</a></li>
+                <li class="red_bg"><a href="goods_employed_self.html">Self-support</a></li>
+                <li class="red_bg"><a href="goods_employed_third.html">ThirdPart-support</a></li>
+                <li class="red_bg" style="color:#ff792d;"><a href="find_goods_list.html"><strong>Inquiry Platform</strong> </a></li>
+                <li></li>
+            </ul>
+            <ul class="header_fr">
+                <!--登录之后显示-->
+                <li v-if="user!=null" class="out_area">
+                    <a @click="lnkPersonalCenter">My harlan</a>
+                    <a @click="logout">Sign out</a>
+                </li>
+                <!--登录之前显示-->
+                <li v-if="user==null" class="no_land">
+                    <a href="login_en.html">Sign in</a> | <a href="register_en.html">Register</a>
+                </li>
+                <li><a href="new_explain17_c.html">Help Center</a></li>
+                <!--<li class="lang_li">
+                    <span>Language</span>
+                    <div class="span_sj"></div>
+                    <div id="lang_mn" class="lang_mn" style="display: none;">
+                        <div class="lang_item"><a href="construct.html">简体中文</a></div>
+                        <div class="lang_item"><a href="construct.html">繁體中文</a></div>
+                        <div class="lang_item"><a href="construct.html">English</a></div>
+                        <div class="lang_item"><a href="construct.html">한국어 </a></div>
+                        <div class="lang_item"><a href="construct.html">日本語</a></div>
+                    </div>
+                </li>-->
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!------------------顶部区域结束-------------->
+    <div class="entire">
+        <!--搜索区域开始-->
+        <div class="search_area">
+            <div class="search_area_sub">
+                <div class="search_logo1"><a href="index.html"></a></div>
+                <div class="search_btn_list">
+                	<a href="http://www.harlanchina.com/push_find_goods.html" class="inquire_btn1">Create Inquiry</a> 
+                    <!--<a href="http://www.harlanchina.com/f_free_find.html" class="inquire_btn1">Free find goods</a>--> 
+                    <a href="shop_cart_en.html" class="cart_btn" v-show="carShow">My cart <span>{{gross}}</span></a>
+                </div>
+                <div class="search_div1">
+                    <div class="search_fl">
+                        <div class="search_whitch">Supplier</div>
+                        <ul class="search_ul" style="display: none;">
+                            <li @click="searchType='product'">Product</li>
+                            <li @click="searchType='supplier'">Supplier</li>
+                            <li @click="searchType='cas'">CAS</li>
+                        </ul>
+                        <div class="search_input_div">
+                            <input type="text" v-model="searchParam"/>
+                        </div>
+                    </div>
+                    <div class="search_btn" @click="redirectSel">Search</div>
+                </div>
+            </div>
+        </div>
+        <!--------------搜索区域结束-------------->
+        <!--第一个模块开始-->
+        <div class="first">
+            <div class="mn_list">
+                <div class="mn_til">Market</div>
+                <ul class="sc_mn">
+                    <li v-for="item in categories" class="subNav" :class="{li_active:item.checked}"
+                        @mouseenter="topCateMouse(item,1)" @mouseleave="topCateMouse(item,-1)">
+                        <div class="subNav_txt">
+                            <span class="li_txt">{{item.text}}</span>
+                        </div>
+                        <!-- 二级菜单新加 -->
+                        <div class="mn_two_level" v-show="item.checked">
+                            <div class="mn_two_a">
+                                <div class="mn_two_til">
+                                    Chemical supplies
+                                </div>
+                                <ul class="mn_two_a_ul">
+                                    <li v-for="secCate in cateSelected">
+                                        <a href="#"><span @click="index_type(item.text,secCate.text)">{{secCate.text}}</span></a>
+                                    </li>
+                                    <div class="clear"></div>
+                                </ul>
+                            </div>
+                            <div class="mn_two_b">
+                                <div class="mn_two_til">
+                                    Hot products
+                                </div>
+                                <ul class="mn_two_gd">
+                                    <li v-for="sale in currCateSales" @click="getDetail(sale.goods_id)">
+                                        <div class="mn_two_pic"
+                                             :style="'backgroundImage:url('+sale.product_picture+')'"></div>
+                                        <div class="mn_two_gd_mesg">
+                                            <p> {{sale.goods_name}} </p>
+                                            <p> CSA: <span>{{sale.cas}}</span></p>
+                                            <p class="mn_two_gd_pri">US$:{{sale.current_price}} </p>
+                                        </div>
+                                    </li>
+                                    <div class="clear"></div>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 二级菜单新加结束 -->
+                    </li>
+                </ul>
+
+            </div>
+            <div class="first-swiper">
+                <div class="swiper-wrapper">
+                    <div v-for="item in banners" class="swiper-slide"
+                         :style="'backgroundImage:url('+item.banner_path+')'" @click="lnkBanner(item.banner_id)"></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination">
+                </div>
+            </div>
+            <div class="first_news">
+                <ul class="new_tab_mn">
+                    <li :class="{li_active:true}">Price</li>
+                    <li :class="{li_active:false}">News</li>
+                </ul>
+                <div class="tab_con_list" style="width: 100%; height: 400px; padding-top: 15px;overflow: hidden;">
+
+                    <div class="tab_con">
+                        <div class="tab_intro">
+                            <img alt="price express" src="imgs/index/tab_1.png">
+                        </div>
+                        <div class="border_line"></div>
+                        <marquee class="pri_div" scrollamount="2" direction="up">
+                            <a href="#" class="pri_item" v-for="item in priceNews">
+                                <div class="item_nm">{{item.goods_name}}</div>
+                                <div class="pri_con">${{item.goods_price}}/{{item.price_unit}}</div>
+                            </a>
+                        </marquee>
+
+                    </div>
+                    <div class="tab_con">
+                        <div class="tab_intro">
+                            <img alt="Latest information of chemical industry for your reference" src="imgs/index/tab_2.png">
+                        </div>
+                        <div class="border_line"></div>
+                        <marquee class="pri_div" scrollamount="2" direction="up">
+                            <div class="tal_item" v-for="item in industryNews">
+                                <!-- <div class="sw_name">News headlines</div> -->
+                                <div class="sw_txt">{{item.news_title}}</div>
+                                <div class="sw_times">{{item.create_time}}</div>
+                                <div class="sw_btn"><a :href="['pe_index_news.html?news_id='+item.news_id]">News detail&gt;&gt;</a></div>
+                            </div>
+                        </marquee>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------第一个模块结束------------->
+        <!-------------第2个模块开始------------->
+        <<div class="a_banner_link" :style="'backgroundImage:url('+advertise2.title+')'">
+            <a :href="'index_ads_detail.html?expo_id='+advertise2.expo_id"></a>
+        </div>
+        <!-------------第2个模块结束------------->
+        <!-------------第3模块开始------------->
+        <div class="three_hot">
+            <div class="hot_til">
+                <div class="til_txt_a">Hot-sale product</div>
+                <div class="til_txt_b">Convenience,Safety,Reliable</div>
+                <div class="til_txt_line"></div>
+            </div>
+            <div class="hot_swiper_img"><img alt="More preferential products" src="imgs/hot_swiper_img.png"/></div>
+            <div class="hot_swiper_prt">
+                <div class="hot_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="item in hotSaleGoods">
+                            <div class="slide_con" @click="getDetail(item.goods_id)">
+                                <div class="slide_con_pic"
+                                     :style="'backgroundImage:url('+item.product_picture+')'"></div>
+                                <div class="hot_gd_mesg">
+                                    <div class="hot_gd_nm">
+                                        {{item.goods_name}}
+                                    </div>
+                                    <div class="nd">
+                                        <div class="nd_a">purity : <span>{{item.goods_purity}}</span></div>
+
+                                    </div>
+                                    <div class="nomal">
+                                        <div class="nomal_a">spec : <span>{{item.specification}}</span></div>
+                                        <div class="nomal_b">US$:<span>{{item.current_price}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-------------第4个模块开始------------->
+        <div class="four_enquiry">
+            <div class="hot_til">
+                <div class="til_txt_a">Inquiry</div>
+                <div class="til_txt_b">Customizing professional services</div>
+                <div class="til_txt_line"></div>
+            </div>
+            <div class="four_con">
+                <div class="four_pic">
+                </div>
+                <div class="four_txt">
+                    <div class="four_txt_sub">
+                        <p class="big_txt_a">Inquiry</p>
+
+                        <p class="big_txt_a">——</p>
+                        <div class="txt_detail">
+                           we will promptly send your inquiry information to high-quality suppliers.
+                        </div>
+                        <a href="find_goods_list.html" class="four_btn">Inquire the price</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--插入模块-->
+        <div class="sert_module">
+            <div class="hot_til">
+                <div class="til_txt_a">Free Resources</div>
+                <!-- <div class="til_txt_b">Free find goods</div> -->
+                <div class="til_txt_line"></div>
+            </div>
+            <div class="sert_box">
+                <div class="sert_a">
+                    <div class="sert_name">Free Resources</div>
+                    <div class="sert_line"></div>
+                    <div class="sert_txt">
+                       Our professional sourcing team will find the best supplier for your buying request.
+                    </div>
+                    <div class="sert_btn"> <a @click="before">Details of cargo hunting</a></div>
+                    <!--<div class="sert_img"></div>-->
+                </div>
+                <div class="sert_b">
+                    <div class="sert_pic"></div>
+                    <div class="sert_tal"></div>
+                </div>
+            </div>
+        </div>
+        <!-------------第4个模块结束------------->
+        <div class="b_banner_link" :style="'backgroundImage:url('+advertise3.title+')'">
+            <a :href="'index_ads_detail.html?expo_id='+advertise3.expo_id"></a>
+        </div>
+        <!-----------------第5开始---------------->
+        <div class="five_service">
+            <div class="hot_til">
+                <div class="til_txt_a">Our service</div>
+                <div class="til_txt_b">Let you save your heart and rest assured!</div>
+                <div class="til_txt_line"></div>
+            </div>
+            <div class="five_mn_con">
+                <ul id="u1" class="five_mn">
+                    <li class="five_mn_item" v-for="item in fiveSers" @mouseenter="sel8value(item)"
+                        :class="{five_mn_active:item.checked}">
+                        {{item.text}}
+                    </li>
+                </ul>
+                <div class="five_con_list">
+                    <div class="five_con_item">
+                        <div id="five_con_pic" class="five_con_pic"><img alt="Our service" :src="fiveSer.imgPath"/></div>
+                        <div id="five_con_txt" class="five_con_txt">
+                            <p class="five_txt_p">
+                                {{fiveSer.text}}
+                            </p>
+                            <p class="five_txt_p">
+                                ——
+                            </p>
+                            <div id="txt_detail" class="txt_detail">
+                                {{fiveSer.content}}
+                            </div>
+                            <div id="five_btn" class="five_btn"><a :href="fiveSer.link">APPLY</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div id="mask" class="mask"></div>
+        <!--<div id="opacity" class="opacity" v-show="IsShow">
+            <img id="img" src="imgs/cha.png" @click="IsShow=false"/>
+            <div class="opacity_title">
+                Inquiries
+            </div>
+            <ul class="opacity_cont">
+                <li><p>Name</p><input type="text" v-model="fiveSer.com_name"></li>
+                <li><p>Address</p><input type="text" v-model="fiveSer.com_addr"></li>
+                <li class="Code">
+                    <div class="d1"><p>Contact</p><input type="text" v-model="fiveSer.contact"/></div>
+                    <div><p>Mobile phone</p><input type="text" v-model="fiveSer.contact_phone"/></div>
+                </li>
+                <li><p>Mailbox</p><input type="text" v-model="fiveSer.mailbox"></li>
+                <li><p>Note</p><textarea v-model="fiveSer.postscript"></textarea></li>
+                <a @click="applySer">submit</a>
+            </ul>
+        </div>-->
+    </div>
+
+    <!-----------------第5结束---------------->
+    <!-----------------第6开始---------------->
+    <div class="six_supply">
+        <div class="hot_til">
+            <div class="til_txt_a">Take you to the exhibition</div>
+            <div class="til_txt_line"></div>
+        </div>
+        <div class="sex">
+			<div class="sex_a">
+				<p>Take you to the exhibition</p>
+				<p></p>
+				<p>We will take you to the world's major exhibitions of chemical industry.</p>
+				<ul class="sex_b">
+					<li>
+						<a href="http://www.cphi-china.cn">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji1.jpg) no-repeat;"></div>
+							<div class="sex_d">CPhI China</div>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.api-china.com.cn">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji2.jpg) no-repeat;"></div>
+							<div class="sex_d">API china</div>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.interphex.com">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji3.jpg) no-repeat;"></div>
+							<div class="sex_d">Interphex</div>
+						</a>
+					</li>
+					<li>
+						<a href="https://chemspecindia.com">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji4.jpg) no-repeat;"></div>
+							<div class="sex_d">ChemSpecIndia</div>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.me-spec.org">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji5.jpg) no-repeat;"></div>
+							<div class="sex_d">ChemSpecIndia</div>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.feiplastic.com">
+							<div class="sex_c" style="background: url(../imgs/home-zhanhui-guoji6.jpg) no-repeat;"></div>
+							<div class="sex_d">FEIPLASTIC</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+        <div class="six_swiper_prt">
+            <div class="six_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="item in hotSuppliers">
+                        <div class="six_slide_con">
+                            <div class="six_con_a" @click="getShopDetail(item.user_id)">
+                                <div class="six_logo"
+                                     :style="'backgroundImage:url('+item.com_logo+')'"></div>
+                                <div class="six_con_xx">
+                                    <div class="six_con_nm">{{item.com_name}}</div>
+                                    <div class="level">
+                                        <div class="six_con_lev">Grade {{item.rank}}</div>
+                                        <div class="level_bagge"
+                                             style="background-image: url(imgs/level_badge.png);"></div>
+                                    </div>
+                                    <div class="six_con_sale">Total sales：<span>{{item.total_volumes}}</span></div>
+                                </div>
+                            </div>
+                            <div class="six_con_b">
+                                <div class="six_pic_item" v-for="inner in item.merchandiseBeans"
+                                     :style="'backgroundImage:url('+inner.product_picture+')'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-----------------第6结束---------------->
+    <div class="c_banner_link" :style="'backgroundImage:url('+advertise4.title+')'">
+        <a :href="'index_ads_detail.html?expo_id='+advertise4.expo_id"></a>
+    </div>
+
+    <!--侧边栏导航-->
+    <ul class="right_nav">
+        <li class="r_nav_li" onclick="top_back()">
+            <a href="javascript:void(0);">
+                <div class="r_nav_icon"></div>
+                <div class="r_nav_icon_txt">返回顶部</div>
+            </a>
+        </li>
+    </ul>
+
+    <!--<local_component></local_component>-->
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">download :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain1_e.html">Contact Us</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_file1_e.html">Contact Customer Service</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <a href="new_explain2_e.html">Business Cooperation</a>
+                <span>&nbsp;|&nbsp;</span>
+                <!--<a href="new_explain8_e.html">Merchant help</a>
+                <span>&nbsp;|&nbsp;</span>-->
+                <!-- <a href="new_explain3_e.html">Mobile Har Lan</a>
+                <span>&nbsp;|&nbsp;</span> -->
+                <a href="new_explain4_e.html">Product Library</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain5_e.html">Friendly Link</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain6_e.html">Privacy Policy</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain7_e.html">Legal Statement</a>
+            </div>
+            <div class="foot_line"></div>
+            <!-- <div class="a_txt_b">
+                Browse Alphabetically:
+                <a href="new_explain8_e.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain9_e.html">Showroom </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain10_e.html">Country Search </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain11_e.html">Suppliers</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain12_e.html">Wholesaler </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain13_e.html">Affiliate</a>
+            </div> 
+            <div class="a_txt_b">
+                Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - Law
+                Enforcement
+                Compliance Guide
+            </div>-->
+            <div class="a_txt_b">
+                copyright 2017-2018 harlanchina.com 浙ICP备17059278号-1
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="js/jQuery/jquery-1.11.2.js"></script>
+<script src="js/jQuery/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/swiper/swiper-3.4.2.min.js"></script>
+<script src="lib/base64.js"></script>
+<script src="lib/common.js"></script>
+<script type="text/javascript" src="js/top_bottom.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<!--<script src="lib/component.js"></script>-->
+<script src="lib/index.js"></script>
+<script type="text/javascript">
+
+    var swiper1 = new Swiper('.sw_box .sw_one', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    function index_type(a,b) {
+        var type = new Object();
+        type.oneType=a;
+        type.twoType=b;
+        $.cookie('type',JSON.stringify(type));
+        window.location.href="index_type.html";
+        /*var f = document.createElement('form');
+        f.style.display = 'none';
+        f.action = 'index_type.html';
+        f.method = 'POST';
+        f.innerHTML = '<input type="hidden" name="oneType" value="' + a + '"/> <input type="hidden" name="twoType" value="' + b + '"/>';
+        document.body.appendChild(f);
+        f.submit();*/
+    }
+</script>
+</body>
+</html>

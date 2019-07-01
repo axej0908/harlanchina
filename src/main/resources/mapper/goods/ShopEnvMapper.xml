@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.axej.harlan.goods.dao.ShopEnvDao">
+
+    <insert id="save" parameterType="com.axej.harlan.goods.bean.ShopEnvBean">
+        <selectKey keyProperty="env_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_shop_env(
+        environment_src,
+        env_type,
+        shop_id
+        )values (
+        #{environment_src},
+        #{env_type},
+        #{shop_id}
+        )
+    </insert>
+
+    <delete id="delete">
+        delete from sys_shop_env where env_id = #{env_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.goods.bean.ShopEnvBean">
+        update sys_shop_env
+        <set>
+            <if test="environment_src!=null and environment_src!=''">environment_src=#{environment_src},</if>
+            <if test="env_type!=null and env_type!=''">env_type=#{env_type}</if>
+        </set>
+        where env_id = #{env_id}
+    </update>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.goods.bean.ShopEnvBean">
+        select * from view_user_shop_src
+        <where>
+            <if test="shop_id!=0 and shop_id!=null">
+                shop_id =#{shop_id}
+            </if>
+            <if test="env_type!=null and env_type!=''">
+                and env_type = #{env_type}
+            </if>
+            <if test="user_id!=0 and user_id!=null">
+                and user_id = #{user_id}
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from view_user_shop_src
+        <where>
+            <if test="shop_id!=0 and shop_id!=null">
+                shop_id =#{shop_id}
+            </if>
+            <if test="env_type!=null and env_type!=''">
+                and env_type = #{env_type}
+            </if>
+            <if test="user_id!=0 and user_id!=null">
+                and user_id = #{user_id}
+            </if>
+        </where>
+    </select>
+</mapper>

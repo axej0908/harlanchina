@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.user.dao.ScfDao">
+
+    <insert id="save" parameterType="com.axej.harlan.user.bean.ScfBean">
+        <selectKey keyProperty="scf_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into info_scf (
+        scf_id,
+        user_id,
+        real_name,
+        gender,
+        tel_number,
+        id_card,
+        census_register,
+        present_addr,
+        company_name,
+        company_addr,
+        company_landline,
+        audit_report,
+        financial_statement,
+        credit_line,
+        funds_usage,
+        application_time,
+        scf_status
+        )
+        values
+        (
+        #{scf_id},
+        #{user_id},
+        #{real_name},
+        #{gender},
+        #{tel_number},
+        #{id_card},
+        #{census_register},
+        #{present_addr},
+        #{company_name},
+        #{company_addr},
+        #{company_landline},
+        #{audit_report},
+        #{financial_statement},
+        #{credit_line},
+        #{funds_usage},
+        #{application_time},
+        #{scf_status}
+        )
+    </insert>
+
+    <delete id="delete">
+        delete from info_scf where user_id = #{user_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.user.bean.UserBean">
+        update info_scf
+        <set>
+            <if test="user_name!=null">user_name = #{user_name},</if>
+            <if test="user_phone!=null">user_phone = #{user_phone},</if>
+            <if test="user_password!=null">user_password = #{user_password},</if>
+            <if test="user_code!=null">user_code = #{user_code},</if>
+            <if test="user_type!=null">user_type = #{user_type},</if>
+            <if test="company_name!=null">company_name = #{company_name},</if>
+            <if test="company_address!=null">company_address = #{company_address},</if>
+            <if test="company_landline!=null">company_landline = #{company_landline},</if>
+            <if test="trade_tendency!=null">trade_tendency = #{trade_tendency},</if>
+            <if test="u_QQ!=null">u_QQ = #{u_QQ},</if>
+            <if test="u_wechat!=null">u_wechat = #{u_wechat},</if>
+            <if test="u_weibo!=null">u_weibo = #{u_weibo},</if>
+            <if test="register_time!=null">register_time = #{register_time},</if>
+            <if test="user_state!=null">user_state = #{user_state},</if>
+            <if test="user_photo!=null">user_photo = #{user_photo},</if>
+            <if test="user_gender!=null and user_gender.trim()!=''">user_gender=#{user_gender},</if>
+            <if test="user_area!=null and user_area.trim()!=''">user_area=#{user_area}</if>
+        </set>
+        where user_id = #{user_id}
+    </update>
+
+    <select id="queryObject" parameterType="map" resultType="com.axej.harlan.user.bean.UserBean">
+        select * from info_scf
+        <where>
+            <if test="user_id!=null and user_id!=''">
+                user_id = #{user_id}
+            </if>
+            <if test="user_name!=null and user_name!=''">
+                and user_name = #{user_name}
+            </if>
+            <if test="user_phone!=null and user_phone!=''">
+                and user_phone = #{user_phone}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.user.bean.UserBean">
+        select * from info_scf
+        <where>
+            <if test="minTime!=null and maxTime">
+                register_time between #{register_time0} and #{register_time1}
+            </if>
+            <if test="user_id!=null">
+                and user_id = #{user_id}
+            </if>
+            <if test="user_type!=null">
+                and user_type = #{user_type}
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select count(1) from info_scf
+        <where>
+            <if test="minTime!=null and maxTime">
+                register_time between #{register_time0} and #{register_time1}
+            </if>
+            <if test="user_type!=null">
+                and user_type = #{user_type}
+            </if>
+        </where>
+    </select>
+
+</mapper>

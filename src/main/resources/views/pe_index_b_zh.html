@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>个人中心-首页-我的订单</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" href="css/pe_index_b_zh.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/top_bottom.css"/>
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+ 
+<div class="entire" id="rrapp">
+	
+	<!--顶部区域开始-->
+		<div class="header">
+			<div class="header_sub">
+				<ul class="header_fl">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="new_explain16_c.html">合作与服务</a></li>
+					<li><a href="shop_cart_en.html">我的购物车 </a></li>
+				</ul>
+				<ul class="header_fr">
+					<li><a href="login_zh.html">退出</a></li>
+					<li><a href="pe_index_zh.html">我的化浪</a></li>
+					<li><a href="new_explain17_c.html">帮助中心</a></li>
+					
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+    <div class="first">
+        <div class="first_sub">
+            <a href="index.html"><div class="logo"></div></a>
+            <ul class="mn_list">
+						<li class="mn_active"><a href="pe_index_zh.html">首页</a></li>
+						<li><a href="pe_data_a_zh.html">我的资料</a></li>
+            </ul>
+
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+    <div class="second">
+        <div class="second_sub">
+            <div class="second_mn">
+                <ul class="second_mn_list">
+                    <li  class="current_bg"><a href="pe_index_b_zh.html">我的订单</a></li>
+                    <li><a href="pe_index_f_zh.html">我的商品</a></li>
+                    <li><a href="pe_index_vip.html">我的会员</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=01">申请国际市场开拓</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=02">申请知识产权分析</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=03">申请供应链金融</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=04">申请交易补贴</a></li>
+                    <li><a href="pe_index_supply_zh.html?type=05">申请报关商检</a></li>
+                    <li><a href="pe_data_query_zh.html?type=data">采购数据查询</a></li>
+                    <li><a href="pe_data_query_zh.html?type=credit">采购商征信查询</a></li>
+                    <li><a href="my_free_search_zh.html?type=">系统询盘</a></li>
+                    <li><a href="pe_index_inquiry_x_zh.html">供应商询盘</a></li>
+                    <li><a href="pe_index_inquiry_zh.html">待处理询盘</a></li>
+                    <li><a href="pe_index_inquiry2_zh.html">已处理询盘</a></li>
+                </ul>
+                <div class="mn_bg"></div>
+            </div>
+            <div class="second_two">
+                <ul class="tab_div">
+                    <li class="tab_li_current">供货订单</li>
+                </ul>
+                <div class="con_list">
+                    <!--供货订单-->
+                    <div class="con" style="display: block;">
+                        <ul class="con_tab">
+                            <li @click="preLoadSupplyOrders(0)">全部订单</li>
+                            <li @click="preLoadSupplyOrders(0,1)">待发货</li>
+                            <li @click="preLoadSupplyOrders(0,3)">待收货</li>
+                            <li @click="preLoadSupplyOrders(0,4)">已完成</li>
+                            <li @click="preLoadSupplyOrders(0,5)">申请售后</li>
+                            <div class="con_sub_slide"></div>
+                        </ul>
+                        <div class="con_sub_list"
+                             v-for="item in supplyOrders">
+                            <div class="con_sub">
+                                <div class="order_item">
+                                    <div class="od_item_top">
+                                        <div class="ddbh">
+                                            订单编号：<span>{{item.order_id}}</span>
+                                        </div>
+                                        <div class="dt">
+                                            {{item.order_time}}
+                                        </div>
+                                        <div class="shop_nm">
+                                            {{item.user_name}}
+                                        </div>
+                                    </div>
+                                    <div class="od_item_gd" v-for="inner in item.orderItemBeans">
+                                        <div class="od_pic"
+                                             :style="{backgroundImage: 'url('+inner.product_picture+')'}">
+                                        </div>
+                                        <div class="od_mesg">
+                                            <div class="od_nm">
+                                                <div class="od_gd_nm"
+                                                     v-text="inner.goods_name">
+                                                    N-[3-氯-4-(3-氟苄氧基)苯基]-6-碘喹唑啉-4-胺
+                                                </div>
+                                                <div class="od_gd_num">
+                                                    X{{inner.goods_num}}
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                            <div class="od_nomal">
+                                                <label>包装方式：<span>{{inner.package_opt}}</span></label>
+                                                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                                <label>色光：<span>{{inner.color_light}}</span></label>
+                                            </div>
+                                            <div class="od_bz">
+                                                <label>色力：<span>{{inner.color_power}}</span></span>
+                                                </label></div>
+                                        </div>
+                                        <div class="od_peop">
+                                            {{inner.consignee}}
+                                        </div>
+                                        <div class="od_gd_pri">
+                                            <small>￥</small>
+                                            <span>{{inner.goods_num*inner.goods_price}}</span>
+                                            <small>.00</small>
+                                        </div>
+                                        <div class="od_btn_list">
+                                            <div class="od_btn_a">
+                                                {{inner.item_status | orderState}},
+                                                {{item.payment_opt}}
+                                            </div>
+                                            <div class="od_btn_b" v-if="inner.item_status>=2"
+                                                 @click="cancelOrder(item)">
+                                                取消订单
+                                            </div>
+                                            <div class="od_btn_a" v-if="inner.item_status>2"
+                                                 @click="queryLogistics(item,false)">查看物流
+                                            </div>
+                                            <div class="od_btn_a" v-if="inner.item_status==1"
+                                                 @click="queryLogistics(item,true)">确认发货
+                                            </div>
+                                        </div>
+                                        <div class="od_gd_sev">
+                                            <p><a href="#">平台检测</a></p>
+                                            <p><a href="#">免费监理</a></p>
+                                            <p><a @click="queryOrderDetail(item)">订单详情</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--pager start-->
+                            <div id="pagerBar" class="pagination"></div>
+                            <!--pager limit-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="foot_bottom">
+        <div class="foot_sub">
+            <div class="download">
+                <div class="load_txt">下载 :</div>
+                <div class="load_pic_a"><a href="https://itunes.apple.com/cn/app/harlan/id1390133615?mt=8"></a></div>
+                <div class="load_pic_b"><a href="hualang.apk"></a></div>
+            </div>
+            <div class="a_txt">
+                <a href="new_explain14_c.html">联系我们</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain15_c.html">联系客服</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain16_c.html">合作招商</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain17_c.html">商家帮助</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain18_c.html">手机化浪</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain19_c.html">产品库</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain20_c.html">友情链接</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain21_c.html">隐私政策</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain22_c.html">法律声明</a>
+            </div>
+            <div class="foot_line"></div>
+            <div class="a_txt_b">
+                按字母顺序浏览 ：
+                <a href="new_explain23_c.html">Onetouch</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain24_c.html">陈列室 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain25_c.html">国家搜索 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain26_c.html">供应商</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain27_c.html">批发商 </a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="new_explain28_c.html">加盟 产品列表政策 - 知识产权保护</a>
+            </div>
+            <div class="a_txt_b">
+                产品列表政策 - 知识产权保护 - 隐私政策 - 使用条款 - 执法合规指南
+            </div>
+            <div class="a_txt_b">
+                @2017-2018 化浪（浙江）科技有限公司.版权所有.
+            </div>
+        </div>
+    </div>
+
+    <!--物流弹窗-->
+    <div class="alert_wl" style="display:none" v-show="logisticsFrame">
+        <div class="alert_aub">
+            <div class="alert_sub_top">
+                <div class="aler_til">物流详情</div>
+                <div class="alert_close" @click="shutdownFrame">关闭</div>
+            </div>
+            <div class="alert_con">
+                <div class="input_item">
+                    <div class="input_label">物流公司：</div>
+                    <div class="input_box"><input type="text" v-model="logistics.corporation"/></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="input_item">
+                    <div class="input_label">物流单号：</div>
+                    <div class="input_box"><input type="text" v-model="logistics.number"/></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="alert_tj_btn" v-show="submitButton" @click="submitLogistics">提交</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jQuery/jquery-1.11.2.js" type="text/javascript"></script>
+<script src="js/placehoder.js" type="text/javascript"></script>
+<script src="lib/base64.js"></script>
+<script src="lib/common.js"></script>
+<script src="js/pe_index_b.js" type="text/javascript"></script>
+<script src="plugins/vue/vue.min.js"></script>
+<script src="lib/pe_index_b.js"></script>
+<script src="plugins/jquery.pagination.js"></script>
+</body>
+</html>

@@ -1,0 +1,1457 @@
+﻿[v-cloak] {
+    display: none;
+}
+
+html, body {
+    min-width: 1400px;
+    width: 100%;
+    min-height: 100%;
+    background-color: #f2f3f7;
+}
+
+.adv_top_out {
+    width: 100%;
+    height: 62px;
+    background: url(../imgs/index/adv_a.png) no-repeat center;
+    position: relative;
+    background-size: 100% 100%;
+}
+
+.adv_top_sub {
+    display: block;
+    width: 1200px;
+    height: 100%;
+    background: url(../imgs/index/top_bannr.png) no-repeat center;
+    background-size: 1200px 47px;
+    margin: 0 auto;
+}
+
+#top_cha {
+    position: absolute;
+    top: 2px;
+    right: 5px
+
+}
+
+.entire {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: left 92px;
+    background-size: 100% 1032px;
+}
+
+/*----------------------第一块布局样式----------------------------------------------------*/
+.first {
+    width: 1200px;
+    height: 430px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding-top: 6px;
+
+}
+
+/*左侧菜单样式*/
+.mn_list {
+    width: 228px;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+
+.mn_til {
+    width: 100%;
+    line-height: 32px;
+    font-size: 16px;
+    color: #1b1513;
+    background: url(../imgs/mn_til_icon.png) no-repeat;
+    background-size: 18px 12px;
+    background-position: 13px center;
+    padding-left: 38px;
+    font-weight: bold;
+
+}
+
+.sc_mn {
+    width: 100%;
+    padding-left: 28px;
+}
+
+.sc_mn .subNav {
+    width: 200px;
+    height: 35px;
+    border-bottom: 1px solid #e6e8eb;
+    padding-left: 12px;
+
+}
+
+.subNav_txt {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #212526;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.li_type {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #bcbcbc;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.li_txt {
+    display: block;
+    width: 179px;
+    height: 31px;
+    line-height: 31px;
+    font-size: 12px;
+    color: #333;
+    white-space: pre-wrap;
+
+}
+
+.li_active{
+    background-color: #d2d2d2;
+}
+.sc_mn .li_active .li_type{
+    background-color: #1984fb;
+}
+/*.sc_mn .li_active .li_txt{
+    color: #1984fb;
+}*/
+.li_active.subNav_txt{color: #fff;}
+.navContent {
+    position: absolute;
+    top: 0;
+    left: 200px;
+    width: 180px;
+    /*display: none;*/
+    padding: 16px 15px;
+    background-color: #1d5c95;
+    z-index: 11;
+}
+
+.navContent li {
+    width: 148px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px dashed #dbdbdb;
+}
+
+.navContent li a {
+    display: block;
+    height: 100%;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 40px;
+    color: #fff;
+    overflow: hidden;
+
+}
+/*左侧二级菜单开始新增*/
+.mn_two_level{
+    position: absolute;
+    top: 0px;
+    left: 228px;
+    width: 718px;
+    height: 390px;
+    background-color: #fff;
+    z-index: 28;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.mn_two_a{
+    width: 100%;
+    padding-top: 11px;
+}
+.mn_two_til{
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    border-bottom: 1px solid #DBDBDB;
+    font-size: 14px;
+    color: #333;
+}
+.mn_two_a_ul{
+    width: 718px;
+    height: 94px;
+    margin-left: -40px;
+    padding-top: 5px;
+    overflow: hidden;
+}
+.mn_two_a_ul li{
+    float: left;
+    margin-left: 42px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    color: #333;
+}
+/*.mn_two_a_ul li:hover{
+    color: #057bff;
+}*/
+.mn_two_b{
+    width: 100%;
+}
+.mn_two_b .mn_two_til{
+    font-size: 18px;
+    color: #333;
+}
+.mn_two_gd{
+    width: 100%;
+    padding-top: 18px;width: 100%;
+    height: 174px;
+    padding-top: 18px;
+    overflow: hidden;
+}
+.mn_two_gd li{
+    width: 100px;
+    height: 156px;
+    float: left;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.mn_two_pic{
+    width: 81px;
+    height: 81px;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 1px solid #DBDBDB;
+    margin: 0 auto;
+}
+.mn_two_gd_mesg{
+    width: 100%;
+    margin-top: 7px;
+}
+.mn_two_gd li p{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #474747;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mn_two_gd li .mn_two_gd_pri{
+    color: #ff8084;
+}
+/*左侧二级菜单结束新增*/
+/*轮播图片样式*/
+.first-swiper {
+    margin-top: 6px;
+    margin-left: 10px;
+    width: 703px;
+    height: 418px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.first-swiper .swiper-wrapper {
+    width: 100%;
+    height: 379px;
+}
+
+.first-swiper .swiper-slide {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.span_a {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #e6e7e9;
+    margin: 0 4px;
+}
+
+.span_a_active {
+    border: 2px solid #057bff;
+}
+
+/*----------------------------tab切换列表样式--------------------*/
+.first_news {
+    margin-top: 6px;
+    width: 242px;
+    height: 382px;
+    float: left;
+    margin-left: 10px;
+
+}
+
+.new_tab_mn {
+    width: 100%;
+    height: 35px;
+    background-color: #f5f5f5;
+    font-size: 12px;
+}
+
+.new_tab_mn li {
+    float: left;
+    width: 120px;
+    height: 100%;
+    line-height: 38px;
+    text-align: center;
+    background-color: transparent;
+
+    color: #1a1a1a;
+    padding: 0 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.new_tab_mn li:not(:first-child) {
+    margin-left: 1px;
+}
+
+.new_tab_mn .li_active {
+    color: #fff;	
+    background-color: #317EE7;
+
+
+}
+
+.tab_con_list{
+	width: 100%;
+	height: 347px;
+	padding-top: 24px;
+}
+.tab_con{
+	width: 100%;
+	height: 100%;
+}
+.tab_intro{
+	width: 100%;
+	height: 78px;
+}
+.tab_intro img{
+	width: 242px;
+	height: 78px;
+} 
+.border_line{
+	margin: 10px auto;
+}
+.pri_div{
+	padding-top: 8px;
+	width: 100%;
+	height: 252px;
+	border: 1px dashed #e9e9e9;
+	overflow-y: auto;
+	overflow: hidden;
+}
+.aa{
+	margin-top: 8px;
+    width: 240px;
+    height: 240px;
+    overflow-y: auto;
+    overflow: hidden;
+}
+.pri_item{
+	display: block;
+	margin-top: 12px;
+	width: 100%;
+	height: 20px;
+	font-size: 12px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+}
+.tal_item{
+	display: block;
+	margin-top: 12px;
+	width: 100%;
+	font-size: 12px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.tal_item:first-child{
+	margin-top: -300px;
+}
+.sw_name{
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 40px;
+    color: #323232;
+}
+.sw_txt{
+    font-size: 9px;
+    color: #a2a2a2;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e4e4e4;
+}
+.sw_txt a{
+    color: #ef4848;
+}
+.sw_times{
+    font-size: 9px;
+    line-height: 30px;
+    color: #a2a2a2;
+}
+.sw_btn{
+    margin: 12px auto 0 auto;
+    width: 160px;
+    height: 30px;
+    line-height: 28px;
+    border-radius: 15px;
+    border: 1px solid #317ee7;
+    font-size: 9px;
+    color: #317ee7;
+    text-align: center;
+    position: relative;
+}
+.sw_btn a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.item_nm{
+    width: 100px;
+    height: 100%;
+    line-height: 20px;
+    color: #808080;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pri_con{
+	width: 80px;
+	height: 100%;
+	line-height: 20px;
+	color: #ffa740;
+	float: right;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: right;
+}
+
+
+/*----------------------第一块布局样式结束----------------------------------------------------*/
+/*----------------------第二块布局样式----------------------------------------------------*/
+.a_banner_link {
+    width: 1200px;
+    height: 77px;
+    background: url(../imgs/a_baner_bg.png) no-repeat center;
+    background-size: 1200px 83px;
+    margin: 10px auto 0 auto;
+    position: relative;
+}
+
+.a_banner_link a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.a_link {
+    display: block;
+    width: 110px;
+    height: 20px;
+    position: absolute;
+    bottom: 20px;
+    right: 160px;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.a_link:hover {
+    text-decoration: underline;
+}
+
+/*----------------------第二块布局样式结束----------------------------------------------------*/
+/*----------------------第三块布局样式----------------------------------------------------*/
+/*标题区域样式*/
+.three_hot {
+    width: 1200px;
+    height: 388px;
+    background-color: #FFFFFF;
+    margin: 22px auto 0 auto;
+}
+
+.hot_til {
+    width: 100%;
+    height: 68px;
+    padding-left: 10px;
+}
+
+.three_hot .hot_til {
+    background-color: #fff;
+}
+
+.til_txt_a {
+    font-size: 26px;
+    color: #333333;
+    font-weight: bolder;
+    float: left;
+    height: 100%;
+    line-height: 68px;
+    margin-right: 16px;
+}
+
+.til_txt_b {
+    font-size: 14px;
+    color: #999c9f;
+    height: 100%;
+    line-height: 68px;
+    float: left;
+    margin-right: 32px;
+}
+
+.til_txt_line {
+    border: 3px solid #DCDEE3;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    top: 31px;
+}
+
+/*轮播区域样式*/
+.hot_swiper_img{
+	width: 298px;
+	height: 316px;
+	float: left;
+	padding-top: 10px;
+	padding-left: 12px;
+}
+.hot_swiper_img img{
+	width: 266px;
+	height: 290px;
+}
+.hot_swiper_prt {
+    width: 902px;
+    height: 316px;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+float: right;
+	
+}
+
+.hot_swiper {
+    width: 1200px;
+    height: 316px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+.hot_swiper .swiper-wrapper {
+    /*padding-top: 23px;*/
+}
+
+.hot_swiper .swiper-slide {
+    width: 289px;
+    padding-top: 20px;
+    height: 158px;
+}
+
+
+.hot_swiper_prt .swiper-button-next, .hot_swiper_prt .swiper-button-prev {
+    width: 15px;
+    height: 31px;
+    -moz-background-size: 15px 31px;
+    -webkit-background-size: 15px 31px;
+    background-size: 15px 31px;
+}
+
+.hot_swiper_prt .swiper-button-prev, .hot_swiper_prt .swiper-container-rtl .swiper-button-next {
+    background-image: url(../imgs/swiper_pre.png);
+}
+
+.hot_swiper_prt .swiper-button-next, .hot_swiper_prt .swiper-container-rtl .swiper-button-prev {
+    background-image: url(../imgs/swiper_nxt.png);
+}
+
+.slide_con {
+    width: 100%;
+    height: 122px;
+    border: 1px solid #DBDBDB;
+    border-right: none;
+}
+.slide_con:hover{
+ 	box-shadow:0 2px 10px #ccc; 
+}
+.hot_swiper .swiper-slide:nth-child(2n) .slide_con {
+    margin-top: -10px;
+}
+
+.slide_con_pic {
+    margin-top: 14px;
+    margin-left: 14px;
+    width: 90px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #DBDBDB;
+    float: left;
+}
+
+.hot_gd_mesg {
+    margin-top: 4px;
+    width: 180px;
+    height: 111px;
+    float: right;
+}
+
+.hot_gd_nm {
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #2b2b2d;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nd {
+    margin-top: 12px;
+    width: 100%;
+    height: 22px;
+    font-size: 12px;
+    color: #8a8a8a;
+}
+
+.nd_a {
+    float: left;
+    width: 100%;
+    height: 100%;
+    line-height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+.nd_b {
+    float: left;
+    width: 100%;
+    height: 100%;
+    line-height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.nomal_a {
+    color: #8a8a8a;
+    float: left;
+    width: 100%;
+
+    line-height: 22px;
+    font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+.nomal_b {
+    color: red;
+    float: right;
+    width: 100%;
+    line-height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 16px;
+
+}
+
+/*---------------------------------第四个模块样式开始------------------------------*/
+.four_enquiry {
+    width: 1200px;
+    margin: 20px auto 0 auto;
+}
+
+.four_enquiry .hot_til {
+    background-color: #fff;
+}
+
+.four_con {
+    width: 100%;
+    height: 335px;
+    margin-top: 20px;
+}
+
+.four_pic {
+    width: 800px;
+    height: 100%;
+    background: url(../imgs/fouur_pic.png) no-repeat center;
+    background-size: 100% 100%;
+    float: left;
+}
+
+.four_txt {
+    width: 387px;
+    height: 100%;
+    float: right;
+    background-color: #e3e3e3;
+    position: relative;
+}
+
+.four_txt_sub {
+    width: 371px;
+    height: 321px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 27px;
+}
+
+.big_txt_a {
+    font-size: 24px;
+    color: #333333;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
+}
+
+.txt_detail {
+    margin-top: 10px;
+    width: 100%;
+
+    line-height: 30px;
+    font-size: 16px;
+    color: #837d7d;
+    display: -webkit-box;
+/*  text-indent: 2em;*/
+    -webkit-line-clamp: 5;
+    word-wrap: break-word;
+    word-break: break-all;
+
+}
+
+.four_btn {
+    display: block;
+    width: 258px;
+    height: 39px;
+ /* 	margin: 0 auto;*/
+    margin-top: 50px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    line-height: 39px;
+    background-color: #ffa800;
+	
+}
+
+/*---------------------------------第四个模块样式结束------------------------------*/
+
+/*---------------------------------插入模块样式开始------------------------------*/
+.sert_module{
+    width: 1200px;
+    margin: 10px auto 0 auto;
+}
+.sert_box{
+    width: 1200px;
+    height: 454px;
+    background-color: #FFFFFF;
+}
+.sert_a{
+    width: 714px;
+    height: 100%;
+    float: left;
+    padding: 50px 100px 0 50px;
+    position: relative;
+}
+.sert_name{
+    font-size: 24px;
+    color: #333333;
+    font-weight: bolder;
+    line-height: 30px;
+}
+.sert_line{
+    margin-top: 12px;
+    width: 55px;
+    height: 3px;
+    background-color: #333333;
+}
+.sert_txt{
+    margin-top: 24px;
+    color: #585858;
+    font-size: 16px;
+    line-height: 30px;
+/*  	text-indent: 2em;*/
+}
+.sert_btn{
+  /*	margin: 0 auto;*/
+    margin-top: 50px;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 18px;
+    background-color: #ffa800;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.sert_btn a{
+ 	display: block;
+    width: 100%;
+    height: 100%;
+}
+.sert_img{
+    width: 118px;
+    height: 124px;
+    background: url(../imgs/sert_img.png) no-repeat;
+    background-size: 118px 124px;
+    position: absolute;
+    bottom: 54px;
+    right: 0;
+}
+.sert_b{
+    width: 475px;
+    height: 100%;
+    background-color: #FFFFFF;
+    padding: 32px 0 0 136px;
+    float: left;
+    position: relative;
+}
+.sert_pic{
+    width: 294px;
+    height: 346px;
+    background: url(../imgs/sert_pic.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 54px;
+    left: 16px;
+}
+.sert_tal{
+    width: 266px;
+    height: 386px;
+    border: 1px solid #a6a6a6;
+}
+/*---------------------------------第五个模块样式开始------------------------------*/
+.five_service {
+    width: 1200px;
+    margin: 10px auto 0 auto;
+}
+
+.five_mn_con {
+    margin-top: 9px;
+    width: 100%;
+    height: 433px;
+    background-color: #fff;
+}
+
+.five_mn {
+    width: 271px;
+    height: 100%;
+    font-size: 14px;
+    color: #6d6d6d;
+    float: left;
+}
+
+.five_mn li {
+    width: 100%;
+    height: 107px;
+    line-height: 106px;
+    border-right: 1px solid #DBDBDB;
+    background-repeat: no-repeat;
+    background-position: 20px center;
+    background-size: 50px 50px;
+    padding-left: 80px;
+    cursor: pointer;
+}
+
+.five_mn li:not(:last-child) {
+    border-bottom: 1px solid #DBDBDB;
+}
+
+.five_mn li:nth-child(1) {
+    background-image: url(../imgs/cir_a.png);
+}
+
+.five_mn li:nth-child(2) {
+    background-image: url(../imgs/cir_b.png);
+}
+
+.five_mn li:nth-child(3) {
+    background-image: url(../imgs/cir_c.png);
+}
+
+.five_mn li:nth-child(4) {
+    background-image: url(../imgs/cir_d.png);
+}
+
+.five_mn li:nth-child(5) {
+    background-image: url(../imgs/cir_e.png);
+}
+
+.five_mn_active {
+    border-right: none;
+    border-left: 8px solid #2481e4;
+}
+
+.five_con_list {
+    width: 888px;
+    height: 100%;
+    float: right;
+}
+
+.five_con_item {
+    width: 100%;
+    height: 100%;
+    padding-top: 27px;
+}
+
+.five_con_pic {
+    width: 450px;
+    height: 370px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    float: left;
+}
+
+.five_con_txt {
+    width: 392px;
+    height: 370px;
+    float: right;
+    padding-right: 30px;
+    padding-top: 30px;
+}
+
+.five_txt_p {
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #333333;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.five_btn {
+    margin-top: 30px;
+    width: 144px;
+    height: 39px;
+    text-align: center;
+    line-height: 39px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+	background-color: #ffa800;
+}
+
+/*---------------------------------第五个模块样式结束------------------------------*/
+/*---------------------------------第六个模块样式开始------------------------------*/
+.six_supply {
+    width: 1200px;
+    margin: 10px auto 0px auto;
+}
+.huizhan{
+	width: 100%;
+	height: 250px;
+	margin-bottom: 10px;
+}
+.huizhan li{
+	width: 25%;
+	height: 120px;
+	float: left;
+	padding: 2.5px;
+}
+.huizhan img{
+	width: 100%;
+	height: 100%;
+}
+.six_swiper_prt {
+	display: none;
+    width: 100%;
+    height: 249px;
+    margin: 9px auto 0 auto;
+    position: relative;
+    cursor: pointer;
+}
+
+.six_swiper {
+    width: 1160px;
+    height: 249px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.six_swiper_prt .swiper-button-next, .six_swiper_prt .swiper-button-prev {
+    width: 15px;
+    height: 31px;
+    -moz-background-size: 15px 31px;
+    -webkit-background-size: 15px 31px;
+    background-size: 15px 31px;
+}
+
+.six_swiper_prt .swiper-button-prev, .six_swiper_prt .swiper-container-rtl .swiper-button-next {
+    background-image: url(../imgs/swiper_pre.png);
+    left: 0;
+}
+
+.six_swiper_prt .swiper-button-next, .six_swiper_prt.swiper-container-rtl .swiper-button-prev {
+    background-image: url(../imgs/swiper_nxt.png);
+    right: 0;
+}
+
+.six_swiper .swiper-slide {
+
+}
+
+.six_slide_con {
+    width: 290px;
+    height: 244px;
+    border: 1px solid #DBDBDB;
+}
+
+.six_con_a {
+    width: 100%;
+    height: 127px;
+    background-color: #fff;
+}
+
+.six_logo {
+    width: 69px;
+    height: 69px;
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #DBDBDB;
+    float: left;
+    margin-left: 20px;
+    position: relative;
+    top: 29px;
+}
+
+.six_con_xx {
+    width: 156px;
+    height: 100%;
+    float: right;
+    padding-right: 20px;
+    padding-top: 12px;
+}
+
+.six_con_nm {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #a6a1a1;
+}
+
+.level {
+    width: 100%;
+    height: 18px;
+    margin-top: 20px;
+}
+
+.six_con_lev {
+    width: 84px;
+    height: 18px;
+    background-color: #f2f3f7;
+    border-radius: 9px;
+    font-size: 12px;
+    color: #757575;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-image: url(../imgs/con_lev_bg.png);
+    padding-left: 24px;
+    padding-right: 10px;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.level_bagge {
+    float: left;
+    width: 18px;
+    height: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 15px;
+    margin-left: 5px;
+}
+
+.six_con_sale {
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #757575;
+    margin-top: 12px;
+}
+
+.six_con_b {
+    width: 100%;
+    height: 89px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-top: 11px;
+    overflow: hidden;
+}
+
+.six_pic_item {
+    width: 88px;
+    height: 88px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    margin: 0 3px;
+    float: left;
+}
+
+/*---------------------------------第六个模块样式结束------------------------------*/
+.b_banner_link {
+    width: 1200px;
+    height: 77px;
+    background: url(../imgs/index/b_bg_link.png);
+    margin: 22px auto 0 auto;
+}
+
+.b_banner_link a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.c_banner_link {
+	display: none;
+    width: 1200px;
+    height: 77px;
+    background: url(../imgs/index/c_bg_link.png);
+    margin: 30px auto;
+}
+
+.c_banner_link a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/*---------------------------------弹出框------------------------------*/
+.mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    outline: 0;
+    -webkit-overflow-scrolling: touch;
+    background-color: rgb(0, 0, 0);
+    filter: alpha(opacity=60);
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    display: none;
+}
+
+.opacity {
+    width: 552px;
+    height: 648px;
+    background-color: #FFFFFF;
+    z-index: 3;
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    margin-left: -300px;
+}
+
+.opacity img {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.opacity_title {
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    font-family: "microsoft yahei";
+    background-color: #5e99f3;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.opacity_cont {
+    margin: 0 auto;
+    width: 442px;
+}
+
+.opacity_cont li {
+    margin-top: 16px;
+
+    font-family: "microsoft yahei";
+}
+
+.opacity_cont input {
+    width: 442px;
+    height: 40px;
+    border: 1px solid #e6e6e6;
+}
+
+.opacity_cont textarea {
+    width: 100%;
+    height: 84px;
+    border: 1px solid #e6e6e6;
+}
+
+.opacity_cont p {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.Code div {
+    width: 190px;
+    float: left;
+    margin-bottom: 10px;
+
+}
+
+.d1 {
+    margin-right: 60px;
+}
+
+.Code input {
+    width: 190px;
+}
+
+.opacity a {
+    display: inline-block;
+    width: 440px;
+    height: 50px;
+    background-color: #ff9b01;
+    line-height: 50px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 18px;
+    margin-top: 22px;
+    cursor: pointer;
+}
+
+/*---------------------------------弹出框  结束------------------------------*/
+/*侧边栏导航样式*/
+.right_nav{
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    /*width: 50px;*/
+    height: 152px;
+    z-index: 1;
+}
+.r_nav_li{
+    height: 35px;
+}
+.r_nav_li a{
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 32px;
+}
+.r_nav_li:not(:first-child){
+    margin-top: 4px;
+}
+.r_nav_icon{
+    width: 32px;
+    height: 35px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-color: #79b2ff;
+}
+.r_nav_li:nth-child(1) .r_nav_icon{
+    background-image: url(../imgs/r_nav_d.png);
+}
+.r_nav_li:hover .r_nav_icon{
+    background-color: #317ee7;
+}
+.r_nav_icon_txt{
+    width:60px;
+    height: 100%;
+    background-color: #317ee7;
+    font-size: 12px;
+    color: #fff;
+    text-align: right;
+    line-height: 35px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    position: absolute;
+    top: 0;
+    right:-60px;
+    z-index: -1;
+}
+.r_nav_li:hover .r_nav_icon_txt{
+    right:32px;
+}
+.sw_box{
+    width: 240px;
+    height: 350px;
+}
+.sw_name{
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 40px;
+    color: #323232;
+}
+.sw_txt{
+    font-size: 9px;
+    color: #a2a2a2;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e4e4e4;
+}
+.sw_txt a{
+    color: #ef4848;
+}
+.sw_times{
+    font-size: 9px;
+    line-height: 30px;
+    color: #a2a2a2;
+}
+.sw_btn{
+    margin: 12px auto 0 auto;
+    width: 160px;
+    height: 30px;
+    line-height: 28px;
+    border-radius: 15px;
+    border: 1px solid #317ee7;
+    font-size: 9px;
+    color: #317ee7;
+    text-align: center;
+}
+.sw_btn a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.swiper_area{
+    width: 240px;
+    position: relative;
+    padding-bottom: 12px;
+}
+.swiper-container{
+    margin:0 auto;
+}
+.sw_item{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    padding-left: 6px;
+    padding-right: 6px;
+    text-align: justify;
+    float: left;
+}
+.sex{
+	width: 100%;
+	height: 400px;
+	margin-top: 40px;
+	margin-bottom: 80px;
+}
+.sex_a{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+	background: url(../imgs/sexbj1.png) no-repeat right center;
+}
+.sex_a p:nth-child(1){
+	font-size: 24px;
+	color: #333333;
+	font-weight: bold;
+	margin-top: 10px;
+    margin-left: 260px;
+}
+.sex_a p:nth-child(2){
+	width: 55px;
+	margin-top: 12px;
+	height: 3px;
+	background: #000;
+    margin-left: 530px;
+}
+.sex_a p:nth-child(3){
+	font-size: 16px;
+	color: #585858;
+	margin-left: 40px;
+    margin-top: 30px;
+}
+.sex_b{
+	width: 597px;
+	margin-top: 60px;
+}
+.sex_b li{
+	width: 190px;
+	height: 130px;
+	float: left;
+	margin-right: 9px;
+}
+.sex_b li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.sex_b li:hover .sex_c{
+	box-shadow:0px 0px 10px #eeeeee;
+}
+.sex_b li:hover .sex_d{
+	color: #2d86ee;
+}
+.sex_c{
+	width: 100%;
+	height: 90px;
+	background: url(../imgs/sexbj1.png) no-repeat;
+}
+.sex_d{
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #585858;
+}

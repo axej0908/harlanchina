@@ -1,0 +1,147 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	
+}
+/*-------------------顶部样式开始------------------------*/
+.top{
+    width: 100%;
+    height: 40px;
+    background-color: #444444;
+    font-size: 12px;
+    color: #fff;
+}
+.top_sub{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+}
+.top_sub div{
+	height: 100%;
+	line-height: 40px;
+}
+.app_link{
+	margin-left: 26px;
+}
+.land_u{
+	margin-right: 70px;
+	color: #fff;
+	padding-top: 12px;
+}
+.land_u .u_name{
+	display: block;
+    float: left;
+    line-height: 16px;
+    height: 16px;
+}
+.land_u .quit{
+	display: block;
+    width: 40px;
+    height: 16px;
+    border: 1px solid;
+    line-height: 16px;
+    text-align: center;
+    float: left;
+    margin-left: 10px;
+}
+.enter_div{
+	margin-right: 70px;
+}
+.flag_coun{
+	padding-left: 30px;
+	background-image: url(../imgs/flag_en.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 21px 13px;
+	cursor: pointer;
+}
+.flag_zh{
+	padding-left: 30px;
+	background-image: url(../imgs/flag.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 21px 13px;
+	cursor: pointer;
+}
+.my_person{
+	float: right;
+	margin-right: 35px;
+}
+.entire{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.first{
+	width: 100%;
+	height: 722px;
+	background: url(../imgs/eng_guide/a.png) no-repeat center;
+	background-size: 100% 100%;
+	position: relative;
+}
+.first_btn{
+	position: absolute;
+	bottom: 288px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+	height: 78px;
+	background:url(../imgs/eng_guide/h.png);
+	cursor: pointer;
+}
+.second{
+	width: 100%;
+	height: 832px;
+	background: url(../imgs/eng_guide/b.png) no-repeat center;
+	background-size: 100% 100%;
+	position: relative;
+}
+.second_btn{
+	position: absolute;
+	top: 144px;
+	right: 480px;
+	width: 220px;
+	height: 60px;
+	background: url(../imgs/eng_guide/d.png) no-repeat center;
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+.three{
+	width: 100%;
+	height: 773px;
+	background: url(../imgs/eng_guide/c.png) no-repeat center;
+	background-size: 100% 100%;
+}
+.four{
+	width: 100%;
+	height: 773px;
+	background: url(../imgs/eng_guide/e.png) no-repeat center;
+	background-size: 100% 100%;
+	position: relative;
+}
+.four_btn{
+	position: absolute;
+	bottom: 406px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width:218px;
+	height: 78px;
+	background: url(../imgs/eng_guide/g.png) no-repeat center;
+	background-size: 100% 100%;
+}
+.five{
+	width: 100%;
+	height: 2328px;
+	background: url(../imgs/eng_guide/i.png) no-repeat center;
+	background-size: 100% 100%;
+}
+.six{
+	width: 100%;
+	height: 722px;
+	background: url(../imgs/eng_guide/b.png) no-repeat center;
+	background-size: 100% 100%;
+}

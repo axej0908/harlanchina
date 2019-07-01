@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.axej.harlan.msg.dao.SysUserMessDao">
+
+	<insert id="save" parameterType="com.axej.harlan.msg.bean.SysUserMessBean">
+		insert into sys_user_mess(
+			user_id,
+			mess_id,
+			status
+		)values(
+			#{user_id},
+			#{mess_id},
+			#{status}
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.axej.harlan.msg.bean.SysUserMessBean">
+		update sys_user_mess
+		<set>
+			<if test="status!=null and status!=''">status = #{status}</if>
+		</set>
+		<where>
+			<if test="bind_id != 0">
+				bind_id = #{bind_id}
+			</if>
+			<if test="user_id != 0">
+				and user_id = #{user_id}
+			</if>
+		</where>
+	</update>
+	
+	<delete id="delete" parameterType="com.axej.harlan.msg.bean.SysUserMessBean">
+		delete from sys_user_mess
+		<where>
+			<if test="user_id != 0">
+				user_id = #{user_id}
+			</if>
+			<if test="mess_id != 0">
+				and mess_id = #{mess_id}
+			</if>
+		</where>
+	</delete>
+
+</mapper>

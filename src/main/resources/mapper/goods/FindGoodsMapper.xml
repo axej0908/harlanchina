@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.axej.harlan.goods.dao.FindGoodsDao">
+
+    <resultMap id="ShopGoodsResMap" type="com.axej.harlan.goods.bean.FindGoodsBean">
+        <id property="goods_id" column="goods_id"></id>
+        <result property="user_id" column="user_id"></result>
+        <result property="product_picture" column="product_picture"></result>
+        <result property="goods_name" column="goods_name"></result>
+        <result property="goods_name_en" column="goods_name_en"></result>
+        <result property="current_price" column="current_price"></result>
+        <result property="goods_unit" column="goods_unit"></result>
+        <result property="cino" column="cino"></result>
+        <result property="cas" column="cas"></result>
+        <result property="sales_volume" column="sales_volume"></result>
+        <association property="shopBean" javaType="com.axej.harlan.goods.bean.ShopBean">
+            <id property="shop_id" column="shop_id"></id>
+            <id property="shop_name" column="shop_name"></id>
+            <id property="com_logo" column="com_logo"></id>
+        </association>
+    </resultMap>
+
+    <sql id="base_cols">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="goods_type!=null">
+                goods_type,
+            </if>
+            <if test="create_time!=null">
+                create_time,
+            </if>
+            <if test="user_id!=0 and user_id!=null">
+                user_id,
+            </if>
+            <if test="user_name!=null">
+                user_name,
+            </if>
+            <if test="user_photo!=null">
+                user_photo,
+            </if>
+            <if test="user_type!=null">
+                user_type,
+            </if>
+            <if test="goods_state!=null">
+                goods_state,
+            </if>
+            <if test="goods_name!=null">
+                goods_name,
+            </if>
+            <if test="goods_name_en!=null">
+                goods_name_en,
+            </if>
+            <if test="one_type!=null">
+                one_type,
+            </if>
+            <if test="two_type!=null">
+                two_type,
+            </if>
+            <if test="cino!=null">
+                cino,
+            </if>
+            <if test="cas!=null">
+                cas,
+            </if>
+            <if test="molecular_weight!=null">
+                molecular_weight,
+            </if>
+            <if test="pas!=null">
+                pas,
+            </if>
+            <if test="precise_quality!=null">
+                precise_quality,
+            </if>
+            <if test="specification!=null">
+                specification,
+            </if>
+            <if test="goods_purity!=null">
+                goods_purity,
+            </if>
+            <if test="goods_deliver!=null">
+                goods_deliver,
+            </if>
+            <if test="deliver_units!=null">
+                deliver_units,
+            </if>
+            <if test="goods_num!=null">
+                goods_num,
+            </if>
+            <if test="num_units!=null">
+                num_units,
+            </if>
+            <if test="goods_unit!=null">
+                goods_unit,
+            </if>
+            <if test="current_price!=null">
+                current_price,
+            </if>
+            <if test="price_units!=null">
+                price_units,
+            </if>
+            <if test="market_price!=null">
+                market_price,
+            </if>
+            <if test="payment_opt!=null">
+                payment_opt,
+            </if>
+            <if test="transport_opt!=null">
+                transport_opt,
+            </if>
+            <if test="application_scheme!=null">
+                application_scheme,
+            </if>
+            <if test="product_picture!=null">
+                product_picture,
+            </if>
+            <if test="production_state!=null">
+                production_state,
+            </if>
+            <if test="color_power!=null">
+                color_power,
+            </if>
+            <if test="color_light!=null">
+                color_light,
+            </if>
+            <if test="package_opt!=null">
+                package_opt,
+            </if>
+            <if test="detect_report!=null">
+                detect_report,
+            </if>
+            <if test="detect_video!=null">
+                detect_video,
+            </if>
+            <if test="detect_uv!=null">
+                detect_uv,
+            </if>
+            <if test="detect_colourimeter!=null">
+                detect_colourimeter,
+            </if>
+            <if test="detect_sample_imgs!=null">
+                detect_sample_imgs,
+            </if>
+            <if test="detect_bulk_imgs!=null">
+                detect_bulk_imgs,
+            </if>
+            <if test="checked!=null">
+                checked,
+            </if>
+            <if test="seckill_deadline!=null">
+                seckill_deadline,
+            </if>
+            <if test="metal_cu!=null">
+                metal_cu,
+            </if>
+            <if test="metal_zn!=null">
+                metal_zn,
+            </if>
+            <if test="metal_ni!=null">
+                metal_ni,
+            </if>
+            <if test="metal_sb!=null">
+                metal_sb,
+            </if>
+            <if test="metal_cd!=null">
+                metal_cd,
+            </if>
+            <if test="metal_pb!=null">
+                metal_pb,
+            </if>
+            <if test="metal_sn!=null">
+                metal_sn,
+            </if>
+            <if test="metal_co!=null">
+                metal_co,
+            </if>
+            <if test="metal_hg!=null">
+                metal_hg,
+            </if>
+            <if test="metal_bi!=null">
+                metal_bi,
+            </if>
+            <if test="quality_aspect!=null">
+                quality_aspect,
+            </if>
+            <if test="quality_moisture!=null">
+                quality_moisture,
+            </if>
+            <if test="quality_insoluble!=null">
+                quality_insoluble,
+            </if>
+            <if test="quality_solubility!=null">
+                quality_solubility,
+            </if>
+            <if test="quality_clContent!=null">
+                quality_clContent,
+            </if>
+            <if test="quality_solidContent!=null">
+                quality_solidContent,
+            </if>
+            <if test="quality_salinity!=null">
+                quality_salinity,
+            </if>
+            <if test="quality_conductivity!=null">
+                quality_conductivity,
+            </if>
+            <if test="quality_michlerKetone!=null">
+                quality_michlerKetone,
+            </if>
+            <if test="CCRN!=null">
+                CCRN
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="base_cols_insert">
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="goods_type!=null">
+                #{goods_type},
+            </if>
+            <if test="create_time!=null">
+                #{create_time},
+            </if>
+            <if test="user_id!=0 and user_id!=null">
+                #{user_id},
+            </if>
+            <if test="user_name!=null">
+                #{user_name},
+            </if>
+            <if test="user_photo!=null">
+                #{user_photo},
+            </if>
+            <if test="user_type!=null">
+                #{user_type},
+            </if>
+            <if test="goods_state!=null">
+                #{goods_state},
+            </if>
+            <if test="goods_name!=null">
+                #{goods_name},
+            </if>
+            <if test="goods_name_en!=null">
+                #{goods_name_en},
+            </if>
+            <if test="one_type!=null">
+                #{one_type},
+            </if>
+            <if test="two_type!=null">
+                #{two_type},
+            </if>
+            <if test="cino!=null">
+                #{cino},
+            </if>
+            <if test="cas!=null">
+                #{cas},
+            </if>
+            <if test="molecular_weight!=null">
+                #{molecular_weight},
+            </if>
+            <if test="pas!=null">
+                #{pas},
+            </if>
+            <if test="precise_quality!=null">
+                #{precise_quality},
+            </if>
+            <if test="specification!=null">
+                #{specification},
+            </if>
+            <if test="goods_purity!=null">
+                #{goods_purity},
+            </if>
+            <if test="goods_deliver!=null">
+                #{goods_deliver},
+            </if>
+            <if test="deliver_units!=null">
+                #{deliver_units},
+            </if>
+            <if test="goods_num!=null">
+                #{goods_num},
+            </if>
+            <if test="num_units!=null">
+                #{num_units},
+            </if>
+            <if test="goods_unit!=null">
+                #{goods_unit},
+            </if>
+            <if test="current_price!=null">
+                #{current_price},
+            </if>
+            <if test="price_units!=null">
+                #{price_units},
+            </if>
+            <if test="market_price!=null">
+                #{market_price},
+            </if>
+            <if test="payment_opt!=null">
+                #{payment_opt},
+            </if>
+            <if test="transport_opt!=null">
+                #{transport_opt},
+            </if>
+            <if test="application_scheme!=null">
+                #{application_scheme},
+            </if>
+            <if test="product_picture!=null">
+                #{product_picture},
+            </if>
+            <if test="production_state!=null">
+                #{production_state},
+            </if>
+            <if test="color_power!=null">
+                #{color_power},
+            </if>
+            <if test="color_light!=null">
+                #{color_light},
+            </if>
+            <if test="package_opt!=null">
+                #{package_opt},
+            </if>
+            <if test="detect_report!=null">
+                #{detect_report},
+            </if>
+            <if test="detect_video!=null">
+                #{detect_video},
+            </if>
+            <if test="detect_uv!=null">
+                #{detect_uv},
+            </if>
+            <if test="detect_colourimeter!=null">
+                #{detect_colourimeter},
+            </if>
+            <if test="detect_sample_imgs!=null">
+                #{detect_sample_imgs},
+            </if>
+            <if test="detect_bulk_imgs!=null">
+                #{detect_bulk_imgs},
+            </if>
+            <if test="checked!=null">
+                #{checked},
+            </if>
+            <if test="seckill_deadline!=null">
+                #{seckill_deadline},
+            </if>
+            <if test="metal_cu!=null">
+                #{metal_cu},
+            </if>
+            <if test="metal_zn!=null">
+                #{metal_zn},
+            </if>
+            <if test="metal_ni!=null">
+                #{metal_ni},
+            </if>
+            <if test="metal_sb!=null">
+                #{metal_sb},
+            </if>
+            <if test="metal_cd!=null">
+                #{metal_cd},
+            </if>
+            <if test="metal_pb!=null">
+                #{metal_pb},
+            </if>
+            <if test="metal_sn!=null">
+                #{metal_sn},
+            </if>
+            <if test="metal_co!=null">
+                #{metal_co},
+            </if>
+            <if test="metal_hg!=null">
+                #{metal_hg},
+            </if>
+            <if test="metal_bi!=null">
+                #{metal_bi},
+            </if>
+            <if test="quality_aspect!=null">
+                #{quality_aspect},
+            </if>
+            <if test="quality_moisture!=null">
+                #{quality_moisture},
+            </if>
+            <if test="quality_insoluble!=null">
+                #{quality_insoluble},
+            </if>
+            <if test="quality_solubility!=null">
+                #{quality_solubility},
+            </if>
+            <if test="quality_clContent!=null">
+                #{quality_clContent},
+            </if>
+            <if test="quality_solidContent!=null">
+                #{quality_solidContent},
+            </if>
+            <if test="quality_salinity!=null">
+                #{quality_salinity},
+            </if>
+            <if test="quality_conductivity!=null">
+                #{quality_conductivity},
+            </if>
+            <if test="quality_michlerKetone!=null">
+                #{quality_michlerKetone},
+            </if>
+            <if test="CCRN!=null">
+                #{CCRN}
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="base_cols_update">
+        <if test="goods_type!=null">
+            goods_type = #{goods_type},
+        </if>
+        <if test="create_time!=null">
+            create_time = #{create_time},
+        </if>
+        <if test="user_id!=null and user_id!=0">
+            user_id = #{user_id},
+        </if>
+        <if test="user_name!=null">
+            user_name = #{user_name},
+        </if>
+        <if test="user_photo!=null">
+            user_photo = #{user_photo},
+        </if>
+        <if test="user_type!=null">
+            user_type = #{user_type},
+        </if>
+        <if test="goods_state!=null">
+            goods_state = #{goods_state},
+        </if>
+        <if test="goods_name!=null">
+            goods_name = #{goods_name},
+        </if>
+        <if test="goods_name_en!=null">
+            goods_name_en = #{goods_name_en},
+        </if>
+        <if test="one_type!=null">
+            one_type = #{one_type},
+        </if>
+        <if test="two_type!=null">
+            two_type = #{two_type},
+        </if>
+        <if test="cino!=null">
+            cino = #{cino},
+        </if>
+        <if test="cas!=null">
+            cas = #{cas},
+        </if>
+        <if test="molecular_weight!=null">
+            molecular_weight = #{molecular_weight},
+        </if>
+        <if test="pas!=null">
+            pas = #{pas},
+        </if>
+        <if test="precise_quality!=null">
+            precise_quality = #{precise_quality},
+        </if>
+        <if test="specification!=null">
+            specification = #{specification},
+        </if>
+        <if test="goods_purity!=null">
+            goods_purity = #{goods_purity},
+        </if>
+        <if test="goods_deliver!=null">
+            goods_deliver = #{goods_deliver},
+        </if>
+        <if test="goods_num!=null">
+            goods_num = #{goods_num},
+        </if>
+        <if test="goods_unit!=null">
+            goods_unit = #{goods_unit},
+        </if>
+        <if test="current_price!=null">
+            current_price = #{current_price},
+        </if>
+        <if test="market_price!=null">
+            market_price = #{market_price},
+        </if>
+        <if test="payment_opt!=null">
+            payment_opt = #{payment_opt},
+        </if>
+        <if test="transport_opt!=null">
+            transport_opt = #{transport_opt},
+        </if>
+        <if test="application_scheme!=null">
+            application_scheme = #{application_scheme},
+        </if>
+        <if test="product_picture!=null">
+            product_picture = #{product_picture},
+        </if>
+        <if test="production_state!=null">
+            production_state = #{production_state},
+        </if>
+        <if test="color_power!=null">
+            color_power = #{color_power},
+        </if>
+        <if test="color_light!=null">
+            color_light = #{color_light},
+        </if>
+        <if test="package_opt!=null">
+            package_opt = #{package_opt},
+        </if>
+        <if test="detect_report!=null">
+            detect_report = #{detect_report},
+        </if>
+        <if test="detect_video!=null">
+            detect_video = #{detect_video},
+        </if>
+        <if test="detect_uv!=null">
+            detect_uv = #{detect_uv},
+        </if>
+        <if test="detect_colourimeter!=null">
+            detect_colourimeter = #{detect_colourimeter},
+        </if>
+        <if test="detect_sample_imgs!=null">
+            detect_sample_imgs = #{detect_sample_imgs},
+        </if>
+        <if test="detect_bulk_imgs!=null">
+            detect_bulk_imgs = #{detect_bulk_imgs},
+        </if>
+        <if test="checked!=null">
+            checked = #{checked},
+        </if>
+        <if test="seckill_deadline!=null">
+            seckill_deadline = #{seckill_deadline},
+        </if>
+        <if test="metal_cu!=null">
+            metal_cu = #{metal_cu},
+        </if>
+        <if test="metal_zn!=null">
+            metal_zn = #{metal_zn},
+        </if>
+        <if test="metal_ni!=null">
+            metal_ni = #{metal_ni},
+        </if>
+        <if test="metal_sb!=null">
+            metal_sb = #{metal_sb},
+        </if>
+        <if test="metal_cd!=null">
+            metal_cd = #{metal_cd},
+        </if>
+        <if test="metal_pb!=null">
+            metal_pb = #{metal_pb},
+        </if>
+        <if test="metal_sn!=null">
+            metal_sn = #{metal_sn},
+        </if>
+        <if test="metal_co!=null">
+            metal_co = #{metal_co},
+        </if>
+        <if test="metal_hg!=null">
+            metal_hg = #{metal_hg},
+        </if>
+        <if test="metal_bi!=null">
+            metal_bi = #{metal_bi},
+        </if>
+        <if test="quality_aspect!=null">
+            quality_aspect = #{quality_aspect},
+        </if>
+        <if test="quality_moisture!=null">
+            quality_moisture = #{quality_moisture},
+        </if>
+        <if test="quality_insoluble!=null">
+            quality_insoluble = #{quality_insoluble},
+        </if>
+        <if test="quality_solubility!=null">
+            quality_solubility = #{quality_solubility},
+        </if>
+        <if test="quality_clContent!=null">
+            quality_clContent = #{quality_clContent},
+        </if>
+        <if test="quality_solidContent!=null">
+            quality_solidContent = #{quality_solidContent},
+        </if>
+        <if test="quality_salinity!=null">
+            quality_salinity = #{quality_salinity},
+        </if>
+        <if test="quality_conductivity!=null">
+            quality_conductivity = #{quality_conductivity},
+        </if>
+        <if test="quality_michlerKetone!=null">
+            quality_michlerKetone = #{quality_michlerKetone},
+        </if>
+        <if test="CCRN!=null">
+            CCRN = #{CCRN},
+        </if>
+
+    </sql>
+
+    <sql id="query_conditions">
+        <if test="user_id!=null and user_id!=0">
+            ig.user_id = #{user_id}
+        </if>
+        <if test="goods_type!=null and goods_type!=''">
+            and goods_type like concat(concat('%',#{goods_type}),'%')
+        </if>
+        <if test="goods_state!=null and goods_state!=''">
+            and goods_state =#{goods_state}
+        </if>
+        <if test="one_type!=null and one_type!=''">
+            and one_type like concat(concat('%',#{one_type}),'%')
+        </if>
+        <if test="two_type!=null and two_type!=''">
+            and two_type like concat(concat('%',#{two_type}),'%')
+        </if>
+        <if test="goods_purity!=null and goods_purity!=''">
+            and goods_purity &gt;= #{goods_purity}
+        </if>
+        <if test="goods_deliver!=null and goods_deliver!=''">
+            and goods_deliver &gt;= #{goods_deliver}
+        </if>
+        <if test="goods_name!=null and goods_name!=''">
+            and goods_name like CONCAT(CONCAT('%',#{goods_name}),'%')
+        </if>
+        <if test="beginTime!=null and beginTime.trim()!='' and limitTime!=null and limitTime.trim()!=''">
+            and ig.create_time between #{beginTime} and #{limitTime}
+        </if>
+    </sql>
+
+    <insert id="save" parameterType="com.axej.harlan.goods.bean.FindGoodsBean">
+        <selectKey keyProperty="goods_id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into info_find_goods
+        <include refid="base_cols"></include>
+        <include refid="base_cols_insert"></include>
+    </insert>
+
+    <delete id="delete">
+        delete from info_find_goods where goods_id = #{goods_id}
+    </delete>
+
+    <update id="update" parameterType="com.axej.harlan.goods.bean.FindGoodsBean">
+        update info_find_goods
+        <set>
+            <include refid="base_cols_update"></include>
+        </set>
+        where goods_id = #{goods_id}
+    </update>
+
+    <select id="queryList" parameterType="map" resultType="com.axej.harlan.goods.bean.FindGoodsBean">
+        select * from info_find_goods
+        <where>
+            <include refid="query_conditions"></include>
+        </where>
+        order by create_time desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" parameterType="map" resultType="int">
+        select COUNT(1) from info_find_goods
+        <where>
+            <include refid="query_conditions"></include>
+        </where>
+    </select>
+    <select id="queryObject" parameterType="com.axej.harlan.goods.bean.FindGoodsBean"
+            resultType="com.axej.harlan.goods.bean.FindGoodsBean">
+        select
+            ifg.*,
+            su.user_id,
+            su.user_phone,
+            su.user_name
+        from
+            info_find_goods ifg
+        inner join sys_user su on ifg.user_id = su.user_id
+        where goods_id = #{goods_id}
+    </select>
+    
+    <select id="queryInquiryObject" resultType="com.axej.harlan.goods.bean.FindGoodsBean">
+        select * from info_find_goods where goods_id = #{goods_id}
+    </select>
+    
+    <select id="queryInquiryList" parameterType="map" resultType="com.axej.harlan.goods.bean.FindGoodsBean">
+        select
+            ifg.goods_id,
+            ifg.goods_state,
+            ifg.goods_name,
+            ifg.goods_name_en,
+            ifg.goods_deliver,
+            ifg.deliver_units,
+            ifg.create_time,
+            su.user_id,
+            su.user_phone,
+            su.user_name
+        from
+            info_find_goods ifg
+        inner join sys_user su on ifg.user_id = su.user_id
+        <where>
+            <if test="goods_state!=null">
+                ifg.goods_state = #{goods_state}
+            </if>
+        </where>
+        order by ifg.create_time desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    
+    <select id="queryInquiryTotal" parameterType="map" resultType="int">
+        select count(1) from info_find_goods
+        <where>
+            <if test="goods_state!=null">
+                goods_state = #{goods_state}
+            </if>
+        </where>
+    </select>
+</mapper>

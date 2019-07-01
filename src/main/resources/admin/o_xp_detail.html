@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>详情</title>
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all"/>
+    <link rel="stylesheet" href="src/css/a_admin_manage.css" media="all"/>
+    <style type="text/css">
+        .crum_prt {
+            padding-top: 10px;
+            padding-left: 5px;
+            padding-bottom: 10px;
+        }
+
+        .mesg {
+            width: 710px;
+
+        }
+
+        .mesg_item {
+            width: 100%;
+        }
+
+        .mesg_label {
+            width: 150px;
+            height: 40px;
+            font-size: 16px;
+            color: #000;
+            text-align: right;
+            line-height: 40px;
+            float: left;
+        }
+
+        .mesg_xx {
+            width: 550px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #000;
+            text-align: justify;
+            word-wrap: break-word;
+            float: left;
+            margin-left: 10px;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico"></head>
+
+<body>
+<div class="crum_prt">
+			<span class="layui-breadcrumb">
+			    <a href="o_xp_a.html">系统询盘</a>
+			    <a href="o_xp_detail.html">详情</a>
+			</span>
+</div>
+<div class="mesg">
+    <div class="mesg_item">
+        <div class="mesg_label">商品名称:</div>
+        <div class="mesg_xx">{{goods.goods_name}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">数量:</div>
+        <div class="mesg_xx">{{goods.goods_num}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">包装方式:</div>
+        <div class="mesg_xx">{{goods.package_opt}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">纯度:</div>
+        <div class="mesg_xx">{{goods.goods_purity}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">单价:</div>
+        <div class="mesg_xx">{{goods.current_price}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">运输:</div>
+        <div class="mesg_xx">{{goods.transport_opt}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">强度:</div>
+        <div class="mesg_xx">{{goods.color_power}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">色光:</div>
+        <div class="mesg_xx">{{goods.color_light}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">外观:</div>
+        <div class="mesg_xx">{{goods.quality_aspect}}:</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">水分:</div>
+        <div class="mesg_xx">{{goods.quality_moisture}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">不溶物:</div>
+        <div class="mesg_xx">{{goods.quality_insoluble}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">可溶性:</div>
+        <div class="mesg_xx">{{goods.quality_solubility}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">氯化物含量:</div>
+        <div class="mesg_xx">{{goods.quality_clContent}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">盐分:</div>
+        <div class="mesg_xx">{{goods.quality_salinity}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">电导率:</div>
+        <div class="mesg_xx">{{goods.quality_conductivity}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">米氏酮:</div>
+        <div class="mesg_xx">{{goods.quality_michlerKetone}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">固含量:</div>
+        <div class="mesg_xx">{{goods.quality_solidContent}}</div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="mesg_item">
+        <div class="mesg_label">铜离子:</div>
+        <div class="mesg_xx">{{goods.metal_cu}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">铅离子:</div>
+        <div class="mesg_xx">{{goods.metal_pb}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">锌离子:</div>
+        <div class="mesg_xx">{{goods.metal_zn}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">锡离子:</div>
+        <div class="mesg_xx">{{goods.metal_sn}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">镉离子:</div>
+        <div class="mesg_xx">{{goods.metal_cd}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">锑离子:</div>
+        <div class="mesg_xx">{{goods.metal_sb}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">镍离子:</div>
+        <div class="mesg_xx">{{goods.metal_ni}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">钴离子:</div>
+        <div class="mesg_xx">{{goods.metal_co}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">汞离子:</div>
+        <div class="mesg_xx">{{goods.metal_hg}}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mesg_item">
+        <div class="mesg_label">铋离子:</div>
+        <div class="mesg_xx">{{goods.metal_bi}}</div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script src="./plugins/layui/layui.js"></script>
+<script src="../lib/common.js"></script>
+<script src="plugins/vue.min.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        var $ = layui.jquery,
+            element = layui.element;
+
+        var vm = new Vue({
+            el: ".mesg",
+            data: {
+                goods: {}
+            },
+            mounted: function () {
+                this.$nextTick(function () {
+                    vm.preLoadGoodsDetail();
+                })
+            },
+            methods: {
+                preLoadGoodsDetail: function () {
+                    //1.get goods_id from location.href
+                    var goods_id = format3(getQueryString("goods_id"));
+                    if (goods_id == 'noExistThisParam' || goods_id == 0) {
+                        layer.msg("error");
+                        return false;
+                    }
+                    $.ajax({
+                        type: 'post',
+                        url: '/goodsMall/detail',
+                        data: {goods_id: goods_id},
+                        dataType: 'json',
+                        success: function (r) {
+                            if (r.code == 0) {
+                                vm.goods = r.data;
+                            }
+                        }
+                    })
+                }
+            }
+        });
+
+
+    });
+</script>
+</body>
+
+</html>

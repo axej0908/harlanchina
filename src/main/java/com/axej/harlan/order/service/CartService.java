@@ -25,4 +25,10 @@ public interface CartService {
     CartBean queryObject(CartBean bean);
 
     void delete(CartBean bean);
+
+    //是否存在该产品
+    boolean isExistGoods(int user_id,int goods_id);
+
+    //修改购物车产品数量
+    boolean updateCartGoodsNum(int user_id,int goods_id);
 }

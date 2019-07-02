@@ -109,12 +109,24 @@ public class CartController {
         if (cartBean.getUser_id() == 0 || cartBean.getGoods_id() == 0) {
             return R.error("null param" + JSON.toJSONString(cartBean));
         }
-        boolean flag = cartService.saveToCart(cartBean);
-        if (flag){
-            return R.ok("success");
+        //判断如果加入的购物车产品已经存在，则直接让数量加1就行
+        if(cartService.isExistGoods(cartBean.getUser_id(),cartBean.getGoods_id()))
+        {
+            if(cartService.updateCartGoodsNum(cartBean.getUser_id(),cartBean.getGoods_id()))
+            {
+                return R.ok("success");
+            }else{
+                return R.error("fail");
+            }
         }else {
-            return R.error("fail");
+            boolean flag = cartService.saveToCart(cartBean);
+            if (flag){
+                return R.ok("success");
+            }else {
+                return R.error("fail");
+            }
         }
+
     }
 
     /**

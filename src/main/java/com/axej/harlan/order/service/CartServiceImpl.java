@@ -78,4 +78,30 @@ public class CartServiceImpl implements CartService {
         cartDao.delete(bean);
     }
 
+
+    @Override
+    public boolean isExistGoods(int user_id,int goods_id)
+    {
+        if(cartDao.isExistGoods(user_id,goods_id)>0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updateCartGoodsNum(int user_id,int goods_id)
+    {
+        if(cartDao.updateCartGoodsNum(user_id,goods_id))
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
 }

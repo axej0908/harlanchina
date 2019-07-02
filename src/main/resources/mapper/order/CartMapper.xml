@@ -132,4 +132,13 @@
         </where>
     </select>
 
+    <select id="isExistGoods" resultType="int">
+        select count(1) from biz_cart where user_id=#{user_id} and goods_id = #{goods_id}
+    </select>
+
+    <update id="updateCartGoodsNum" >
+    update biz_cart set goods_num=goods_num+1 where user_id=#{user_id} and goods_id = #{goods_id}
+
+    </update>
+
 </mapper>

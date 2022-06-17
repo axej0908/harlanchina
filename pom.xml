@@ -39,7 +39,7 @@
         <httpclient.version>4.5.2</httpclient.version>
 
         <javax.mail>1.6.0</javax.mail>
-        <fastjson.version>1.2.41</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
 	</properties>
 
 	<dependencies>
